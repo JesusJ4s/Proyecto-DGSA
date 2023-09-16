@@ -1,0 +1,303 @@
+Carrusel:
+    <!-- ******************************************************* -->
+    <div class="container-fluid mb-2 p-0 box-shadow-nav w-95">
+
+
+
+        <div id="carousel-id" class="carousel slide mt-3" data-bs-ride="carousel">
+
+
+
+        <!-- Botones para pasar imagenes (inferiores) Se pueden agregar más -->
+            <div class="carousel-indicators">
+                <button data-bs-target="#carousel-id" data-bs-slide-to="0" class="active"></button>
+                <button data-bs-target="#carousel-id" data-bs-slide-to="1"></button>
+            </div>
+
+
+
+            <!-- Contenedor de las imágenes en carrousel. Se pueden agregar más-->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="/assets/gallery/Presentacion.jpg" alt="DGSA" class="d-block w-100 width-carousel ">
+                </div>
+
+                <div class="carousel-item">
+                    <img src="/assets/gallery/1.jpg" alt="DGSA" class="d-block w-100 width-carousel ">
+                </div>
+            </div>
+
+
+
+        <!-- Botones para cambiar imágenes (altura normal) -->
+            <button class="carousel-control-prev" data-bs-target="#carousel-id" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+
+            <button class="carousel-control-next" data-bs-target="#carousel-id" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </div>
+
+
+
+
+<!-- ******************************************************************************************************************************************************** -->
+Lista de Navegación:
+
+
+<!-- **************************************************************** -->
+<!-- Barra de navegación. Existen clases creadas por mi -->
+<nav>
+    <div class="container-fluid p-3 my-4 bg-primary box-shadow-nav text-center">
+
+        <a target="_blank" class="btn btn-primary px-0" href="#"><img class="w-25" src="/assets/icon/home.png" alt="inicio">Inicio</a>
+
+        <button class="btn btn-primary dropdown-toggle px-0" data-bs-toggle="dropdown"><img class="w-20" src="/assets/icon/dgsa-inst-2.png" alt="DGSA">DGSA</button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" target="_blank" href="about.html">Quienes Somos</a></li>
+            <li><a class="dropdown-item" target="_blank" href="divisiones.html">Divisiones</a></li>
+            <li><a class="dropdown-item" target="_blank" href="guia.html">Guía del Usuario</a></li>
+            <li><a class="dropdown-item" target="_blank" href="instrumentos_legales.html">Instrumentos Legales</a></li>
+        </ul>
+
+
+        <button class="btn btn-primary dropdown-toggle px-0" data-bs-toggle="dropdown"><img class="w-10" src="/assets/icon/direcciones-dgsa.png" alt="Direcciones">Direcciones De Línea</button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" target="_blank" href="dir_epid_amb.html">Dirección Epidemiología Ambiental</a></li>
+            <li><a class="dropdown-item" target="_blank" href="dir_cont_vec.html">Dirección Control de Vectores, Reserv. y Fauna Nociva</a></li>
+            <li><a class="dropdown-item" target="_blank" href="dir_salud_rad.html">Dirección Salud Radiológica</a></li>
+            <li><a class="dropdown-item" target="_blank" href="dir_gest_ries_amb.html">Dirección Gestión de Riesgos Sanitarios Ambientales</a></li>
+        </ul>
+        <!-- Usando el mismo sistema de botón/ul se pueden crear muchos más -->
+    </div>
+</nav>
+
+
+
+
+*******************************************************************************************************************
+
+
+MINI CARROUSEL MÁS ASIDE. HAY QUE MEJORARLO
+
+
+
+<!-- **************************************************************************************************************** -->
+    <!-- Comienza lo bueno -->
+    <main class="container-fluid row gap-5 m-0 p-0">
+
+        <!-- Primera sección -->
+        <section class="col-8">
+
+            <!-- **************************************** -->
+            <!-- Carrusel. w-85 para que ocupe 85% del espacio de las 8 columnas-->
+
+
+            <div class="container-lg mb-2 p-0 w-85">
+
+                <div id="carousel-info" class="carousel slide mt-3" data-bs-ride="carousel">
+
+                <!-- Botones para pasar imagenes (inferiores) -->
+                    <div class="carousel-indicators">
+                        <button data-bs-target="#carousel-info" data-bs-slide-to="0" class="active"></button>
+                        <button data-bs-target="#carousel-info" data-bs-slide-to="1"></button>
+                    </div>
+
+                    <!-- Contenedor de las imágenes en carrousel -->
+                    
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <p class="display-5">DGSA Informa</p>
+                            <img src="/assets/gallery/historia-inf.jpg" alt="DGSA" class="d-block width-carousel-info">
+                            <p class="p-3">
+                                Según la Organización Mundial de la Salud (O.M.S), Salud Ambiental es "la disciplina que comprende aquellos aspectos de la salud humana, incluñida la calidad de vida y el bienestar social, que son determinados por factores ambientales físicos, químicos, biológicos, sociales y psico-sociales. También se refiere a la teoría y prñactica de evaluar, corregir, controlar y prevenir aquellos factores en el medio ambiente que pueden potencialmente afectar adversamente la salud de presentes y futuras generaciones".
+                            </p>
+                        </div>
+
+                        <div class="carousel-item">
+                            <p class="display-5">DGSA Informa</p>
+                            <img src="/assets/gallery/estrella.jpg" alt="DGSA" class="d-block width-carousel-info">
+                            <p class="p-3">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit dignissimos dolorem vel non nihil laborum sed id, deleniti eos. Voluptas unde animi cupiditate. Dolore provident odit impedit, sit sequi libero dolores aperiam illo dolor totam, neque recusandae velit atque iste aliquam. Repudiandae, sint. Ad consequuntur ea possimus vel labore quas dolorum, qui repudiandae explicabo tempora at maxime nihil repellendus, facere esse quibusdam exercitationem sit sed voluptatum quam impedit suscipit itaque delectus! Nisi, consectetur modi. Enim sapiente dolorum officia animi, est eius ullam laudantium perferendis, quia delectus in eveniet unde quam!
+                            </p>
+                        </div>
+                    </div>
+
+                <!-- Botones para cambiar imágenes (altura normal) -->
+                    <button class="carousel-control-prev" data-bs-target="#carousel-info" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+
+                    <button class="carousel-control-next" data-bs-target="#carousel-info" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ******************************** -->
+        <!-- Extras -->
+        <aside class="col-3">
+            <div class="bg-azul mt-5 border-radius-15">
+                <p class="text-white fs-5 p-1 ps-3">Intranet</p>
+            </div>
+            <div class="text-center">
+                <a target="_blank" href="intranet.html" class="">
+                    <img src="/assets/logos/DGSA.jpg" alt="Intranet" class="w-50">
+                </a>
+            </div>
+            <div class="bg-azul mt-5 border-radius-15">
+                <p class="text-white fs-5 p-1 ps-3">Redes Sociales</p>
+            </div>
+            <div class="text-center">
+                <a target="_blank" href="" class="">
+                    <img src="/assets/logos/Redes.jpg" alt="Redes" class="w-50">
+                </a>
+            </div>
+        </aside>
+
+
+
+*********************************************************************************************************************
+
+SECCIÓN DE PURA INFORMACIÓN:
+
+*******************************************************************************************************************************************
+
+<!-- *********************************************************************************** -->
+<!-- LISTA PARA ELEGIR TEMA -->
+
+    <div class="container-lg mb-2 p-0 w-95">
+        <ul class="list-group list-group-horizontal">
+            <a class="list-group-item list-group-item-action list-group-item-success" href="#ENLACE">TÍTULO TEXTO</a>
+            <a class="list-group-item list-group-item-action list-group-item-success" href="#ENLACE">TÍTULO TEXTO</a>
+            <a class="list-group-item list-group-item-action list-group-item-success" href="#ENLACE">TÍTULO TEXTO</a>
+        </ul>
+    </div>
+
+    <hr>
+
+<!-- ******************************************************************************* -->
+<!-- CONTENIDO -->
+
+    <section>
+        <div class="container-lg mb-2 p-0 w-95">
+            <h2 id="Res_Hist" class="bold text-center mb-4"><u>TÍTULO</u></h2>
+
+            <p class="px-3 py-3">
+               TEXTO
+            </p>
+            <h3 class="my-4"><u>SUB TÍTULO</u></h3>
+            <br>
+            <p class="px-3 py-3">
+                TEXTO
+            </p>
+            <p class="px-3 py-3">
+                TEXTO
+            </p>
+            <p class="px-3 py-3">
+                TEXTO
+            </p>
+            <p class="px-3 py-3">
+                TEXTO
+            </p>
+
+        </div>
+    </section>
+
+    <hr>
+
+
+
+
+
+
+
+
+    <!-- *********************************** AJAX *********************************** -->
+<script>
+	function consultar(consulta)
+    { 
+      var parametros = 
+      {
+        "nombre" : "dostin",
+        "apellido" : "hurtado",
+        "telefono" : "123456789"
+      };
+
+      $.ajax({
+        data: parametros,
+        url: 'prueba.php',
+        type: 'POST',
+        
+        // Mensaje en cuanto comienza la funcion (casi no se nota)
+        beforesend: function()
+        {
+          $('#mostrar_mensaje').html("Mensaje antes de Enviar");
+        },
+
+        // Mensaje cuando ya cargó
+        success: function(mensaje)
+        {
+          $('#mostrar_mensaje').html(mensaje);
+        }
+      });
+    }
+
+
+</script>
+
+
+<!-- ****************************** BOTON ****************************** -->
+        <button class=' btn bg-medio-cromatico px-4'><a class='dropdown-item bold' target='_blank'  href='index.php'>Pagina Principal</a></button>
+
+
+
+<!-- ****************************** jquery ****************************** -->
+
+<script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$("#boton01").click(function(){
+		$("#parrafo").addClass("rojo");
+	});
+	$("#boton02").click(function(){
+		$("#parrafo").addClass("rojo grande26");
+	});
+	$("#boton03").click(function(){
+		$("#parrafo").removeClass("rojo");
+	});
+	$("#boton04").click(function(){
+		$("#parrafo").removeClass("rojo grande26");
+	});
+});
+</script>
+
+******************************  Solo esto uso yo *******************************************
+
+$('#id').addClass('is-invalid');
+
+$('#id').removeClass("rojo").addClass("verde");
+
+
+
+
+
+
+***************************************** TABLA ****************************************
+
+
+
+    <table class="table table-hover>
+        <tr>
+            <th class="container-fluid row text-center"></th>
+            <th class="col-2 border px-2 bold">Nombre</th>
+            <th class="col-2 border px-2 bold">Apellido</th>
+            <th class="w-10 border px-2 bold">Cedula</th>
+            <th class="w-15 border px-2 bold">Usuario</th>
+            <th class="col-2 border px-2 bold">Teléfono</th>
+            <th class="col-3 border px-2 bold">Email</th>
+        </tr>

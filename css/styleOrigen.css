@@ -1,0 +1,27 @@
+.fondito {
+    position:relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+.fondito::before {
+    content: '';
+    background-image: url("../794670.png");
+    /* background-image: url("../794670.png"); */
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.letras {
+    z-index: 1000;
+}
+
+.p-a {
+    position: absolute;
+}

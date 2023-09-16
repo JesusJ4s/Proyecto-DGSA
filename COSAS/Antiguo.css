@@ -1,0 +1,52 @@
+.img-inv {
+    opacity: .4;
+}
+
+.porcent15 {
+    width: 15%;
+}
+.porcent25 {
+    width: 25%;
+}
+.porcent30 {
+    width: 30%;
+}
+.porcent50 {
+    width: 50%;
+}
+.porcent70 {
+    width: 70%;
+}
+.porcent90 {
+    width: 90%;
+}
+.porcent100 {
+    width: 100%;
+}
+.height-bar {
+    height: 30px;
+}
+/* **************** */
+.width-50 {
+    width: 50%;
+}
+.width-400 {
+    width: 400px;
+}
+.width-img-100 {
+    width: 100px;
+}
+.height-300 {
+    height: 300px;
+}
+
+/* BORDES */
+
+.border-css {
+    border: 10px double cornflowerblue;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px cornflowerblue;
+
+    /* outline: 10px double blue;
+    outline-offset: -20px; */
+}

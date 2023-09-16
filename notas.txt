@@ -1,0 +1,536 @@
+Los documentos elegidos para la realización del curso de bootstrap son los ".min.css", los "rlt" son para lecturas de derecha a izquierda
+
+Así enlazamos
+<!-- CSS Bootstrap -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+Y así enlazamos JS, para el correcto funcionamiento más adelante
+<!-- JS en Bootstrap -->
+    <script src="/js/bootstrap.bundle.min.js"></script>
+
+MEGA NOTA:
+"TODO LO ESCRITO A CONTINUACIÓN ESTÁ BASADO EN CLASES, LO QUE QUIERE DECIR QUE CON NOMBRARLAS DENTRO DE LA CLASE DE LA ETIQUETA QUE UTILICEMOS SE AGREGARAN LOS ESTILOS POR DEFECTO DE BOOTSTRAP"
+
+
+********************* CONTENEDORES / CONTAINERS ***********************
+
+container -> Contenedor de ancho fijo sensible
+                   ExtraSmall  small    medium  large   x-large  xx-large
+                   <576px      >576px   >768px  >992px  >1200px  >1400px
+    .container      100%       540px    720px   960px   1140px   1320px
+    .container-sm   100%       100%     720px   960px   1140px   1320px
+    .container-md   100%       100%     100%    960px   1140px   1320px
+    .container-lg   100%       100%     100%    100%    1140px   1320px
+    .container-xl   100%       100%     100%    100%    100%     1320px
+    .container-xxl  100%       100%     100%    100%    100%     100%
+
+
+    .container-fluid
+
+container-fluid -> Contenedor que abarca todo el ancho
+
+********************* GRID / GRILLAS ***********************
+<!-- 
+            TODO LO QUE SE MUESTRA ACONTINUACIÓN ES ALGO FEO, POR LO MENOS PARA MI, SE CAMBIA EL USO DE LAS ETIQUETAS "TABLE, TH, TD, TR" POR DIV'S CONFIGURADOS PARA FUNCIONAR DE UNA MANERA MUY PARECIDA.
+
+            SI LO PIENSO UN POCO, LO QUE DEBES HACER ES:
+
+            *Creas tú contenedor, sería un "div" con la clase "container" de preferencia (En HTML más CSS se usa la etiqueta "table").
+            *Ahora creas otro "div" con la clase "row" (en HTML más CSS sería un td o th depende).
+            *Y si necesitas otra fila, creas una nueva div class: row..
+-->
+
+Col- (Para pantallas inferiores a 576px)
+Col-sm-  (Para pantallas igual o superior a 576px)
+Col-md-  (Para pantallas igual o superior a 768px)
+Col-lg-  (Para pantallas igual o superior a 992px)
+Col-xl-  (Para pantallas igual o superior a 1200px)
+Col-xxl- (Para pantallas igual o superior a 1400px)
+
+********************* TEXT / TYPOGRAPHY ***********************
+
+<h1> - <h6>
+Display-1 - Display-6
+<kbd></kbd>
+Lead
+Text-start
+Text-center
+Text-end
+Text-nowrap
+Text-lowercase
+Text-uppercase
+
+PROBAR
+
+Lead
+<mark></mark> remarcar
+<del></del> tachadura
+<s></s> tachadura centro
+<ins></ins> línea debajo
+<u></u> underline, línea debajo
+
+USADAS EN HTML PARA IDENTIFICAR TEXTO IMPORTANTE:
+
+<small></small> HTML pequeño
+(verificar)
+<strong></strong> HTML negrita
+<em></em> italic
+
+
+********************* Colores ***********************
+
+Text Colors:
+
+text-muted
+text-primary
+text-success
+text-info 
+text-warning
+text-danger
+text-secondary
+text-white
+text-dark
+text-body
+text-light
+
+Background Colors: 
+
+bg-primary
+bg-success
+bg-info
+bg-warning
+bg-danger
+bg-secondary
+bg-dark
+bg-light
+
+********************* Images ***********************
+
+rounded: redondeado en las esquinas (border en CSS)
+rounded-circle: redondeado total (border-radius en CSS)
+img-thumbnail: pequeño borde a la imagen
+float-start: establecer al principio
+float-end: establecer al final
+mx-auto: margin auto
+d-block: "display: block" en CSS
+img-fluid: modo responsive (pantalla entera)
+
+*************************** Alertas ***********************************
+
+alert 
+alert-success
+
+alert-link
+
+alert-dismissible (esta se coloca en el div que contiene la alerta)
+btn-close - data-bs-dismiss="alert" - btn-close se coloca en las clases de un boton que se crea dentro del div contenedor, la segunda se coloca como propiedad en el mismo boton.
+
+fade show - Estas son clases que se colocan en el div contenedor
+
+*************************** Botones ***********************************
+
+btn (tiene un tema predeterminado, se debería usar siempre)
+btn-primary
+btn-secondary
+btn-success
+btn-info
+btn-warning
+btn-danger
+
+btn-dark
+btn-light
+
+btn-outline-primary (se puede cambiar por secondary, etc.)
+
+btn-sm
+btn-md
+btn-lg
+***********
+d-grid 
+gap-3 
+***********
+active
+disabled
+***********
+spinner-border
+spinner-border-sm
+spinner-grow
+spinner-grow-sm
+
+*************************** Agrupar Botones ******************************
+
+btn-group
+btn-group-lg (sm, md, lg)
+
+btn-group-vertical
+btn-group-lg (sm, md, lg)
+
+
+****** Hacer lista desplegable ******
+
+dropdown-toggle
+data-bs-toggle="dropdown"
+
+dropdown-menu
+
+dropdown-item
+
+sintaxis:
+    "Div contenedor: clase necesaria... ninguna"
+
+    "button: clase necesaria dropdown-toggle. Además agregar atributo: data-bs-toggle="dropdown" permite que baje la lista.
+
+    "ul, lista desordenada, clase necesaria: dropdown-menu"
+
+    "li, item lista, clase necesaria: dropdown-item" permite al item tener un aspecto agradable
+
+    <div class="container-lg p-3 border mb-3 bg-success">
+        <button class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown">TEXTO</button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" target="_blank" href="#">TEXTO</a></li>
+            <li><a class="dropdown-item" target="_blank" href="#">TEXTO</a></li>
+            <li><a class="dropdown-item" target="_blank" href="#">TEXTO</a></li>
+            <li><a class="dropdown-item" target="_blank" href="#">TEXTO</a></li>
+        </ul>
+
+*************************** BADGES ******************************
+badged
+
+rounded-pill
+
+
+*************************** BARRA DE PROGRESO ****************************
+
+progress
+    progress-bar
+    bg-color 
+
+    primary
+    secondary
+    success
+    info
+    warning
+    danger
+
+progress-bar-striped
+progress-bar-animated
+
+*************************** Atrbutos Texto ****************************
+
+Margin: acrónimo mt, mb, ms, me. Se usa del 1 al 5
+    ejemplo mb-5
+
+    Los textos ya traen un margin bottom de 3 por DEFECTO
+
+Height: acrónimo h-25, h-50, h-75, h-100. Se usa en porcentaje
+    ejemplo: h-50 ocupará el 50% de container (se debe establecer un Height)
+
+Padding: acrónimo pt, pb, ps, pe. Se usa del 1 al 5
+    ejemplo pb-5
+
+*****************************************
+
+Width: se maneja por porcentajes "w-25", "w-50", "w-75", "w-100".
+
+Align: nos permite alinear, existen: "align-top", "align-middle", "align-bottom". Tambien se puede usar "align-text-bottom", "align-text-middle", "align-text-top", esto va más referido a alinear verticalmente.
+
+*******************************************
+
+border: border-1/5, se coloca un nro de preferencia, y luego usar la clase border-posición, para elegir la ubicación del borde, si se quieren en todos los lados, usar solo "border-1/5". Los colores sería border-color.
+
+
+*************************** Spinners ****************************
+
+spinner-border
+text-primary
+spinner-border-sm
+********************
+spinner-grow
+text-secondary
+spinner-grow-sm
+
+*************************** Paginación ****************************
+
+pagination
+    page-item
+    page-link
+
+pagination-lg
+    active
+    disabled
+
+justify-content-center
+
+
+*************************** Agrupar listas ****************************
+
+list-group
+    list-group-item
+    active
+    list-group-item-action
+    disabled
+
+list-group-numbered
+
+list-group-horizontal
+
+list-group-flush
+
+*************************** Tarjetas ****************************
+
+card 
+    card-body
+    card-title
+    card-text
+    card-link
+    card-img-top
+
+
+*************************** Desplegables ****************************
+
+dropdown
+    dropdown-toggle
+    data-bs-toggle="dropdown"
+    dropdown-menu   
+        dropdown-header
+        dropdown-item
+        dropdown-divider
+        active
+        disabled
+
+
+*************************** jquery ****************************
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+***************************************************************** ****************************
+***************************************************************** ****************************
+***************************************************************** ****************************
+***************************************************************** ****************************
+***************************************************************** ****************************
+***************************************************************** ****************************
+***************************************************************** ****************************
+
+***************************************************************** ****************************
+*************************** FPDF ****************************
+
+// NOTAS IMPORTANTES
+
+
+// AddPage(orientacion[PORTRAIT, LANDSCAPE], tamaño[A3, A4, A5, LETTER, LEGAL], rotacion);
+//SetFont(tipo[COURIER, HELVETICA, ARIAL, TIMES, SYMBOL, ZAPDINGBATS], estilo[normal, B, I, U], tamaño);
+// Cell(ancho, alto, texto, bordes, ?, alineacion, rellenar, link);
+//Write(alto, texto, link);
+// OutPut(destino[I, D, F, S], nombre_archivo, utf8);
+
+//Image(ruta, posicionX, posicionY, alto, ancho, tipo, link);
+
+//PIE DE PÁGINA
+//PageNo();
+// AliasNbPages();
+// "numero de pagina 1 de {nb}"
+
+// COLOR TEXTO
+// SetTextColor(RGB);
+
+// lineas
+//SetDrawColor(00,00,00);
+//Line(15, 100, 200, 100); LINEAS
+//SetLineWidth(1);
+
+//con $fpdf->GetX() o $fpdf->GetY() Toma la posicion del anterior
+// Line(50, $fpdf->GetY(), 50, $fpdf->GetY())
+
+// ATRIBUTOS QUE NO USO
+
+
+
+// for($i=1;$i<=5;$i++) GENERAR BUCLES DE INFORMACIÓN
+    // $pdf->Cell(50,10, utf8_decode('Imprimiendo línea número ').$i,0,1);
+    //cell(largo, alto, contenido, borde?, salto de línea, 'centrado...', color de fondo)
+// Creación del objeto de la clase heredada
+//$pdf->Ln(50); //CREA UN ESPACIO EN VERTICAL, BAJANDO TODO
+
+// $pdf->SetFillColor(255,255,255); Color de fondo
+// $pdf->SetDrawColor(255,255,255); Color de líneas
+
+
+
+
+
+EXISTEN 2 FORMAS DE LLAMAR DATOS DE UNA TABLA:
+
+    $('#body-final tr').each(function(){
+        macFinale=$(this).find('#input_final').val();
+        idFinale = $(this).find('td').eq(0).text();
+
+    });
+
+    y
+
+        // TOMAR VALOR DE UNA COLUMNA DE UNA TABLA
+    $('#body-body').on('click','tr',function(){
+        nroCaso=$(this).find('#input_td').val();
+    });
+
+
+
+
+
+
+
+CENTRAR LO QUE ESTÁ DENTRO DE UN CONTENEDOR
+
+        /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+
+
+
+     // INHABILITANDO INPUTS, SE PODRÁ? SÍ
+        document.querySelectorAll("input").forEach((input) =>{
+            input.setAttribute('disabled', true);
+        });
+        $('#registrar').prop('disabled', true);     
+
+
+
+        *******************************************************
+
+        // FORMULARIO PARA REGISTRAR AJUSTES
+// function HacerEnvio(){
+
+//     var formCorresNuevo = $('#formulario').serialize();
+
+//     $.ajax({
+//         data: formCorresNuevo,
+//         url: '../php/correspondencia.php',
+//         type: 'POST',
+      
+//         success: function(mensaje)
+//         {
+//             $('#RegistroCorres').modal('show');
+//             $('#RegistroCorres .modal-body').html(mensaje);
+
+//             // verificar_bd();
+//             formulario.reset();
+
+//         },
+//         error: function(jqXHR, xhr, status, error)
+//         {
+//             var nroERROR = jqXHR.status;
+
+//             if(nroERROR==501){
+//                 $('#RegistroCorres').modal('show');
+
+//                 $('#RegistroCorresC').html('Error al ingresar los datos.<br>Error: .');
+
+//              }    
+//             if(nroERROR==502){
+//                 $('#RegistroCorres').modal('show');
+
+//                 $('#RegistroCorresC').html('Error al ingresar los datos.<br>Error: .');
+
+//              }     
+//             if(nroERROR==503){
+//                 $('#RegistroCorres').modal('show');
+
+//                 $('#RegistroCorresC').html('Error al ingresar los datos.<br>Error: .');
+
+//              }     
+//         }
+//     });
+// }
+// // FORMULARIO PARA REGISTRAR EMPRESA
+// function registroEmp(){
+//     rif = document.getElementById('rif_empresa_regis').value;
+//     identi = document.getElementById('identificador').value;
+//     nombre = document.getElementById('nombre_emp').value;
+//     dediEmp = document.getElementById('dedicacion').value;
+//     var datos =
+//     {
+//         "rif": rif,
+//         "identi": identi,
+//         "nombre": nombre,
+//         "dediEmp": dediEmp,
+//         "correspondencia": "registroEmp"
+//     }
+
+//     $.ajax({
+//         data: datos,
+//         url: '../php/correspondencia.php',
+//         type: 'POST',
+      
+//         success: function(mensaje)
+//         {
+//             $('#RegistroCorres').modal('show');
+//             $('#RegistroCorres .modal-body').html(mensaje);
+//         },
+//         error: function(jqXHR, xhr, status, error)
+//         {
+//             var nroERROR = jqXHR.status;
+
+//             if(nroERROR==500){
+//                 $('#RegistroCorres').modal('show');
+
+//                 $('#RegistroCorresC').html('Error al registrar los datos.<br>Error: Ingreso digitos indebidos.');
+
+//              }    
+//             if(nroERROR==501){
+//                 $('#RegistroCorres').modal('show');
+
+//                 $('#RegistroCorresC').html('Error al registrar los datos.<br>Error: Hay campos vacíos.');
+
+//              }     
+//             if(nroERROR==502){
+//                 $('#RegistroCorres').modal('show');
+
+//                 $('#RegistroCorresC').html('Error al registrar los datos.<br>Error: Dicho rif ya fue registrado en el sistema.');
+
+//              }     
+//         }
+//     });
+// }
+
+
+EXPRESIONES REGULARES
+
+    nroOficio: /^[0-9\-\_]{1,20}$/,
+    fecha_salida: /^\d{4}-\d{2}-\d{2}$/,
+    idEmpresa:/^[0-9]{1,9}$/,
+    asunto: /^[a-zA-ZÀ-ÿ\s]{4,255}$/,
+    fecha_llegada: /^\d{4}-\d{2}-\d{2}$/,
+    rif_empresa: /^[0-9\-]{1,20}$/,
+    rif_empresa_regis: /^[0-9\-]{1,20}$/,
+    nombre_emp: /^[a-zA-ZÀ-ÿ0-9\s]{4,45}$/,
+    dedicacion: /^[a-zA-ZÀ-ÿ\s]{4,255}$/,
+
+
+MENU Desplegables
+    <li class="nav-item dropend ms-3">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        
+        Dirección Control de Vectores, Reserv. y Fauna Nociva</a>
+        <ul class="dropdown-menu">
+            
+            <li><a class="dropdown-item" target="_blank" href="dir_cont_vec.php"></a></li>
+            <li><a class="dropdown-item" target="_blank" href="dir_ing_sanit.php">Dirección Ingeniería Sanitaria</a></li>
+
+            
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" target="_blank" href="dir_epid_amb.php">Dirección Epidemiología Ambiental</a></li>
+                <li><a class="dropdown-item" target="_blank" href="dir_cont_vec.php">Dirección Control de Vectores, Reserv. y Fauna Nociva</a></li>
+                <li><a class="dropdown-item" target="_blank" href="dir_ing_sanit.php">Dirección Ingeniería Sanitaria</a></li>
+                <li><a class="dropdown-item" target="_blank" href="dir_salud_rad.php">Dirección Salud Radiológica</a></li>
+            </ul>
+        </ul>
+    </li>
+
+    NORMAL:
+    <li><a class="dropdown-item" target="_blank" href="dir_epid_amb.php">Dirección Epidemiología Ambiental</a></li>
+    <li><a class="dropdown-item" target="_blank" href="dir_cont_vec.php">Dirección Control de Vectores, Reserv. y Fauna Nociva</a></li>
+    <li><a class="dropdown-item" target="_blank" href="dir_ing_sanit.php">Dirección Ingeniería Sanitaria</a></li>
+    <li><a class="dropdown-item" target="_blank" href="dir_salud_rad.php">Dirección Salud Radiológica</a></li>

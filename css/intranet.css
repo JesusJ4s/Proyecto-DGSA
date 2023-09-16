@@ -1,0 +1,173 @@
+/* HEADER/ LOGOS DE LA WEB */
+#inicio-pag {
+    position: absolute;
+    right: 0;
+    width: 96vw;
+    
+}
+/* BARRA PARECIDA A LA BARRA DE NAVEGACIÓN */
+#parte_superior{
+    position: absolute;
+    right: 0;
+    top: 6em;
+    width: 100vw;
+    
+}
+/* CONTIENE INFORMACIÓN */
+#contenedor-total-total{
+    position: absolute;
+    right: 0px;
+    top: 6em;
+    width: 96vw;
+    
+}
+@media  (max-width: 1770px) {
+    #contenedor-total-total{
+        width: 95vw;
+    }
+    #inicio-pag {
+        width: 95vw;
+    }
+}
+@media  (max-width: 1490px) {
+    #contenedor-total-total{
+        width: 96vw;
+    }
+    #inicio-pag {
+        width: 96vw;
+    }
+}
+@media  (max-width: 1285px) { 
+    #contenedor-total-total{
+        top: 4em;
+        
+    }
+}
+
+ 
+/* ****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************** */
+
+/* INDEX */
+#img_entrada_intra{
+    width: 120px;
+}
+#icon_entrada_usr{
+    width: 65px;
+}
+
+.altura-app {
+    height: 480px;
+}
+/* ALTURA LOGOS QUE ESTÁN DENTRO DE LAS CAJITAS */
+.wh-logos-app {
+    width: 230px;
+    height: auto;
+}
+/* ****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************** */
+/* CAMBIADOR DE TAMAÑOS */
+/*LOGOS DE CADA UNA DE LAS APP */
+@media  (max-width: 1550px) {
+    
+    .altura-app {
+        height: 450px;
+    }
+    .wh-logos-app{
+        width: 200px;
+        height: auto;
+    }
+    .altura-app h2 {
+        font-size: 1.5rem;
+    }
+    .altura-app h3 {
+        font-size: 1.5rem;
+    }
+    #nombre_usr_entrada{
+        font-size: 1.3rem;
+    }
+    #btn_usr_entrada{
+        width: 80px;
+        font-size: .8rem;
+    }
+    #img_entrada_intra{
+        width: 100px;
+    }
+    #icon_entrada_usr{
+        width: 55px;
+    }
+
+}
+
+/* MODIFICANDO TAMAÑOS INTRANET PARTE PRINCIPAL */
+@media  (max-width: 1490px) {
+    .altura-app {
+        height: 400px;
+    }
+    .altura-app h2 {
+        font-size: 1.4rem;
+    }
+    .altura-app h3 {
+        font-size: 1.4rem;
+    }
+    .altura-app p {
+        font-size: .8rem;
+    }
+    .altura-app .btn {
+        font-size: .8rem;
+    }
+    .wh-logos-app{
+        width: 170px;
+        height: auto;
+    }
+
+    .mensajes_entrada{
+        font-size: 1rem;
+    }
+    #mensajes_entrada{
+        font-size: .8rem;
+    }
+    #img_entrada_intra{
+        width: 80px;
+    }
+    #icon_entrada_usr{
+        width: 40px;
+    }
+    #icon_entrada_usr{
+        width: 55px;
+    }
+    #contenedor_gobierno h5 {
+        font-size: 1rem;
+    }
+    #nombre_usr_entrada{
+        font-size: 1rem;
+    }
+    #btn_usr_entrada{
+        width: 75px;
+        font-size: .7rem;
+
+    }
+}
+
+@media  (max-width: 1285px) {
+    
+    .altura-app h3 {
+        font-size: 1rem;
+    }
+    .wh-logos-app{
+        width: 140px;
+        height: auto;
+    }
+    #nombre_usr_entrada{
+        font-size: .8rem;
+    }
+    #btn_usr_entrada{
+        width: 60px;
+        font-size: .6rem;
+
+    }
+    #icon_entrada_usr{
+        width: 43px;
+    }
+
+}
+
+

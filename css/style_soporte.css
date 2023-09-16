@@ -1,0 +1,72 @@
+.botones-solicitud{
+    width: 100px;
+    align-items: middle;
+}
+.wh-icon-solicitud {
+    width: 17px;
+    margin-top: auto;
+    margin-bottom: auto;
+
+}
+
+/* CAMPANA DONDE ESTARÁN LAS NOTIFICACIONES */
+.campana {
+    position: relative;
+    left: 25px;
+    width: 40px;
+    z-index: 2;
+}
+.texto_campana {
+    position: relative;
+    left: -5px;
+    text-align: center;
+    width: 20px;
+    z-index: 1;
+    border: 0px solid;
+    font-size: 1.2rem;
+   
+}
+@media  (max-width: 1555px) {
+    .campana{
+        width: 35px;
+        left: 20px;
+    }
+    .texto_campana {
+        left: -8px;
+    }
+
+}
+@media  (max-width: 1490px) {
+    .campana{
+        width: 30px;
+        left: 15px;
+
+    }
+    .texto_campana {
+        font-size: 1rem;
+        left: -11px;
+    }
+
+}
+@media  (max-width: 1381px) {
+    .campana{
+        width: 30px;
+        left: 10px;
+
+    }
+    .texto_campana {
+        font-size: 1rem;
+        left: -16px;
+
+    }
+
+}
+/* SOPORTE TÉCNICO */
+
+#descripcion {
+    width: 100%;
+    height: 130px;
+    resize: none;
+}
+
+
