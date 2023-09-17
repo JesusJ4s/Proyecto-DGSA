@@ -82,10 +82,12 @@ include("../php/date_time.php");
             <!-- <section> -->
             <div class="container-fluid bg-amarillito marquesina-intranet w-95 p-2">
                 <p class=" text-start m-0">Notificación:</p>
-                <marquee>
-                    <h5 class="m-0 px-2 py-0"><a class=" enlaces_limpios2 text-dark" id="notificaciones"
-                            href="correspondencia_jefes.php"></a>
+                <marquee  scrollamount="10" scrolldelay="25" class="p-2">
+                    <h5 class=""><a class=" enlaces_limpios2 text-dark" id="notificaciones"
+                            href="correspondencia_jefes.php">a</a>
                     </h5>
+                    <!-- <h5><a class=" enlaces_limpios2 text-dark" id="notificaciones"
+                            href="correspondencia_jefes.php"></h5> -->
                 </marquee>
             </div>
             <!-- </section> -->

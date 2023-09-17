@@ -20,7 +20,9 @@
     <link rel="stylesheet" href="../css/gg3.css">
     <link rel="stylesheet" href="../css/style_usr.css">
     
-    <script src="../jquery/jquery-3.6.4.min.js"></script>
+    <?php
+        include('../php/javascript.php');
+    ?>
     <title>Editar Equipo</title>
 </head>
 <body class=" min-width-index">

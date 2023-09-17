@@ -119,7 +119,7 @@ if ($ingreso == "Registro") {
                     $nombreDivi = $consulta['nombre_div'];
                 }
                 $valorID = $idUsuarioBD;
-                $descripcion_Cambio = "Nuevo Usuario registrandose en el Sistema, nombre del empleado: ".$nombre." ".$apellido.", cédula ".$nacionalidad."-".$cedulaCreacion.". Dicho empleado se ha registrado como trabajador en: ".$nombreDivi;
+                $descripcion_Cambio = "Nuevo Usuario registrandose en el Sistema, nombre del empleado: " . $nombre . " " . $apellido . ", cédula " . $nacionalidad . "-" . $cedulaCreacion . ". Dicho empleado se ha registrado como trabajador en: " . $nombreDivi;
 
                 $accionCreacion = "1";
                 $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionCreacion', now(), '$descripcion_Cambio')";
@@ -216,12 +216,12 @@ if ($ingreso == "DatosExtras") {
                 // AUDITORIA *****************************************************************
                 $buscarUSR_BD = mysqli_query($conexion, "SELECT * FROM $tabla_db1 WHERE cedula = '$compro'");
                 while ($consulta = mysqli_fetch_array($buscarUSR_BD)) {
-                    $nombre_USR_BD = $consulta['nombre']." ".$consulta['apellido'];
+                    $nombre_USR_BD = $consulta['nombre'] . " " . $consulta['apellido'];
                     $idUsuarioBD = $consulta['id_usuario'];
                 }
 
                 $valorID = $idUsuarioBD;
-                $descripcion_Cambio = "El usuario ".$nombre_USR_BD.", finalizó el registro las preguntas de seguridad.";
+                $descripcion_Cambio = "El usuario " . $nombre_USR_BD . ", finalizó el registro las preguntas de seguridad.";
 
                 $accionCreacion = "1";
                 $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionCreacion', now(), '$descripcion_Cambio')";
@@ -360,7 +360,7 @@ if ($ingreso == "cambio") {
 }
 
 // MODIFICACIONES DEL USUARIO (AJUSTES DE USUARIO)
-// MODIFICAR USUARIO (AUDITORIA LISTA)
+// MODIFICAR USUARIO (AUDITORIA LISTA LISTA)
 if ($ingreso == "AjustesUsr") {
 
     $cedula = $_SESSION['cedula_var_global'];
@@ -374,10 +374,10 @@ if ($ingreso == "AjustesUsr") {
 
     $contr_verificador = $_POST["contraseña"];
     if ($contr_verificador == '') {
-        $contraseña='';
-    }else {
+        $contraseña = '';
+    } else {
         $contraseña = password_hash($_POST["contraseña"], PASSWORD_DEFAULT);
-    }   
+    }
 
     $telefono = darFormatoOriginal($_POST["telefono"]);
     $telefono_secundario = darFormatoOriginal($_POST["telefono2"]);
@@ -415,29 +415,43 @@ if ($ingreso == "AjustesUsr") {
                             'telefono' => 'Telefono',
                             'telefono_secundario' => 'Telefono Secundario',
                             'email' => 'Correo',
-                            'pin_seguridad' => 'Pin'
+                            'pin_seguridad' => 'Pin',
+                            'contraseña' => 'Contraseña'
                         );
                         // BUSCAR DATOS BD
                         $BUSCAR = mysqli_query($conexion, "SELECT * FROM $tabla_db1 WHERE cedula='$cedula'");
                         $datos_antiguos = mysqli_fetch_assoc($BUSCAR);
                         $cambios = array();
+                        $huboCambios = false; // Variable para verificar si se realizaron cambios
 
                         foreach ($columnas as $columna => $nombre) {
                             switch ($columna) {
+                                case 'contraseña':
+                                    $valor_antiguo = isset($datos_antiguos[$columna]) ? $datos_antiguos[$columna] : "";
+                                    $valor_nuevo = isset($contr_verificador) ? $contr_verificador : "";
+                                    if (!empty($valor_nuevo) && !password_verify($valor_nuevo, $valor_antiguo)) {
+                                        array_push($cambios, "$nombre cambió.");
+                                        $huboCambios = true; // Se realizó un cambio en la contraseña
+                                    }
+                                    break;
                                 default:
                                     $valor_antiguo = isset($datos_antiguos[$columna]) ? $datos_antiguos[$columna] : "";
                                     $valor_nuevo = isset($$columna) ? $$columna : "";
+                                    if ($valor_antiguo != $valor_nuevo) {
+                                        array_push($cambios, "$nombre cambió de: " . $valor_antiguo . " a: " . $valor_nuevo . ".");
+                                        $huboCambios = true; // Se realizó al menos un cambio
+                                    }
                                     break;
                             }
-                            if ($valor_antiguo != $valor_nuevo) {
-                                array_push($cambios, "$nombre cambió de: " . $valor_antiguo . " a: " . $valor_nuevo . ".");
-                            }
                         }
-                        $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . (count($cambios) > 0 ? implode(" ", $cambios) . " Cambios realizados." : "Sin cambios realizados.");
 
-                        $accionModificacion = "2";
-                        $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
-                        mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
+                        if ($huboCambios) {
+                            $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . implode(" ", $cambios) . " Cambios realizados.";
+
+                            $accionModificacion = "2";
+                            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
+                            mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
+                        }
 
                         // FIN DE LA AUDITORIA *************************************************************
 
@@ -468,31 +482,43 @@ if ($ingreso == "AjustesUsr") {
                                 'telefono' => 'Telefono',
                                 'telefono_secundario' => 'Telefono Secundario',
                                 'email' => 'Correo',
-                                'pin_seguridad' => 'Pin'
+                                'pin_seguridad' => 'Pin',
+                                'contraseña' => 'Contraseña'
                             );
                             // BUSCAR DATOS BD
                             $BUSCAR = mysqli_query($conexion, "SELECT * FROM $tabla_db1 WHERE cedula='$cedula'");
                             $datos_antiguos = mysqli_fetch_assoc($BUSCAR);
                             $cambios = array();
+                            $huboCambios = false; // Variable para verificar si se realizaron cambios
 
                             foreach ($columnas as $columna => $nombre) {
                                 switch ($columna) {
+                                    case 'contraseña':
+                                        $valor_antiguo = isset($datos_antiguos[$columna]) ? $datos_antiguos[$columna] : "";
+                                        $valor_nuevo = isset($contr_verificador) ? $contr_verificador : "";
+                                        if (!empty($valor_nuevo) && !password_verify($valor_nuevo, $valor_antiguo)) {
+                                            array_push($cambios, "$nombre cambió.");
+                                            $huboCambios = true; // Se realizó un cambio en la contraseña
+                                        }
+                                        break;
                                     default:
                                         $valor_antiguo = isset($datos_antiguos[$columna]) ? $datos_antiguos[$columna] : "";
                                         $valor_nuevo = isset($$columna) ? $$columna : "";
+                                        if ($valor_antiguo != $valor_nuevo) {
+                                            array_push($cambios, "$nombre cambió de: " . $valor_antiguo . " a: " . $valor_nuevo . ".");
+                                            $huboCambios = true; // Se realizó al menos un cambio
+                                        }
                                         break;
-                                }
-                                if ($valor_antiguo != $valor_nuevo) {
-                                    array_push($cambios, "$nombre cambió de: " . $valor_antiguo . " a: " . $valor_nuevo . ".");
                                 }
                             }
 
+                            if ($huboCambios) {
+                                $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . implode(" ", $cambios) . " Cambios realizados.";
 
-                            $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . (count($cambios) > 0 ? implode(" ", $cambios) . " Cambios realizados." : "Sin cambios realizados.");
-
-                            $accionModificacion = "2";
-                            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
-                            mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
+                                $accionModificacion = "2";
+                                $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
+                                mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
+                            }
 
                             // FIN DE LA AUDITORIA *************************************************************
                             // MODIFICAR DATOS
@@ -534,39 +560,49 @@ if ($ingreso == "AjustesUsr") {
                 if ($usuario_existe == 0) {
 
                     // AUDITORIA ***********************************************************************
-                    include("abrir_conexion.php");
-
                     $valorID = $_SESSION['id_usr'];
                     $columnas = array(
                         'nombre_usuario' => 'Nombre de Usuario',
                         'telefono' => 'Telefono',
                         'telefono_secundario' => 'Telefono Secundario',
                         'email' => 'Correo',
-                        'pin_seguridad' => 'Pin'
+                        'pin_seguridad' => 'Pin',
+                        'contraseña' => 'Contraseña'
                     );
                     // BUSCAR DATOS BD
                     $BUSCAR = mysqli_query($conexion, "SELECT * FROM $tabla_db1 WHERE cedula='$cedula'");
                     $datos_antiguos = mysqli_fetch_assoc($BUSCAR);
                     $cambios = array();
+                    $huboCambios = false; // Variable para verificar si se realizaron cambios
 
                     foreach ($columnas as $columna => $nombre) {
                         switch ($columna) {
+                            case 'contraseña':
+                                $valor_antiguo = isset($datos_antiguos[$columna]) ? $datos_antiguos[$columna] : "";
+                                $valor_nuevo = isset($contr_verificador) ? $contr_verificador : "";
+                                if (!empty($valor_nuevo) && !password_verify($valor_nuevo, $valor_antiguo)) {
+                                    array_push($cambios, "$nombre cambió.");
+                                    $huboCambios = true; // Se realizó un cambio en la contraseña
+                                }
+                                break;
                             default:
                                 $valor_antiguo = isset($datos_antiguos[$columna]) ? $datos_antiguos[$columna] : "";
                                 $valor_nuevo = isset($$columna) ? $$columna : "";
+                                if ($valor_antiguo != $valor_nuevo) {
+                                    array_push($cambios, "$nombre cambió de: " . $valor_antiguo . " a: " . $valor_nuevo . ".");
+                                    $huboCambios = true; // Se realizó al menos un cambio
+                                }
                                 break;
-                        }
-                        if ($valor_antiguo != $valor_nuevo) {
-                            array_push($cambios, "$nombre cambió de: " . $valor_antiguo . " a: " . $valor_nuevo . ".");
                         }
                     }
 
+                    if ($huboCambios) {
+                        $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . implode(" ", $cambios) . " Cambios realizados.";
 
-                    $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . (count($cambios) > 0 ? implode(" ", $cambios) . " Cambios realizados." : "Sin cambios realizados.");
-
-                    $accionModificacion = "2";
-                    $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
-                    mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
+                        $accionModificacion = "2";
+                        $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
+                        mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
+                    }
 
                     // FIN DE LA AUDITORIA *************************************************************
 
@@ -592,39 +628,49 @@ if ($ingreso == "AjustesUsr") {
                     if ($propio <> 0) {
 
                         // AUDITORIA ***********************************************************************
-                        include("abrir_conexion.php");
-
                         $valorID = $_SESSION['id_usr'];
                         $columnas = array(
                             'nombre_usuario' => 'Nombre de Usuario',
                             'telefono' => 'Telefono',
                             'telefono_secundario' => 'Telefono Secundario',
                             'email' => 'Correo',
-                            'pin_seguridad' => 'Pin'
+                            'pin_seguridad' => 'Pin',
+                            'contraseña' => 'Contraseña'
                         );
                         // BUSCAR DATOS BD
                         $BUSCAR = mysqli_query($conexion, "SELECT * FROM $tabla_db1 WHERE cedula='$cedula'");
                         $datos_antiguos = mysqli_fetch_assoc($BUSCAR);
                         $cambios = array();
+                        $huboCambios = false; // Variable para verificar si se realizaron cambios
 
                         foreach ($columnas as $columna => $nombre) {
                             switch ($columna) {
+                                case 'contraseña':
+                                    $valor_antiguo = isset($datos_antiguos[$columna]) ? $datos_antiguos[$columna] : "";
+                                    $valor_nuevo = isset($contr_verificador) ? $contr_verificador : "";
+                                    if (!empty($valor_nuevo) && !password_verify($valor_nuevo, $valor_antiguo)) {
+                                        array_push($cambios, "$nombre cambió.");
+                                        $huboCambios = true; // Se realizó un cambio en la contraseña
+                                    }
+                                    break;
                                 default:
                                     $valor_antiguo = isset($datos_antiguos[$columna]) ? $datos_antiguos[$columna] : "";
                                     $valor_nuevo = isset($$columna) ? $$columna : "";
+                                    if ($valor_antiguo != $valor_nuevo) {
+                                        array_push($cambios, "$nombre cambió de: " . $valor_antiguo . " a: " . $valor_nuevo . ".");
+                                        $huboCambios = true; // Se realizó al menos un cambio
+                                    }
                                     break;
-                            }
-                            if ($valor_antiguo != $valor_nuevo) {
-                                array_push($cambios, "$nombre cambió de: " . $valor_antiguo . " a: " . $valor_nuevo . ".");
                             }
                         }
 
+                        if ($huboCambios) {
+                            $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . implode(" ", $cambios) . " Cambios realizados.";
 
-                        $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . (count($cambios) > 0 ? implode(" ", $cambios) . " Cambios realizados." : "Sin cambios realizados.");
-
-                        $accionModificacion = "2";
-                        $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
-                        mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
+                            $accionModificacion = "2";
+                            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
+                            mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
+                        }
 
                         // FIN DE LA AUDITORIA *************************************************************
                         // MODIFICAR DATOS
@@ -682,6 +728,7 @@ if ($ingreso == "datosExtrAjustes") {
         $BUSCAR = mysqli_query($conexion, "SELECT * FROM $tabla_db1 WHERE cedula='$cedula'");
         $datos_antiguos = mysqli_fetch_assoc($BUSCAR);
         $cambios = array();
+        $huboCambios = false; // Variable para verificar si se realizaron cambios
 
         foreach ($columnas as $columna => $nombre) {
             switch ($columna) {
@@ -692,13 +739,17 @@ if ($ingreso == "datosExtrAjustes") {
             }
             // Comparar datos encriptados
             if (!password_verify($valor_nuevo, $valor_antiguo)) {
-                array_push($cambios, "$nombre cambió. ");
+                array_push($cambios, "$nombre cambió.");
+                $huboCambios = true; // Se realizó al menos un cambio
             }
         }
-        $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . (count($cambios) > 0 ? implode(" ", $cambios) . " Cambios realizados." : "Sin cambios realizados.");
-        $accionModificacion = "2";
-        $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
-        mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
+
+        if ($huboCambios) {
+            $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . implode(" ", $cambios) . " Cambios realizados.";
+            $accionModificacion = "2";
+            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
+            mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
+        }
 
         // FIN DE LA AUDITORIA *************************************************************
         //TODO: CAMBIAR LA FORMA DE VERIFICAR LOS DATOS PARA GUARDAR EL REGISTRO
@@ -726,6 +777,7 @@ if ($ingreso == "datosExtrAjustes") {
         $BUSCAR = mysqli_query($conexion, "SELECT * FROM $tabla_db1 WHERE cedula='$cedula'");
         $datos_antiguos = mysqli_fetch_assoc($BUSCAR);
         $cambios = array();
+        $huboCambios = false; // Variable para verificar si se realizaron cambios
 
         foreach ($columnas as $columna => $nombre) {
             switch ($columna) {
@@ -736,13 +788,17 @@ if ($ingreso == "datosExtrAjustes") {
             }
             // Comparar datos encriptados
             if (!password_verify($valor_nuevo, $valor_antiguo)) {
-                array_push($cambios, "$nombre cambió. ");
+                array_push($cambios, "$nombre cambió.");
+                $huboCambios = true; // Se realizó al menos un cambio
             }
         }
-        $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . (count($cambios) > 0 ? implode(" ", $cambios) . " Cambios realizados." : "Sin cambios realizados.");
-        $accionModificacion = "2";
-        $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
-        mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
+
+        if ($huboCambios) {
+            $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . (count($cambios) > 0 ? implode(" ", $cambios) . " Cambios realizados." : "Sin cambios realizados.");
+            $accionModificacion = "2";
+            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
+            mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
+        }
         // FIN DE LA AUDITORIA *************************************************************
         // MODIFICAR DATOS
         $_UPDATE_SQL = "UPDATE $tabla_db1 SET respuesta1='$respuesta1' WHERE cedula='$cedula'";
@@ -767,6 +823,7 @@ if ($ingreso == "datosExtrAjustes") {
         $BUSCAR = mysqli_query($conexion, "SELECT * FROM $tabla_db1 WHERE cedula='$cedula'");
         $datos_antiguos = mysqli_fetch_assoc($BUSCAR);
         $cambios = array();
+        $huboCambios = false; // Variable para verificar si se realizaron cambios
 
         foreach ($columnas as $columna => $nombre) {
             switch ($columna) {
@@ -778,12 +835,16 @@ if ($ingreso == "datosExtrAjustes") {
             // Comparar datos encriptados
             if (!password_verify($valor_nuevo, $valor_antiguo)) {
                 array_push($cambios, "$nombre cambió. ");
+                $huboCambios = true; // Se realizó al menos un cambio
             }
         }
-        $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . (count($cambios) > 0 ? implode(" ", $cambios) . " Cambios realizados." : "Sin cambios realizados.");
-        $accionModificacion = "2";
-        $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
-        mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
+
+        if ($huboCambios) {
+            $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . (count($cambios) > 0 ? implode(" ", $cambios) . " Cambios realizados." : "Sin cambios realizados.");
+            $accionModificacion = "2";
+            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
+            mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
+        }
         // FIN DE LA AUDITORIA *************************************************************
         // MODIFICAR DATOS
         $_UPDATE_SQL = "UPDATE $tabla_db1 SET respuesta1='$respuesta1',  respuesta2='$respuesta2' WHERE cedula='$cedula'";
@@ -808,6 +869,7 @@ if ($ingreso == "datosExtrAjustes") {
         $BUSCAR = mysqli_query($conexion, "SELECT * FROM $tabla_db1 WHERE cedula='$cedula'");
         $datos_antiguos = mysqli_fetch_assoc($BUSCAR);
         $cambios = array();
+        $huboCambios = false; // Variable para verificar si se realizaron cambios
 
         foreach ($columnas as $columna => $nombre) {
             switch ($columna) {
@@ -819,12 +881,16 @@ if ($ingreso == "datosExtrAjustes") {
             // Comparar datos encriptados
             if (!password_verify($valor_nuevo, $valor_antiguo)) {
                 array_push($cambios, "$nombre cambió. ");
+                $huboCambios = true; // Se realizó al menos un cambio
             }
         }
-        $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . (count($cambios) > 0 ? implode(" ", $cambios) . " Cambios realizados." : "Sin cambios realizados.");
-        $accionModificacion = "2";
-        $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
-        mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
+        if ($huboCambios) {
+            $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . (count($cambios) > 0 ? implode(" ", $cambios) . " Cambios realizados." : "Sin cambios realizados.");
+            $accionModificacion = "2";
+            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
+            mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
+        }
+
         // FIN DE LA AUDITORIA *************************************************************
         // MODIFICAR DATOS
         $_UPDATE_SQL = "UPDATE $tabla_db1 SET respuesta1='$respuesta1',  respuesta3='$respuesta3' WHERE cedula='$cedula'";
@@ -847,6 +913,7 @@ if ($ingreso == "datosExtrAjustes") {
         $BUSCAR = mysqli_query($conexion, "SELECT * FROM $tabla_db1 WHERE cedula='$cedula'");
         $datos_antiguos = mysqli_fetch_assoc($BUSCAR);
         $cambios = array();
+        $huboCambios = false; // Variable para verificar si se realizaron cambios
 
         foreach ($columnas as $columna => $nombre) {
             switch ($columna) {
@@ -858,12 +925,18 @@ if ($ingreso == "datosExtrAjustes") {
             // Comparar datos encriptados
             if (!password_verify($valor_nuevo, $valor_antiguo)) {
                 array_push($cambios, "$nombre cambió. ");
+                $huboCambios = true; // Se realizó al menos un cambio
+
             }
         }
-        $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . (count($cambios) > 0 ? implode(" ", $cambios) . " Cambios realizados." : "Sin cambios realizados.");
-        $accionModificacion = "2";
-        $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
-        mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
+        if ($huboCambios) {
+            $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . (count($cambios) > 0 ? implode(" ", $cambios) . " Cambios realizados." : "Sin cambios realizados.");
+            $accionModificacion = "2";
+            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
+            mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
+        }
+
+
 
         // FIN DE LA AUDITORIA *************************************************************
         //TODO: CAMBIAR LA FORMA DE VERIFICAR LOS DATOS PARA GUARDAR EL REGISTRO
@@ -892,6 +965,7 @@ if ($ingreso == "datosExtrAjustes") {
         $BUSCAR = mysqli_query($conexion, "SELECT * FROM $tabla_db1 WHERE cedula='$cedula'");
         $datos_antiguos = mysqli_fetch_assoc($BUSCAR);
         $cambios = array();
+        $huboCambios = false; // Variable para verificar si se realizaron cambios
 
         foreach ($columnas as $columna => $nombre) {
             switch ($columna) {
@@ -903,12 +977,17 @@ if ($ingreso == "datosExtrAjustes") {
             // Comparar datos encriptados
             if (!password_verify($valor_nuevo, $valor_antiguo)) {
                 array_push($cambios, "$nombre cambió. ");
+                $huboCambios = true; // Se realizó al menos un cambio
+
             }
         }
-        $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . (count($cambios) > 0 ? implode(" ", $cambios) . " Cambios realizados." : "Sin cambios realizados.");
-        $accionModificacion = "2";
-        $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
-        mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
+        if ($huboCambios) {
+            $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . (count($cambios) > 0 ? implode(" ", $cambios) . " Cambios realizados." : "Sin cambios realizados.");
+            $accionModificacion = "2";
+            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
+            mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
+        }
+
 
         // FIN DE LA AUDITORIA *************************************************************
         //TODO: CAMBIAR LA FORMA DE VERIFICAR LOS DATOS PARA GUARDAR EL REGISTRO
@@ -935,6 +1014,8 @@ if ($ingreso == "datosExtrAjustes") {
         $BUSCAR = mysqli_query($conexion, "SELECT * FROM $tabla_db1 WHERE cedula='$cedula'");
         $datos_antiguos = mysqli_fetch_assoc($BUSCAR);
         $cambios = array();
+        $huboCambios = false; // Variable para verificar si se realizaron cambios
+
 
         foreach ($columnas as $columna => $nombre) {
             switch ($columna) {
@@ -946,12 +1027,17 @@ if ($ingreso == "datosExtrAjustes") {
             // Comparar datos encriptados
             if (!password_verify($valor_nuevo, $valor_antiguo)) {
                 array_push($cambios, "$nombre cambió. ");
+                $huboCambios = true; // Se realizó al menos un cambio
+
             }
         }
-        $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . (count($cambios) > 0 ? implode(" ", $cambios) . " Cambios realizados." : "Sin cambios realizados.");
-        $accionModificacion = "2";
-        $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
-        mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
+        if ($huboCambios) {
+            $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . (count($cambios) > 0 ? implode(" ", $cambios) . " Cambios realizados." : "Sin cambios realizados.");
+            $accionModificacion = "2";
+            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
+            mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
+
+        }
 
         // FIN DE LA AUDITORIA *************************************************************
         //TODO: CAMBIAR LA FORMA DE VERIFICAR LOS DATOS PARA GUARDAR EL REGISTRO

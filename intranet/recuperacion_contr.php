@@ -23,7 +23,9 @@ if ($_SESSION["recuperar_contraseña"] <> 1) {
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/style_usr.css">
 
-    <script src="../jquery/jquery-3.6.4.min.js"></script>
+    <?php
+        include('../php/javascript.php');
+    ?>
 
     <title>Cambiar Contraseña</title>
 </head>

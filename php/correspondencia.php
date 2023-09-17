@@ -390,34 +390,14 @@ if ($correspondencia == "notificaciones") {
     $poseeSoli = 0;
     $numerador = 1;
 
-    // $tabla_Buscar = "SELECT * FROM $tabla_db12 cn INNER JOIN $tabla_db11 em ON cn.id_empresa_corresp = em.id_empresas WHERE Jefe_Corres = '$id_LOGIN' AND estatus_Corres = 1";
-    // $resultados = mysqli_query($conexion, $tabla_Buscar);
-    // while ($consulta = mysqli_fetch_array($resultados)) {
-    //     $poseeSoli++;
-    // }
-    // if ($poseeSoli != 0) {
-    //     $Intro = '<b>Llego Correspondencia con esta información:    </b>';
-    //     echo $Intro;
-    //     $registros = mysqli_fetch_all($resultados, MYSQLI_ASSOC);
-    //     foreach ($registros as $registro) {
-    //         $cadena = "<b>" . $numerador . "</b>-- " . $registro['descripcion_corresp'] . ". <b>Empresa:</b> " . $registro['nombre_empresa'] . ".<b> Fecha: </b>" . $registro['fecha_llegada_corresp'] . "-- ";
-    //         echo $cadena;
-    //         $numerador++;
-    //     }
-    // } 
-    // else {
-    //     echo "";
-    //     include("cerrar_conexion.php");
-    // }
-
     // ******************************************************************************
 
     $tabla_Buscar = "SELECT * FROM $tabla_db12 cn INNER JOIN $tabla_db11 em ON cn.id_empresa_corresp = em.id_empresas WHERE Jefe_Corres = '$id_LOGIN' AND estatus_Corres = 1";
     $resultados = mysqli_query($conexion,$tabla_Buscar);
-    $Intro='<b>Llego Correspondencia con esta información:    </b>';
-    echo $Intro;
     $registros = mysqli_fetch_all($resultados,MYSQLI_ASSOC);
     foreach ($registros as $registro) {
+        $Intro='<b>Correspondencia:   </b>';
+        echo $Intro;
         $cadena = "<b>" . $numerador . "</b>-- ".$registro['descripcion_corresp']. ". <b>Empresa:</b> ".$registro['nombre_empresa'].".<b> Fecha: </b>".$registro['fecha_llegada_corresp']."       ";
         echo $cadena;
         $poseeSoli++;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-09-2023 a las 14:24:57
+-- Tiempo de generación: 17-09-2023 a las 02:18:30
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -60,13 +60,13 @@ CREATE TABLE `a1_usuarios` (
 --
 
 INSERT INTO `a1_usuarios` (`id_usuario`, `ActivoInactivo`, `nombre`, `apellido`, `nacionalidad`, `cedula`, `nombre_usuario`, `telefono`, `telefono_secundario`, `email`, `usuario_departamento_id`, `usuario_division_id`, `usuario_direccion_id`, `usuario_rol_id`, `contraseña`, `id_pregunta1`, `respuesta1`, `id_pregunta2`, `respuesta2`, `id_pregunta3`, `respuesta3`, `pin_seguridad`, `sesion`) VALUES
-(1, 1, 'Jesus', 'Castillo', 'V', '27146430', 'JESUS4K', '04124457287', '', 'jesusgole33@gmail.com', 21, 11, 1, 1, '$2y$10$mDwBaNs/0R0CHWXMY2BVJ.d4p6/Sgm8wxUdUOkf2pRbEs9Oux8a.i', 1, '$2y$10$Y/VB/tbcSZg9W9.L.nCepevsek5Cn4bbc495zEcodLoXHNP0fGS9a', 2, '$2y$10$PLIX92EgUFZmacAUOkWzsuog9W36GJaPEjWPV4URAqwuhOBTk8faK', 3, '$2y$10$1728yP4YgsWyM0PnDlZnY.mY3TjbG.Vh4rFsUIO0lZcZhEtMrUQDe', '030320', 0),
+(1, 1, 'Jesus', 'Castillo', 'V', '27146430', 'JESUS4K', '04127794698', '04120004455', 'jesusgole33@gmail.com', 21, 11, 1, 1, '$2y$10$nYr9VAioRrbZqf9WxBZP1uuMfanioHa4Faj.1yxgndEEamo8.EsVC', 1, '$2y$10$Y/VB/tbcSZg9W9.L.nCepevsek5Cn4bbc495zEcodLoXHNP0fGS9a', 2, '$2y$10$PLIX92EgUFZmacAUOkWzsuog9W36GJaPEjWPV4URAqwuhOBTk8faK', 3, '$2y$10$1728yP4YgsWyM0PnDlZnY.mY3TjbG.Vh4rFsUIO0lZcZhEtMrUQDe', '040404', 0),
 (2, 1, 'Antonio R', 'Castillo A', 'V', '24816800', 'JAGRA', '04124457287', '', 'jagravi16@gmail.com', 21, 11, 1, 2, '$2y$10$22LeIU7N1CBlFsfWNgUd3O35yYojDpMqZQmKLdQ5z4U528kQqk8Bm', 1, '', 1, '', 1, '', '1995', 0),
 (3, 1, 'Francisco', 'Miranda', 'V', '4887889', 'FRANCIS34', '04124457287', '', 'jes@gmail.com', 25, 15, 1, 5, '$2y$10$NL1LhyEr0Obx7/cB8m7WqOPF6mwW1To1wOHlnF6HfFFUFNb83i/yu', 1, '', 1, '', 1, '', '1900', 0),
 (6, 1, 'Jack', 'Torrence', 'V', '27444300', 'JACK34', '04124457222', '', 'jesusgole33@gmail.com', 71, 29, 3, 5, '$2y$10$c2g7/Ja/67CxoXv8jYxN2OzsHNaxFYE.kQLAWjbzVkO6ub8O2QdMW', 1, '', 1, '', 1, '', '030303', 0),
 (10, 1, 'Jao', 'Wick', 'V', '22000222', 'JOHN2023', '04124457287', '', 'jagravi16@gmail.com', 43, 24, 5, 3, '$2y$10$1QTsFhJeNqdPT.7Eht6NreY2hM0.TddciuCPQoLHNp4M.LivvWvOS', 1, '$2y$10$r89Q3fwN4/OBrl0IHUFRPe6pY/N1Acmtx3u8muNFxe1prdqnWdNtm', 2, '$2y$10$62ekDFRY0EiA1pj1dguTe.8idYoWvnLKJi0g2CD3thWT9GTbFsjtW', 3, '$2y$10$13gJ6SjgLUc7dvhp2rGZ.OklKMui9nn/8bzMYUeQl/VTS7E5TQeMW', '2023', 0),
 (14, 1, 'John', 'Wick', 'V', '22000333', 'JOHN2024', '04124457287', '', '', 29, 17, 3, 3, '$2y$10$c6WJ5LiU9rrRdDCXzD1Hb.TN1QT2Vdb7A21.gEOCFpnUPx1TkCTGy', 1, '$2y$10$wdPFphIbfscP0TCDIhG2ZetuCBzjzm8roCGpIXEIuVRX.Y5E5YFLa', 3, '$2y$10$49J.UlIVyYTGm2vzlDRf6uEnbWDctoYiPJ9Ul8mAX4Etb0iKGxcFW', 8, '$2y$10$qi8fOxkKHb00rGf7JwKreeFWt79Q/2sDXsK0uTUJ65V/zd.GFMEoO', '2023', 0),
-(16, 1, 'Ad', 'Ad', 'V', '28146430', 'ADMIN1', '04124457287', '', 'jagravi16@gmail.com', 10, 7, 1, 3, '$2y$10$uB2sB6gBvwyfshfFltxd/.9GQ8oAewIcXfIJ9QV64EeWhdYRFPuWe', 1, '$2y$10$QmuFKImRbdjiLZ/rA/3h/eohge4JXKOAcCc5VmdaRCRFLKoSntBgW', 2, '$2y$10$aV8avFA4QcHDJVHhb4fwaOdkOOOcaYi1XOlp.W/PZl6C33mhWU.t2', 9, '$2y$10$e5wje2AA7J1ka.XXWc9VReppm.i3srqK2hXuV/qd3ZQ9ikqWU4GV2', '030320', 0);
+(16, 1, 'Ad', 'Ad', 'V', '28146430', 'ADMIN1', '04124457287', '', 'jagravi16@gmail.com', 10, 7, 1, 4, '$2y$10$uB2sB6gBvwyfshfFltxd/.9GQ8oAewIcXfIJ9QV64EeWhdYRFPuWe', 1, '$2y$10$QmuFKImRbdjiLZ/rA/3h/eohge4JXKOAcCc5VmdaRCRFLKoSntBgW', 2, '$2y$10$aV8avFA4QcHDJVHhb4fwaOdkOOOcaYi1XOlp.W/PZl6C33mhWU.t2', 9, '$2y$10$e5wje2AA7J1ka.XXWc9VReppm.i3srqK2hXuV/qd3ZQ9ikqWU4GV2', '030320', 0);
 
 -- --------------------------------------------------------
 
@@ -515,8 +515,8 @@ INSERT INTO `d3_notificaciones_div` (`id_notificacion`, `id_corresp`, `id_empres
 (8, 10, 1, 29, 3, 14, '22000333', '2023-08-29 08:04:23', '2023-08-30 08:04:23', NULL, 'Se quiere solicitar permiso de ambiente', 1),
 (9, 11, 1, 11, 1, 1, '27146430', '2023-08-25 07:56:09', '2023-08-30 08:56:09', '2023-08-30 10:50:47', 'PRUEBA PARA EL DEPARTAMENTO DE INFOR', 2),
 (11, 13, 8, 11, 1, 1, '27146430', '2023-09-10 08:36:39', '2023-09-11 08:36:39', '2023-09-10 09:26:01', 'Auditoria reparando', 2),
-(12, 14, 1, 11, 1, 1, '27146430', '2023-09-10 09:02:20', '2023-09-11 09:02:20', NULL, 'PC NEWS NEWS', 1),
-(13, 15, 1, 5, 1, 1, '27146430', '2023-09-10 09:10:02', '2023-09-11 09:10:02', NULL, 'Se quiere solicitar permiso de ambiente', 1);
+(12, 14, 1, 11, 1, 1, '27146430', '2023-09-10 09:02:20', '2023-09-11 09:02:20', '2023-09-16 12:53:39', 'PC NEWS NEWS', 1),
+(13, 15, 1, 5, 1, 1, '27146430', '2023-09-10 09:10:02', '2023-09-11 09:10:02', '2023-09-16 12:53:36', 'Se quiere solicitar permiso de ambiente', 1);
 
 -- --------------------------------------------------------
 
@@ -611,108 +611,108 @@ INSERT INTO `z1_historial_camb_sis` (`id_historial_cambios`, `id_usuario_cambio`
 (96, 1, 2, '2023-09-11 01:03:47', 'El usuario Jesus Castillo modificó la contraseña del usuario Antonio R Castillo A. El proceso fue realizado para restaurar la contraseña del usuario.'),
 (97, 16, 1, '2023-09-11 01:25:49', 'Nuevo Usuario registrandose en el Sistema, nombre del empleado: Ad Ad, cédula V-28146430. Dicho empleado se ha registrado como trabajador de la coordinación Coordinación de Informática'),
 (98, 16, 1, '2023-09-11 01:31:49', 'El usuario  , acaba de registrar las preguntas de seguridad.'),
-(99, 1, 2, '2023-09-11 01:34:06', 'El usuario: Jesus Castillo realizó cambios en los datos del empleado: Ad Ad, cambios realizados: Departamento cambió de: Coordinación de Informática a: Secretaria. Division cambió de: Coordinación de Informática a: Enlace RRHH-Dirección. Rol del Usuario cambió de: Sin Acceso a: Jefe de Coordinación. Cambios realizados.');
+(99, 1, 2, '2023-09-11 01:34:06', 'El usuario: Jesus Castillo realizó cambios en los datos del empleado: Ad Ad, cambios realizados: Departamento cambió de: Coordinación de Informática a: Secretaria. Division cambió de: Coordinación de Informática a: Enlace RRHH-Dirección. Rol del Usuario cambió de: Sin Acceso a: Jefe de Coordinación. Cambios realizados.'),
+(100, 1, 5, '2023-09-14 22:03:35', 'Ingreso del Usuario: Jesus Castillo.'),
+(101, 1, 6, '2023-09-14 22:13:27', 'Salida del sistema del usuario: Jesus Castillo. Cambios realizados: '),
+(102, 1, 6, '2023-09-14 22:13:34', 'Salida del sistema del usuario: Jesus Castillo. Cambios realizados: '),
+(103, 1, 6, '2023-09-14 22:16:23', 'Salida del sistema del usuario: Jesus Castillo. Cambios realizados: '),
+(105, 1, 5, '2023-09-14 22:19:23', 'Ingreso del Usuario: Jesus Castillo.'),
+(106, 1, 2, '2023-09-14 22:29:42', 'El usuario: Jesus Castillo realizó cambios en sus datos: Telefono cambió de: 04124457287 a: 04120391931. Telefono Secundario cambió de:  a: 04120004455. Cambios realizados.'),
+(107, 1, 6, '2023-09-14 22:30:18', 'Salida del sistema del usuario: Jesus Castillo. Cambios realizados: '),
+(109, 1, 5, '2023-09-14 22:53:27', 'Ingreso del Usuario: Jesus Castillo.'),
+(110, 1, 2, '2023-09-14 22:54:08', 'El usuario: Jesus Castillo realizó cambios en sus datos: Telefono cambió de: 04120391931 a: 04127794698. Cambios realizados.'),
+(111, 1, 6, '2023-09-14 22:54:34', 'Salida del sistema del usuario: Jesus Castillo. Cambios realizados: '),
+(112, 1, 5, '2023-09-14 22:59:24', 'Ingreso del Usuario: Jesus Castillo.'),
+(113, 1, 2, '2023-09-14 23:02:34', 'El usuario: Jesus Castillo realizó cambios en sus datos: Telefono Secundario cambió de: 04120004455 a: 04120391931. Cambios realizados.'),
+(114, 1, 6, '2023-09-14 23:02:53', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(115, 1, 5, '2023-09-14 23:23:02', 'Ingreso del Usuario: Jesus Castillo.'),
+(116, 1, 6, '2023-09-14 23:23:04', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(117, 1, 5, '2023-09-14 23:23:08', 'Ingreso del Usuario: Jesus Castillo.'),
+(118, 1, 2, '2023-09-14 23:30:42', 'El usuario: Jesus Castillo realizó cambios en sus datos: Sin cambios realizados.'),
+(119, 1, 6, '2023-09-14 23:30:58', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(120, 1, 5, '2023-09-14 23:31:03', 'Ingreso del Usuario: Jesus Castillo.'),
+(121, 1, 2, '2023-09-14 23:31:13', 'El usuario: Jesus Castillo realizó cambios en sus datos: Pin cambió de: 030320 a: 040404. Cambios realizados.'),
+(122, 1, 6, '2023-09-14 23:31:17', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(123, 1, 5, '2023-09-14 23:32:42', 'Ingreso del Usuario: Jesus Castillo.'),
+(124, 1, 6, '2023-09-14 23:33:29', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(125, 1, 5, '2023-09-14 23:33:35', 'Ingreso del Usuario: Jesus Castillo.'),
+(126, 1, 6, '2023-09-14 23:36:14', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(127, 1, 5, '2023-09-14 23:36:21', 'Ingreso del Usuario: Jesus Castillo.'),
+(128, 1, 2, '2023-09-14 23:36:33', 'El usuario: Jesus Castillo realizó cambios en sus datos: Telefono Secundario cambió de: 04120391931 a: 04120004455. Cambios realizados.'),
+(129, 1, 6, '2023-09-14 23:36:37', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(130, 1, 5, '2023-09-14 23:36:42', 'Ingreso del Usuario: Jesus Castillo.'),
+(131, 1, 6, '2023-09-14 23:36:45', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(132, 1, 5, '2023-09-14 23:40:21', 'Ingreso del Usuario: Jesus Castillo.'),
+(133, 1, 6, '2023-09-14 23:41:16', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(134, 1, 5, '2023-09-15 18:36:45', 'Ingreso del Usuario: Jesus Castillo.'),
+(135, 1, 6, '2023-09-15 18:47:48', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(136, 1, 5, '2023-09-15 18:55:28', 'Ingreso del Usuario: Jesus Castillo.'),
+(137, 1, 6, '2023-09-15 18:55:40', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(138, 1, 5, '2023-09-15 19:01:03', 'Ingreso del Usuario: Jesus Castillo.'),
+(139, 1, 6, '2023-09-15 19:07:46', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(140, 1, 5, '2023-09-15 19:50:01', 'Ingreso del Usuario: Jesus Castillo.'),
+(141, 1, 6, '2023-09-15 19:52:00', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(142, 1, 5, '2023-09-15 19:54:45', 'Ingreso del Usuario: Jesus Castillo.'),
+(143, 1, 6, '2023-09-15 20:03:30', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(144, 1, 5, '2023-09-15 20:43:47', 'Ingreso del Usuario: Jesus Castillo.'),
+(145, 1, 2, '2023-09-15 20:56:56', 'El usuario: Jesus Castillo realizó cambios en los datos del empleado: Jack Torrence, cambios realizados: Estatus cambió de: Activo a: Inactivo. Cambios realizados.'),
+(146, 1, 2, '2023-09-15 20:57:29', 'El usuario: Jesus Castillo, modificó el estado del usuario: Jack Torrence. Estatus cambió de: Inactivo a: Activo. Cambios realizados.'),
+(147, 1, 2, '2023-09-15 20:59:57', 'El usuario: Jesus Castillo realizó cambios en los datos del empleado: Jack Torrence, cambios realizados: Estatus cambió de: Activo a: Inactivo. Cambios realizados.'),
+(148, 1, 2, '2023-09-15 21:00:07', 'El usuario: Jesus Castillo, modificó el estado del usuario: Jack Torrence. Estatus cambió de: Inactivo a: Activo. Cambios realizados.'),
+(149, 1, 2, '2023-09-15 21:06:14', 'El usuario: Jesus Castillo realizó cambios en los datos del empleado: Ad Ad, cambios realizados: Sin cambios realizados.'),
+(150, 1, 2, '2023-09-15 21:12:09', 'El usuario: Jesus Castillo realizó cambios en los datos del empleado: Ad Ad, cambios realizados: Sin cambios realizados.'),
+(151, 1, 2, '2023-09-15 21:14:43', 'El usuario: Jesus Castillo realizó cambios en los datos del empleado: Ad Ad, cambios realizados: Sin cambios realizados.'),
+(152, 1, 2, '2023-09-15 21:14:49', 'El usuario: Jesus Castillo realizó cambios en los datos del empleado: Ad Ad, cambios realizados: Rol del Usuario cambió de: Jefe de Coordinación a: Sin Acceso. Estatus cambió de: Activo a: Inactivo. Cambios realizados.'),
+(153, 1, 2, '2023-09-15 21:15:15', 'El usuario: Jesus Castillo, modificó el estado del usuario: Ad Ad. Estatus cambió de: Inactivo a: Activo. Cambios realizados.'),
+(154, 1, 2, '2023-09-15 21:15:26', 'El usuario: Jesus Castillo realizó cambios en los datos del empleado: Ad Ad, cambios realizados: Rol del Usuario cambió de: Sin Acceso a: Secretario. Cambios realizados.'),
+(155, 1, 6, '2023-09-15 21:39:14', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(156, 1, 5, '2023-09-15 21:52:40', 'Ingreso del Usuario: Jesus Castillo.'),
+(157, 1, 6, '2023-09-15 22:18:49', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(158, 1, 5, '2023-09-15 22:23:18', 'Ingreso del Usuario: Jesus Castillo.'),
+(159, 1, 6, '2023-09-15 22:33:27', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(160, 1, 5, '2023-09-15 22:34:35', 'Ingreso del Usuario: Jesus Castillo.'),
+(161, 1, 6, '2023-09-15 22:36:44', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(162, 1, 5, '2023-09-15 22:57:58', 'Ingreso del Usuario: Jesus Castillo.'),
+(163, 1, 6, '2023-09-15 23:31:31', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(164, 1, 5, '2023-09-15 23:51:27', 'Ingreso del Usuario: Jesus Castillo.'),
+(165, 1, 2, '2023-09-16 00:42:16', 'El usuario: Jesus Castillo realizó cambios en sus datos: Sin cambios realizados.'),
+(166, 1, 2, '2023-09-16 00:42:16', 'El usuario: Jesus Castillo realizó cambios en sus datos: Sin cambios realizados.'),
+(167, 1, 2, '2023-09-16 00:43:14', 'El usuario: Jesus Castillo realizó cambios en sus datos: Sin cambios realizados.'),
+(168, 1, 2, '2023-09-16 00:45:25', 'El usuario: Jesus Castillo realizó cambios en sus datos: Sin cambios realizados.'),
+(169, 1, 2, '2023-09-16 00:47:32', 'El usuario: Jesus Castillo realizó cambios en sus datos: Sin cambios realizados.'),
+(170, 1, 2, '2023-09-16 00:50:39', 'El usuario: Jesus Castillo realizó cambios en sus datos: Sin cambios realizados.'),
+(171, 1, 2, '2023-09-16 00:51:50', 'El usuario: Jesus Castillo realizó cambios en sus datos: Sin cambios realizados.'),
+(172, 1, 2, '2023-09-16 00:53:18', 'El usuario: Jesus Castillo realizó cambios en sus datos: Sin cambios realizados.'),
+(173, 1, 2, '2023-09-16 00:53:36', 'El usuario: Jesus Castillo aceptó correspondencia, con el nro de admisión 15. Estatus de la Correspondencia cambió de: En espera a Confirmado. Cambios realizados.'),
+(174, 1, 2, '2023-09-16 00:53:39', 'El usuario: Jesus Castillo aceptó correspondencia, con el nro de admisión 14. Estatus de la Correspondencia cambió de: En espera a Confirmado. Cambios realizados.'),
+(175, 1, 6, '2023-09-16 00:57:18', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(176, 1, 5, '2023-09-16 19:39:50', 'Ingreso del Usuario: Jesus Castillo.'),
+(177, 1, 2, '2023-09-16 19:40:07', 'El usuario: Jesus Castillo realizó cambios en sus datos: Sin cambios realizados.'),
+(178, 1, 2, '2023-09-16 19:42:24', 'El usuario: Jesus Castillo realizó cambios en sus datos: Contraseña cambió. Cambios realizados.'),
+(179, 1, 6, '2023-09-16 20:02:29', 'Salida del sistema del Usuario: Jesus Castillo.');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `z2_historial_usuario`
+-- Estructura de tabla para la tabla `z2_historial_acciones`
 --
 
-CREATE TABLE `z2_historial_usuario` (
-  `id_historial_usuario` int(11) NOT NULL,
-  `id_usuario_ingr_salida` int(11) NOT NULL,
-  `fecha_creacion_registro` datetime NOT NULL,
-  `descripcion_usuario` varchar(255) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Volcado de datos para la tabla `z2_historial_usuario`
---
-
-INSERT INTO `z2_historial_usuario` (`id_historial_usuario`, `id_usuario_ingr_salida`, `fecha_creacion_registro`, `descripcion_usuario`) VALUES
-(275, 1, '2023-09-09 14:37:13', 'Salida del Usuario: Jesus Castillo del Sistema'),
-(276, 1, '2023-09-09 14:42:23', 'Ingreso del Usuario: Jesus Castillo al Sistema'),
-(277, 1, '2023-09-09 17:20:42', 'Salida del Usuario: Jesus Castillo del Sistema'),
-(278, 1, '2023-09-09 17:20:48', 'Ingreso del Usuario: Jesus Castillo al Sistema'),
-(279, 1, '2023-09-09 17:23:29', 'Salida del Usuario: Jesus Castillo del Sistema'),
-(280, 1, '2023-09-09 17:23:40', 'Ingreso del Usuario: Jesus Castillo al Sistema'),
-(281, 1, '2023-09-10 00:53:41', 'Salida del Usuario: Jesus Castillo del Sistema'),
-(282, 1, '2023-09-10 18:28:02', 'Ingreso del Usuario: Jesus Castillo al Sistema'),
-(283, 1, '2023-09-11 01:24:43', 'Salida del Usuario: Jesus Castillo del Sistema'),
-(284, 1, '2023-09-11 01:33:36', 'Ingreso del Usuario: Jesus Castillo al Sistema'),
-(285, 1, '2023-09-11 01:34:21', 'Salida del Usuario: Jesus Castillo del Sistema'),
-(286, 16, '2023-09-11 01:34:30', 'Ingreso del Usuario: Ad Ad al Sistema'),
-(287, 16, '2023-09-11 01:38:10', 'Salida del Usuario: Ad Ad del Sistema'),
-(288, 1, '2023-09-11 18:30:20', 'Ingreso del Usuario: Jesus Castillo al Sistema'),
-(289, 1, '2023-09-11 18:48:58', 'Salida del Usuario: Jesus Castillo del Sistema'),
-(290, 1, '2023-09-11 19:00:22', 'Ingreso del Usuario: Jesus Castillo al Sistema'),
-(291, 1, '2023-09-11 19:07:19', 'Salida del Usuario: Jesus Castillo del Sistema'),
-(292, 1, '2023-09-11 20:23:11', 'Ingreso del Usuario: Jesus Castillo al Sistema'),
-(293, 1, '2023-09-11 20:23:52', 'Salida del Usuario: Jesus Castillo del Sistema'),
-(294, 1, '2023-09-11 20:48:43', 'Ingreso del Usuario: Jesus Castillo al Sistema'),
-(295, 1, '2023-09-11 20:54:06', 'Salida del Usuario: Jesus Castillo del Sistema'),
-(296, 1, '2023-09-11 20:54:15', 'Ingreso del Usuario: Jesus Castillo al Sistema'),
-(297, 1, '2023-09-11 20:55:05', 'Salida del Usuario: Jesus Castillo del Sistema'),
-(298, 1, '2023-09-11 21:01:02', 'Ingreso del Usuario: Jesus Castillo al Sistema'),
-(299, 1, '2023-09-11 21:01:12', 'Salida del Usuario: Jesus Castillo del Sistema'),
-(300, 1, '2023-09-11 21:01:26', 'Ingreso del Usuario: Jesus Castillo al Sistema'),
-(301, 1, '2023-09-11 21:16:10', 'Salida del Usuario: Jesus Castillo del Sistema'),
-(302, 1, '2023-09-11 21:17:44', 'Ingreso del Usuario: Jesus Castillo al Sistema'),
-(303, 1, '2023-09-11 21:19:27', 'Salida del Usuario: Jesus Castillo del Sistema'),
-(304, 1, '2023-09-11 21:26:53', 'Ingreso del Usuario: Jesus Castillo al Sistema'),
-(305, 1, '2023-09-11 21:27:01', 'Salida del Usuario: Jesus Castillo del Sistema'),
-(306, 1, '2023-09-11 21:27:29', 'Ingreso del Usuario: Jesus Castillo al Sistema'),
-(307, 1, '2023-09-11 21:39:29', 'Salida del Usuario: Jesus Castillo del Sistema'),
-(308, 1, '2023-09-11 21:40:03', 'Ingreso del Usuario: Jesus Castillo al Sistema'),
-(309, 1, '2023-09-11 21:40:11', 'Salida del Usuario: Jesus Castillo del Sistema'),
-(310, 1, '2023-09-11 21:55:21', 'Ingreso del Usuario: Jesus Castillo al Sistema'),
-(311, 1, '2023-09-11 22:04:32', 'Salida del Usuario: Jesus Castillo del Sistema'),
-(312, 1, '2023-09-11 22:05:10', 'Ingreso del Usuario: Jesus Castillo al Sistema'),
-(313, 1, '2023-09-11 22:22:38', 'Salida del Usuario: Jesus Castillo del Sistema'),
-(314, 1, '2023-09-11 22:22:43', 'Ingreso del Usuario: Jesus Castillo al Sistema'),
-(315, 1, '2023-09-11 22:36:42', 'Salida del Usuario: Jesus Castillo del Sistema'),
-(316, 1, '2023-09-11 22:38:14', 'Ingreso del Usuario: Jesus Castillo al Sistema'),
-(317, 1, '2023-09-11 22:38:43', 'Salida del Usuario: Jesus Castillo del Sistema'),
-(318, 1, '2023-09-11 22:38:49', 'Ingreso del Usuario: Jesus Castillo al Sistema'),
-(319, 1, '2023-09-11 22:39:06', 'Salida del Usuario: Jesus Castillo del Sistema'),
-(320, 1, '2023-09-11 22:39:15', 'Ingreso del Usuario: Jesus Castillo al Sistema'),
-(321, 1, '2023-09-11 22:39:23', 'Salida del Usuario: Jesus Castillo del Sistema'),
-(322, 1, '2023-09-11 22:52:07', 'Ingreso del Usuario: Jesus Castillo al Sistema'),
-(323, 1, '2023-09-11 23:03:29', 'Salida del Usuario: Jesus Castillo del Sistema'),
-(324, 1, '2023-09-11 23:04:15', 'Ingreso del Usuario: Jesus Castillo al Sistema'),
-(325, 1, '2023-09-11 23:04:29', 'Salida del Usuario: Jesus Castillo del Sistema'),
-(326, 1, '2023-09-11 23:17:08', 'Ingreso del Usuario: Jesus Castillo al Sistema'),
-(327, 1, '2023-09-11 23:17:11', 'Salida del Usuario: Jesus Castillo del Sistema'),
-(328, 1, '2023-09-11 23:19:01', 'Ingreso del Usuario: Jesus Castillo al Sistema'),
-(329, 1, '2023-09-11 23:22:07', 'Salida del Usuario: Jesus Castillo del Sistema'),
-(330, 1, '2023-09-11 23:22:19', 'Ingreso del Usuario: Jesus Castillo al Sistema'),
-(331, 1, '2023-09-11 23:25:10', 'Salida del Usuario: Jesus Castillo del Sistema'),
-(332, 1, '2023-09-11 23:25:18', 'Ingreso del Usuario: Jesus Castillo al Sistema'),
-(333, 1, '2023-09-11 23:26:09', 'Salida del Usuario: Jesus Castillo del Sistema'),
-(334, 1, '2023-09-11 23:26:33', 'Ingreso del Usuario: Jesus Castillo al Sistema'),
-(335, 1, '2023-09-11 23:36:34', 'Salida del Usuario: Jesus Castillo del Sistema');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `z3_historial_acciones`
---
-
-CREATE TABLE `z3_historial_acciones` (
+CREATE TABLE `z2_historial_acciones` (
   `id_accHis` int(11) NOT NULL,
   `nombre_accion` varchar(45) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Volcado de datos para la tabla `z3_historial_acciones`
+-- Volcado de datos para la tabla `z2_historial_acciones`
 --
 
-INSERT INTO `z3_historial_acciones` (`id_accHis`, `nombre_accion`) VALUES
+INSERT INTO `z2_historial_acciones` (`id_accHis`, `nombre_accion`) VALUES
 (1, 'Registro'),
 (2, 'Modificación'),
 (3, 'Rechazo'),
-(4, 'Eliminacion');
+(4, 'Eliminacion'),
+(5, 'Ingreso al Sistema'),
+(6, 'Salida del Sistema');
 
 --
 -- Índices para tablas volcadas
@@ -843,16 +843,9 @@ ALTER TABLE `z1_historial_camb_sis`
   ADD KEY `id_accion_cambio_fk` (`id_accion_cambio`);
 
 --
--- Indices de la tabla `z2_historial_usuario`
+-- Indices de la tabla `z2_historial_acciones`
 --
-ALTER TABLE `z2_historial_usuario`
-  ADD PRIMARY KEY (`id_historial_usuario`),
-  ADD KEY `id_usuario_ing_salida_fk` (`id_usuario_ingr_salida`);
-
---
--- Indices de la tabla `z3_historial_acciones`
---
-ALTER TABLE `z3_historial_acciones`
+ALTER TABLE `z2_historial_acciones`
   ADD PRIMARY KEY (`id_accHis`);
 
 --
@@ -953,19 +946,13 @@ ALTER TABLE `d4_notificaciones_estatus`
 -- AUTO_INCREMENT de la tabla `z1_historial_camb_sis`
 --
 ALTER TABLE `z1_historial_camb_sis`
-  MODIFY `id_historial_cambios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `id_historial_cambios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=180;
 
 --
--- AUTO_INCREMENT de la tabla `z2_historial_usuario`
+-- AUTO_INCREMENT de la tabla `z2_historial_acciones`
 --
-ALTER TABLE `z2_historial_usuario`
-  MODIFY `id_historial_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=336;
-
---
--- AUTO_INCREMENT de la tabla `z3_historial_acciones`
---
-ALTER TABLE `z3_historial_acciones`
-  MODIFY `id_accHis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `z2_historial_acciones`
+  MODIFY `id_accHis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas
@@ -1036,14 +1023,8 @@ ALTER TABLE `d3_notificaciones_div`
 -- Filtros para la tabla `z1_historial_camb_sis`
 --
 ALTER TABLE `z1_historial_camb_sis`
-  ADD CONSTRAINT `id_accion_cambio_fk` FOREIGN KEY (`id_accion_cambio`) REFERENCES `z3_historial_acciones` (`id_accHis`),
+  ADD CONSTRAINT `id_accion_cambio_fk` FOREIGN KEY (`id_accion_cambio`) REFERENCES `z2_historial_acciones` (`id_accHis`),
   ADD CONSTRAINT `id_usuario_cambio_fk` FOREIGN KEY (`id_usuario_cambio`) REFERENCES `a1_usuarios` (`id_usuario`);
-
---
--- Filtros para la tabla `z2_historial_usuario`
---
-ALTER TABLE `z2_historial_usuario`
-  ADD CONSTRAINT `id_usuario_ing_salida_fk` FOREIGN KEY (`id_usuario_ingr_salida`) REFERENCES `a1_usuarios` (`id_usuario`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

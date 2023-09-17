@@ -35,7 +35,7 @@ function formCasos(){
                             
                             <div class="col-12">
                             <label>Posible Solución:</label>
-                            <textarea required class="bg-blanco-hsl descripcionb" id="descripcion" name="descripcion"  minlength="20" maxlength="200"></textarea>
+                            <textarea required class="bg-blanco-hsl descripcion" id="descripcion" name="descripcion"  minlength="20" maxlength="200"></textarea>
                             
 
                             </div>

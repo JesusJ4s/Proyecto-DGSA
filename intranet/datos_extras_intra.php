@@ -24,7 +24,9 @@ if ($_SESSION['paso2'] <> 1) {
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/style_usr.css">
 
-    <script src="../jquery/jquery-3.6.4.min.js"></script>
+    <?php
+        include('../php/javascript.php');
+    ?>
     <title>Datos Extra</title>
 </head>
 

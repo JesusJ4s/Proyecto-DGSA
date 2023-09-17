@@ -3,6 +3,7 @@
     include("../php/verificacion_login.php");
     Login_ING_Admin();
 ?>
+<script src="../js/reenvio.js"></script>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,8 +17,9 @@
     <link rel="stylesheet" href="../css/intranet.css">
     <link rel="stylesheet" href="../css/gg3.css">
     <link rel="stylesheet" href="../css/style_usr.css">
-    <script src="../jquery/jquery-3.6.4.min.js"></script>
-    <script src="../js/reenvio.js"></script>
+    <?php
+        include('../php/javascript.php');
+    ?>
 
     <title>Ingresar Nuevo Equipo</title>
 </head>
@@ -243,7 +245,7 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="row">
-                                        <div class="form-group text-start col-6 formulario__grupo" id="grupo__ip">
+                                        <div class="form-group text-start col-6 formulario__grupo my-3" id="grupo__ip">
                                             <label for="ip" class=" formulario__label">Dirección IP</label>
                                             <div id="IP_veri" class="m-0 text-danger bold"></div>
 
@@ -251,7 +253,7 @@
                                             <p class="formulario__input-error px-3">Use el formato adecuado en el llenado de las direcciones IP.</p>
 
                                         </div>
-                                        <div class="form-group text-start col-6 formulario__grupo" id="grupo__mac">
+                                        <div class="form-group text-start col-6 formulario__grupo my-3" id="grupo__mac">
                                             <label for="mac" class=" formulario__label">Dirección MAC</label>
                                             <div id="MAC_veri" class="m-0 text-danger bold"></div>
 

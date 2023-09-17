@@ -18,6 +18,10 @@
         <link rel="stylesheet" href="../css/intranet.css">
         <link rel="stylesheet" href="../css/gg2.css">
 
+        <?php
+            include('../php/javascript.php');
+        ?>
+
     <title>Parque Tecnológico</title>
 </head>
 <body class="min-width-index">

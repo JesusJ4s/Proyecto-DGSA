@@ -27,7 +27,7 @@
     $tabla_evento = "aa_eventos_sesion";
 
     $tabla_db100 = "z1_historial_camb_sis";
-    $tabla_db101 = "z2_historial_usuario";
+    $tabla_db102 = "z2_historial_acciones";
     
     error_reporting(1); // No me muestra errores
 

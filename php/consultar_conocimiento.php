@@ -76,7 +76,7 @@ if ($conocimiento == "Todo") {
                     <td class="text-end">'.$consulta['id_conocimiento'].'</td>
                     <td class="">'.$consulta['tipo_conocimiento'].'</td>
                     <td class="">'.$consulta['descripcion_caso'].'</td>
-                    <td class="">'.$consulta['posible_solucion'].'</td>
+                    <td class="" maxlength="">'.$consulta['posible_solucion'].'</td>
                     <!--<td class="txt-td"><button type="button" class="btn-img-td" onclick=""><img class="img-td" src="../assets/intranet/soporte/iconos/computadora2.png"></button></td>-->
                 </tr>
             
