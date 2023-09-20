@@ -23,10 +23,9 @@ if ($_SESSION['paso2'] <> 1) {
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/style_usr.css">
+    
+    <script src="../jquery/jquery-3.6.4.min.js"></script>
 
-    <?php
-        include('../php/javascript.php');
-    ?>
     <title>Datos Extra</title>
 </head>
 
@@ -73,18 +72,18 @@ if ($_SESSION['paso2'] <> 1) {
                 </div>
             </div>
         </div>
-        <div class="container-fluid">
+        <div class="container d-flex justify-content-center">
             <!-- ******************************************************* -->
 
             <form class="text-center box-shadow-intra rounded formulario__usr-crear row p-5" method="POST"
                 id="formulario_preguntas">
-                <div class="col-6 formulario__grupo">
+                <!-- <div class="col-6 formulario__grupo">
                     <img src="../assets/logos/DGSA/intranet.jpg" alt="Intranet" class="w-35">
-                </div>
-                <div class="col-6 text-end">
+                </div> -->
+                <div class="col-6 text-start">
                     <button type="button" class="boton_toast_ayuda d-inline " data-bs-toggle="modal"
-                        data-bs-target="#mi-modal-ayuda"><img src="../assets/intranet/pregunta.png"
-                            class="img_toast"></button>
+                    data-bs-target="#mi-modal-ayuda"><img src="../assets/intranet/pregunta.png"
+                    class="img_toast"></button>
                 </div>
                 <h3 class="">Preguntas de Seguridad</h3>
                 <br>
@@ -203,6 +202,16 @@ if ($_SESSION['paso2'] <> 1) {
                             máximo es de 14 dígitos. No obligatorio.</p>
                     </div>
                 </div>
+                <div class="col-6 mt-3">
+                    <div class="formulario__grupo formulario__grupo-btn-enviar">
+                        <button type="submit" class="text-center btn btn-primary" id="registrar_extras"
+                            name="registrar_extras">Ingresar Datos</button>
+                        <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado correctamente
+                        </p>
+                        <a id="salir" class="btn btn-secondary mt-2" href="intranet.php">Volver</a>
+
+                    </div>
+                </div>                
                 <!-- TODO: -->
                 <input type="hidden" id="ingreso" name="ingreso" value="DatosExtras">
 
@@ -211,14 +220,7 @@ if ($_SESSION['paso2'] <> 1) {
                 </div>
                 <!-- Grupo botones de salida y envío -->
 
-                <div class="formulario__grupo formulario__grupo-btn-enviar">
-                    <button type="submit" class="text-center btn btn-primary" id="registrar_extras"
-                        name="registrar_extras">Ingresar Datos</button>
-                    <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado correctamente
-                    </p>
-                    <a id="salir" class="btn btn-secondary mt-2" href="intranet.php">Volver</a>
-
-                </div>
+                
                 <div id="texto_obligatorio">
                     <p class="text-danger text-start ocultar-div" id="obligatorio">*Obligatorias*</p>
                 </div>

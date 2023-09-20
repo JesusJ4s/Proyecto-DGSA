@@ -24,9 +24,8 @@ $_SESSION["comprobante"] = 0;
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/style_usr.css">
 
-    <?php
-        include('../php/javascript.php');
-    ?>
+    <script src="../jquery/jquery-3.6.4.min.js"></script>
+
 
     <title>Recuperar Usuario</title>
 </head>
@@ -97,6 +96,8 @@ $_SESSION["comprobante"] = 0;
                                     <option value="0">-- opciones --</option>
 
                                 </select>
+                                <!-- <input id="pregunta1" name="pregunta1" readonly> -->
+
                             </div>
                         </div>
 
@@ -120,6 +121,7 @@ $_SESSION["comprobante"] = 0;
                                 <select class="form-select" id="pregunta2" name="pregunta2">
                                     <option value="0">-- opciones --</option>
                                 </select>
+                                <!-- <input id="pregunta2" name="pregunta2" readonly> -->
                             </div>
                         </div>
 

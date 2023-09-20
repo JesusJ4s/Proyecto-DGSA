@@ -1,7 +1,18 @@
+// $(document).ready(function(){
+
+//     $('#pregunta1').change(function(){
+//         recargarPregunta();
+//         // alert("Selecciono una Dirección");
+//     });
+
+// })
+
+
 // LLENANDO SELECTS
 function ListPreg(){
     cedulaPreg = document.getElementById('cedula').value;
     var parametros =
+    
     {
         "cedulaPreg": cedulaPreg,
         "preguntas":"recuperacion"
@@ -38,3 +49,26 @@ function ListPreg(){
         }
     })
 }
+
+// FUNCION PARA CARGAR LA LISTA DE DIVISIONES
+// function recargarPregunta(){
+//     var pregunta1 = document.getElementById('pregunta1').value;
+//     var cedulaPreg = document.getElementById('cedula').value;
+
+//     var parametros =
+//     {
+//         "pregunta1": pregunta1,
+//         "cedul":cedulaPreg,
+//         "preguntas": "preguntas"
+//     }
+//     $.ajax({
+//         type:"POST",
+//         url:"../php/preguntas_seguridad.php",
+//         data:parametros,
+
+//         success:function(r){
+//             $('#pregunta2').html(r);
+//         }
+//     });
+    
+// }

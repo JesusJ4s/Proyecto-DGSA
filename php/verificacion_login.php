@@ -7,11 +7,11 @@ session_start();
 
 ob_start();
 
-// USAR EN TODAS LAS PAGINAS PARA INICIAR SESION
+// USAR EN TODAS LAS PAGINAS PARA SACAR A LA PERSONA DEL SERVER 
 function LoginSimple()
 {
 
-    if ($_SESSION['sesion_exito'] <> 1 || $_SESSION['nivel_usuario'] == 100) {
+    if ($_SESSION['logged_in'] == false || $_SESSION['nivel_usuario'] == 100) {
         header('location: ../intranet/intranet.php');
     }
 }
@@ -19,21 +19,21 @@ function LoginSimple()
 
 function LoginAdmin()
 {
-    if ($_SESSION['sesion_exito'] <> 1 || $_SESSION['nivel_usuario'] <> 1) {
+    if ($_SESSION['logged_in'] == false || $_SESSION['nivel_usuario'] <> 1) {
         header('location: ../intranet/index_intranet.php');
     }
 }
 // NO PERMITE LA ENTRADA DE EMPLEADOS
 function Login_Jef_ING_Admin()
 {
-    if ($_SESSION['sesion_exito'] <> 1 || $_SESSION['nivel_usuario'] == 4 || $_SESSION['nivel_usuario'] == 5) {
+    if ($_SESSION['logged_in'] == false || $_SESSION['nivel_usuario'] == 4 || $_SESSION['nivel_usuario'] == 5) {
         header('location: ../intranet/index_intranet.php');
     }
 }
 // PERMITE LA ENTRADA DE ADMINISTRADORES E INGENIEROS
 function Login_ING_Admin()
 {
-    if ($_SESSION['sesion_exito'] <> 1 || $_SESSION['nivel_usuario'] == 3 || $_SESSION['nivel_usuario'] == 4 || $_SESSION['nivel_usuario'] == 5) {
+    if ($_SESSION['logged_in'] == false || $_SESSION['nivel_usuario'] == 3 || $_SESSION['nivel_usuario'] == 4 || $_SESSION['nivel_usuario'] == 5) {
         header('location: ../intranet/index_intranet.php');
     }
 }

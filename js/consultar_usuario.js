@@ -9,6 +9,7 @@ $(document).ready(function () {
     consultar_ci2();
     $('#spinner').hide();
     auditoriaUsr();
+    auditoriaBD();
 
     // oo();
 });
@@ -507,6 +508,50 @@ function auditoriaDatos() {
 
     });
 
+}
+
+// IMPRIMIR TABLA DE AUDITORIA DE LA BASE DE DATOS - DATOS INDIVIDUALES
+function auditoriaBD() {
+    var parametros =
+    {
+        "que_buscar": "BaseDatos"
+    };
+
+    $.ajax({
+        data: parametros,
+        url: '../php/consultar_cod.php',
+        type: 'POST',
+
+        success: function (mensaje) {
+            $('#auditoriaBaseDatos').html(mensaje);
+            new DataTable('#dataTable_BaseDatos', {
+                language: Traduccion,
+                initComplete: function () {
+                    // agregar filtros (selectores) a tabla 
+                    this.api().columns([1]).every(function () {
+                        var column = this;
+                        var select = $('<select class="filterE form-select "><option value="">---</option></select>')
+                            .appendTo($(column.footer()).empty())
+                            .on('change', function () {
+                                var val = $.fn.dataTable.util.escapeRegex(
+                                    $(this).val()
+                                );
+
+                                column
+                                    .search(val ? '^' + val + '$' : '', true, false)
+                                    .draw();
+                            });
+
+                        column.data().unique().sort().each(function (d, j) {
+                            select.append('<option value="' + d + '">' + d + '</option>')
+                        });
+                    });
+                },
+            });
+
+
+        }
+    });
 }
 
 submitButton1.addEventListener('click', (e) => {

@@ -37,7 +37,7 @@ function login(){
             if(nroERROR==503){
               $('#LoginModal').modal('show');
 
-              $('#LoginModalC').html('Error al ingresar al sistema.<br>Error: Ya existe una sesión iniciada en el sistema. Debe esperar 5min a que cierre.');
+              $('#LoginModalC').html('Error al ingresar al sistema.<br>Error: Ya existe una sesión iniciada en el sistema. Debe esperar 5min a que cierre la sesión.');
             }                        
             if(nroERROR==504){
               $('#LoginModal').modal('show');

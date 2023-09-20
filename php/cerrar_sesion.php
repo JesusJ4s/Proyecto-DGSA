@@ -23,7 +23,7 @@ $delevent = "DROP EVENT IF EXISTS $evento";
 mysqli_query($conexion, $delevent);
 include("cerrar_conexion.php");
 
-$_SESSION['sesion_exito'] = 0; 
+$_SESSION['logged_in'] = false; // CERRANDO LA SESION DEL USUARIO
 //Toma la cédula del usuario que ingresa
 $_SESSION['cedula_var_global'] = 0;
 // NOMBRE DEL USUARIO

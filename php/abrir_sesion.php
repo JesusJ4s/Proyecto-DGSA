@@ -1,9 +1,4 @@
 <?php
-// USAR EN TODAS LAS PAGINAS PARA INICIAR SESION
-// if($_SESSION['sesion_exito']<>1 || $_SESSION['nivel_usuario']==100)
-// {
-//     header('location: ../intranet.php');
-// }
 session_start();
 ob_start();
 
@@ -20,15 +15,10 @@ if ($ingreso == "log") {
     while ($consulta = mysqli_fetch_array($permi)) {
         $permiso = $consulta['usuario_rol_id'];
     }
-    include("cerrar_conexion.php");
-
     if ($permiso <> 5) {
-        if ($_SESSION['sesion_exito'] == 0) {
+        if ($_SESSION['logged_in'] == false) {
             $pass = $_POST['contraseña'];
             $ver1 = 0;
-            // $ver2 = 0;
-            // ABRIR CONEXION PARA PODER HACER LA CONSULTA
-            include("abrir_conexion.php");
             // VERIFICANDO LA CONTRASEÑA ENCRIPTADA
             $Contra = mysqli_query($conexion, "SELECT * FROM $tabla_db1 WHERE nombre_usuario = '$nameUPPER'");
             while ($consulta = mysqli_fetch_array($Contra)) {
@@ -56,10 +46,16 @@ if ($ingreso == "log") {
                     mysqli_query($conexion, $updateSesion);
 
                     $nueva_hora = hora10();
-                    $event = "CREATE EVENT $evento ON SCHEDULE AT '$nueva_hora' DO UPDATE $tabla_db1 SET sesion = '0' WHERE id_usuario = '$valorID'";
+                    $accionCambio = "6";
+                    $descripcion_Cambio = "Salida automática del sistema, del Usuario: " . $nombre . ".";
+                    // $event = "CREATE EVENT $evento ON SCHEDULE AT '$nueva_hora' DO UPDATE $tabla_db1 SET sesion = '0' WHERE id_usuario = '$valorID'";
+                    $event = "CREATE EVENT $evento ON SCHEDULE AT '$nueva_hora' DO BEGIN
+                        UPDATE $tabla_db1 SET sesion = '0' WHERE id_usuario = '$valorID';
+                        INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionCambio', now(), '$descripcion_Cambio');
+                    END";
                     mysqli_query($conexion, $event);
 
-                    $_SESSION['sesion_exito'] = 1; //1 - Inicio sesion
+                    $_SESSION['logged_in'] = true; // El usuario ha iniciado sesión correctamente
                     $_SESSION['cedula_var_global'] = $valorCedula;
                     $_SESSION['nombre'] = $nombre;
                     $_SESSION['id_usr'] = $valorID;
@@ -100,6 +96,8 @@ if ($ingreso == "log") {
         }
     } else {
         http_response_code(502);
+        include("cerrar_conexion.php");
+
     }
 }
 

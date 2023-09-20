@@ -37,7 +37,7 @@ include("../php/date_time.php");
                 </div>
                 <div class="modal-body">
                     <p>
-                        Aquí irá texto de ayuda
+                        Consulte las solicitudes hechas o haga una solicitud.
                     </p>
 
                 </div>

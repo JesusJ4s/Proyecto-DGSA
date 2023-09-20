@@ -268,7 +268,7 @@ function barra_lateral_cambioRol(){
                         <button id="cambio1" class="limpiador-botones" onclick="cambioPesta1();" ><img src="../assets/icon/users/usuario-de-perfil.png" class="img-btn">Cambio de rol</button>
                     </li>
                     <li>
-                        <button id="cambio2" class="limpiador-botones" onclick="cambioPesta2();" ><img src="../assets/icon/users/usuario-de-perfil.png" class="img-btn">Inactivos</button>
+                        <button id="cambio2" class="limpiador-botones" onclick="cambioPesta2();" ><img src="../assets/icon/users/inactivo.png" class="img-btn">Inactivos</button>
                     </li>
 
                     <li>
@@ -301,7 +301,7 @@ function barra_lateral_auditoria(){
                         <button id="cambio1" class="limpiador-botones" onclick="cambioPesta1();" ><img src="../assets/icon/users/usuario-de-perfil.png" class="img-btn">Usuarios</button>
                     </li>
                     <li>
-                        <button id="cambio2" class="limpiador-botones" onclick="cambioPesta2();" ><img src="../assets/icon/users/usuario-de-perfil.png" class="img-btn">Base de Datos</button>
+                        <button id="cambio2" class="limpiador-botones" onclick="cambioPesta2();" ><img src="../assets/icon/users/base-de-datos.png" class="img-btn">Base de Datos</button>
                     </li>
 
                     <li>

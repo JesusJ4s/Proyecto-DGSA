@@ -23,7 +23,13 @@ if (isset($_SESSION['event'])) {
     // $sql = $conn->query($delevent);
     mysqli_query($conexion,$delevent);
 
-    $event = "CREATE EVENT $evento ON SCHEDULE AT '$nueva_hora' DO UPDATE $tabla_db1 SET sesion = '0' WHERE id_usuario = '$na'";
+    // $event = "CREATE EVENT $evento ON SCHEDULE AT '$nueva_hora' DO UPDATE $tabla_db1 SET sesion = '0' WHERE id_usuario = '$na'";
+    $accionCambio = "6";
+    $descripcion_Cambio = "Salida automática del sistema, del Usuario: " . $nombre . ".";
+    $event = "CREATE EVENT $evento ON SCHEDULE AT '$nueva_hora' DO BEGIN
+                UPDATE $tabla_db1 SET sesion = '0' WHERE id_usuario = '$na';
+                INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$na', '$accionCambio', now(), '$descripcion_Cambio');
+            END";
     // $sql = $conn->query($event);
     mysqli_query($conexion,$event);
 }

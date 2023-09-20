@@ -59,7 +59,7 @@ if ($comprobacion == "todaLaTabla_Cargos") {
                 <td class="">' . $consulta['nombre_div'] . '</td>
                 <td class="">' . $consulta['nombre_dpto'] . '</td>
 
-                <td class=" text-center"><button class="btn btn-secondary mb-1" id="carCamb" name="carCamb" onclick="cambioCargo_ind();">Cargo</button></td>
+                <td class=" text-center"><button class="btn btn-primary mb-1" id="carCamb" name="carCamb" onclick="cambioCargo_ind();">Cargo</button></td>
 
             </tr>
         ';
@@ -396,7 +396,7 @@ if ($comprobacion == "auditoriaUsr") {
     // TERCER INTENTO
     $resultados = mysqli_query($conexion, "SELECT * FROM $tabla_db100 au INNER JOIN 
     $tabla_db1 us ON au.id_usuario_cambio = us.id_usuario INNER JOIN 
-    $tabla_db102 hi ON au.id_accion_cambio = hi.id_accHis ORDER BY fecha_usuario_cambio ASC");
+    $tabla_db102 hi ON au.id_accion_cambio = hi.id_accHis ORDER BY fecha_usuario_cambio DESC");
     //  ORDER BY nombre_dire DESC
 
     while ($consulta = mysqli_fetch_array($resultados)) {
@@ -456,5 +456,60 @@ if ($comprobacion == "auditoriaDatos") {
 
     include("cerrar_conexion.php");
 
+}
+// CONSULTAR TODA LA TABLA DE AUDITORIA DE LA BASE DE DATOS
+if ($comprobacion == "BaseDatos") {
+    include("abrir_conexion.php");
+    echo
+
+        '
+    <table class="table table-striped" id="dataTable_BaseDatos">
+        <thead class="bg-grey text-light">
+            <tr class="align-middle">
+                <th>Fecha</th>
+                <th>Nombre Responsable</th>
+                <th>Cedula</th>
+                <th>Acción</th>
+                <th>Descripción</th>
+
+            </tr>
+        </thead>
+        <tbody id="body-BaseDatos">
+    ';
+    // SE PUEDE USAR LIMIT EN LA CONSULTA PARA LIMITAR LA CANTIDAD MOSTRADA
+    // TERCER INTENTO
+    $resultados = mysqli_query($conexion, "SELECT * FROM $tabla_db100 au INNER JOIN 
+    $tabla_db1 us ON au.id_usuario_cambio = us.id_usuario INNER JOIN 
+    $tabla_db102 hi ON au.id_accion_cambio = hi.id_accHis WHERE id_accion_cambio = 7 ORDER BY fecha_usuario_cambio DESC");
+    //  ORDER BY nombre_dire DESC
+
+    while ($consulta = mysqli_fetch_array($resultados)) {
+        echo
+            '
+        <tr class="align-middle">
+            <td class="">' . $consulta['fecha_usuario_cambio'] . '</td>
+            <td class="col-2">' . $consulta['nombre'] . ' ' . $consulta['apellido'] . '</td>
+            <td class="col-2">' . $consulta['cedula'] . '</td>
+            <td class="col-2">' . $consulta['nombre_accion'] . '</td>
+            <td class="">' . $consulta['descripcion_cambio'] . '</td>
+
+
+        </tr>
+    ';
+    }
+    echo '</tbody>
+            <tfoot>
+                <tr class="align-middle">
+                    <th>Fecha</th>
+                    <th>Nombre Responsable</th>
+                    <th>Cedula</th>
+                    <th>Acción</th>
+                    <th>Descripción</th>
+
+                </tr>
+            </tfoot>
+        </table>';
+
+    include("cerrar_conexion.php");
 }
 ?>

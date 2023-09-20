@@ -35,7 +35,9 @@
                 </div>
                 <div class="modal-body">
                     <p>
-                        Aquí irá texto de ayuda
+                        <b>Ingreso de Nuevo Equipo:</b> ingrese un nuevo equipo en el sistema utlizando el nombre del equipo como identificador principal.<br>
+                        <b>Revisión y Modificación:</b> puede verificar los equipos registrados usando el nombre del equipo para realizar modificaciones o para agregar una nota extra en la descripción.<br>
+                        <b>Consulta de Equipos:</b> Verifique los equipos registrados en el sistema e imprima comprobante con todos los datos del mismo, posee distintas formas de visualizar los datos de un equipo.
                     </p>
                     
                 </div>

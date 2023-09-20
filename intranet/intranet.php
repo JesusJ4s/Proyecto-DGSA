@@ -8,8 +8,26 @@
     $_SESSION["recuperar_contraseña"]=0;
     //Almacena la cedula durante la recuperación
     $_SESSION["comprobante"]=0;
-$_SESSION['sesion_exito'] = 0; //error 4 cerro sesion exitosamente
 
+    if (isset($_SESSION['event'])) {
+        include("../php/abrir_conexion.php");
+        // VERIFICAR SI EL USUARIO PUEDE INICIAR SESION
+        $evento = $_SESSION['event'];
+        $consulta = "SELECT 1 FROM information_schema.EVENTS WHERE EVENT_NAME = '$evento'";
+        $resultado = mysqli_query($conexion, $consulta);
+    
+        if ($resultado && mysqli_num_rows($resultado) > 0) {
+            $_SESSION['logged_in'] = true; // EL EVENTO SIGUE ACTIVO
+            include("../php/cerrar_conexion.php");
+        } else {
+            session_unset();
+            session_destroy();
+            $_SESSION['logged_in'] = false; // EL EVENTO YA NO EXISTE
+            include("../php/cerrar_conexion.php");
+        }
+    }else{
+        $_SESSION['logged_in'] = false; // EL EVENTO NO EXISTE, PERO COLOCAMOS LA VARIABLE EN FALSE
+    }
 ?>
 <script src="../js/reenvio.js"></script>
 <!DOCTYPE html>

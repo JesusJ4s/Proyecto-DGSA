@@ -12,6 +12,7 @@ $ci = '/^[0-9]{7,9}$/';
 $soloNro1 = '/^[1-9]{1}$/';
 $USR = '/^[a-zA-Z0-9\_\-]{4,16}$/';
 $respuesta = '/^[a-zA-ZÀ-ý]{1,20}$/';
+$preguntas = '/^[a-zA-ZÀ-ý\s]{1,45}$/';
 
 function darFormatoOriginal($string)
 {
@@ -251,20 +252,15 @@ if ($ingreso == "DatosExtras") {
 // VERIFICA LAS PREGUNTAS DE SEGURIDAD PARA EL CAMBIO DE CONTRASEÑA
 if ($ingreso == "verificacion") {
 
-    $cedula = darFormatoOriginal($_POST['cedula']);
+    $cedula = $_POST['cedula'];
 
-    $pregunta1 = darFormatoOriginal($_POST['pregunta1']);
-    $respuestaUSR1 = darFormatoOriginal($_POST['respuesta_1']);
+    $pregunta1 = $_POST['pregunta1'];
+    $respuestaUSR1 = $_POST['respuesta_1'];
 
-    $pregunta2 = darFormatoOriginal($_POST['pregunta2']);
-    $respuestaUSR2 = darFormatoOriginal($_POST['respuesta_2']);
+    $pregunta2 = $_POST['pregunta2'];
+    $respuestaUSR2 = $_POST['respuesta_2'];
 
-
-    $pos = strpos($cedula, $findme);
-    $pos1 = strpos($respuestaUSR1, $findme);
-    $pos2 = strpos($respuestaUSR2, $findme);
-
-    if ($pos === false && $pos1 === false && $pos2 === false) {
+    if (preg_match($ci,$cedula) && preg_match($soloNro1,$pregunta1) && preg_match($soloNro1,$pregunta2) && preg_match($respuesta,$respuestaUSR1) && preg_match($respuesta,$respuestaUSR2)) {
         if ($cedula != '' && $respuestaUSR1 != '' && $respuestaUSR2 != '' && $pregunta1 != '' && $pregunta2 != '') {
             if ($pregunta1 != $pregunta2) {
                 include("abrir_conexion.php");
@@ -699,7 +695,7 @@ if ($ingreso == "AjustesUsr") {
     }
 }
 
-// MODIFICAR PREGUNTAS USUARIO  (AUDITORIA LISTA)
+// MODIFICAR PREGUNTAS USUARIO  (AUDITORIA LISTA LISTA)
 if ($ingreso == "datosExtrAjustes") {
     $respuesta_1sinHash = $_POST['respuesta_1'];
     $respuesta_2sinHash = $_POST["respuesta_2"];
@@ -1057,7 +1053,7 @@ if ($ingreso == "datosExtrAjustes") {
     }
 }
 // ***************************************** *********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
-// MODIFICANDO CARGO Y LUGAR DE TRABAJO (AUDITORIA LISTA)
+// MODIFICANDO CARGO Y LUGAR DE TRABAJO (AUDITORIA LISTA LISTA)
 if ($ingreso == "gestionCargo") {
     $cedulaCargo = $_POST['cedulaCargo'];
 
@@ -1187,15 +1183,17 @@ if ($ingreso == "gestionCargo") {
             array_push($cambios, "$nombre cambió de: " . $valor_antiguo . " a: " . $valor_nuevo . ".");
         }
     }
-    $buscarUsuariocambiado = "SELECT * FROM $tabla_db1 WHERE cedula = '$cedulaCargo'";
-    $resultados = mysqli_query($conexion, $buscarUsuariocambiado);
-    while ($consulta = mysqli_fetch_array($resultados)) {
-        $nombreUsrCambiado = $consulta['nombre'] . " " . $consulta['apellido'];
+    if (!empty($cambios)) {
+        $buscarUsuariocambiado = "SELECT * FROM $tabla_db1 WHERE cedula = '$cedulaCargo'";
+        $resultados = mysqli_query($conexion, $buscarUsuariocambiado);
+        while ($consulta = mysqli_fetch_array($resultados)) {
+            $nombreUsrCambiado = $consulta['nombre'] . " " . $consulta['apellido'];
+        }
+        $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en los datos del empleado: " . $nombreUsrCambiado . ", cambios realizados: " . (count($cambios) > 0 ? implode(" ", $cambios) . " Cambios realizados." : "Sin cambios realizados.");
+        $accionModificacion = "2";
+        $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
+        mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
     }
-    $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en los datos del empleado: " . $nombreUsrCambiado . ", cambios realizados: " . (count($cambios) > 0 ? implode(" ", $cambios) . " Cambios realizados." : "Sin cambios realizados.");
-    $accionModificacion = "2";
-    $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
-    mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
 
 
     // FIN DE LA AUDITORIA ************************************************************

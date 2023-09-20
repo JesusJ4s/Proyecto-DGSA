@@ -20,9 +20,8 @@ $_SESSION["comprobante"] = 0;
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/style_usr.css">
 
-    <?php
-        include('../php/javascript.php');
-    ?>
+    <script src="../jquery/jquery-3.6.4.min.js"></script>
+
     <title>Crear Usuario</title>
 </head>
 
