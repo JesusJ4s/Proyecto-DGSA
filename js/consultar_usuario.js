@@ -180,6 +180,7 @@ function cambioCargo_ind() {
                 // $('#mostrar_mensaje_ci').addClass('ocultar-div');
                 $('#tablaConAccs').addClass('ocultar-div');
                 $('#tablaSinAccs').addClass('ocultar-div');
+                $('#accordionROL').addClass('ocultar-div');
 
                 // $("#cedula_usr").prop("disabled", true);
 
@@ -237,6 +238,7 @@ function cambioCargo_ind2() {
                 $('#mostrar_mensaje_ci').addClass('ocultar-div');
                 $('#tablaConAccs').addClass('ocultar-div');
                 $('#tablaSinAccs').addClass('ocultar-div');
+                $('#accordionROL').addClass('ocultar-div');
 
                 $("#cedula_usr").prop("disabled", true);
 
@@ -302,6 +304,7 @@ function recuperarUSR() {
                 $('#formulario_mostrar_Cam').removeClass('ocultar-div');
                 $('#mostrar_mensaje_ci').addClass('ocultar-div');
                 $('#tabla_usuarios').addClass('ocultar-div');
+                $('#accordionROL').addClass('ocultar-div');
 
                 $("#cedula_usr").prop("disabled", true);
                 // INFORMACIÓN DEL EQUIPO
@@ -331,6 +334,7 @@ function editUsuarios() {
             $('#tituloUsr').addClass('ocultar-div');
             $('#tablaConAccs').removeClass('ocultar-div');
             $('#tablaSinAccs').removeClass('ocultar-div');
+            $('#accordionROL').removeClass('ocultar-div');
 
             consultar_todos();
             consultar_SinAcceso();

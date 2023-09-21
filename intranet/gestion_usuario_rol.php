@@ -200,7 +200,7 @@
                                     <label class="btn btn-outline-primary" for="activo">Activo</label>
 
                                     <input type="radio" class="btn-check" name="actInac" id="inactivo" autocomplete="off" value="2" required>
-                                    <label class="btn btn-outline-primary" for="inactivo">Inactivo</label>
+                                    <label class="btn btn-outline-danger" for="inactivo">Inactivo</label>
                                 </div>
                                 <div class="col-4">
                                     <h4 class="mt-4">¿Cambió de Departamento?:</h4>

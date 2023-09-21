@@ -50,9 +50,11 @@
 /* INDEX */
 #img_entrada_intra{
     width: 120px;
+    transition:all 0.8s;
 }
 #icon_entrada_usr{
-    width: 65px;
+    width: 55px;
+    transition:all 0.8s;
 }
 
 .altura-app {
@@ -92,7 +94,7 @@
         width: 100px;
     }
     #icon_entrada_usr{
-        width: 55px;
+        width: 35px;
     }
 
 }
@@ -129,10 +131,7 @@
         width: 80px;
     }
     #icon_entrada_usr{
-        width: 40px;
-    }
-    #icon_entrada_usr{
-        width: 55px;
+        width: 30px;
     }
     #contenedor_gobierno h5 {
         font-size: 1rem;
@@ -165,7 +164,7 @@
 
     }
     #icon_entrada_usr{
-        width: 43px;
+        width: 25px;
     }
 
 }

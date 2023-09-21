@@ -36,7 +36,7 @@ if ($busqueda == "nombre_Verify") {
 
     }
 }
-// REGISTRO DEL EQUIPO EN EL SISTEMA
+// REGISTRO DEL EQUIPO EN EL SISTEMA (AUDITORIA LISTA)
 if ($busqueda == "RegisCPU") {
 
     include("abrir_conexion.php");
@@ -222,7 +222,7 @@ if ($busqueda == "RegisCPU") {
         include("cerrar_conexion.php");
     }
 }
-// EDICION DEL EQUIPO EN EL SISTEMA (AUDITORIA LISTA)
+// EDICION DEL EQUIPO EN EL SISTEMA (AUDITORIA LISTA LISTA)
 if ($busqueda == "edicionCPU") {
 
     // info del equipo
@@ -345,7 +345,7 @@ if ($busqueda == "edicionCPU") {
 
     if ($encontrado <> 0) {
         if ($longitud >= 20) {
-
+            // AUDITORIA *****************************************************************
             // TODO: CAMBIOS REGISTRO GUARDAR
             $valorID = $_SESSION['id_usr'];
             $cedula_registro = $_SESSION['cedula_var_global'];
@@ -446,13 +446,14 @@ if ($busqueda == "edicionCPU") {
                 }
             }
 
-            $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en un equipo del inventario: " . (count($cambios) > 0 ? implode(" ", $cambios) . " Cambios realizados." : "Sin cambios realizados.");
-
-            $accionModificacion = "2";
-            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
-            mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
-
-            // ********************************************************
+            if (!empty($cambios)) {
+                $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en un equipo del inventario: " . (count($cambios) > 0 ? implode(" ", $cambios) . " Cambios realizados." : "Sin cambios realizados.");
+            
+                $accionModificacion = "2";
+                $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
+                mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
+            }
+            // FIN DE LA AUDITORIA ************************************************************
 
             // EDITAR EQUIPO
             $_UPDATE_SQL = "UPDATE $tabla_db6 SET responsable='$responsable', supervisor_dpto='$supervisor_dpto', dpto_inv_id='$dpto_inv_id', division_inv_id='$division_inv_id', direccion_inv_id='$direccion_inv_id', nombre_equipo='$nombre_equipo', mac='$mac', ip='$ip', disco_duro_cap='$disco_duro_cap', disco_duro_marca='$disco_duro_marca', disco_duro_serial='$disco_duro_serial', ram='$ram', ram_velocidad='$ram_velocidad', windows_ver='$windows_ver', conect_red='$conect_red', tipo_conexion='$tipo_conexion', internet='$internet', mouse='$mouse', BN_serial_mouse='$BN_serial_mouse', mouse_marca='$mouse_marca', mouse_conexion='$mouse_conexion', monitor='$monitor', monitor_conexion='$monitor_conexion', BN_serial_monitor='$BN_serial_monitor', regulador='$regulador', regulador_marca='$regulador_marca', BN_serial_regulador='$BN_serial_regulador', teclado='$teclado', teclado_marca='$teclado_marca', teclado_conexion='$teclado_conexion', BN_serial_teclado='$BN_serial_teclado', escaner='$escaner', escaner_modelo='$escaner_modelo', escaner_conexion='$escaner_conexion', BN_serial_escaner='$BN_serial_escaner', comentario='$comentario' WHERE nombre_equipo ='$nombre_equipo'";

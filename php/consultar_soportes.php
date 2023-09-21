@@ -198,15 +198,10 @@ if ($comprobacion == "tab_esp_vista") {
 // CONSULTAR SOPORTES Y MOSTRAR TABLA (SOLO PROCESO -- INTERACTIVA)
 if ($comprobacion == "tab_procs_inter") {
 
-    if ($_SESSION['sesion_exito'] <> 1) {
-        header('location: ../intranet.php');
-    } else {
+    include("abrir_conexion.php");
 
-
-        include("abrir_conexion.php");
-
-        echo
-            '
+    echo
+        '
         <table class="table table-hover" id="dataTable_proc">
             <thead  class="bg-grey text-light">
                 <tr  class="align-middle text-center">
@@ -224,16 +219,16 @@ if ($comprobacion == "tab_procs_inter") {
             <tbody id="body-final">
         ';
 
-        $existe = 0;
-        $contador = 0;
+    $existe = 0;
+    $contador = 0;
 
-        $proceso = "2";
+    $proceso = "2";
 
-        // Buscar en la tabla de SOPORTE TÉCNICO los equipos registrados
-        $resultados = mysqli_query($conexion, "SELECT * FROM $tabla_db8 s INNER JOIN $tabla_db1 u ON s.tecnico_soporte_id=u.id_usuario INNER JOIN $tabla_db8_2 es ON s.estado=es.id_estado_sop WHERE estado = '$proceso'");
-        while ($consulta = mysqli_fetch_array($resultados)) {
-            echo
-                '
+    // Buscar en la tabla de SOPORTE TÉCNICO los equipos registrados
+    $resultados = mysqli_query($conexion, "SELECT * FROM $tabla_db8 s INNER JOIN $tabla_db1 u ON s.tecnico_soporte_id=u.id_usuario INNER JOIN $tabla_db8_2 es ON s.estado=es.id_estado_sop WHERE estado = '$proceso'");
+    while ($consulta = mysqli_fetch_array($resultados)) {
+        echo
+            '
                 <tr  class="align-middle">
                     <td class="text-end">' . $consulta['id_soporte'] . '</td>
                     <td>' . $consulta['uso_equipo'] . '</td>
@@ -246,11 +241,11 @@ if ($comprobacion == "tab_procs_inter") {
                     <td>' . $consulta['nombre_estado'] . '</td>
                 </tr>
             ';
-            $existe++;
-            $contador++;
+        $existe++;
+        $contador++;
 
-        }
-        echo '</tbody>
+    }
+    echo '</tbody>
                 <tfoot>
                     <tr  class="align-middle text-center">
                         <th>Nro Caso</th>
@@ -266,27 +261,22 @@ if ($comprobacion == "tab_procs_inter") {
                 </tfoot>
             </table>';
 
-        if ($existe == 0) {
-            echo "";
-        }
-
-
-        include("cerrar_conexion.php");
+    if ($existe == 0) {
+        echo "";
     }
+
+
+    include("cerrar_conexion.php");
+
 }
 
 // CREADO PARA IMPRIMIR REPORTES, FALTA FINALIZAR - AUN EN PROCESO
 if ($comprobacion == "ESTA SERA SOLO PARA LOS ING") {
 
-    if ($_SESSION['sesion_exito'] <> 1) {
-        header('location: ../intranet.php');
-    } else {
+    include("abrir_conexion.php");
 
-
-        include("abrir_conexion.php");
-
-        echo
-            '
+    echo
+        '
         <table class="table table-hover" id="dataTable_fin">
             <tr  class="align-middle text-center">
                 <th class="">Nro Caso</th>
@@ -301,18 +291,18 @@ if ($comprobacion == "ESTA SERA SOLO PARA LOS ING") {
             </tr>
         ';
 
-        $existe = 0;
-        $contador = 0;
+    $existe = 0;
+    $contador = 0;
 
-        $finalizado = "3";
+    $finalizado = "3";
 
-        // CONSULTAR DEPARTAMENTO Y CARGO POR NOMBRE
+    // CONSULTAR DEPARTAMENTO Y CARGO POR NOMBRE
 
-        // Buscar en la tabla de SOPORTE TÉCNICO los equipos registrados
-        $resultados = mysqli_query($conexion, "SELECT * FROM $tabla_db8 s INNER JOIN $tabla_db1 u ON s.tecnico_soporte_id=u.id_usuario WHERE estado = '$finalizado'");
-        while ($consulta = mysqli_fetch_array($resultados)) {
-            echo
-                '
+    // Buscar en la tabla de SOPORTE TÉCNICO los equipos registrados
+    $resultados = mysqli_query($conexion, "SELECT * FROM $tabla_db8 s INNER JOIN $tabla_db1 u ON s.tecnico_soporte_id=u.id_usuario WHERE estado = '$finalizado'");
+    while ($consulta = mysqli_fetch_array($resultados)) {
+        echo
+            '
                 <tr  class="align-middle">
                     <td class="text-end">' . $consulta['id_soporte'] . '</td>
                     <td class="">' . $consulta['nivel_soporte'] . '</td>
@@ -324,32 +314,27 @@ if ($comprobacion == "ESTA SERA SOLO PARA LOS ING") {
                     <td class="txt-td">' . $consulta['estado'] . '</td>
                 </tr>
             ';
-            $existe++;
-            $contador++;
+        $existe++;
+        $contador++;
 
-        }
-        echo "</table>";
-
-        if ($existe == 0) {
-            echo "<p class='text-center'>No se ha finalizado ninguna solicitud</p>";
-        }
-
-
-        include("cerrar_conexion.php");
     }
+    echo "</table>";
+
+    if ($existe == 0) {
+        echo "<p class='text-center'>No se ha finalizado ninguna solicitud</p>";
+    }
+
+
+    include("cerrar_conexion.php");
+
 }
 // CONSULTAR SOPORTES Y MOSTRAR TABLA (FINALIZADO -- INTERACTIVA EMPLEADOS)
 if ($comprobacion == "tab_final_inter") {
 
-    if ($_SESSION['sesion_exito'] <> 1) {
-        header('location: ../intranet.php');
-    } else {
+    include("abrir_conexion.php");
 
-
-        include("abrir_conexion.php");
-
-        echo
-            '
+    echo
+        '
         <table class="table table-hover" id="dataTable_fin">
             <thead  class="bg-grey text-light">
                 <tr  class="align-middle text-center">
@@ -369,18 +354,18 @@ if ($comprobacion == "tab_final_inter") {
 
         ';
 
-        $existe = 0;
-        $contador = 0;
+    $existe = 0;
+    $contador = 0;
 
-        $finalizado = "3";
+    $finalizado = "3";
 
-        // CONSULTAR DEPARTAMENTO Y CARGO POR NOMBRE
+    // CONSULTAR DEPARTAMENTO Y CARGO POR NOMBRE
 
-        // Buscar en la tabla de SOPORTE TÉCNICO los equipos registrados
-        $resultados = mysqli_query($conexion, "SELECT * FROM $tabla_db8 s INNER JOIN $tabla_db1 u ON s.tecnico_soporte_id=u.id_usuario INNER JOIN $tabla_db8_2 es ON s.estado=es.id_estado_sop WHERE estado = '$finalizado'");
-        while ($consulta = mysqli_fetch_array($resultados)) {
-            echo
-                '
+    // Buscar en la tabla de SOPORTE TÉCNICO los equipos registrados
+    $resultados = mysqli_query($conexion, "SELECT * FROM $tabla_db8 s INNER JOIN $tabla_db1 u ON s.tecnico_soporte_id=u.id_usuario INNER JOIN $tabla_db8_2 es ON s.estado=es.id_estado_sop WHERE estado = '$finalizado'");
+    while ($consulta = mysqli_fetch_array($resultados)) {
+        echo
+            '
                 <tr  class="align-middle">
                     <td class="text-end">' . $consulta['id_soporte'] . '</td>
                     <td class="">' . $consulta['nivel_soporte'] . '</td>
@@ -393,11 +378,11 @@ if ($comprobacion == "tab_final_inter") {
                     <td class="txt-td">' . $consulta['nombre_estado'] . '</td>
                 </tr>
             ';
-            $existe++;
-            $contador++;
+        $existe++;
+        $contador++;
 
-        }
-        echo '</tbody>
+    }
+    echo '</tbody>
                 <tfoot>
                     <tr  class="align-middle text-center">
                         <th class="">Nro Caso</th>
@@ -414,27 +399,22 @@ if ($comprobacion == "tab_final_inter") {
                 </tfoot>
         </table>';
 
-        if ($existe == 0) {
-            echo "<p class='text-center'>No se ha finalizado ninguna solicitud</p>";
-        }
-
-
-        include("cerrar_conexion.php");
+    if ($existe == 0) {
+        echo "<p class='text-center'>No se ha finalizado ninguna solicitud</p>";
     }
+
+
+    include("cerrar_conexion.php");
+
 }
 
 // CONSULTAR SOPORTES Y MOSTRAR TABLA DE RECHAZADOS (TABLA INTERACTIVA)
 if ($comprobacion == "rechazado") {
 
-    if ($_SESSION['sesion_exito'] <> 1) {
-        header('location: ../intranet.php');
-    } else {
+    include("abrir_conexion.php");
 
-
-        include("abrir_conexion.php");
-
-        echo
-            '
+    echo
+        '
         <table class="table table-hover" id="dataTable_rec">
             <thead  class="bg-grey text-light">
                 <tr  class="align-middle text-center">
@@ -452,16 +432,16 @@ if ($comprobacion == "rechazado") {
             <tbody id="body-rechazo">
         ';
 
-        $existe = 0;
-        $contador = 0;
+    $existe = 0;
+    $contador = 0;
 
-        $rechazado = "4";
+    $rechazado = "4";
 
-        // Buscar en la tabla de SOPORTE TÉCNICO los equipos registrados
-        $resultados = mysqli_query($conexion, "SELECT * FROM $tabla_db8 s INNER JOIN $tabla_db8_2 so ON s.estado=so.id_estado_sop WHERE estado = '$rechazado'");
-        while ($consulta = mysqli_fetch_array($resultados)) {
-            echo
-                '
+    // Buscar en la tabla de SOPORTE TÉCNICO los equipos registrados
+    $resultados = mysqli_query($conexion, "SELECT * FROM $tabla_db8 s INNER JOIN $tabla_db8_2 so ON s.estado=so.id_estado_sop WHERE estado = '$rechazado'");
+    while ($consulta = mysqli_fetch_array($resultados)) {
+        echo
+            '
                 <tr  class="align-middle">
                     <td class="text-end">' . $consulta['id_soporte'] . '</td>
                     <td class="">' . $consulta['uso_equipo'] . '</td>
@@ -475,11 +455,11 @@ if ($comprobacion == "rechazado") {
                 </tr>
             
             ';
-            $existe++;
-            $contador++;
+        $existe++;
+        $contador++;
 
-        }
-        echo '</tbody>
+    }
+    echo '</tbody>
                 <tfoot>
                     <tr  class="align-middle text-center">
                         <th>Nro Caso</th>
@@ -495,13 +475,13 @@ if ($comprobacion == "rechazado") {
                 </tfoot>
             </table>';
 
-        if ($existe == 0) {
-            echo "";
-        }
-
-
-        include("cerrar_conexion.php");
+    if ($existe == 0) {
+        echo "";
     }
+
+
+    include("cerrar_conexion.php");
+
 }
 // CREADO PARA IMPRIMIR REPORTES, FALTA FINALIZAR
 // CONSULTAR SOPORTES Y MOSTRAR TABLA DE RECHAZADOS (TABLA VISTA)

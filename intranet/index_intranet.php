@@ -57,7 +57,7 @@ include("../php/date_time.php");
                     <!-- DIV PARA EL USUARIO -->
                     <div class="text-end row">
                         <div class="col-8">
-                            <img src="../assets/icon/users/usuario.png" alt="usuario" class="expandir"
+                            <img src="../assets/icon/users/usuario2.png" alt="usuario" class="expandir"
                                 id="icon_entrada_usr">
                             <?php echo "<h4 class='d-inline' id='nombre_usr_entrada'>" . $_SESSION['nombre'] . "</h4><br><h6 class='d-inline'>" . $_SESSION['nombre_rol'] . "</h6>" ?>
                         </div>
