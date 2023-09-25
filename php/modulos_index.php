@@ -48,7 +48,7 @@ function Modulos_Navegacion()
                     <div class="text-center">
                         <img src="../assets/intranet/soporte/Soporte_Tecnico3.jpg" class="w-100">
                     </div>
-                    <div class="text-center contenedores_modulos_info">
+                    <div class="p-3 text-center contenedores_modulos_info">
                         <h2>Centro de Soporte</h2>
                         <p class="text-justify">Es una aplicación que permite realizar solicitudes de soporte técnico de forma remota.</p>
                     </div>
@@ -62,7 +62,7 @@ function Modulos_Navegacion()
                     <div class="text-center">
                         <img src="../assets/intranet/parque_tecnologico/Parque Tecnologico3.jpg" class="w-100">
                     </div>
-                    <div class=" text-center contenedores_modulos_info">
+                    <div class=" p-3 text-center contenedores_modulos_info">
                         <h2>Parque Tecnológico</h2>
                         <p class="text-justify">Es una aplicación que permite ingresar nuevos equipos al parque tecnológico, actualizarlo y verificar la ubicación y cantidad de los mismos.</p>
                     </div>
@@ -78,7 +78,7 @@ function Modulos_Navegacion()
                     <div class="text-center">
                         <img src="../assets/intranet/correspondencia/correspondencia2.jpg" class="w-100">
                     </div>
-                    <div class=" text-center contenedores_modulos_info">
+                    <div class=" p-3 text-center contenedores_modulos_info">
                         <h2>Correspondencia</h2>
                         <p class="text-justify">Permite el registro de los documentos dirigidos a la DGSA, para su evaluación y remisión a los distintos departamentos de toda la institución.</p>
                     </div>
@@ -93,7 +93,7 @@ function Modulos_Navegacion()
                     <div class="text-center">
                         <img src="../assets/intranet/gestion_usuarios/gestion_usuarios2.jpg" class="w-100">
                     </div>
-                    <div class=" text-center contenedores_modulos_info">
+                    <div class=" p-3 text-center contenedores_modulos_info">
                         <h2>Gestión del Sistema</h2>
                         <p class="text-justify">Permite la restauración de cuentas y la modificación de cargos dentro del sistema, además de copias de seguridad.</p>
                     </div>
@@ -120,7 +120,7 @@ function Modulos_Navegacion()
                 <div class="text-center">
                     <img src="../assets/intranet/soporte/Soporte_Tecnico3.jpg" class="w-100">
                 </div>
-                <div class="text-center contenedores_modulos_info">
+                <div class="p-3 text-center contenedores_modulos_info">
                     <h2>Centro de Soporte</h2>
                     <p class="text-justify">Es una aplicación que permite realizar solicitudes de soporte técnico de forma remota.</p>
                 </div>
@@ -133,7 +133,7 @@ function Modulos_Navegacion()
                 <div class="text-center">
                     <img src="../assets/intranet/correspondencia/correspondencia2.jpg" class="w-100">
                 </div>
-                <div class=" text-center contenedores_modulos_info">
+                <div class=" p-3 text-center contenedores_modulos_info">
                     <h2>Correspondencia</h2>
                     <p class="text-justify">Permite el registro de los documentos dirigidos a la DGSA, para su evaluación y remisión a los distintos departamentos de toda la institución.</p>
                 </div>

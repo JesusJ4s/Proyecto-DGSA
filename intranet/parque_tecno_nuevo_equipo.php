@@ -80,7 +80,7 @@
         <!-- ************************************************* -->
         <!-- AGREGAR NUEVO EQUIPO -->
         <div class="container-fluid text-center px-5 mx-0 mb-0">   
-            <h2 class="">Ingresar Nuevo Equipo</h2> 
+            <!-- <h2 class="">Ingresar Nuevo Equipo</h2>  -->
            
             <div class="border-radius-15 py-3">
                 
@@ -89,6 +89,11 @@
                         <!-- PARTE SUPERIOR DEL FORMULARIO -->
                         <!-- TOAST CON INFORMACIÓN DE NAVEGACIÓN -->
                         <button type="button" class="boton_toast_ayuda d-inline " data-bs-toggle="modal" data-bs-target="#mi-modal-ayuda"><img src="../assets/intranet/pregunta.png" class="img_toast"></button>
+                    <div class="align-middle col-auto">
+
+                                    <h2 class="pt-3">Ingresar Nuevo Equipo</h2> 
+
+                    </div>
                                 
                         <div class="col-12 px-3" id="parte1">
                         <h3>Ubicación y Responsable</h3>

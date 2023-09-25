@@ -99,7 +99,7 @@ function Modulos_Navegacion_soporte(){
                         <div class="text-center">
                             <img src="../assets/intranet/soporte/salvavidas.png" class="wh-logos-app p-2">
                         </div>
-                        <div class=" text-center contenedores_modulos_info_mini">
+                        <div class=" p-2 text-center contenedores_modulos_info_mini">
                             <p class="text-justify">Realice su consulta a través del sistema de solicitudes</p>
                         </div>
                         <div class="text-center">
@@ -114,7 +114,7 @@ function Modulos_Navegacion_soporte(){
                         <div class="text-center">
                             <img src="../assets/intranet/soporte/biblioteca-en-linea.png" class="wh-logos-app p-2">
                         </div>
-                        <div class=" text-center contenedores_modulos_info_mini">
+                        <div class=" p-2 text-center contenedores_modulos_info_mini">
                             <p class="text-justify">Verifique si su consulta ha sido realizada antes.</p>
                         </div>
                         <div class="text-center">
@@ -129,7 +129,7 @@ function Modulos_Navegacion_soporte(){
                         <div class="text-center">
                             <img src="../assets/intranet/soporte/notificaciones.png" class="wh-logos-app p-2">
                         </div>
-                        <div class=" text-center contenedores_modulos_info_mini">
+                        <div class=" p-2 text-center contenedores_modulos_info_mini">
                             <p class="text-justify">Conozca los anuncios de soporte de último momento.</p>
                         </div>
                         <div class="text-center">

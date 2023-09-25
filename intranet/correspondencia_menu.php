@@ -105,12 +105,12 @@ include("../php/date_time.php");
                         <div class="text-center">
                             <img src="../assets/intranet/correspondencia/envio.png" class="wh-logos-app p-2">
                         </div>
-                        <div class=" text-center contenedores_modulos_info_mini">
+                        <div class=" p-2 text-center contenedores_modulos_info_mini">
                             <p class="text-justify">Registre nueva correspondencia que llega a la institución.</p>
                         </div>
                         <div class="text-center">
                             <a class="btn btn-primary w-65 hover-boton" href="correspondencia_registro.php"
-                                target="_blank">Acceder</a>
+                                >Acceder</a>
                         </div>
 
                     </div>
@@ -124,7 +124,7 @@ include("../php/date_time.php");
                             <img src="../assets/intranet/correspondencia/consulta-de-busqueda.png"
                                 class="wh-logos-app p-2">
                         </div>
-                        <div class=" text-center contenedores_modulos_info_mini">
+                        <div class=" p-2 text-center contenedores_modulos_info_mini">
                             <p class="text-justify">A través de distintos filtros podrá consultar los registros hechos,
                                 para verificar información o cualquier dato solicitado.</p>
                         </div>

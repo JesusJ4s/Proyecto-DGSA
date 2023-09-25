@@ -94,7 +94,7 @@
                     <div class="text-center">
                         <img src="../assets/intranet/parque_tecnologico/instalar-en-pc.png" class="wh-logos-app p-2">
                     </div>
-                    <div class=" text-center contenedores_modulos_info_mini">
+                    <div class=" p-2 text-center contenedores_modulos_info_mini">
                         <p class="text-justify">Ingrese nuevos equipos al parque técnológico.</p>                        
                     </div>
                     <div class="text-center">
@@ -109,7 +109,7 @@
                     <div class="text-center">
                         <img src="../assets/intranet/parque_tecnologico/espacio-de-trabajo.png" class="wh-logos-app p-2">
                     </div>
-                    <div class=" text-center contenedores_modulos_info_mini">
+                    <div class=" p-2 text-center contenedores_modulos_info_mini">
                         <p class="text-justify">Consulte y Modifique los equipos del parque tecnológico</p>
                     </div>
                     <div class="text-center">
@@ -123,7 +123,7 @@
                     <div class="text-center">
                         <img src="../assets/intranet/parque_tecnologico/lista-de-verificacion.png" class="wh-logos-app p-2">
                     </div>
-                    <div class=" text-center contenedores_modulos_info_mini">
+                    <div class=" p-2 text-center contenedores_modulos_info_mini">
                         <p class="text-justify">Consulte los equipos que posee cada dirección, división o departamento.</p>
                     </div>
                     <div class="text-center">

@@ -109,7 +109,7 @@ include("../php/date_time.php");
                             <img src="../assets/intranet/gestion_usuarios/puesto-de-trabajo.png"
                                 class="wh-logos-app p-2">
                         </div>
-                        <div class=" text-center contenedores_modulos_info_mini">
+                        <div class=" p-2 text-center contenedores_modulos_info_mini">
                             <p class="text-justify">Desde aquí podrá asignar un cargo a los empleados para que puedan
                                 ingresar a la Aplicación.</p>
                         </div>
@@ -126,7 +126,7 @@ include("../php/date_time.php");
                             <img src="../assets/intranet/gestion_usuarios/restablecer-la-contrasena.png"
                                 class="wh-logos-app p-2">
                         </div>
-                        <div class=" text-center contenedores_modulos_info_mini">
+                        <div class=" p-2 text-center contenedores_modulos_info_mini">
                             <p class="text-justify">Si un empleado olvidó sus datos de ingreso y no puede realizar la
                                 recuperación, desde este apartado podrá recuperarlo.</p>
                         </div>
@@ -142,7 +142,7 @@ include("../php/date_time.php");
                         <div class="text-center">
                             <img src="../assets/intranet/gestion_usuarios/tarjeta.png" class="wh-logos-app p-2">
                         </div>
-                        <div class=" text-center contenedores_modulos_info_mini">
+                        <div class=" p-2 text-center contenedores_modulos_info_mini">
                             <p class="text-justify">Ingrese para visualizar los usuarios registrados en el sistema y
                                 todos los cambios echos en el mismo.</p>
                         </div>

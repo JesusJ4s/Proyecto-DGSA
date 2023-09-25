@@ -133,9 +133,10 @@
                             <div class=" my-3">
                                 <button type="button" class="btn btn-success" onclick="fechas();">Consutar Fechas</button>                    
                             </div> 
+                            <div id="respuesta_fechas"></div>
+
                             <button type="submit" class="btn btn-dark my-5" ><img class="w-10" src="../assets/intranet/parque_tecnologico/archivo-pdf.png">Imprimir Reporte</button>
 
-                            <div id="respuesta_fechas"></div>
                         </form>
                     </div>
                 <!-- ***************************************************************************************************************************** -->

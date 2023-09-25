@@ -69,18 +69,26 @@ function registroEmp(){
         {
             $('#RegistroCorres').modal('show');
             $('#RegistroCorres .modal-body').html(mensaje);
+            var radio2 = document.getElementById('radiosi');
+            var radio1 = document.getElementById('radiono');
+
+            // Desactivar el elemento de entrada radio1 y activar radio2
+            radio1.disabled = true;
+            radio2.disabled = false;
+            radio2.checked = true; 
+
             // AGREGANDO NUEVOS VALORES A LOS INPUTS
             var rif_safe = document.getElementById('rif_empresa_regis').value;
             document.getElementById('rif_empresa').value=rif_safe;
+                        // Obtener referencia al campo de entrada "rif_empresa"
+                        var rifEmpresaInput = document.getElementById('rif_empresa');
+
+                        // Asignar el foco al campo de entrada
+                        rifEmpresaInput.focus();
             empresas_fun();
             hideForm();
             finalizando();
-            var radio1 = document.getElementById('radiosi');
-            var radio2 = document.getElementById('radiono');
-                // Desactivar el elemento de entrada radio1 y activar radio2
-                radio1.disabled = false;
-                radio2.disabled = true;
-                radio1.checked = true;        
+                 
         },
         error: function(jqXHR, xhr, status, error)
         {
