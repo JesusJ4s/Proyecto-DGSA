@@ -535,4 +535,73 @@ if ($correspondencia == "tabla_indiv_FIN") {
     include("cerrar_conexion.php");
 
 }
+if ($correspondencia == "tabla_indiv_FIN_ADMIN") {
+    $cuenta = 0;
+    $usuario_coordinacion = $_SESSION['id_Coordinacion'];
+    $rolUniversal = $_SESSION['nombre_rol'];
+    include("abrir_conexion.php");
+    $idUsr = $_SESSION['id_usr'];
+    echo
+        '
+    <table id="dataTable_corres_ind_FIN_AD" class="table table-striped table-hover">
+        <thead class="bg-grey text-light">
+            <tr class="align-middle text-center">
+                <th>Nro de oficio</th>
+                <th>Fecha</th>
+                <th>Procedencia</th>
+                <th>Asunto</th>
+                <th>Nro de adminsión</th>
+                <th>Fecha llegada</th>
+                <th>Fecha Confirmación</th>
+                <th>Aceptar</th>
+            </tr>
+        </thead>
+        <tbody id="bodyCorresInd" class="align-middle">
+    ';
+
+    $tabla_Buscar = mysqli_query($conexion, "SELECT * FROM $tabla_db12 nt 
+    INNER JOIN $tabla_db11 em ON nt.id_empresa_corresp = id_empresas 
+    INNER JOIN $tabla_db10 co ON nt.id_corresp = id_nro_admision 
+    INNER JOIN $tabla_db4 dv ON nt.id_corres_divi = id_divisiones 
+    INNER JOIN $tabla_db5 dr ON nt.id_corres_dire = dr.id_direcciones 
+    INNER JOIN $tabla_db13 ns ON nt.estatus_Corres = ns.id_estatus_notifi");
+    // $resultados = mysqli_query($conexion,$tabla_Buscar);
+    while ($consulta = mysqli_fetch_array($tabla_Buscar)) {
+        $idCorres = $consulta['id_notificacion'];
+        echo
+            '
+            <tr>
+                <td>' . $consulta['nro_oficio'] . '</td>
+                <td>' . $consulta['fecha_sal_empresa'] . '</td>
+                <td>' . $consulta['nombre_empresa'] . '</td>
+                <td>' . $consulta['asunto'] . '</td>
+                <td>' . $consulta['id_nro_admision'] . '</td>
+                <td>' . $consulta['fecha_llegada_corresp'] . '</td>
+                <td>' . $consulta['fecha_confirmacion_corres'] . '</td>
+                <td class="text-center">' . $consulta['nombre_estatus_notifi'] . '</td>
+            </tr>
+        ';
+        $cuenta++;
+    }
+    echo '</tbody>
+            <tfoot>
+                <tr class="align-middle text-center">
+                    <th>Nro de oficio</th>
+                    <th>Fecha</th>
+                    <th>Procedencia</th>
+                    <th>Asunto</th>
+                    <th>Nro de adminsión</th>
+                    <th>Fecha llegada</th>
+                    <th>Fecha Confirmación</th>
+                    <th>Estatus</th>
+                </tr>
+            </tfoot>
+        </table>
+        ';
+    if ($cuenta == 0) {
+        echo "";
+    }
+    include("cerrar_conexion.php");
+
+}
 ?>

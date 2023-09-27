@@ -139,7 +139,7 @@
 
     <!-- BARRA LATERAL IZQUIERDA -->
     <?php
-        include('../php/barra_lateral.php');
+        include('../php/barra_lateral_principal.php');
         barra_lateral_principal();
     ?>
 <!-- JS en Bootstrap -->

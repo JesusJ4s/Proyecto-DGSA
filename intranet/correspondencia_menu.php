@@ -1,7 +1,7 @@
 <!-- TODA LA INFORMACIÓN SE SOLICITA DESDE LA PAGINA DE INICIAR SESION EN LA INTRANET, SE SOLICITA, LLEGA Y SE VERIFICA EN LA BASE DE DATOS -->
 <?php
 include("../php/verificacion_login.php");
-LoginSimple();
+Login_Jef__Admin();
 include("../php/date_time.php");
 // if($_SESSION['nivel_usuario']!==1){
 //     header('location: ../intranet/index_intranet.php');
@@ -101,7 +101,7 @@ include("../php/date_time.php");
 
     <!-- BARRA LATERAL IZQUIERDA -->
     <?php
-    include('../php/barra_lateral.php');
+    include('../php/barra_lateral_principal.php');
     barra_lateral_principal();
     ?>
     <!-- JS en Bootstrap -->

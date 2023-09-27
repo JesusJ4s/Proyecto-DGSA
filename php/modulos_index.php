@@ -159,9 +159,9 @@ function Modulos_Navegacion()
         <section class="container-fluid contenedor-grid">
         
             <!-- SOPORTE TÉCNICO -->
-            <div class="border mx-3 altura-app mb-5">
+            <div class="border mx-3 altura-app mb-5 w-85">
                 <div class="text-center">
-                    <img src="../assets/intranet/soporte/Soporte_Tecnico3_JEFE.jpg" class="w-100">
+                    <img src="../assets/intranet/soporte/Soporte_Tecnico3_JEFE.jpg" class="w-65">
                 </div>
                 <div class="p-3 text-center contenedores_modulos_info">
                     <h2>Centro de Soporte</h2>
@@ -172,9 +172,9 @@ function Modulos_Navegacion()
                 </div>
             </div>
             <!-- CORRESPONDENCIA -->
-            <div class="border mx-3 altura-app mb-5">
+            <div class="border mx-3 altura-app mb-5 w-85">
                 <div class="text-center">
-                    <img src="../assets/intranet/correspondencia/correspondencia2_CONSULTA.jpg" class="w-100">
+                    <img src="../assets/intranet/correspondencia/correspondencia2_CONSULTA.jpg" class="w-65">
                 </div>
                 <div class=" p-3 text-center contenedores_modulos_info">
                     <h2>Correspondencia</h2>
@@ -199,9 +199,9 @@ function Modulos_Navegacion()
         <section class="container-fluid contenedor-grid">
         
             <!-- SOPORTE TÉCNICO -->
-            <div class="border mx-3 altura-app mb-5">
+            <div class="border mx-3 altura-app mb-5 w-85">
                 <div class="text-center">
-                    <img src="../assets/intranet/soporte/Soporte_Tecnico3_JEFE.jpg" class="w-100">
+                    <img src="../assets/intranet/soporte/Soporte_Tecnico3_JEFE.jpg" class="w-65">
                 </div>
                 <div class="p-3 text-center contenedores_modulos_info">
                     <h2>Centro de Soporte</h2>
@@ -212,9 +212,9 @@ function Modulos_Navegacion()
                 </div>
             </div>
             <!-- CORRESPONDENCIA -->
-            <div class="border mx-3 altura-app mb-5">
+            <div class="border mx-3 altura-app mb-5 w-85">
                 <div class="text-center">
-                    <img src="../assets/intranet/correspondencia/correspondencia2_CORRESP.jpg" class="w-100">
+                    <img src="../assets/intranet/correspondencia/correspondencia2_CORRESP.jpg" class="w-65">
                 </div>
                 <div class=" p-3 text-center contenedores_modulos_info">
                     <h2>Correspondencia</h2>

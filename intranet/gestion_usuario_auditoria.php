@@ -4,7 +4,7 @@
 
 // USAR EN TODAS LAS PAGINAS PARA INICIAR SESION
 include("../php/verificacion_login.php");
-Login_Jef_ING_Admin();
+LoginAdmin();
 ?>
 <script src="../js/reenvio.js"></script>
 

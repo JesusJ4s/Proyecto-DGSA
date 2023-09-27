@@ -1,7 +1,7 @@
 <?php
     // USAR EN TODAS LAS PAGINAS PARA INICIAR SESION
     include("../php/verificacion_login.php");
-    LoginSimple();
+    Login_JefnoCorrespondencia__Admin();
     $TitlePag = "Consultar correspondencia";
 
 ?>
@@ -138,10 +138,26 @@
                             <div class="accordion-collapse collapse" id="collapseFinalizadas" aria-labelledby="headingOne" data-bs-parent="#accordionSoportesJefe">
                                 <div class="accordion-body"  aria-expanded="true">
                                     <h3>Solicitudes aceptadas</h3>
+                                    <?php
+                                    if ($_SESSION['nivel_usuario'] != 1) {
+                                        echo
+                                        '
+                                        <div id="tabla_correspondencia_indivi_FIN">
 
-                                    <div id="tabla_correspondencia_indivi_FIN">
+                                        </div>
+                                        ';
+                                    }else{
+                                        echo
+                                        '
+                                        <div id="tabla_correspondencia_indivi_FIN_admin">
 
-                                    </div>
+                                        </div>
+                                        ';
+                                    }
+
+
+                                    ?>
+                                    
                                 </div>
                             </div>
                         </div>

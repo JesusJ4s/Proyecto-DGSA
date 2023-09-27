@@ -23,10 +23,26 @@ function LoginAdmin()
         header('location: ../intranet/index_intranet.php');
     }
 }
-// NO PERMITE LA ENTRADA DE EMPLEADOS
-function Login_Jef_ING_Admin()
+// SOLO JEFES Y ADMIN
+function Login_Jef__Admin()
 {
-    if ($_SESSION['logged_in'] == false || $_SESSION['nivel_usuario'] == 4 || $_SESSION['nivel_usuario'] == 5) {
+    if ($_SESSION['logged_in'] == false || $_SESSION['nivel_usuario'] == 2 || $_SESSION['nivel_usuario'] == 4 || $_SESSION['nivel_usuario'] == 5) {
+        header('location: ../intranet/index_intranet.php');
+    }
+}
+// PARA REGISTRO DE CORRESPONDENCIA
+function Login_JefCorrespondencia__Admin()
+{
+    if ($_SESSION['logged_in'] == false || $_SESSION['nivel_usuario'] == 2 || $_SESSION['nivel_usuario'] == 4 || $_SESSION['nivel_usuario'] == 5 || $_SESSION['id_departamento'] != 80) {
+        if ($_SESSION['nivel_usuario'] != 1) {
+            header('location: ../intranet/index_intranet.php');
+        }
+    }
+}
+// NO PERMITE EL ACCESO A EL JEFE DE CORRESPONDENCIA
+function Login_JefnoCorrespondencia__Admin()
+{
+    if ($_SESSION['logged_in'] == false || $_SESSION['nivel_usuario'] == 2 || $_SESSION['nivel_usuario'] == 4 || $_SESSION['nivel_usuario'] == 5 || $_SESSION['id_departamento'] == 80) {
         header('location: ../intranet/index_intranet.php');
     }
 }

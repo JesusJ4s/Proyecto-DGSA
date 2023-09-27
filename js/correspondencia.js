@@ -5,6 +5,7 @@ $(document).ready(function () {
     tabla_correspondencia();
     tabla_correspondencia_indiv();
     tabla_correspondencia_indiv_FIN();
+    tabla_correspondencia_indiv_FIN_ADMIND();
 })
 
 // CONFIRMAR LLEGADA DE CORRESPONDENCIA
@@ -204,6 +205,32 @@ function tabla_correspondencia_indiv_FIN() {
                 language: Traduccion,
             });
             $('#tabla_correspondencia_indivi_FIN tr').each(function () {
+                var est = $(this).find('td:last').text();
+                if (est == "Confirmado") {
+                    $(this).find('td:last').addClass('bg-success text-light');
+                }
+            });
+        }
+    })
+}
+function tabla_correspondencia_indiv_FIN_ADMIND() {
+    var parametros =
+    {
+        "correspondencia": "tabla_indiv_FIN_ADMIN"
+    }
+    $.ajax({
+        data: parametros,
+        type: "POST",
+        url: "../php/correspondencia.php",
+        error: function () {
+            alert("error");
+        },
+        success: function (mensaje) {
+            $('#tabla_correspondencia_indivi_FIN_admin').html(mensaje);
+            new DataTable('#dataTable_corres_ind_FIN_AD', {
+                language: Traduccion,
+            });
+            $('#tabla_correspondencia_indivi_FIN_admin tr').each(function () {
                 var est = $(this).find('td:last').text();
                 if (est == "Confirmado") {
                     $(this).find('td:last').addClass('bg-success text-light');

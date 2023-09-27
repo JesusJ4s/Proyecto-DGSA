@@ -1,0 +1,935 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 27-09-2023 a las 16:30:38
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 8.1.6
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `proyecto_dgsa`
+--
+CREATE DATABASE IF NOT EXISTS `proyecto_dgsa` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
+USE `proyecto_dgsa`;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `a1_usuarios`
+--
+
+CREATE TABLE `a1_usuarios` (
+  `id_usuario` int(11) NOT NULL,
+  `ActivoInactivo` int(11) NOT NULL,
+  `nombre` varchar(100) COLLATE utf8_bin NOT NULL,
+  `apellido` varchar(100) COLLATE utf8_bin NOT NULL,
+  `nacionalidad` varchar(45) COLLATE utf8_bin NOT NULL,
+  `cedula` varchar(45) COLLATE utf8_bin NOT NULL,
+  `nombre_usuario` varchar(100) COLLATE utf8_bin NOT NULL,
+  `telefono` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `telefono_secundario` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `email` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `usuario_departamento_id` int(11) DEFAULT NULL,
+  `usuario_division_id` int(11) NOT NULL,
+  `usuario_direccion_id` int(11) NOT NULL,
+  `usuario_rol_id` int(11) NOT NULL,
+  `contraseña` varchar(256) COLLATE utf8_bin NOT NULL,
+  `id_pregunta1` int(11) DEFAULT NULL,
+  `respuesta1` varchar(255) COLLATE utf8_bin NOT NULL,
+  `id_pregunta2` int(11) DEFAULT NULL,
+  `respuesta2` varchar(255) COLLATE utf8_bin NOT NULL,
+  `id_pregunta3` int(11) DEFAULT NULL,
+  `respuesta3` varchar(255) COLLATE utf8_bin NOT NULL,
+  `pin_seguridad` varchar(6) COLLATE utf8_bin NOT NULL,
+  `sesion` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `a1_usuarios`
+--
+
+INSERT INTO `a1_usuarios` (`id_usuario`, `ActivoInactivo`, `nombre`, `apellido`, `nacionalidad`, `cedula`, `nombre_usuario`, `telefono`, `telefono_secundario`, `email`, `usuario_departamento_id`, `usuario_division_id`, `usuario_direccion_id`, `usuario_rol_id`, `contraseña`, `id_pregunta1`, `respuesta1`, `id_pregunta2`, `respuesta2`, `id_pregunta3`, `respuesta3`, `pin_seguridad`, `sesion`) VALUES
+(1, 1, 'Jesus', 'Castillo', 'V', '27146430', 'ADMINJ', '04124457287', '', 'jesusgole33@gmail.com', 21, 11, 1, 1, '$2y$10$8p79.cv0aZdbEW.p01p0uuocWGGvLz7b82ahuHWdPax6YiHMfZe9u', 1, '$2y$10$Vn3jwypZlcUNBgUvYhqTk.Xg3cGZH0D0sUi15Ljfz9bIfYKxK5iOW', 2, '$2y$10$qwehhDRQQQG7j.lgQ4fqw.MN64mgSmUbbDiBD59Q9N1GU85ZqauWG', 3, '$2y$10$LLdvNMzCLeJrV5nndddGJ.Wup/LiODDy4UniOb4ARXTBnrbvio6Zq', '030303', 0),
+(2, 1, 'Prueba', 'Tecnico', 'V', '27146431', 'TECNICO1', '04124457287', '', 'jesusgole33@gmail.com', 21, 11, 1, 2, '$2y$10$C/HpR5XniJUcGBFMHJw3GOheL3dG2D255EqAHFx5p3nuOUsvlMJqu', 1, '$2y$10$pMo0iPT6zpu4apIwNmyR6OqCbOEVP.HuoTLwvKoneoGlpVhe2k052', 2, '$2y$10$WozaJtNhQnEbKm7bV1TLSuoKJtWNAfK.ScFB3G.cb.ju3RUFFe5g.', 3, '$2y$10$W2xfe7SZsIXW6K1frp90/OvEl9pJJEa4HgDnbnfy2zu/28RrlYmr2', '030303', 0),
+(3, 1, 'Jefe', 'Correspondencia', 'V', '27146432', 'JEFECORR', '04124457287', '', 'jesusgole33@gmail.com', 80, 1, 1, 3, '$2y$10$J/Va.zo22hYZDkBDf1uaROYAEQHA/.7aimYG1hRXouZzZrTH4XOsy', 1, '$2y$10$6/IlcYLcakRstuM8a0.tAO8q419kYX3FoeXgc78m7cLDb35UBnqCC', 2, '$2y$10$ZPiu6F64nWaHsh1q4M9yxOczLlyuNeOiuCSznieKTXjSJlZqIGg/K', 3, '$2y$10$Zpdz2QPby1bhi0zBpONwDuabmfktPzKrJ5pAp9x965iwWad/u2nvq', '030303', 0),
+(4, 1, 'Empleado', 'Vista', 'V', '27146433', 'EMPLEADO', '04124457287', '', 'jesusgole33@gmail.com', 25, 15, 1, 4, '$2y$10$vIQOE8Vk0x2UinfutOtqhOX.wEeRkZBuuREMt76RuhkCJ16r22pOW', 1, '$2y$10$GY0IcODJAc2YSJdm0y/Fru43BbTUxJpnTg1icM1e3Q1qj/KQD0jBS', 2, '$2y$10$M3R//RYBCpzYBbEldq4PSeloIexkktbayOXZMubGshVkB0IBRCApq', 3, '$2y$10$vc3weLGWv4eOwx0rLmlRbueMMPze/F1S12VbDWjqnr9cSAX22ZL1y', '030303', 0),
+(5, 1, 'Salud', 'Radiologica', 'V', '27146434', 'RADIOLOGO', '04124457287', '', 'jesusgole33@gmail.com', 72, 30, 3, 3, '$2y$10$3xqE/4YErRTagfCBGvd6f.Ajagr7OOubm9d3UdgoRJfT2fdyAlqDC', 1, '$2y$10$LFw/K3WLbKj3dCW5vqkZ.e7.w6lqs0O6QR126FVJFQ8jzGx7IQbyS', 2, '$2y$10$nUdPAGKoDnb5MInuXO/AAeaTXjy/ouTAgCSWQrA1v0tE3M3sZZN8W', 3, '$2y$10$6Fzsi/yQJVaG08ZM7W/nheny/6Ttypyxq1BtFc.cGWXJ0kVaJJ/VW', '030303', 0),
+(6, 1, 'Emi', 'Gia', 'V', '27146435', 'EPIDEMIOLOGIA', '04124457287', '', 'jesusgole33@gmail.com', 40, 21, 5, 3, '$2y$10$Q6HluVEBpK.mwO7Umgkq3O0rJaPmfEAQ..iBuReRhE/yP5jFBTmO6', 1, '$2y$10$d9.crVeMKgUH7SCNPOTNXORKI7ttCh6OXrx115WA9S.s1S86GKKZ.', 2, '$2y$10$1/ZSKCNWpPf/T14hmQOj2.c0LFMpuYzj8zYAZko5L65pSZWWV867a', 3, '$2y$10$kUHDC63CChXgw7Da/ulYq.jeSia4cpsaWC1Mui6Vc/bmsd2uj/UwW', '030303', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `a2_rol`
+--
+
+CREATE TABLE `a2_rol` (
+  `id_rol` int(11) NOT NULL,
+  `nombre_rol` varchar(100) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `a2_rol`
+--
+
+INSERT INTO `a2_rol` (`id_rol`, `nombre_rol`) VALUES
+(1, 'Administrador'),
+(2, 'Ingeniero Informático'),
+(3, 'Jefe de Coordinación'),
+(4, 'Secretario'),
+(5, 'Sin Acceso');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `a3_preguntas`
+--
+
+CREATE TABLE `a3_preguntas` (
+  `id_pregunta` int(11) NOT NULL,
+  `pregunta` varchar(45) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `a3_preguntas`
+--
+
+INSERT INTO `a3_preguntas` (`id_pregunta`, `pregunta`) VALUES
+(1, 'Color favorito'),
+(2, 'Fruta favorita'),
+(3, 'Pelicula favorita'),
+(4, 'Mascota'),
+(5, 'Nombre madre'),
+(6, 'Nombre padre'),
+(7, 'Serie favorita'),
+(8, 'Música favorita'),
+(9, 'Lugar favorito');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `a4_estado`
+--
+
+CREATE TABLE `a4_estado` (
+  `id_estado` int(11) NOT NULL,
+  `nombre_status` varchar(45) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `a4_estado`
+--
+
+INSERT INTO `a4_estado` (`id_estado`, `nombre_status`) VALUES
+(1, 'Activo'),
+(2, 'Inactivo');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `b1_direcciones`
+--
+
+CREATE TABLE `b1_direcciones` (
+  `id_direcciones` int(11) NOT NULL,
+  `nombre_dire` varchar(255) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `b1_direcciones`
+--
+
+INSERT INTO `b1_direcciones` (`id_direcciones`, `nombre_dire`) VALUES
+(1, 'Dirección General'),
+(2, 'Dirección de Ingenería Sanitaria'),
+(3, 'Dirección de Salud Radiológica'),
+(4, 'Dirección de Control de Vectores'),
+(5, 'Dirección Epidemiología Ambiental'),
+(6, 'Sin Asignar');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `b2_divisiones`
+--
+
+CREATE TABLE `b2_divisiones` (
+  `id_divisiones` int(11) NOT NULL,
+  `nombre_div` varchar(100) COLLATE utf8_bin NOT NULL,
+  `division_direccion_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `b2_divisiones`
+--
+
+INSERT INTO `b2_divisiones` (`id_divisiones`, `nombre_div`, `division_direccion_id`) VALUES
+(1, 'Despacho Dirección', 1),
+(2, 'Servicios Generales', 1),
+(3, 'Talleres', 1),
+(4, 'Vigilantes', 1),
+(5, 'Enlace Administración - Direccion', 1),
+(6, 'Almacenes', 1),
+(7, 'Enlace RRHH-Dirección', 1),
+(8, 'Unidad Legal', 1),
+(9, 'Evaluación y Acreencias', 1),
+(10, 'Servicios de Salud y Seguridad en el Trabajo', 1),
+(11, 'Coordinación de Informática', 1),
+(12, 'Enlace de Planificación y Presupuesto', 1),
+(13, 'Transporte', 1),
+(14, 'Mercosur-Cooperación Técnica Internacional RSI', 1),
+(15, 'Control Interno', 1),
+(16, 'Dirección de Ingeniería Sanitaria', 2),
+(17, 'Enlace Administrativo - DSR', 3),
+(18, 'Dirección de Control de Vectores', 4),
+(19, 'Laboratorio de Malacologia', 4),
+(20, 'Dirección de Epidemiología', 5),
+(21, 'Sala de Inspectores', 5),
+(22, 'Sala Dibujo', 5),
+(23, 'Coordinación Gestión de Medicamentos', 5),
+(24, 'Sala Situacional', 1),
+(25, 'Laboratorio de Malaria', 5),
+(26, 'Laboratorio de Parasitología', 5),
+(27, 'Laboratorio de Chagas', 5),
+(28, 'Sin Asignar', 6),
+(29, 'Enlace de Recursos Humanos', 3),
+(30, 'Coordinación de Regulación y Control de Radiaciones', 3),
+(31, 'Coordinación Vigilancia e Higiene de las Radiaciones', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `b3_departamentos`
+--
+
+CREATE TABLE `b3_departamentos` (
+  `id_departamento` int(11) NOT NULL,
+  `nombre_dpto` varchar(255) COLLATE utf8_bin NOT NULL,
+  `departamento_division_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `b3_departamentos`
+--
+
+INSERT INTO `b3_departamentos` (`id_departamento`, `nombre_dpto`, `departamento_division_id`) VALUES
+(1, 'Despacho Dirección', 1),
+(2, 'Mantenimiento Área I', 2),
+(3, 'Mantenimiento Área II', 2),
+(4, 'Mantenimiento Área III', 2),
+(5, 'Talleres', 3),
+(6, 'Vigilantes', 4),
+(7, 'Bienes Nacionales', 5),
+(8, 'Kardex', 5),
+(9, 'Almacenes', 6),
+(10, 'Secretaria', 7),
+(11, 'Capacitación', 7),
+(12, 'Jubilados', 7),
+(13, 'Bienestar Social', 7),
+(14, 'Nómina', 7),
+(15, 'Archivo', 7),
+(16, 'Registro y Control', 7),
+(17, 'Seguro Social', 7),
+(18, 'Unidad Legal', 8),
+(19, 'Evaluación y Acreencias', 9),
+(20, 'Servicios de Salud y Seguridad en el Trabajo', 10),
+(21, 'Coordinación de Informática', 11),
+(22, 'Enlace de Planificación y Presupuesto', 12),
+(23, 'Transporte', 13),
+(24, 'Mercosur-Cooperación Técnica Internacional RSI', 14),
+(25, 'Control Interno', 15),
+(26, 'Coordinacion de Residuos y Desechos', 16),
+(27, 'Coordinación de Agua, Aire  y Edificaciones', 16),
+(28, 'Coordinación Sustancia y Materiales', 16),
+(29, 'Coordinación de Regulación y Control de Radiaciones\r\n', 17),
+(30, 'Coordinación de Regulación y Control de Radia.. (verificar)\r\n', 17),
+(31, 'Coordinación Protección e Higiene de las Radioaciones\r\n', 17),
+(32, 'Coordinación Entomología en Salud Pública', 18),
+(33, 'Coordinación de Foco Zoonoticos', 18),
+(34, 'Coordinación de Control Operacional', 18),
+(35, 'Coordinación de Control de Vectores', 18),
+(36, 'Laboratorio de Malacologia', 19),
+(37, 'Programa de Parasitosis', 20),
+(38, 'Progarma de Chagas', 20),
+(39, 'Programa de Malaria', 20),
+(40, 'Sala de Inspectores', 21),
+(41, 'Sala Dibujo', 22),
+(42, 'Coordinación Gestión de Medicamentos', 23),
+(43, 'Sala Situacional', 24),
+(44, 'Laboratorio de Malaria', 25),
+(45, 'Laboratorio de Parasitología', 26),
+(46, 'Laboratorio de Chagas', 27),
+(47, 'Sin Asignar', 28),
+(70, 'Administracion', 17),
+(71, 'Recursos Humanos', 29),
+(72, 'Estadistica Radiologica', 30),
+(73, 'Fiscalización', 30),
+(74, 'Archivo', 30),
+(75, 'Gestion de Desechos Radioactivos', 30),
+(76, 'Departamento Informática (Dosimetria Externa)', 31),
+(77, 'Dosimetria Ambiental', 31),
+(78, 'Dosimetria Clinica y Auditoria de Equipos', 31),
+(79, 'Registro Nacional de Dosimetria', 31),
+(80, 'Correspondencia', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `c1_inventario_equipo`
+--
+
+CREATE TABLE `c1_inventario_equipo` (
+  `id_case` int(11) NOT NULL,
+  `fecha_inventario` date NOT NULL,
+  `ing_encar_inv_id` int(11) NOT NULL,
+  `dpto_inv_id` int(11) NOT NULL,
+  `division_inv_id` int(11) NOT NULL,
+  `direccion_inv_id` int(11) NOT NULL,
+  `responsable` varchar(45) COLLATE utf8_bin NOT NULL,
+  `supervisor_dpto` varchar(100) COLLATE utf8_bin NOT NULL,
+  `nombre_equipo` varchar(45) COLLATE utf8_bin NOT NULL,
+  `BN_equipo` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `serial_equipo` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `tipo_de_equipo` varchar(45) COLLATE utf8_bin NOT NULL,
+  `cpu_modelo` varchar(45) COLLATE utf8_bin NOT NULL,
+  `cpu_velocidad` varchar(45) COLLATE utf8_bin NOT NULL,
+  `mac` varchar(45) COLLATE utf8_bin NOT NULL,
+  `ip` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `disco_duro_cap` varchar(45) COLLATE utf8_bin NOT NULL,
+  `disco_duro_marca` varchar(45) COLLATE utf8_bin NOT NULL,
+  `disco_duro_serial` varchar(45) COLLATE utf8_bin NOT NULL,
+  `ram` varchar(45) COLLATE utf8_bin NOT NULL,
+  `ram_velocidad` varchar(45) COLLATE utf8_bin NOT NULL,
+  `windows_ver` varchar(45) COLLATE utf8_bin NOT NULL,
+  `conect_red` varchar(45) COLLATE utf8_bin NOT NULL,
+  `tipo_conexion` varchar(45) COLLATE utf8_bin NOT NULL,
+  `internet` varchar(45) COLLATE utf8_bin NOT NULL,
+  `mouse` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `BN_serial_mouse` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `mouse_marca` varchar(45) COLLATE utf8_bin NOT NULL,
+  `mouse_conexion` varchar(45) COLLATE utf8_bin NOT NULL,
+  `monitor` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `monitor_conexion` varchar(45) COLLATE utf8_bin NOT NULL,
+  `BN_serial_monitor` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `regulador` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `regulador_marca` varchar(45) COLLATE utf8_bin NOT NULL,
+  `BN_serial_regulador` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `teclado` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `teclado_marca` varchar(45) COLLATE utf8_bin NOT NULL,
+  `teclado_conexion` varchar(45) COLLATE utf8_bin NOT NULL,
+  `BN_serial_teclado` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `escaner` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `escaner_modelo` varchar(45) COLLATE utf8_bin NOT NULL,
+  `escaner_conexion` varchar(45) COLLATE utf8_bin NOT NULL,
+  `BN_serial_escaner` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `comentario` varchar(255) COLLATE utf8_bin DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `c1_inventario_equipo`
+--
+
+INSERT INTO `c1_inventario_equipo` (`id_case`, `fecha_inventario`, `ing_encar_inv_id`, `dpto_inv_id`, `division_inv_id`, `direccion_inv_id`, `responsable`, `supervisor_dpto`, `nombre_equipo`, `BN_equipo`, `serial_equipo`, `tipo_de_equipo`, `cpu_modelo`, `cpu_velocidad`, `mac`, `ip`, `disco_duro_cap`, `disco_duro_marca`, `disco_duro_serial`, `ram`, `ram_velocidad`, `windows_ver`, `conect_red`, `tipo_conexion`, `internet`, `mouse`, `BN_serial_mouse`, `mouse_marca`, `mouse_conexion`, `monitor`, `monitor_conexion`, `BN_serial_monitor`, `regulador`, `regulador_marca`, `BN_serial_regulador`, `teclado`, `teclado_marca`, `teclado_conexion`, `BN_serial_teclado`, `escaner`, `escaner_modelo`, `escaner_conexion`, `BN_serial_escaner`, `comentario`) VALUES
+(1, '2023-09-26', 2, 43, 24, 1, 'Javier Martinez', 'Rodolfo Mejias', 'M1SSPC18', '5080795', 'SinSerial', 'Escritorio', 'i5 10505', '3.20Ghz', 'D0-8E-79-0F-A4-C6', '10.72.3.236', '512gb', 'desconocida', '42D54D8B', '1', '8Gb', '10', 'Si', 'Ambas', 'Si', 'Si', 'SinBN', 'HP', 'USB', 'HP', 'VGA', '5080795', 'Si', 'Generico', '5080795', 'Si', 'Generico', 'USB', '5080795', 'No', '', '', '', 'Primer registro del equipo de inventario tecnológico');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `c3_1_estado_soporte`
+--
+
+CREATE TABLE `c3_1_estado_soporte` (
+  `id_estado_sop` int(11) NOT NULL,
+  `nombre_estado` varchar(45) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `c3_1_estado_soporte`
+--
+
+INSERT INTO `c3_1_estado_soporte` (`id_estado_sop`, `nombre_estado`) VALUES
+(1, 'En Espera'),
+(2, 'En Proceso'),
+(3, 'Finalizado'),
+(4, 'Rechazado'),
+(5, 'Rechazado Completo');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `c3_solicitudes_soportes`
+--
+
+CREATE TABLE `c3_solicitudes_soportes` (
+  `id_soporte` int(11) NOT NULL,
+  `uso_equipo` varchar(45) COLLATE utf8_bin NOT NULL,
+  `id_equipo_soporte` int(11) NOT NULL,
+  `nomb_equipo_soporte` varchar(100) COLLATE utf8_bin NOT NULL,
+  `nivel_soporte` varchar(45) COLLATE utf8_bin NOT NULL,
+  `soporte_descripcion` varchar(255) COLLATE utf8_bin NOT NULL,
+  `fecha_soporte_solicitud` datetime NOT NULL,
+  `estado` int(11) NOT NULL,
+  `fecha_soporte_aceptacion` datetime NOT NULL,
+  `tecnico_soporte_id` int(11) DEFAULT NULL,
+  `fecha_soporte_final` datetime NOT NULL,
+  `comentario` varchar(255) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `c3_solicitudes_soportes`
+--
+
+INSERT INTO `c3_solicitudes_soportes` (`id_soporte`, `uso_equipo`, `id_equipo_soporte`, `nomb_equipo_soporte`, `nivel_soporte`, `soporte_descripcion`, `fecha_soporte_solicitud`, `estado`, `fecha_soporte_aceptacion`, `tecnico_soporte_id`, `fecha_soporte_final`, `comentario`) VALUES
+(1, 'Uso Oficial', 1, 'M1SSPC18', 'Nivel Hardware', 'Sonidos extraños al encender el pc y mientras está encendida', '2023-09-26 21:00:30', 3, '2023-09-26 21:03:57', 2, '2023-09-26 21:06:11', 'Finalizacion del soporte tecnico de manera exitosa');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `c4_base_conocimiento`
+--
+
+CREATE TABLE `c4_base_conocimiento` (
+  `id_conocimiento` int(11) NOT NULL,
+  `tipo_conocimiento` varchar(45) COLLATE utf8_bin NOT NULL,
+  `descripcion_caso` varchar(45) COLLATE utf8_bin NOT NULL,
+  `posible_solucion` varchar(255) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `d1_correspondencia`
+--
+
+CREATE TABLE `d1_correspondencia` (
+  `id_nro_admision` int(11) NOT NULL,
+  `nro_oficio` varchar(45) COLLATE utf8_bin NOT NULL,
+  `fecha_sal_empresa` date NOT NULL,
+  `procedencia` int(11) NOT NULL,
+  `rif_corresp_emp` varchar(15) COLLATE utf8_bin NOT NULL,
+  `asunto` varchar(255) COLLATE utf8_bin NOT NULL,
+  `fecha_llegada` datetime NOT NULL,
+  `oficina_destino` int(11) NOT NULL,
+  `coordi_destino` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `d1_correspondencia`
+--
+
+INSERT INTO `d1_correspondencia` (`id_nro_admision`, `nro_oficio`, `fecha_sal_empresa`, `procedencia`, `rif_corresp_emp`, `asunto`, `fecha_llegada`, `oficina_destino`, `coordi_destino`) VALUES
+(1, '578258', '2023-09-04', 1, '80369369', 'Registro de equipo de radiologia', '2023-09-06 00:00:00', 3, 30);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `d2_empresas_corresp`
+--
+
+CREATE TABLE `d2_empresas_corresp` (
+  `id_empresas` int(11) NOT NULL,
+  `identificador_rif` varchar(5) COLLATE utf8_bin NOT NULL,
+  `rif` varchar(45) COLLATE utf8_bin NOT NULL,
+  `nombre_empresa` varchar(45) COLLATE utf8_bin NOT NULL,
+  `dedicacion` varchar(255) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `d2_empresas_corresp`
+--
+
+INSERT INTO `d2_empresas_corresp` (`id_empresas`, `identificador_rif`, `rif`, `nombre_empresa`, `dedicacion`) VALUES
+(1, 'J', '80369369', 'Centro de Salud', 'Medicina nuclear');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `d3_notificaciones_div`
+--
+
+CREATE TABLE `d3_notificaciones_div` (
+  `id_notificacion` int(11) NOT NULL,
+  `id_corresp` int(11) NOT NULL,
+  `id_empresa_corresp` int(11) NOT NULL,
+  `id_corres_divi` int(11) NOT NULL,
+  `id_corres_dire` int(11) NOT NULL,
+  `Jefe_Corres` int(11) NOT NULL,
+  `Jefe_Ced_Corres` varchar(45) COLLATE utf8_bin NOT NULL,
+  `fecha_llegada_corresp` datetime NOT NULL,
+  `fecha_elim_notifi` datetime NOT NULL,
+  `fecha_confirmacion_corres` datetime DEFAULT NULL,
+  `descripcion_corresp` varchar(255) COLLATE utf8_bin NOT NULL,
+  `estatus_Corres` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `d3_notificaciones_div`
+--
+
+INSERT INTO `d3_notificaciones_div` (`id_notificacion`, `id_corresp`, `id_empresa_corresp`, `id_corres_divi`, `id_corres_dire`, `Jefe_Corres`, `Jefe_Ced_Corres`, `fecha_llegada_corresp`, `fecha_elim_notifi`, `fecha_confirmacion_corres`, `descripcion_corresp`, `estatus_Corres`) VALUES
+(1, 1, 1, 30, 3, 5, '27146434', '2023-09-26 09:53:22', '2023-09-27 09:53:22', '2023-09-26 09:56:34', 'Registro de equipo de radiologia', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `d4_notificaciones_estatus`
+--
+
+CREATE TABLE `d4_notificaciones_estatus` (
+  `id_estatus_notifi` int(11) NOT NULL,
+  `nombre_estatus_notifi` varchar(15) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `d4_notificaciones_estatus`
+--
+
+INSERT INTO `d4_notificaciones_estatus` (`id_estatus_notifi`, `nombre_estatus_notifi`) VALUES
+(1, 'En espera'),
+(2, 'Confirmado'),
+(3, 'Alerta');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `z1_historial_camb_sis`
+--
+
+CREATE TABLE `z1_historial_camb_sis` (
+  `id_historial_cambios` int(11) NOT NULL,
+  `id_usuario_cambio` int(11) NOT NULL,
+  `id_accion_cambio` int(11) NOT NULL,
+  `fecha_usuario_cambio` datetime DEFAULT NULL,
+  `descripcion_cambio` text COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `z1_historial_camb_sis`
+--
+
+INSERT INTO `z1_historial_camb_sis` (`id_historial_cambios`, `id_usuario_cambio`, `id_accion_cambio`, `fecha_usuario_cambio`, `descripcion_cambio`) VALUES
+(1, 1, 1, '2023-09-26 19:45:37', 'Nuevo Usuario registrandose en el Sistema, nombre del empleado: Jesus Castillo, cédula V-27146430. Dicho empleado se ha registrado como trabajador en: Coordinación de Informática'),
+(2, 1, 1, '2023-09-26 19:46:13', 'El usuario Jesus Castillo, finalizó el registro las preguntas de seguridad.'),
+(3, 2, 1, '2023-09-26 20:23:29', 'Nuevo Usuario registrandose en el Sistema, nombre del empleado: Prueba Tecnico, cédula V-27146431. Dicho empleado se ha registrado como trabajador en: Coordinación de Informática'),
+(4, 2, 1, '2023-09-26 20:23:43', 'El usuario Prueba Tecnico, finalizó el registro las preguntas de seguridad.'),
+(5, 3, 1, '2023-09-26 20:25:14', 'Nuevo Usuario registrandose en el Sistema, nombre del empleado: Jefe Correspondencia, cédula V-27146432. Dicho empleado se ha registrado como trabajador en: Despacho Dirección'),
+(6, 3, 1, '2023-09-26 20:25:27', 'El usuario Jefe Correspondencia, finalizó el registro las preguntas de seguridad.'),
+(7, 4, 1, '2023-09-26 20:26:34', 'Nuevo Usuario registrandose en el Sistema, nombre del empleado: Empleado Vista, cédula V-27146433. Dicho empleado se ha registrado como trabajador en: Control Interno'),
+(8, 4, 1, '2023-09-26 20:26:45', 'El usuario Empleado Vista, finalizó el registro las preguntas de seguridad.'),
+(9, 5, 1, '2023-09-26 20:28:05', 'Nuevo Usuario registrandose en el Sistema, nombre del empleado: Salud Radiologica, cédula V-27146434. Dicho empleado se ha registrado como trabajador en: Enlace de Recursos Humanos'),
+(10, 5, 1, '2023-09-26 20:28:16', 'El usuario Salud Radiologica, finalizó el registro las preguntas de seguridad.'),
+(11, 1, 5, '2023-09-26 20:32:50', 'Ingreso del Usuario: Jesus Castillo.'),
+(12, 1, 2, '2023-09-26 20:38:47', 'El usuario: Jesus Castillo realizó cambios en los datos del empleado: Prueba Tecnico, cambios realizados: Rol del Usuario cambió de: Sin Acceso a: Ingeniero Informático. Cambios realizados.'),
+(13, 1, 1, '2023-09-26 20:50:06', 'Nuevo registro de equipo en el inventario tecnológico, nombre del equipo: M1SSPC18. Nro de Registro: 1.'),
+(14, 1, 1, '2023-09-26 21:00:30', 'Nueva solicitud de Soporte técnico, nombre del equipo: M1SSPC18.'),
+(15, 1, 2, '2023-09-26 21:03:57', 'Actualización de solicitud de Soporte técnico, nombre del equipo: M1SSPC18, Nro de Solicitud: 1. Actualizada a -En Proceso-, por Jesus Castillo, técnico designado: Prueba Tecnico.'),
+(16, 1, 2, '2023-09-26 21:06:11', 'Culminación de la solicitud de Soporte técnico, nombre del equipo: M1SSPC18, Nro de Solicitud: 1. Actualizada a -Finalizada-, por Jesus Castillo, técnico designado de realizar el soporte: Prueba Tecnico.'),
+(17, 1, 2, '2023-09-26 21:10:55', 'El usuario: Jesus Castillo realizó cambios en los datos del empleado: Jefe Correspondencia, cambios realizados: Rol del Usuario cambió de: Sin Acceso a: Jefe de Coordinación. Cambios realizados.'),
+(18, 1, 6, '2023-09-26 21:11:12', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(19, 3, 5, '2023-09-26 21:11:39', 'Ingreso del Usuario: Jefe Correspondencia.'),
+(20, 3, 6, '2023-09-26 21:24:54', 'Salida del sistema del Usuario: Jefe Correspondencia.'),
+(21, 3, 5, '2023-09-26 21:25:23', 'Ingreso del Usuario: Jefe Correspondencia.'),
+(22, 3, 6, '2023-09-26 21:29:42', 'Salida del sistema del Usuario: Jefe Correspondencia.'),
+(23, 2, 5, '2023-09-26 21:30:24', 'Ingreso del Usuario: Prueba Tecnico.'),
+(24, 2, 6, '2023-09-26 21:44:14', 'Salida del sistema del Usuario: Prueba Tecnico.'),
+(25, 1, 5, '2023-09-26 21:44:32', 'Ingreso del Usuario: Jesus Castillo.'),
+(26, 1, 2, '2023-09-26 21:44:50', 'El usuario: Jesus Castillo realizó cambios en los datos del empleado: Empleado Vista, cambios realizados: Rol del Usuario cambió de: Sin Acceso a: Secretario. Cambios realizados.'),
+(27, 1, 2, '2023-09-26 21:45:04', 'El usuario: Jesus Castillo realizó cambios en los datos del empleado: Salud Radiologica, cambios realizados: Rol del Usuario cambió de: Sin Acceso a: Jefe de Coordinación. Cambios realizados.'),
+(28, 1, 6, '2023-09-26 21:45:14', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(29, 4, 5, '2023-09-26 21:45:33', 'Ingreso del Usuario: Empleado Vista.'),
+(30, 4, 6, '2023-09-26 21:47:51', 'Salida del sistema del Usuario: Empleado Vista.'),
+(31, 5, 5, '2023-09-26 21:48:14', 'Ingreso del Usuario: Salud Radiologica.'),
+(32, 5, 6, '2023-09-26 21:48:42', 'Salida del sistema del Usuario: Salud Radiologica.'),
+(33, 3, 5, '2023-09-26 21:48:50', 'Ingreso del Usuario: Jefe Correspondencia.'),
+(34, 3, 1, '2023-09-26 21:52:39', 'Se registra una nueva empresa en el sistema, bajo el nombre. Centro de Salud, y cuyo RIF es: J-80369369. Registro hecho por: Jefe Correspondencia.'),
+(35, 3, 1, '2023-09-26 21:53:22', 'Se registra una nueva correspondencia, nro de oficio: 578258, bajo el nombre de la empresa: Centro de Salud, cuyo rif es: J-80369369. Usuario encargado del registro: Jefe Correspondencia'),
+(36, 3, 6, '2023-09-26 21:54:31', 'Salida del sistema del Usuario: Jefe Correspondencia.'),
+(37, 1, 5, '2023-09-26 21:54:40', 'Ingreso del Usuario: Jesus Castillo.'),
+(38, 1, 2, '2023-09-26 21:55:03', 'El usuario: Jesus Castillo realizó cambios en los datos del empleado: Salud Radiologica, cambios realizados: Departamento cambió de: Recursos Humanos a: Estadistica Radiologica. Division cambió de: Enlace de Recursos Humanos a: Coordinación de Regulación y Control de Radiaciones. Cambios realizados.'),
+(39, 1, 6, '2023-09-26 21:55:23', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(40, 5, 5, '2023-09-26 21:55:31', 'Ingreso del Usuario: Salud Radiologica.'),
+(41, 5, 2, '2023-09-26 21:56:34', 'El usuario: Salud Radiologica aceptó correspondencia, con el nro de admisión 1. Estatus de la Correspondencia cambió de: En espera a Confirmado. Cambios realizados.'),
+(42, 5, 6, '2023-09-26 21:57:03', 'Salida del sistema del Usuario: Salud Radiologica.'),
+(43, 1, 5, '2023-09-26 21:57:18', 'Ingreso del Usuario: Jesus Castillo.'),
+(44, 1, 6, '2023-09-26 22:08:08', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(45, 2, 5, '2023-09-26 22:08:37', 'Ingreso del Usuario: Prueba Tecnico.'),
+(46, 2, 6, '2023-09-26 22:09:20', 'Salida del sistema del Usuario: Prueba Tecnico.'),
+(47, 3, 5, '2023-09-26 22:09:37', 'Ingreso del Usuario: Jefe Correspondencia.'),
+(48, 3, 6, '2023-09-26 22:09:58', 'Salida del sistema del Usuario: Jefe Correspondencia.'),
+(49, 1, 5, '2023-09-26 22:21:52', 'Ingreso del Usuario: Jesus Castillo.'),
+(50, 1, 6, '2023-09-26 22:30:17', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(51, 4, 5, '2023-09-26 22:30:35', 'Ingreso del Usuario: Empleado Vista.'),
+(52, 4, 6, '2023-09-26 22:33:56', 'Salida del sistema del Usuario: Empleado Vista.'),
+(53, 2, 5, '2023-09-26 22:34:05', 'Ingreso del Usuario: Prueba Tecnico.'),
+(54, 2, 6, '2023-09-26 22:34:27', 'Salida del sistema del Usuario: Prueba Tecnico.'),
+(55, 4, 5, '2023-09-27 09:45:53', 'Ingreso del Usuario: Empleado Vista.'),
+(56, 4, 6, '2023-09-27 09:57:28', 'Salida del sistema del Usuario: Empleado Vista.'),
+(57, 3, 5, '2023-09-27 09:57:47', 'Ingreso del Usuario: Jefe Correspondencia.'),
+(58, 3, 6, '2023-09-27 10:02:12', 'Salida del sistema del Usuario: Jefe Correspondencia.'),
+(59, 5, 5, '2023-09-27 10:02:30', 'Ingreso del Usuario: Salud Radiologica.'),
+(60, 5, 6, '2023-09-27 10:14:18', 'Salida del sistema del Usuario: Salud Radiologica.'),
+(61, 3, 5, '2023-09-27 10:14:59', 'Ingreso del Usuario: Jefe Correspondencia.'),
+(62, 3, 6, '2023-09-27 10:17:35', 'Salida del sistema del Usuario: Jefe Correspondencia.'),
+(63, 4, 5, '2023-09-27 10:17:54', 'Ingreso del Usuario: Empleado Vista.'),
+(64, 4, 6, '2023-09-27 10:18:07', 'Salida del sistema del Usuario: Empleado Vista.'),
+(65, 1, 5, '2023-09-27 10:18:24', 'Ingreso del Usuario: Jesus Castillo.'),
+(66, 1, 6, '2023-09-27 10:27:24', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(67, 6, 1, '2023-09-27 10:28:36', 'Nuevo Usuario registrandose en el Sistema, nombre del empleado: Emi Gia, cédula V-27146435. Dicho empleado se ha registrado como trabajador en: Sala de Inspectores'),
+(68, 6, 1, '2023-09-27 10:28:51', 'El usuario Emi Gia, finalizó el registro las preguntas de seguridad.'),
+(69, 1, 5, '2023-09-27 10:29:12', 'Ingreso del Usuario: Jesus Castillo.'),
+(70, 1, 2, '2023-09-27 10:29:22', 'El usuario: Jesus Castillo realizó cambios en sus datos: Respuesta 1 cambió. Respuesta 2 cambió. Respuesta 3 cambió. Cambios realizados.'),
+(71, 1, 2, '2023-09-27 10:29:45', 'El usuario: Jesus Castillo realizó cambios en los datos del empleado: Emi Gia, cambios realizados: Rol del Usuario cambió de: Sin Acceso a: Jefe de Coordinación. Cambios realizados.'),
+(72, 1, 6, '2023-09-27 10:29:49', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(73, 6, 5, '2023-09-27 10:29:52', 'Ingreso del Usuario: Emi Gia.'),
+(74, 6, 6, '2023-09-27 10:30:17', 'Salida del sistema del Usuario: Emi Gia.');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `z2_historial_acciones`
+--
+
+CREATE TABLE `z2_historial_acciones` (
+  `id_accHis` int(11) NOT NULL,
+  `nombre_accion` varchar(45) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `z2_historial_acciones`
+--
+
+INSERT INTO `z2_historial_acciones` (`id_accHis`, `nombre_accion`) VALUES
+(1, 'Registro'),
+(2, 'Modificación'),
+(3, 'Rechazo'),
+(4, 'Eliminacion'),
+(5, 'Ingreso al Sistema'),
+(6, 'Salida del Sistema'),
+(7, 'Creación Respaldo');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `a1_usuarios`
+--
+ALTER TABLE `a1_usuarios`
+  ADD PRIMARY KEY (`id_usuario`),
+  ADD KEY `usuario_dpto_fk` (`usuario_departamento_id`),
+  ADD KEY `usuario_cargo_fk` (`usuario_rol_id`),
+  ADD KEY `pregunta1_fk` (`id_pregunta1`),
+  ADD KEY `pregunta2_fk` (`id_pregunta2`),
+  ADD KEY `pregunta3_fk` (`id_pregunta3`),
+  ADD KEY `usuario_division_fk` (`usuario_division_id`),
+  ADD KEY `usuario_direccion_fk` (`usuario_direccion_id`),
+  ADD KEY `activo_inactivo_fk` (`ActivoInactivo`);
+
+--
+-- Indices de la tabla `a2_rol`
+--
+ALTER TABLE `a2_rol`
+  ADD PRIMARY KEY (`id_rol`);
+
+--
+-- Indices de la tabla `a3_preguntas`
+--
+ALTER TABLE `a3_preguntas`
+  ADD PRIMARY KEY (`id_pregunta`);
+
+--
+-- Indices de la tabla `a4_estado`
+--
+ALTER TABLE `a4_estado`
+  ADD PRIMARY KEY (`id_estado`);
+
+--
+-- Indices de la tabla `b1_direcciones`
+--
+ALTER TABLE `b1_direcciones`
+  ADD PRIMARY KEY (`id_direcciones`);
+
+--
+-- Indices de la tabla `b2_divisiones`
+--
+ALTER TABLE `b2_divisiones`
+  ADD PRIMARY KEY (`id_divisiones`),
+  ADD KEY `division_direccion_fk` (`division_direccion_id`);
+
+--
+-- Indices de la tabla `b3_departamentos`
+--
+ALTER TABLE `b3_departamentos`
+  ADD PRIMARY KEY (`id_departamento`),
+  ADD KEY `dpto_division_fk` (`departamento_division_id`);
+
+--
+-- Indices de la tabla `c1_inventario_equipo`
+--
+ALTER TABLE `c1_inventario_equipo`
+  ADD PRIMARY KEY (`id_case`),
+  ADD KEY `ing_enca_inv_usr_fk` (`ing_encar_inv_id`),
+  ADD KEY `inv_equipo_dpto_fk` (`dpto_inv_id`),
+  ADD KEY `inv_equipo_division_fk` (`division_inv_id`),
+  ADD KEY `inv_equipo_direccion_fk` (`direccion_inv_id`);
+
+--
+-- Indices de la tabla `c3_1_estado_soporte`
+--
+ALTER TABLE `c3_1_estado_soporte`
+  ADD PRIMARY KEY (`id_estado_sop`);
+
+--
+-- Indices de la tabla `c3_solicitudes_soportes`
+--
+ALTER TABLE `c3_solicitudes_soportes`
+  ADD PRIMARY KEY (`id_soporte`),
+  ADD KEY `id_equipo_soporte_fk` (`id_equipo_soporte`),
+  ADD KEY `tecnico_soporte_fk` (`tecnico_soporte_id`),
+  ADD KEY `estado_soporte_id` (`estado`);
+
+--
+-- Indices de la tabla `c4_base_conocimiento`
+--
+ALTER TABLE `c4_base_conocimiento`
+  ADD PRIMARY KEY (`id_conocimiento`);
+
+--
+-- Indices de la tabla `d1_correspondencia`
+--
+ALTER TABLE `d1_correspondencia`
+  ADD PRIMARY KEY (`id_nro_admision`),
+  ADD KEY `procedencia_empr_fk` (`procedencia`),
+  ADD KEY `oficina_destino_fk` (`oficina_destino`),
+  ADD KEY `coordi_destino_fk` (`coordi_destino`);
+
+--
+-- Indices de la tabla `d2_empresas_corresp`
+--
+ALTER TABLE `d2_empresas_corresp`
+  ADD PRIMARY KEY (`id_empresas`);
+
+--
+-- Indices de la tabla `d3_notificaciones_div`
+--
+ALTER TABLE `d3_notificaciones_div`
+  ADD PRIMARY KEY (`id_notificacion`),
+  ADD KEY `id_correspondencia_fk` (`id_corresp`),
+  ADD KEY `id_empresa_correspon_fk` (`id_empresa_corresp`),
+  ADD KEY `id_correspon_division_fk` (`id_corres_divi`),
+  ADD KEY `id_jefe_division_corres_fk` (`Jefe_Corres`),
+  ADD KEY `id_correspon_direccion_fk` (`id_corres_dire`),
+  ADD KEY `id_estatus_nombres_fk` (`estatus_Corres`);
+
+--
+-- Indices de la tabla `d4_notificaciones_estatus`
+--
+ALTER TABLE `d4_notificaciones_estatus`
+  ADD PRIMARY KEY (`id_estatus_notifi`);
+
+--
+-- Indices de la tabla `z1_historial_camb_sis`
+--
+ALTER TABLE `z1_historial_camb_sis`
+  ADD PRIMARY KEY (`id_historial_cambios`),
+  ADD KEY `id_usuario_cambio_fk` (`id_usuario_cambio`),
+  ADD KEY `id_accion_cambio_fk` (`id_accion_cambio`);
+
+--
+-- Indices de la tabla `z2_historial_acciones`
+--
+ALTER TABLE `z2_historial_acciones`
+  ADD PRIMARY KEY (`id_accHis`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `a1_usuarios`
+--
+ALTER TABLE `a1_usuarios`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `a2_rol`
+--
+ALTER TABLE `a2_rol`
+  MODIFY `id_rol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `a3_preguntas`
+--
+ALTER TABLE `a3_preguntas`
+  MODIFY `id_pregunta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT de la tabla `a4_estado`
+--
+ALTER TABLE `a4_estado`
+  MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `b1_direcciones`
+--
+ALTER TABLE `b1_direcciones`
+  MODIFY `id_direcciones` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT de la tabla `b2_divisiones`
+--
+ALTER TABLE `b2_divisiones`
+  MODIFY `id_divisiones` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT de la tabla `b3_departamentos`
+--
+ALTER TABLE `b3_departamentos`
+  MODIFY `id_departamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+
+--
+-- AUTO_INCREMENT de la tabla `c1_inventario_equipo`
+--
+ALTER TABLE `c1_inventario_equipo`
+  MODIFY `id_case` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `c3_1_estado_soporte`
+--
+ALTER TABLE `c3_1_estado_soporte`
+  MODIFY `id_estado_sop` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `c3_solicitudes_soportes`
+--
+ALTER TABLE `c3_solicitudes_soportes`
+  MODIFY `id_soporte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `c4_base_conocimiento`
+--
+ALTER TABLE `c4_base_conocimiento`
+  MODIFY `id_conocimiento` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `d1_correspondencia`
+--
+ALTER TABLE `d1_correspondencia`
+  MODIFY `id_nro_admision` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `d2_empresas_corresp`
+--
+ALTER TABLE `d2_empresas_corresp`
+  MODIFY `id_empresas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `d3_notificaciones_div`
+--
+ALTER TABLE `d3_notificaciones_div`
+  MODIFY `id_notificacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `d4_notificaciones_estatus`
+--
+ALTER TABLE `d4_notificaciones_estatus`
+  MODIFY `id_estatus_notifi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `z1_historial_camb_sis`
+--
+ALTER TABLE `z1_historial_camb_sis`
+  MODIFY `id_historial_cambios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+
+--
+-- AUTO_INCREMENT de la tabla `z2_historial_acciones`
+--
+ALTER TABLE `z2_historial_acciones`
+  MODIFY `id_accHis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `a1_usuarios`
+--
+ALTER TABLE `a1_usuarios`
+  ADD CONSTRAINT `activo_inactivo_fk` FOREIGN KEY (`ActivoInactivo`) REFERENCES `a4_estado` (`id_estado`),
+  ADD CONSTRAINT `pregunta1_fk` FOREIGN KEY (`id_pregunta1`) REFERENCES `a3_preguntas` (`id_pregunta`),
+  ADD CONSTRAINT `pregunta2_fk` FOREIGN KEY (`id_pregunta2`) REFERENCES `a3_preguntas` (`id_pregunta`),
+  ADD CONSTRAINT `pregunta3_fk` FOREIGN KEY (`id_pregunta3`) REFERENCES `a3_preguntas` (`id_pregunta`),
+  ADD CONSTRAINT `usuario_cargo_fk` FOREIGN KEY (`usuario_rol_id`) REFERENCES `a2_rol` (`id_rol`),
+  ADD CONSTRAINT `usuario_direccion_fk` FOREIGN KEY (`usuario_direccion_id`) REFERENCES `b1_direcciones` (`id_direcciones`),
+  ADD CONSTRAINT `usuario_division_fk` FOREIGN KEY (`usuario_division_id`) REFERENCES `b2_divisiones` (`id_divisiones`),
+  ADD CONSTRAINT `usuario_dpto_fk` FOREIGN KEY (`usuario_departamento_id`) REFERENCES `b3_departamentos` (`id_departamento`);
+
+--
+-- Filtros para la tabla `b2_divisiones`
+--
+ALTER TABLE `b2_divisiones`
+  ADD CONSTRAINT `division_direccion_fk` FOREIGN KEY (`division_direccion_id`) REFERENCES `b1_direcciones` (`id_direcciones`);
+
+--
+-- Filtros para la tabla `b3_departamentos`
+--
+ALTER TABLE `b3_departamentos`
+  ADD CONSTRAINT `dpto_division_fk` FOREIGN KEY (`departamento_division_id`) REFERENCES `b2_divisiones` (`id_divisiones`);
+
+--
+-- Filtros para la tabla `c1_inventario_equipo`
+--
+ALTER TABLE `c1_inventario_equipo`
+  ADD CONSTRAINT `ing_enca_inv_usr_fk` FOREIGN KEY (`ing_encar_inv_id`) REFERENCES `a1_usuarios` (`id_usuario`),
+  ADD CONSTRAINT `inv_equipo_direccion_fk` FOREIGN KEY (`direccion_inv_id`) REFERENCES `b1_direcciones` (`id_direcciones`),
+  ADD CONSTRAINT `inv_equipo_division_fk` FOREIGN KEY (`division_inv_id`) REFERENCES `b2_divisiones` (`id_divisiones`),
+  ADD CONSTRAINT `inv_equipo_dpto_fk` FOREIGN KEY (`dpto_inv_id`) REFERENCES `b3_departamentos` (`id_departamento`);
+
+--
+-- Filtros para la tabla `c3_solicitudes_soportes`
+--
+ALTER TABLE `c3_solicitudes_soportes`
+  ADD CONSTRAINT `estado_soporte_id_fk` FOREIGN KEY (`estado`) REFERENCES `c3_1_estado_soporte` (`id_estado_sop`),
+  ADD CONSTRAINT `id_equipo_soporte_fk` FOREIGN KEY (`id_equipo_soporte`) REFERENCES `c1_inventario_equipo` (`id_case`),
+  ADD CONSTRAINT `id_tecnico_soporte_fk` FOREIGN KEY (`tecnico_soporte_id`) REFERENCES `a1_usuarios` (`id_usuario`);
+
+--
+-- Filtros para la tabla `d1_correspondencia`
+--
+ALTER TABLE `d1_correspondencia`
+  ADD CONSTRAINT `coordi_destino_fk` FOREIGN KEY (`coordi_destino`) REFERENCES `b2_divisiones` (`id_divisiones`),
+  ADD CONSTRAINT `oficina_destino_fk` FOREIGN KEY (`oficina_destino`) REFERENCES `b1_direcciones` (`id_direcciones`),
+  ADD CONSTRAINT `procedencia_empr_fk` FOREIGN KEY (`procedencia`) REFERENCES `d2_empresas_corresp` (`id_empresas`);
+
+--
+-- Filtros para la tabla `d3_notificaciones_div`
+--
+ALTER TABLE `d3_notificaciones_div`
+  ADD CONSTRAINT `id_correspon_direccion_fk` FOREIGN KEY (`id_corres_dire`) REFERENCES `b1_direcciones` (`id_direcciones`),
+  ADD CONSTRAINT `id_correspon_division_fk` FOREIGN KEY (`id_corres_divi`) REFERENCES `b2_divisiones` (`id_divisiones`),
+  ADD CONSTRAINT `id_correspondencia_fk` FOREIGN KEY (`id_corresp`) REFERENCES `d1_correspondencia` (`id_nro_admision`),
+  ADD CONSTRAINT `id_empresa_correspon_fk` FOREIGN KEY (`id_empresa_corresp`) REFERENCES `d2_empresas_corresp` (`id_empresas`),
+  ADD CONSTRAINT `id_estatus_nombres_fk` FOREIGN KEY (`estatus_Corres`) REFERENCES `d4_notificaciones_estatus` (`id_estatus_notifi`),
+  ADD CONSTRAINT `id_jefe_division_corres_fk` FOREIGN KEY (`Jefe_Corres`) REFERENCES `a1_usuarios` (`id_usuario`);
+
+--
+-- Filtros para la tabla `z1_historial_camb_sis`
+--
+ALTER TABLE `z1_historial_camb_sis`
+  ADD CONSTRAINT `id_accion_cambio_fk` FOREIGN KEY (`id_accion_cambio`) REFERENCES `z2_historial_acciones` (`id_accHis`),
+  ADD CONSTRAINT `id_usuario_cambio_fk` FOREIGN KEY (`id_usuario_cambio`) REFERENCES `a1_usuarios` (`id_usuario`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
