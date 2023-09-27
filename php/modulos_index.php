@@ -107,18 +107,61 @@ function Modulos_Navegacion()
         </section>
         
         ';
-    } else {
+    }  else if ($_SESSION['nivel_usuario'] == 2) {
+        echo
+            '
+        <section class="border my-3 mx-4">
+            <h6 class="my-1 mx-5 fondo-readonly" id="mensajes_entrada">Bienvenido, a continuación se muestran las aplicaciones disponibles, puede acceder a la que desee utilizar haciendo click en el botón "Acceder"</h6>
+        
+            <section class="container-fluid contenedor-grid">
+            
+                <!-- SOPORTE TÉCNICO -->
+                <div class="border mx-3 altura-app mb-5">
+                    <div class="text-center">
+                        <img src="../assets/intranet/soporte/Soporte_Tecnico3.jpg" class="w-100">
+                    </div>
+                    <div class="p-3 text-center contenedores_modulos_info">
+                        <h2>Centro de Soporte</h2>
+                        <p class="text-justify">Es una aplicación que permite realizar solicitudes de soporte técnico de forma remota.</p>
+                    </div>
+                    <div class="align-middle text-center">
+                        <a class="btn btn-primary w-65 hover-boton" href="soporte_tecnico.php">Acceder</a>
+                    </div>
+                </div>
+                
+                <!-- PARQUE TECNOLÓGICO -->
+                <div class="border mx-3 altura-app mb-5">
+                    <div class="text-center">
+                        <img src="../assets/intranet/parque_tecnologico/Parque Tecnologico3.jpg" class="w-100">
+                    </div>
+                    <div class=" p-3 text-center contenedores_modulos_info">
+                        <h2>Parque Tecnológico</h2>
+                        <p class="text-justify">Es una aplicación que permite ingresar nuevos equipos al parque tecnológico, actualizarlo y verificar la ubicación y cantidad de los mismos.</p>
+                    </div>
+                    <div class="align-middle text-center">
+                        <a class="btn btn-primary w-65 hover-boton" href="parque_tecno.php">Acceder</a>
+
+                    </div>
+
+                </div>
+            </section>
+
+        </section>
+        
+        ';
+    } 
+    else if ($_SESSION['nivel_usuario'] == 3 && $_SESSION['id_departamento'] != 80){
         echo
             '
         <section class="border my-3 mx-4">
         <h6 class="my-1 mx-5 fondo-readonly" id="mensajes_entrada">Bienvenido, a continuación se muestran las aplicaciones disponibles, puede acceder a la que desee utilizar haciendo click en el botón "Acceder"</h6>
     
-        <section class="container-fluid contenedor-grid-3">
+        <section class="container-fluid contenedor-grid">
         
             <!-- SOPORTE TÉCNICO -->
             <div class="border mx-3 altura-app mb-5">
                 <div class="text-center">
-                    <img src="../assets/intranet/soporte/Soporte_Tecnico3.jpg" class="w-100">
+                    <img src="../assets/intranet/soporte/Soporte_Tecnico3_JEFE.jpg" class="w-100">
                 </div>
                 <div class="p-3 text-center contenedores_modulos_info">
                     <h2>Centro de Soporte</h2>
@@ -131,7 +174,47 @@ function Modulos_Navegacion()
             <!-- CORRESPONDENCIA -->
             <div class="border mx-3 altura-app mb-5">
                 <div class="text-center">
-                    <img src="../assets/intranet/correspondencia/correspondencia2.jpg" class="w-100">
+                    <img src="../assets/intranet/correspondencia/correspondencia2_CONSULTA.jpg" class="w-100">
+                </div>
+                <div class=" p-3 text-center contenedores_modulos_info">
+                    <h2>Correspondencia</h2>
+                    <p class="text-justify">Permite el registro de los documentos dirigidos a la DGSA, para su evaluación y remisión a los distintos departamentos de toda la institución.</p>
+                </div>
+                <div class="align-middle text-center">
+                    <a class="btn btn-primary w-65 hover-boton" href="correspondencia_menu.php">Acceder</a>
+                </div>
+
+            </div>
+        </section>
+
+    </section>
+        
+        ';
+    } else if ($_SESSION['nivel_usuario'] == 3 && $_SESSION['id_departamento'] == 80){
+        echo
+            '
+        <section class="border my-3 mx-4">
+        <h6 class="my-1 mx-5 fondo-readonly" id="mensajes_entrada">Bienvenido, a continuación se muestran las aplicaciones disponibles, puede acceder a la que desee utilizar haciendo click en el botón "Acceder"</h6>
+    
+        <section class="container-fluid contenedor-grid">
+        
+            <!-- SOPORTE TÉCNICO -->
+            <div class="border mx-3 altura-app mb-5">
+                <div class="text-center">
+                    <img src="../assets/intranet/soporte/Soporte_Tecnico3_JEFE.jpg" class="w-100">
+                </div>
+                <div class="p-3 text-center contenedores_modulos_info">
+                    <h2>Centro de Soporte</h2>
+                    <p class="text-justify">Es una aplicación que permite realizar solicitudes de soporte técnico de forma remota.</p>
+                </div>
+                <div class="align-middle text-center">
+                    <a class="btn btn-primary w-65 hover-boton" href="soporte_tecnico.php">Acceder</a>
+                </div>
+            </div>
+            <!-- CORRESPONDENCIA -->
+            <div class="border mx-3 altura-app mb-5">
+                <div class="text-center">
+                    <img src="../assets/intranet/correspondencia/correspondencia2_CORRESP.jpg" class="w-100">
                 </div>
                 <div class=" p-3 text-center contenedores_modulos_info">
                     <h2>Correspondencia</h2>

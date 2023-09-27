@@ -468,7 +468,7 @@ if ($correspondencia == "confirmarCo") {
 if ($correspondencia == "tabla_indiv_FIN") {
     $cuenta = 0;
     $usuario_coordinacion = $_SESSION['id_Coordinacion'];
-
+    $rolUniversal = $_SESSION['nombre_rol'];
     include("abrir_conexion.php");
     $idUsr = $_SESSION['id_usr'];
     echo
@@ -489,7 +489,13 @@ if ($correspondencia == "tabla_indiv_FIN") {
         <tbody id="bodyCorresInd" class="align-middle">
     ';
 
-    $tabla_Buscar = mysqli_query($conexion, "SELECT * FROM $tabla_db12 nt INNER JOIN $tabla_db11 em ON nt.id_empresa_corresp = id_empresas INNER JOIN $tabla_db10 co ON nt.id_corresp = id_nro_admision INNER JOIN $tabla_db4 dv ON nt.id_corres_divi = id_divisiones INNER JOIN $tabla_db5 dr ON nt.id_corres_dire = dr.id_direcciones INNER JOIN $tabla_db13 ns ON nt.estatus_Corres = ns.id_estatus_notifi WHERE Jefe_Corres = '$idUsr' AND id_corres_divi='$usuario_coordinacion' AND estatus_Corres = '2'");
+    $tabla_Buscar = mysqli_query($conexion, "SELECT * FROM $tabla_db12 nt 
+    INNER JOIN $tabla_db11 em ON nt.id_empresa_corresp = id_empresas 
+    INNER JOIN $tabla_db10 co ON nt.id_corresp = id_nro_admision 
+    INNER JOIN $tabla_db4 dv ON nt.id_corres_divi = id_divisiones 
+    INNER JOIN $tabla_db5 dr ON nt.id_corres_dire = dr.id_direcciones 
+    INNER JOIN $tabla_db13 ns ON nt.estatus_Corres = ns.id_estatus_notifi 
+    WHERE Jefe_Corres = '$idUsr' AND id_corres_divi='$usuario_coordinacion' AND estatus_Corres = '2'");
     // $resultados = mysqli_query($conexion,$tabla_Buscar);
     while ($consulta = mysqli_fetch_array($tabla_Buscar)) {
         $idCorres = $consulta['id_notificacion'];

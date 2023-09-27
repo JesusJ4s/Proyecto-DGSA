@@ -106,7 +106,7 @@ $_SESSION["comprobante"] = 0;
 
                                 <div class="row">
                                     <div class="col-4 ms-4">
-                                        <select class="p-0 formulario__input" id="nacionalidad" name="nacionalidad"
+                                        <select class="ps-3 formulario__input" id="nacionalidad" name="nacionalidad"
                                             required>
                                             <option class="form-control ms-4 formulario__input" value="V">V</option>
                                             <option class="form-control ms-4 formulario__input" value="E">E</option>
@@ -261,15 +261,12 @@ $_SESSION["comprobante"] = 0;
                             </label>
                         </div>
 
-                        <div class="formulario__mensaje" id="formulario__mensaje">
+                        <div class="formulario__mensaje my-2" id="formulario__mensaje">
                             <p><b>ERROR:</b> Por favor rellene el formulario de manera correcta</p>
                         </div>
                         <div class="formulario__grupo formulario__grupo-btn-enviar m-0" id="finalUsr">
-                            <button type="submit" class="btn btn-primary" id="registrar" name="registrar"
-                                disabled>Registrar
-                                Usuario</button>
-                            <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado
-                                correctamente</p>
+                            <button type="submit" class="btn btn-primary" id="registrar" name="registrar" disabled>Registrar Usuario</button>
+                            <!-- <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado correctamente</p> -->
                         </div>
                         <!-- BOTÓN DE SALIDA AL SEGUNDO PASO -->
                         <div id="div_paso2" class="ocultar-div">

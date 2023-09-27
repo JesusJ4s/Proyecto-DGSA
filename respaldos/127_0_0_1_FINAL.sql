@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-09-2023 a las 07:42:01
+-- Tiempo de generación: 27-09-2023 a las 00:44:42
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -267,7 +267,8 @@ INSERT INTO `b3_departamentos` (`id_departamento`, `nombre_dpto`, `departamento_
 (76, 'Departamento Informática (Dosimetria Externa)', 31),
 (77, 'Dosimetria Ambiental', 31),
 (78, 'Dosimetria Clinica y Auditoria de Equipos', 31),
-(79, 'Registro Nacional de Dosimetria', 31);
+(79, 'Registro Nacional de Dosimetria', 31),
+(80, 'Correspondencia', 1);
 
 -- --------------------------------------------------------
 
@@ -667,7 +668,7 @@ ALTER TABLE `b2_divisiones`
 -- AUTO_INCREMENT de la tabla `b3_departamentos`
 --
 ALTER TABLE `b3_departamentos`
-  MODIFY `id_departamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `id_departamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT de la tabla `c1_inventario_equipo`

@@ -73,7 +73,8 @@ if ($ingreso == "Registro") {
     $contraseña = password_hash($password_contra, PASSWORD_DEFAULT);
 
     $telefono = $_POST["telefono"];
-    $email = $_POST["correo"];
+    $email_base = $_POST["correo"];
+    $email = strtolower($email_base);
     $pin_seguridad = $_POST["pin"];
 
 

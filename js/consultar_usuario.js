@@ -472,6 +472,15 @@ function auditoriaUsr() {
                         });
                     });
                 },
+                initComplete: function () {
+                    var table = this.api();
+                  
+                    // Obtener el índice de la columna de fechas
+                    var dateColumnIndex = 0; // Reemplaza con el índice de tu columna de fechas
+                  
+                    // Ordenar la columna de fechas de forma descendente (más lejano a más reciente)
+                    table.column(dateColumnIndex).order('desc').draw();
+                  }
             });
 
 

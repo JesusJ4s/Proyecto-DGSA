@@ -18,10 +18,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `practica_php_dgsa`
+-- Base de datos: `proyecto_dgsa`
 --
-CREATE DATABASE IF NOT EXISTS `practica_php_dgsa` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
-USE `practica_php_dgsa`;
+CREATE DATABASE IF NOT EXISTS `proyecto_dgsa` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
+USE `proyecto_dgsa`;
 
 -- --------------------------------------------------------
 

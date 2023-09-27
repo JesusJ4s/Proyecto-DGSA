@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-09-2023 a las 07:42:01
+-- Tiempo de generación: 27-09-2023 a las 08:59:23
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -54,6 +54,17 @@ CREATE TABLE `a1_usuarios` (
   `pin_seguridad` varchar(6) COLLATE utf8_bin NOT NULL,
   `sesion` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `a1_usuarios`
+--
+
+INSERT INTO `a1_usuarios` (`id_usuario`, `ActivoInactivo`, `nombre`, `apellido`, `nacionalidad`, `cedula`, `nombre_usuario`, `telefono`, `telefono_secundario`, `email`, `usuario_departamento_id`, `usuario_division_id`, `usuario_direccion_id`, `usuario_rol_id`, `contraseña`, `id_pregunta1`, `respuesta1`, `id_pregunta2`, `respuesta2`, `id_pregunta3`, `respuesta3`, `pin_seguridad`, `sesion`) VALUES
+(1, 1, 'Jesus', 'Castillo', 'V', '27146430', 'ADMINJ', '04124457287', '', 'jesusgole33@gmail.com', 21, 11, 1, 1, '$2y$10$8p79.cv0aZdbEW.p01p0uuocWGGvLz7b82ahuHWdPax6YiHMfZe9u', 1, '$2y$10$RuCe1dYl1RkUTK..HkHnQOmvRl4FLy0mLW4XlhDFGF45TsrmVWqoa', 2, '$2y$10$xME54fXKsDcEwSuEwYNMDOx3hxQaBWHE6Czj3aE/jcW.3sCdd/97O', 3, '$2y$10$iclFzNcXkLoOQWEmQelLHe7lrFsN3arIM15wFkvo3VE.UX1e0/MAC', '030303', 0),
+(2, 1, 'Prueba', 'Tecnico', 'V', '27146431', 'TECNICO1', '04124457287', '', 'jesusgole33@gmail.com', 21, 11, 1, 2, '$2y$10$C/HpR5XniJUcGBFMHJw3GOheL3dG2D255EqAHFx5p3nuOUsvlMJqu', 1, '$2y$10$pMo0iPT6zpu4apIwNmyR6OqCbOEVP.HuoTLwvKoneoGlpVhe2k052', 2, '$2y$10$WozaJtNhQnEbKm7bV1TLSuoKJtWNAfK.ScFB3G.cb.ju3RUFFe5g.', 3, '$2y$10$W2xfe7SZsIXW6K1frp90/OvEl9pJJEa4HgDnbnfy2zu/28RrlYmr2', '030303', 0),
+(3, 1, 'Jefe', 'Correspondencia', 'V', '27146432', 'JEFECORR', '04124457287', '', 'jesusgole33@gmail.com', 80, 1, 1, 3, '$2y$10$J/Va.zo22hYZDkBDf1uaROYAEQHA/.7aimYG1hRXouZzZrTH4XOsy', 1, '$2y$10$6/IlcYLcakRstuM8a0.tAO8q419kYX3FoeXgc78m7cLDb35UBnqCC', 2, '$2y$10$ZPiu6F64nWaHsh1q4M9yxOczLlyuNeOiuCSznieKTXjSJlZqIGg/K', 3, '$2y$10$Zpdz2QPby1bhi0zBpONwDuabmfktPzKrJ5pAp9x965iwWad/u2nvq', '030303', 0),
+(4, 1, 'Empleado', 'Vista', 'V', '27146433', 'EMPLEADO', '04124457287', '', 'jesusgole33@gmail.com', 25, 15, 1, 4, '$2y$10$vIQOE8Vk0x2UinfutOtqhOX.wEeRkZBuuREMt76RuhkCJ16r22pOW', 1, '$2y$10$GY0IcODJAc2YSJdm0y/Fru43BbTUxJpnTg1icM1e3Q1qj/KQD0jBS', 2, '$2y$10$M3R//RYBCpzYBbEldq4PSeloIexkktbayOXZMubGshVkB0IBRCApq', 3, '$2y$10$vc3weLGWv4eOwx0rLmlRbueMMPze/F1S12VbDWjqnr9cSAX22ZL1y', '030303', 0),
+(5, 1, 'Salud', 'Radiologica', 'V', '27146434', 'RADIOLOGO', '04124457287', '', 'jesusgole33@gmail.com', 72, 30, 3, 3, '$2y$10$3xqE/4YErRTagfCBGvd6f.Ajagr7OOubm9d3UdgoRJfT2fdyAlqDC', 1, '$2y$10$LFw/K3WLbKj3dCW5vqkZ.e7.w6lqs0O6QR126FVJFQ8jzGx7IQbyS', 2, '$2y$10$nUdPAGKoDnb5MInuXO/AAeaTXjy/ouTAgCSWQrA1v0tE3M3sZZN8W', 3, '$2y$10$6Fzsi/yQJVaG08ZM7W/nheny/6Ttypyxq1BtFc.cGWXJ0kVaJJ/VW', '030303', 0);
 
 -- --------------------------------------------------------
 
@@ -185,7 +196,7 @@ INSERT INTO `b2_divisiones` (`id_divisiones`, `nombre_div`, `division_direccion_
 (21, 'Sala de Inspectores', 5),
 (22, 'Sala Dibujo', 5),
 (23, 'Coordinación Gestión de Medicamentos', 5),
-(24, 'Sala Situacional', 5),
+(24, 'Sala Situacional', 1),
 (25, 'Laboratorio de Malaria', 5),
 (26, 'Laboratorio de Parasitología', 5),
 (27, 'Laboratorio de Chagas', 5),
@@ -267,7 +278,8 @@ INSERT INTO `b3_departamentos` (`id_departamento`, `nombre_dpto`, `departamento_
 (76, 'Departamento Informática (Dosimetria Externa)', 31),
 (77, 'Dosimetria Ambiental', 31),
 (78, 'Dosimetria Clinica y Auditoria de Equipos', 31),
-(79, 'Registro Nacional de Dosimetria', 31);
+(79, 'Registro Nacional de Dosimetria', 31),
+(80, 'Correspondencia', 1);
 
 -- --------------------------------------------------------
 
@@ -322,6 +334,13 @@ CREATE TABLE `c1_inventario_equipo` (
   `comentario` varchar(255) COLLATE utf8_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Volcado de datos para la tabla `c1_inventario_equipo`
+--
+
+INSERT INTO `c1_inventario_equipo` (`id_case`, `fecha_inventario`, `ing_encar_inv_id`, `dpto_inv_id`, `division_inv_id`, `direccion_inv_id`, `responsable`, `supervisor_dpto`, `nombre_equipo`, `BN_equipo`, `serial_equipo`, `tipo_de_equipo`, `cpu_modelo`, `cpu_velocidad`, `mac`, `ip`, `disco_duro_cap`, `disco_duro_marca`, `disco_duro_serial`, `ram`, `ram_velocidad`, `windows_ver`, `conect_red`, `tipo_conexion`, `internet`, `mouse`, `BN_serial_mouse`, `mouse_marca`, `mouse_conexion`, `monitor`, `monitor_conexion`, `BN_serial_monitor`, `regulador`, `regulador_marca`, `BN_serial_regulador`, `teclado`, `teclado_marca`, `teclado_conexion`, `BN_serial_teclado`, `escaner`, `escaner_modelo`, `escaner_conexion`, `BN_serial_escaner`, `comentario`) VALUES
+(1, '2023-09-26', 2, 43, 24, 1, 'Javier Martinez', 'Rodolfo Mejias', 'M1SSPC18', '5080795', 'SinSerial', 'Escritorio', 'i5 10505', '3.20Ghz', 'D0-8E-79-0F-A4-C6', '10.72.3.236', '512gb', 'desconocida', '42D54D8B', '1', '8Gb', '10', 'Si', 'Ambas', 'Si', 'Si', 'SinBN', 'HP', 'USB', 'HP', 'VGA', '5080795', 'Si', 'Generico', '5080795', 'Si', 'Generico', 'USB', '5080795', 'No', '', '', '', 'Primer registro del equipo de inventario tecnológico');
+
 -- --------------------------------------------------------
 
 --
@@ -365,6 +384,13 @@ CREATE TABLE `c3_solicitudes_soportes` (
   `comentario` varchar(255) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Volcado de datos para la tabla `c3_solicitudes_soportes`
+--
+
+INSERT INTO `c3_solicitudes_soportes` (`id_soporte`, `uso_equipo`, `id_equipo_soporte`, `nomb_equipo_soporte`, `nivel_soporte`, `soporte_descripcion`, `fecha_soporte_solicitud`, `estado`, `fecha_soporte_aceptacion`, `tecnico_soporte_id`, `fecha_soporte_final`, `comentario`) VALUES
+(1, 'Uso Oficial', 1, 'M1SSPC18', 'Nivel Hardware', 'Sonidos extraños al encender el pc y mientras está encendida', '2023-09-26 21:00:30', 3, '2023-09-26 21:03:57', 2, '2023-09-26 21:06:11', 'Finalizacion del soporte tecnico de manera exitosa');
+
 -- --------------------------------------------------------
 
 --
@@ -396,6 +422,13 @@ CREATE TABLE `d1_correspondencia` (
   `coordi_destino` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Volcado de datos para la tabla `d1_correspondencia`
+--
+
+INSERT INTO `d1_correspondencia` (`id_nro_admision`, `nro_oficio`, `fecha_sal_empresa`, `procedencia`, `rif_corresp_emp`, `asunto`, `fecha_llegada`, `oficina_destino`, `coordi_destino`) VALUES
+(1, '578258', '2023-09-04', 1, '80369369', 'Registro de equipo de radiologia', '2023-09-06 00:00:00', 3, 30);
+
 -- --------------------------------------------------------
 
 --
@@ -409,6 +442,13 @@ CREATE TABLE `d2_empresas_corresp` (
   `nombre_empresa` varchar(45) COLLATE utf8_bin NOT NULL,
   `dedicacion` varchar(255) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `d2_empresas_corresp`
+--
+
+INSERT INTO `d2_empresas_corresp` (`id_empresas`, `identificador_rif`, `rif`, `nombre_empresa`, `dedicacion`) VALUES
+(1, 'J', '80369369', 'Centro de Salud', 'Medicina nuclear');
 
 -- --------------------------------------------------------
 
@@ -430,6 +470,13 @@ CREATE TABLE `d3_notificaciones_div` (
   `descripcion_corresp` varchar(255) COLLATE utf8_bin NOT NULL,
   `estatus_Corres` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `d3_notificaciones_div`
+--
+
+INSERT INTO `d3_notificaciones_div` (`id_notificacion`, `id_corresp`, `id_empresa_corresp`, `id_corres_divi`, `id_corres_dire`, `Jefe_Corres`, `Jefe_Ced_Corres`, `fecha_llegada_corresp`, `fecha_elim_notifi`, `fecha_confirmacion_corres`, `descripcion_corresp`, `estatus_Corres`) VALUES
+(1, 1, 1, 30, 3, 5, '27146434', '2023-09-26 09:53:22', '2023-09-27 09:53:22', '2023-09-26 09:56:34', 'Registro de equipo de radiologia', 2);
 
 -- --------------------------------------------------------
 
@@ -464,6 +511,66 @@ CREATE TABLE `z1_historial_camb_sis` (
   `fecha_usuario_cambio` datetime DEFAULT NULL,
   `descripcion_cambio` text COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `z1_historial_camb_sis`
+--
+
+INSERT INTO `z1_historial_camb_sis` (`id_historial_cambios`, `id_usuario_cambio`, `id_accion_cambio`, `fecha_usuario_cambio`, `descripcion_cambio`) VALUES
+(1, 1, 1, '2023-09-26 19:45:37', 'Nuevo Usuario registrandose en el Sistema, nombre del empleado: Jesus Castillo, cédula V-27146430. Dicho empleado se ha registrado como trabajador en: Coordinación de Informática'),
+(2, 1, 1, '2023-09-26 19:46:13', 'El usuario Jesus Castillo, finalizó el registro las preguntas de seguridad.'),
+(3, 2, 1, '2023-09-26 20:23:29', 'Nuevo Usuario registrandose en el Sistema, nombre del empleado: Prueba Tecnico, cédula V-27146431. Dicho empleado se ha registrado como trabajador en: Coordinación de Informática'),
+(4, 2, 1, '2023-09-26 20:23:43', 'El usuario Prueba Tecnico, finalizó el registro las preguntas de seguridad.'),
+(5, 3, 1, '2023-09-26 20:25:14', 'Nuevo Usuario registrandose en el Sistema, nombre del empleado: Jefe Correspondencia, cédula V-27146432. Dicho empleado se ha registrado como trabajador en: Despacho Dirección'),
+(6, 3, 1, '2023-09-26 20:25:27', 'El usuario Jefe Correspondencia, finalizó el registro las preguntas de seguridad.'),
+(7, 4, 1, '2023-09-26 20:26:34', 'Nuevo Usuario registrandose en el Sistema, nombre del empleado: Empleado Vista, cédula V-27146433. Dicho empleado se ha registrado como trabajador en: Control Interno'),
+(8, 4, 1, '2023-09-26 20:26:45', 'El usuario Empleado Vista, finalizó el registro las preguntas de seguridad.'),
+(9, 5, 1, '2023-09-26 20:28:05', 'Nuevo Usuario registrandose en el Sistema, nombre del empleado: Salud Radiologica, cédula V-27146434. Dicho empleado se ha registrado como trabajador en: Enlace de Recursos Humanos'),
+(10, 5, 1, '2023-09-26 20:28:16', 'El usuario Salud Radiologica, finalizó el registro las preguntas de seguridad.'),
+(11, 1, 5, '2023-09-26 20:32:50', 'Ingreso del Usuario: Jesus Castillo.'),
+(12, 1, 2, '2023-09-26 20:38:47', 'El usuario: Jesus Castillo realizó cambios en los datos del empleado: Prueba Tecnico, cambios realizados: Rol del Usuario cambió de: Sin Acceso a: Ingeniero Informático. Cambios realizados.'),
+(13, 1, 1, '2023-09-26 20:50:06', 'Nuevo registro de equipo en el inventario tecnológico, nombre del equipo: M1SSPC18. Nro de Registro: 1.'),
+(14, 1, 1, '2023-09-26 21:00:30', 'Nueva solicitud de Soporte técnico, nombre del equipo: M1SSPC18.'),
+(15, 1, 2, '2023-09-26 21:03:57', 'Actualización de solicitud de Soporte técnico, nombre del equipo: M1SSPC18, Nro de Solicitud: 1. Actualizada a -En Proceso-, por Jesus Castillo, técnico designado: Prueba Tecnico.'),
+(16, 1, 2, '2023-09-26 21:06:11', 'Culminación de la solicitud de Soporte técnico, nombre del equipo: M1SSPC18, Nro de Solicitud: 1. Actualizada a -Finalizada-, por Jesus Castillo, técnico designado de realizar el soporte: Prueba Tecnico.'),
+(17, 1, 2, '2023-09-26 21:10:55', 'El usuario: Jesus Castillo realizó cambios en los datos del empleado: Jefe Correspondencia, cambios realizados: Rol del Usuario cambió de: Sin Acceso a: Jefe de Coordinación. Cambios realizados.'),
+(18, 1, 6, '2023-09-26 21:11:12', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(19, 3, 5, '2023-09-26 21:11:39', 'Ingreso del Usuario: Jefe Correspondencia.'),
+(20, 3, 6, '2023-09-26 21:24:54', 'Salida del sistema del Usuario: Jefe Correspondencia.'),
+(21, 3, 5, '2023-09-26 21:25:23', 'Ingreso del Usuario: Jefe Correspondencia.'),
+(22, 3, 6, '2023-09-26 21:29:42', 'Salida del sistema del Usuario: Jefe Correspondencia.'),
+(23, 2, 5, '2023-09-26 21:30:24', 'Ingreso del Usuario: Prueba Tecnico.'),
+(24, 2, 6, '2023-09-26 21:44:14', 'Salida del sistema del Usuario: Prueba Tecnico.'),
+(25, 1, 5, '2023-09-26 21:44:32', 'Ingreso del Usuario: Jesus Castillo.'),
+(26, 1, 2, '2023-09-26 21:44:50', 'El usuario: Jesus Castillo realizó cambios en los datos del empleado: Empleado Vista, cambios realizados: Rol del Usuario cambió de: Sin Acceso a: Secretario. Cambios realizados.'),
+(27, 1, 2, '2023-09-26 21:45:04', 'El usuario: Jesus Castillo realizó cambios en los datos del empleado: Salud Radiologica, cambios realizados: Rol del Usuario cambió de: Sin Acceso a: Jefe de Coordinación. Cambios realizados.'),
+(28, 1, 6, '2023-09-26 21:45:14', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(29, 4, 5, '2023-09-26 21:45:33', 'Ingreso del Usuario: Empleado Vista.'),
+(30, 4, 6, '2023-09-26 21:47:51', 'Salida del sistema del Usuario: Empleado Vista.'),
+(31, 5, 5, '2023-09-26 21:48:14', 'Ingreso del Usuario: Salud Radiologica.'),
+(32, 5, 6, '2023-09-26 21:48:42', 'Salida del sistema del Usuario: Salud Radiologica.'),
+(33, 3, 5, '2023-09-26 21:48:50', 'Ingreso del Usuario: Jefe Correspondencia.'),
+(34, 3, 1, '2023-09-26 21:52:39', 'Se registra una nueva empresa en el sistema, bajo el nombre. Centro de Salud, y cuyo RIF es: J-80369369. Registro hecho por: Jefe Correspondencia.'),
+(35, 3, 1, '2023-09-26 21:53:22', 'Se registra una nueva correspondencia, nro de oficio: 578258, bajo el nombre de la empresa: Centro de Salud, cuyo rif es: J-80369369. Usuario encargado del registro: Jefe Correspondencia'),
+(36, 3, 6, '2023-09-26 21:54:31', 'Salida del sistema del Usuario: Jefe Correspondencia.'),
+(37, 1, 5, '2023-09-26 21:54:40', 'Ingreso del Usuario: Jesus Castillo.'),
+(38, 1, 2, '2023-09-26 21:55:03', 'El usuario: Jesus Castillo realizó cambios en los datos del empleado: Salud Radiologica, cambios realizados: Departamento cambió de: Recursos Humanos a: Estadistica Radiologica. Division cambió de: Enlace de Recursos Humanos a: Coordinación de Regulación y Control de Radiaciones. Cambios realizados.'),
+(39, 1, 6, '2023-09-26 21:55:23', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(40, 5, 5, '2023-09-26 21:55:31', 'Ingreso del Usuario: Salud Radiologica.'),
+(41, 5, 2, '2023-09-26 21:56:34', 'El usuario: Salud Radiologica aceptó correspondencia, con el nro de admisión 1. Estatus de la Correspondencia cambió de: En espera a Confirmado. Cambios realizados.'),
+(42, 5, 6, '2023-09-26 21:57:03', 'Salida del sistema del Usuario: Salud Radiologica.'),
+(43, 1, 5, '2023-09-26 21:57:18', 'Ingreso del Usuario: Jesus Castillo.'),
+(44, 1, 6, '2023-09-26 22:08:08', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(45, 2, 5, '2023-09-26 22:08:37', 'Ingreso del Usuario: Prueba Tecnico.'),
+(46, 2, 6, '2023-09-26 22:09:20', 'Salida del sistema del Usuario: Prueba Tecnico.'),
+(47, 3, 5, '2023-09-26 22:09:37', 'Ingreso del Usuario: Jefe Correspondencia.'),
+(48, 3, 6, '2023-09-26 22:09:58', 'Salida del sistema del Usuario: Jefe Correspondencia.'),
+(49, 1, 5, '2023-09-26 22:21:52', 'Ingreso del Usuario: Jesus Castillo.'),
+(50, 1, 6, '2023-09-26 22:30:17', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(51, 4, 5, '2023-09-26 22:30:35', 'Ingreso del Usuario: Empleado Vista.'),
+(52, 4, 6, '2023-09-26 22:33:56', 'Salida del sistema del Usuario: Empleado Vista.'),
+(53, 2, 5, '2023-09-26 22:34:05', 'Ingreso del Usuario: Prueba Tecnico.'),
+(54, 2, 6, '2023-09-26 22:34:27', 'Salida del sistema del Usuario: Prueba Tecnico.');
 
 -- --------------------------------------------------------
 
@@ -631,7 +738,7 @@ ALTER TABLE `z2_historial_acciones`
 -- AUTO_INCREMENT de la tabla `a1_usuarios`
 --
 ALTER TABLE `a1_usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `a2_rol`
@@ -667,13 +774,13 @@ ALTER TABLE `b2_divisiones`
 -- AUTO_INCREMENT de la tabla `b3_departamentos`
 --
 ALTER TABLE `b3_departamentos`
-  MODIFY `id_departamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `id_departamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT de la tabla `c1_inventario_equipo`
 --
 ALTER TABLE `c1_inventario_equipo`
-  MODIFY `id_case` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_case` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `c3_1_estado_soporte`
@@ -685,7 +792,7 @@ ALTER TABLE `c3_1_estado_soporte`
 -- AUTO_INCREMENT de la tabla `c3_solicitudes_soportes`
 --
 ALTER TABLE `c3_solicitudes_soportes`
-  MODIFY `id_soporte` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_soporte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `c4_base_conocimiento`
@@ -697,19 +804,19 @@ ALTER TABLE `c4_base_conocimiento`
 -- AUTO_INCREMENT de la tabla `d1_correspondencia`
 --
 ALTER TABLE `d1_correspondencia`
-  MODIFY `id_nro_admision` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_nro_admision` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `d2_empresas_corresp`
 --
 ALTER TABLE `d2_empresas_corresp`
-  MODIFY `id_empresas` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_empresas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `d3_notificaciones_div`
 --
 ALTER TABLE `d3_notificaciones_div`
-  MODIFY `id_notificacion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_notificacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `d4_notificaciones_estatus`
@@ -721,7 +828,7 @@ ALTER TABLE `d4_notificaciones_estatus`
 -- AUTO_INCREMENT de la tabla `z1_historial_camb_sis`
 --
 ALTER TABLE `z1_historial_camb_sis`
-  MODIFY `id_historial_cambios` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_historial_cambios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT de la tabla `z2_historial_acciones`

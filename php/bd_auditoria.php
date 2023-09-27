@@ -11,8 +11,8 @@ ob_start();
 // Ejemplo de llamada: exportarTablas("localhost", "root", "123", "foo");
 $host = "localhost"; // Será el valor de nuestra base de datos
 $usuario = "root";
-$pasword = "";
-$nombreDeBaseDeDatos = "practica_php_dgsa";
+$pasword = "superAdmin*";
+$nombreDeBaseDeDatos = "proyecto_dgsa";
 date_default_timezone_set("America/Caracas");
 
 function exportarTablas($host, $usuario, $pasword, $nombreDeBaseDeDatos)
@@ -89,7 +89,7 @@ function exportarTablas($host, $usuario, $pasword, $nombreDeBaseDeDatos)
 }
 
 
-exportarTablas("localhost", "root", "", "practica_php_dgsa");
+exportarTablas("localhost", "root", "superAdmin*", "proyecto_dgsa");
 // AUDITORIA *****************************************************************
 include("abrir_conexion.php");
 $valorID = $_SESSION['id_usr'];

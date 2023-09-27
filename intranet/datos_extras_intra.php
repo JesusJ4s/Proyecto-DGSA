@@ -23,7 +23,7 @@ if ($_SESSION['paso2'] <> 1) {
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/style_usr.css">
-    
+
     <script src="../jquery/jquery-3.6.4.min.js"></script>
 
     <title>Datos Extra</title>
@@ -80,12 +80,15 @@ if ($_SESSION['paso2'] <> 1) {
                 <!-- <div class="col-6 formulario__grupo">
                     <img src="../assets/logos/DGSA/intranet.jpg" alt="Intranet" class="w-35">
                 </div> -->
-                <div class="col-6 text-start">
+                <div class=" text-start row">
                     <button type="button" class="boton_toast_ayuda d-inline " data-bs-toggle="modal"
-                    data-bs-target="#mi-modal-ayuda"><img src="../assets/intranet/pregunta.png"
-                    class="img_toast"></button>
+                        data-bs-target="#mi-modal-ayuda"><img src="../assets/intranet/pregunta.png"
+                            class="img_toast"></button>
+                    <div class="align-middle col-auto">
+
+                        <h3 class="">Preguntas de Seguridad</h3>
+                    </div>
                 </div>
-                <h3 class="">Preguntas de Seguridad</h3>
                 <br>
                 <!-- Grupo color favorito -->
                 <div class="col-6 formulario__grupo" id="">
@@ -102,7 +105,8 @@ if ($_SESSION['paso2'] <> 1) {
                             include("../php/cerrar_conexion.php");
                             ?>
                             <?php foreach ($ejecutar as $opciones): ?>
-                                <option value="<?php echo $opciones['id_pregunta'] ?>"><?php echo $opciones['pregunta'] ?>
+                                <option value="<?php echo $opciones['id_pregunta'] ?>">
+                                    <?php echo $opciones['pregunta'] ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
@@ -137,7 +141,8 @@ if ($_SESSION['paso2'] <> 1) {
                             include("../php/cerrar_conexion.php");
                             ?>
                             <?php foreach ($ejecutar as $opciones): ?>
-                                <option value="<?php echo $opciones['id_pregunta'] ?>"><?php echo $opciones['pregunta'] ?>
+                                <option value="<?php echo $opciones['id_pregunta'] ?>">
+                                    <?php echo $opciones['pregunta'] ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
@@ -171,7 +176,8 @@ if ($_SESSION['paso2'] <> 1) {
                             include("../php/cerrar_conexion.php");
                             ?>
                             <?php foreach ($ejecutar as $opciones): ?>
-                                <option value="<?php echo $opciones['id_pregunta'] ?>"><?php echo $opciones['pregunta'] ?>
+                                <option value="<?php echo $opciones['id_pregunta'] ?>">
+                                    <?php echo $opciones['pregunta'] ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
@@ -206,12 +212,13 @@ if ($_SESSION['paso2'] <> 1) {
                     <div class="formulario__grupo formulario__grupo-btn-enviar">
                         <button type="submit" class="text-center btn btn-primary" id="registrar_extras"
                             name="registrar_extras">Ingresar Datos</button>
-                        <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado correctamente
+                        <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado
+                            correctamente
                         </p>
-                        <a id="salir" class="btn btn-secondary mt-2" href="intranet.php">Volver</a>
+                        <a id="salir" class="btn btn-secondary" href="intranet.php">Volver</a>
 
                     </div>
-                </div>                
+                </div>
                 <!-- TODO: -->
                 <input type="hidden" id="ingreso" name="ingreso" value="DatosExtras">
 
@@ -220,7 +227,7 @@ if ($_SESSION['paso2'] <> 1) {
                 </div>
                 <!-- Grupo botones de salida y envío -->
 
-                
+
                 <div id="texto_obligatorio">
                     <p class="text-danger text-start ocultar-div" id="obligatorio">*Obligatorias*</p>
                 </div>

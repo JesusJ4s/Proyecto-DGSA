@@ -204,7 +204,7 @@ include("../php/date_time.php");
                                         <br>
                                         <div class="col-3">
                                             <label><b>Técnico para el Soporte</b></label>
-                                            <select class="form-select bg-secondary text-light" id="ingeniero_selector"
+                                            <select class="form-select" id="ingeniero_selector"
                                                 name="ingeniero_selector" required>
                                                 <?php
 

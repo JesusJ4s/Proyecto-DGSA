@@ -229,7 +229,7 @@ if ($busqueda == "edicionCPU") {
     $mac = $_POST['mac_mostrar'];
     $tec_editor = $_SESSION['id_usr'];
     $id_equipo = $_POST['id_del_equipo'];
-    $nombre_equipo = $_POST['nomb_equip_edit'];
+    $nombre_equipo = strtoupper($_POST['nomb_equip_edit']);
 
 
     // SE DEBE VALIDAR SI HUBO CAMBIOS EN LA UBICACIÓN FÍSICA DEL EQUIPO
@@ -760,7 +760,8 @@ if ($busqueda == 6) {
 if ($busqueda == 7) {
     include("abrir_conexion.php");
 
-    $name_search = $_POST['name_sea'];
+    // $name_search_cambiar = $_POST['name_sea'];
+    $name_search = strtoupper($_POST['name_sea']); 
 
     $cont_consul = 0;
     // BUSCAR DATOS DEL EQUIPO Y TRAER

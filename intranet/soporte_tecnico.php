@@ -37,7 +37,9 @@ include("../php/date_time.php");
                 </div>
                 <div class="modal-body">
                     <p>
-                        Consulte las solicitudes hechas o haga una solicitud.
+                        Consulte las solicitudes hechas al equipo de técnicos de informática o haga una solicitud para solucionar algún inconveniente que se le haya presentado.
+                        <br><br>
+                        Tambien puede visualizar el área de Base de Conocimiento, para conocer las posibles soluciones.
                     </p>
 
                 </div>

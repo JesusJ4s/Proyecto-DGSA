@@ -9,9 +9,22 @@ function Modulos_Navegacion_soporte(){
                 <h6 class="my-3 mx-5 fondo-readonly" id="mensajes_entrada">Bienvenido, a continuación se muestran las aplicaciones disponibles, puede acceder a la que desee utilizar haciendo click en el botón "Acceder"</h6>
             
                 <!-- BOTONES ASPECTO 2 -->
-                <section class="container-fluid contenedor-grid-3">
+                <section class="container-fluid contenedor-grid">
                     <!-- INGRESO SOLICITUD -->
-                    <div></div>
+                    <div class="border mx-3 altura-app p-2 mb-3">
+                        <h3 class="border text-center p-2 mb-3">Solicitud de Soporte Técnico</h3>
+
+                        <div class="text-center">
+                            <img src="../assets/intranet/soporte/salvavidas.png" class="wh-logos-app p-2">
+                        </div>
+                        <div class=" text-center py-3 px-3">
+                            <p class="text-justify">Realice su consulta a través del sistema de solicitudes</p>
+                            <div class="py-2">
+                                <a class="btn btn-primary w-65 hover-boton" href="soporte_tecnico_solicitud.php">Acceder</a>
+                            </div>
+                        </div>
+                        
+                    </div>
                     <!-- BASE DE CONOCIMIENTO -->
                     <div class="border mx-3 altura-app p-2 mb-3">
                         <h3 class="border text-center p-2 mb-3">Base de Conocimiento</h3>
@@ -25,11 +38,7 @@ function Modulos_Navegacion_soporte(){
                                 <a class="btn btn-primary w-65 hover-boton" href="soporte_tecnico_base.php">Acceder</a>
                             </div>
                         </div>
-                    </div>
-                    <!-- VER SOLICITUDES -->
-                    <div></div>
-
-        
+                    </div>        
                 </section>
 
             </section>

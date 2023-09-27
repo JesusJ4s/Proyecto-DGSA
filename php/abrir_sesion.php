@@ -36,6 +36,7 @@ if ($ingreso == "log") {
                     $valorSesion = $consulta['sesion'];
                     $valorRol = $consulta['nombre_rol'];
                     $valorCoordinacion = $consulta['usuario_division_id'];
+                    $valorDepartamento = $consulta['usuario_departamento_id'];
                 }
                 if ($valorSesion == 0) {
                     include("date_time.php");
@@ -61,6 +62,7 @@ if ($ingreso == "log") {
                     $_SESSION['nombre'] = $nombre;
                     $_SESSION['id_usr'] = $valorID;
                     $_SESSION['id_Coordinacion'] = $valorCoordinacion;
+                    $_SESSION['id_departamento'] = $valorDepartamento;
                     $pollo = $valorID;
                     $_SESSION['nombre_rol'] = $valorRol;
                     if ($valorCargo == 1) {

@@ -1,8 +1,8 @@
 <?php
     $host = "localhost";   // Será el valor de nuestra base de datos
-    $basededatos = "practica_php_dgsa";
+    $basededatos = "proyecto_dgsa";
     $usuariodb = "root";
-    $clavedb = "";
+    $clavedb = "superAdmin*";
     
     //Lista de Tablas
     $tabla_db1 = "a1_usuarios";    // Tabla de usuarios

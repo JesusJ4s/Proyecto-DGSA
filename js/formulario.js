@@ -76,7 +76,7 @@ const expresiones = {
     nombre: /^[a-zA-ZÀ-ý\s]{1,45}$/, //Letras y espacios, pueden llevar acentos.
     apellido: /^[a-zA-ZÀ-ý\s]{1,45}$/, //Letras y espacios, pueden llevar acentos.
     cedula: /^[0-9]{7,9}$/, // 7 a 9 dígitos
-    correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-z]+$/,
+    correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]+$/,
     password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_]{8,15}$/, // 8 a 15 dígitos
     telefono: /^\d{4}-?\d{7}$|^\d{11}$/, // 7 a 14
     pin: /^[0-9]{4,6}$/ // 7 a 14
