@@ -47,7 +47,15 @@ Login_ING_Admin();
                     <!-- CUADRO DE LA DERECHA -->
                     <div class="container-fluid text-center mx-2  p-2 bg-blanco-hsl border-radius-15">
                         <div class="p-5 border-radius-15 row">
-                            <!--  ocultar-div -->
+
+                            <!--  DATOS -->
+
+                            <!-- <div class="container-fluid border py-4 col-12 bg-blanco border-radius-15" id="parte1">
+                                <h5>Datos de la institución:</h5>
+
+                            </div> -->
+                            <!-- ***************************************************************************************************************************** -->
+                            <!--  CONSULTA POR UBICACION -->
                             <div class="col-12 mb-5 p-3 bg-blanco border-radius-15" id="parte1">
 
                                 <!-- CONSULTA -->
@@ -56,9 +64,6 @@ Login_ING_Admin();
                                     <div class=" border p-2 border-radius-15">
                                         <h5 class="my-2">Direcciones</h5>
                                         <!-- Tabla que contiene las Direcciones -->
-                                        <form action="../reportes/parque_tecno_reporte_direc.php" target="_blank"
-                                            method="post">
-
                                             <div class="my-5">
                                                 <select class="form-select" id="direccion_select"
                                                     name="direccion_select" required>
@@ -66,7 +71,7 @@ Login_ING_Admin();
                                                     // BUSCAR LA INFORMACIÓN
                                                     include("../php/abrir_conexion.php");
 
-                                                    $consulta = "SELECT * FROM $tabla_db5";
+                                                    $consulta = "SELECT * FROM $tabla_db5 where id_direcciones != 6";
                                                     $ejecutar = mysqli_query($conexion, $consulta) or die(mysqli_error($conexion));
 
                                                     include("../php/cerrar_conexion.php");
@@ -84,16 +89,14 @@ Login_ING_Admin();
                                                     class="btn btn-success mt-5 mx-auto">Consultar</button>
                                             </div>
 
-                                            <button type="submit" class="btn btn-dark my-5"><img class="w-30px"
+                                            <button type="button" class="btn btn-dark my-5" onclick="consulta_PC_direc();"><img class="w-30px"
                                                     src="../assets/intranet/parque_tecnologico/archivo-pdf.png">Imprimir
                                                 Reporte</button>
-                                        </form>
+                      
                                     </div>
                                     <!-- ******************************************************************************************************** -->
                                     <!-- CONSULTA POR DEPARTAMENTO -->
                                     <div class=" border p-2 border-radius-15">
-                                        <form action="../reportes/parque_tecno_reporte_divis.php" target="_blank"
-                                            method="post">
                                             <h5 class="my-2">Divisiones</h5>
                                             <div class="my-5">
                                                 <div id="div_divisiones_select">
@@ -106,16 +109,14 @@ Login_ING_Admin();
                                                 <button type="button" onclick="consulta_div();"
                                                     class="btn btn-success mt-5 mx-auto">Consultar</button>
                                             </div>
-                                            <button type="submit" class="btn btn-dark my-5"><img class="w-30px"
+                                            <button type="button" class="btn btn-dark my-5" onclick="consulta_PC_divi();"><img class="w-30px"
                                                     src="../assets/intranet/parque_tecnologico/archivo-pdf.png">Imprimir
                                                 Reporte</button>
-                                        </form>
+
                                     </div>
                                     <!-- ******************************************************************************************************** -->
                                     <!-- CONSULTA POR DEPARTAMENTO -->
                                     <div class=" border p-2 border-radius-15">
-                                        <form action="../reportes/parque_tecno_reporte_depto.php" target="_blank"
-                                            method="post">
                                             <h5 class="my-2">Departamentos</h5>
                                             <div class="my-5">
                                                 <div id="div_dpto_select">
@@ -128,10 +129,10 @@ Login_ING_Admin();
                                                 <button type="button" onclick="consulta_dep();"
                                                     class="btn btn-success mt-5 mx-auto">Consultar</button>
                                             </div>
-                                            <button type="submit" class="btn btn-dark my-5"><img class="w-30px"
+                                            <button type="button" class="btn btn-dark my-5" onclick="consulta_PC_depa();"><img class="w-30px"
                                                     src="../assets/intranet/parque_tecnologico/archivo-pdf.png">Imprimir
                                                 Reporte</button>
-                                        </form>
+
                                     </div>
                                 </div>
                                 <div class="my-5 p-4" id="respuesta_consulta">
@@ -140,64 +141,39 @@ Login_ING_Admin();
                             </div>
 
                             <!-- ***************************************************************************************************************************** -->
+                            <!--  CONSULTA POR FECHA -->
+
                             <div class="container-fluid border py-4 ocultar-div col-12 bg-blanco border-radius-15"
                                 id="parte2">
                                 <h5>Ingrese la fecha:</h5>
-                                <form action="../reportes/parque_tecno_reporte_fecha.php" method="post" target="_blank">
-                                    <!-- CONSULTA -->
-                                    <div class="contenedor-grid-3">
-                                        <input type="date" class="form-control mt-2" placeholder="2023-12-28" required
-                                            id="fecha1" name="fecha">
-                                        <h6 class="">de hasta:</h6>
-                                        <input type="date" class="form-control mt-2" placeholder="2023-12-28" required
-                                            id="fecha2" name="fecha2">
-                                    </div>
-                                    <div class=" my-3">
-                                        <button type="button" class="btn btn-success" onclick="fechas();">Consutar
-                                            Fechas</button>
-                                    </div>
-                                    <div id="respuesta_fechas"></div>
+                                <!-- CONSULTA -->
+                                <div class="contenedor-grid-3">
+                                    <input type="date" class="form-control mt-2" placeholder="2023-12-28" required
+                                        id="fecha1" name="fecha">
+                                    <h6 class="">de hasta:</h6>
+                                    <input type="date" class="form-control mt-2" placeholder="2023-12-28" required
+                                        id="fecha2" name="fecha2">
+                                </div>
+                                <div class=" my-3">
+                                    <button type="button" class="btn btn-success" onclick="fechas();">Consutar
+                                        Fechas</button>
+                                </div>
+                                <div id="respuesta_fechas"></div>
 
-                                    <button type="submit" class="btn btn-dark my-5"><img class="w-10"
-                                            src="../assets/intranet/parque_tecnologico/archivo-pdf.png">Imprimir
-                                        Reporte</button>
-
-                                </form>
+                                <button type="button" class="btn btn-dark my-5" onclick="consulta_PC_fecha()"><img class="w-10" src="../assets/intranet/parque_tecnologico/archivo-pdf.png">Imprimir Reporte</button>
                             </div>
                             <!-- ***************************************************************************************************************************** -->
+                            <!--  CONSULTA TOTAL -->
                             <div class="container-fluid border py-4 ocultar-div col-12 bg-blanco border-radius-15"
                                 id="parte3">
-                                <h5>Ingrese el nombre del equipo:</h5>
-                                <form action="../reportes/parque_tecno_reporte_name.php" method="post" target="_blank">
-                                    <div class="">
-                                        <!-- CONSULTA -->
-                                        <input type="text" class="form-control mt-2" required placeholder=""
-                                            pattern="[0-9a-zA-Z]+" id="con_name" name="con_name" maxlength="17">
-
-                                        <button type="button" class="btn btn-success my-5"
-                                            onclick="name_consult();">Consutar por Nombre del Equipo</button>
-
-
-                                        <div id="respuesta_name"></div>
-                                    </div>
-                                    <button type="submit" class="btn btn-dark my-5"><img class="w-10"
-                                            src="../assets/intranet/parque_tecnologico/archivo-pdf.png">Imprimir
-                                        Reporte</button>
-                                </form>
-                            </div>
-                            <!-- ***************************************************************************************************************************** -->
-                            <div class="container-fluid border py-4 ocultar-div col-12 bg-blanco border-radius-15"
-                                id="parte4">
                                 <h5>Visualizar reporte de todos los equipos de la Institución</h5>
                                 <div class="contenedor-grid">
-                                    <form id="form_" action="../reportes/parque_tecno_reporte_todo.php" method="post"
-                                        target="_blank">
+                                    <div>
                                         <div>
                                             <img src="../assets/intranet/parque_tecnologico/pdf.png" class="w-35 my-5">
                                         </div>
-                                        <button type="submit" class="btn btn-secondary">Ver Reportes</button>
-                                    </form>
-
+                                        <button type="button" class="btn btn-secondary" onclick="consulta_PC_todos();">Ver Reportes</button>
+                                    </div>
                                     <div>
                                         <button class="btn btn-secondary my-5" onclick="total_equi();">Consultar total
                                             de equipos</button>
@@ -231,15 +207,9 @@ Login_ING_Admin();
 
     <script src="../js/consulta_equipos.js"></script>
     <script src="../js/editar_mostrar_datos.js"></script>
-    <script src="../js/reportes.js"></script>
     <!-- Busca los departamentos o direcciones -->
     <script src="../js/division_select.js"></script>
     <script src="../js/departamento_select.js"></script>
-    <script src="../js/search.js"></script>
-    <script src="../js/paginacion.js"></script>
-
-
-
 </body>
 
 

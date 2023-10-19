@@ -5,18 +5,18 @@ ob_start();
 include("abrir_conexion.php");
 $valorID = $_SESSION['id_usr'];
 $nombre = $_SESSION['nombre'];
+$valorCedula = $_SESSION['cedula_var_global'];
 
 // AUDITORIA *****************************************************************
 $descripcion_Cambio = "Salida del sistema del Usuario: " . $nombre . ".";
-$accionCambio = "6";
-$SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionCambio', now(), '$descripcion_Cambio')";
+$accionHecha = "4";
+$SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionHecha', '$valorCedula', now(), '$descripcion_Cambio')";
 mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
 // FINAL AUDITORIA ************************************************************
 
 $updateSesion = "UPDATE $tabla_db1 SET sesion='0' WHERE id_usuario = '$valorID'";
 mysqli_query($conexion, $updateSesion);
 // CONSULTA FINALIZADA, CERRAR SESION
-
 $evento = $_SESSION['event'];
 $delevent = "DROP EVENT IF EXISTS $evento";
 // $sql = $conn->query($delevent);

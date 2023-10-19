@@ -296,4 +296,21 @@
 
     <!-- JS en Bootstrap -->
     <script src="../js/bootstrap.bundle.min.js"></script>
+    <script>
+        const submitButton1 = document.querySelector('#cambCargo');
+        const submitCambInactivo = document.getElementById('activarUsr');
+
+        submitCambInactivo.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            editActivInacti();
+
+        });
+        submitButton1.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            editRolUsuarios();
+
+        });
+    </script>
 </html>

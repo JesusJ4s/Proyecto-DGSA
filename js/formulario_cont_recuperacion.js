@@ -40,6 +40,11 @@ function HacerEnvio(){
 
                     $('#recuperacionC').html('Error al registrar los datos.<br>Error: Colocó un dato invalido.');
                 }
+               if(nroERROR==502){
+                    $('#recuperacion').modal('show');
+
+                    $('#recuperacionC').html('Error al registrar los datos.<br>Error: PIN inválido.');
+                }
         }
     });
 }

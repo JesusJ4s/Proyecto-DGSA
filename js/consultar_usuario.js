@@ -1,5 +1,4 @@
-var submitButton1 = document.querySelector('#cambCargo');
-var submitCambInactivo = document.getElementById('activarUsr');
+
 
 $(document).ready(function () {
 
@@ -8,10 +7,8 @@ $(document).ready(function () {
     consultar_Inactivos();
     consultar_ci2();
     $('#spinner').hide();
-    auditoriaUsr();
+    auditoriaUsrTABLA();
     auditoriaBD();
-
-    // oo();
 });
 
 //****************************************************
@@ -318,9 +315,8 @@ function recuperarUSR() {
 
 }
 // CAMBIO DE ROL DESDE EL ADMINISTRADOR
-function editUsuarios() {
+function editRolUsuarios() {
     var cambio_cargo = $('#cambio_cargo').serialize();
-
     $.ajax({
         data: cambio_cargo,
         url: '../php/usuarios.php',
@@ -401,7 +397,7 @@ function activarUsrDatos() {
 
 }
 // PASAR DE INACTIVO A ACTIVO DENTRO DEL SISTEMA
-function editCargoUsr() {
+function editActivInacti() {
     var cedulaInac = document.getElementById('datosInpCed').value;
     var statusInac = document.getElementById('datosInpStat').value;
     var parametros =
@@ -436,10 +432,10 @@ function editCargoUsr() {
     });
 }
 // IMPRIMIR TABLA DE AUDITORIA
-function auditoriaUsr() {
+function auditoriaUsrTABLA() {
     var parametros =
     {
-        "que_buscar": "auditoriaUsr"
+        "que_buscar": "auditoriaUsrConsulta"
     };
 
     $.ajax({
@@ -450,10 +446,23 @@ function auditoriaUsr() {
         success: function (mensaje) {
             $('#auditoriaUsr').html(mensaje);
             new DataTable('#dataTable_AuditoUsr', {
+                dom: "<'row' <'col-md-12 d-flex flex-row-reverse'B>><'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r><'table-scrollable't><'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>",
+                    buttons: [
+                        {
+                            extend: 'pdf', titleAttr: 'Exportar a PDF', text: '<i class="bi bi-filetype-pdf" aria-hidden="true"></i> Exportar', className: 'btn btn-primary', exportOptions: { columns: [0, 1, 2, 4] },
+                            /*Centra la tabla del PDF
+                                * customize: function (doc) {
+                                doc.content[1].margin = [100, 0, 100, 0] //left, top, right, bottom
+                            }*/
+                        }
+                    ],
                 language: Traduccion,
+                
                 initComplete: function () {
-                    // agregar filtros (selectores) a tabla 
-                    this.api().columns([1, 3]).every(function () {
+                    
+                    // Agregar filtros (selectores) a la tabla
+                    var api = this.api();
+                    api.columns([1, 3]).every(function () {
                         var column = this;
                         var select = $('<select class="filterE form-select "><option value="">---</option></select>')
                             .appendTo($(column.footer()).empty())
@@ -471,19 +480,18 @@ function auditoriaUsr() {
                             select.append('<option value="' + d + '">' + d + '</option>')
                         });
                     });
-                },
-                initComplete: function () {
-                    var table = this.api();
-                  
+
                     // Obtener el índice de la columna de fechas
                     var dateColumnIndex = 0; // Reemplaza con el índice de tu columna de fechas
-                  
+
                     // Ordenar la columna de fechas de forma descendente (más lejano a más reciente)
-                    table.column(dateColumnIndex).order('desc').draw();
-                  }
+                    api.column(dateColumnIndex).order('desc').draw();
+
+                    
+                },
+                
+                
             });
-
-
         }
     });
 }
@@ -515,7 +523,13 @@ function auditoriaDatos() {
                 $("#UsrAudi").val(valores.nombreUsuario);
                 $("#fechaAudi").val(valores.fecha_cambio);
                 $("#AccionAudi").val(valores.nombreAccion);
-                $("#descripcionAudi").val(valores.descripcion);
+                // $("#descripcionAudi").val(valores.descripcion);
+                
+                // Utilizar split() en valores.descripcion
+                var descripcionParts = valores.descripcion.split('<br><br>');
+
+                // Mostrar las partes divididas en $("#descripcionAudi")
+                $("#descripcionAudi").val(descripcionParts.join('\n'));
             }
         });
 
@@ -567,15 +581,3 @@ function auditoriaBD() {
     });
 }
 
-submitButton1.addEventListener('click', (e) => {
-    e.preventDefault();
-
-    editUsuarios();
-
-});
-submitCambInactivo.addEventListener('click', (e) => {
-    e.preventDefault();
-
-    editCargoUsr();
-
-});

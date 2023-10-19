@@ -19,7 +19,7 @@ include("../php/date_time.php");
     <link rel="stylesheet" href="../css/gg2.css">
 
     <?php
-        include('../php/javascript.php');
+    include('../php/javascript.php');
     ?>
 
     <title>INTRANET</title>
@@ -66,8 +66,7 @@ include("../php/date_time.php");
                                 <button class="btn btn-outline-secondary dropdown-toggle mt-3" data-bs-toggle="dropdown"
                                     id="btn_usr_entrada">Usuario</button>
                                 <ul class='dropdown-menu'>
-                                    <li><a class='dropdown-item'
-                                            href='ajustes_de_usuario.php'>Ajustes</a></li>
+                                    <li><a class='dropdown-item' href='ajustes_de_usuario.php'>Ajustes</a></li>
                                     <li><a class='dropdown-item' href='../php/cerrar_sesion.php'>Cerrar Sesión</a><img
                                             src="../assets/icon/users/turn-off.png" class="wh-logout-icon"></li>
                                 </ul>
@@ -82,10 +81,19 @@ include("../php/date_time.php");
             <!-- <section> -->
             <div class="container-fluid bg-amarillito marquesina-intranet w-95 p-2">
                 <p class=" text-start m-0">Notificación:</p>
-                <marquee  scrollamount="10" scrolldelay="25" class="p-2">
+                <marquee scrollamount="10" scrolldelay="25" class="p-2">
                     <h5 class=""><a class=" enlaces_limpios2 text-dark" id="notificaciones"
-                            href="correspondencia_jefes.php">a</a>
+                            href="correspondencia_jefes.php"></a>
                     </h5>
+                    <h5 class=""><a class=" enlaces_limpios2 text-danger" id="notificacionesALERTA"
+                            href="correspondencia_jefes.php"></a>
+                    </h5>
+                    <h5 class=""><a class=" enlaces_limpios2" id="notificaciones3"
+                            href="soporte_tecnico_notifi.php"></a>
+                    </h5>
+
+                    <!-- <h5>hola</h5> -->
+                    <!-- <h5>hola2</h5> -->
                     <!-- <h5><a class=" enlaces_limpios2 text-dark" id="notificaciones"
                             href="correspondencia_jefes.php"></h5> -->
                 </marquee>
@@ -109,7 +117,7 @@ include("../php/date_time.php");
     <!-- JS en Bootstrap -->
     <script src="../js/bootstrap.bundle.js"></script>
     <script src="../js/correspondencia.js"></script>
-    
+    <script src="../js/consultar_soportes.js"></script>
 
 </body>
 

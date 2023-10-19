@@ -21,6 +21,8 @@ function comprobarSesion() {
       if (respuesta == 'activo') {
         // La sesión está activa, actualizar la última actividad
         actualizarUltimaActividad();
+        console.log('Se refrescó la sesión');
+
       } else {
         // La sesión ha expirado, mostrar la advertencia al usuario
         mostrarAdvertencia();

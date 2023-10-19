@@ -4,7 +4,6 @@
 include("../php/verificacion_login.php");
 Login_ING_Admin();
 include("../php/date_time.php");
-
 ?>
 <script src="../js/reenvio.js"></script>
 
@@ -21,7 +20,7 @@ include("../php/date_time.php");
     <link rel="stylesheet" href="../css/intranet.css">
     <link rel="stylesheet" href="../css/gg3.css">
     <?php
-        include('../php/javascript.php');
+    include('../php/javascript.php');
     ?>
 
     <title>Notificaciones</title>
@@ -31,7 +30,7 @@ include("../php/date_time.php");
     <!-- Modal para mostrar información-->
     <div class="modal fade" id="Modal_Notifi" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true" data-bs-backdrop="static">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5>Notificación:</h5>
@@ -39,8 +38,38 @@ include("../php/date_time.php");
                     <!-- AQUÍ VA EL TÍTULO -->
                 </div>
                 <div class="modal-body" id="Modal_NotifiC">
+                    <?php
+                    if (isset($_SESSION['historial_soporte'])) {
+                        echo "<b>Historial de notas hechas: </b><br><br>".$_SESSION['historial_soporte'];
+                    }else {
+                        $_SESSION['historial_soporte']='';
+                    }
+                    $_SESSION['historial_soporte']='';
+
+                    ?>
                 </div>
                 <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal para enviar a EN ESPERA-->
+    <div class="modal fade" id="ModalComponentes" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>Faltan Componentes:</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                    <!-- AQUÍ VA EL TÍTULO -->
+                </div>
+                <div class="modal-body" id="ModalComponentesC">
+                    <p>Indique la razón de porqué, se envía a el apartado <i>Faltan Componentes</i>, para que conozca la razón más adelante.</p>
+                    <textarea id="descripcion_compo" name="descripcion_compo" class="descripcion"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-warning" data-bs-dismiss="modal" onclick="enviarEspera();">Enviar</button>
                     <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </div>
@@ -99,7 +128,7 @@ include("../php/date_time.php");
             <div class="container-fluid my-2 px-0" id="centro-id">
                 <div class="w-85 mx-auto">
                     <!-- SOLICITUDES EN ESPERA -->
-                    <div class="px-2" id="parte1">
+                    <div class="px-2 ocultar-div" id="parte1">
                         <h3 class="text-center p-2 mb-0">Solicitudes de soporte técnico:</h3>
                         <hr>
                         <div class="mb-3 ocultar-class">
@@ -119,7 +148,7 @@ include("../php/date_time.php");
 
                                 <form id="form_aceptar_soli">
                                     <!-- AQUÍ SE GUARDAN LOS DATOS DE LA SOLICITUD -->
-                                    <div class="row mx-auto bg-grey-claro mt-2 p-3 border-radius-15">
+                                    <div class="row mx-auto bg-grey-claro mt-2 mb-5 p-3 border-radius-15">
                                         <div class="col-3 my-2">
                                             <label><b>Tipo de Uso</b></label>
                                             <input class="form-control" readonly id="soporteUso" name="soporteUso">
@@ -146,7 +175,7 @@ include("../php/date_time.php");
                                                 name="soporteDesc">
 
                                         </div>
-                                        <div class="col-1 my-2">
+                                        <div class="col-2 my-2">
                                             <label><b>Nro de Caso</b></label>
                                             <input class="form-control  text-end" id="id_soporte" name="id_soporte"
                                                 readonly>
@@ -202,30 +231,39 @@ include("../php/date_time.php");
                                             <input class="form-control" readonly id="vr_win_edit" name="vr_win_edit">
                                         </div>
                                         <br>
-                                        <div class="col-3">
-                                            <label><b>Técnico para el Soporte</b></label>
-                                            <select class="form-select" id="ingeniero_selector"
-                                                name="ingeniero_selector" required>
-                                                <?php
+                                        <?php
+                                        if ($_SESSION['nivel_usuario'] == 1) {
+                                            echo '
+                                                <div class="col-3">
+                                                    <label><b>Técnico para el Soporte</b></label>
+                                                    <select class="form-select" id="ingeniero_selector" name="ingeniero_selector" required>';
 
-                                                include("../php/abrir_conexion.php");
+                                                    include("../php/abrir_conexion.php");
 
-                                                $consulta = "SELECT * FROM $tabla_db1 WHERE usuario_rol_id = 2";
-                                                $ejecutar = mysqli_query($conexion, $consulta) or die(mysqli_error($conexion));
+                                                    $consulta = "SELECT * FROM $tabla_db1 WHERE usuario_rol_id = 2";
+                                                    $ejecutar = mysqli_query($conexion, $consulta) or die(mysqli_error($conexion));
 
-                                                include("../php/cerrar_conexion.php");
+                                                    include("../php/cerrar_conexion.php");
 
-                                                ?>
-                                                <?php foreach ($ejecutar as $opciones): ?>
+                                                    foreach ($ejecutar as $opciones) {
+                                                        echo '
+                                                        <option value="' . $opciones["id_usuario"] . '">Ingeniero ' . $opciones["nombre"] . '</option>';
+                                                    }
 
-                                                    <option value="<?php echo $opciones['id_usuario'] ?>">Ingeniero <?php echo $opciones['nombre'] ?></option>
-
-                                                <?php endforeach; ?>
-                                            </select>
-                                        </div>
+                                                    echo '
+                                                        </select>
+                                                </div>';
+                                        } else {
+                                            echo
+                                            '
+                                                <input type="hidden" id="ingeniero_selector" name="ingeniero_selector">
+                                            
+                                            ';
+                                        }
+                                        ?>
 
                                         <div class="col-2 mt-4">
-                                            <!-- <button type="submit" class="btn btn-secondary" disabled id="aceptar_solicitud" name="aceptar_solicitud">Aceptar Solicitud</button> -->
+                                            
                                             <button type="button" class="btn btn-success" id="aceptarSolicitud"
                                                 name="aceptarSolicitud">Aceptar Solicitud</button>
 
@@ -257,6 +295,12 @@ include("../php/date_time.php");
                                             <b>Solicitudes - Proceso</b>
                                         </button>
                                         <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseComponentes" aria-expanded="true"
+                                            aria-controls="collapseComponentes">
+                                        <input  id="compoCampana" class="bold w-10 limpiador-botones2" disabled >
+                                            <b>Solicitudes - Faltan Componentes</b>
+                                        </button>
+                                        <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#collapseFinalizadas" aria-expanded="true"
                                             aria-controls="collapseFinalizadas">
                                             <b>Solicitudes - Finalizadas</b>
@@ -276,6 +320,19 @@ include("../php/date_time.php");
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- SOPORTES A LOS QUE LES FALTAN COMPONENTES -->
+                                    <div class="mb-3">
+                                        <div class="accordion-collapse collapse" id="collapseComponentes"
+                                            aria-labelledby="headingOne" data-bs-parent="#accordionSoliProc">
+                                            <div class="accordion-body" aria-expanded="true">
+                                                <h3 class="text-center p-2 mb-3">Soportes No Finalizados</h3>
+
+                                                <div id="mostrar_soportes_componentes"class="bg-blanco p-2 border-radius-15">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <!-- SOPORTES FINALIZADOS -->
                                     <div class="mb-3">
                                         <div class="accordion-collapse collapse" id="collapseFinalizadas"
@@ -283,7 +340,7 @@ include("../php/date_time.php");
                                             <div class="accordion-body" aria-expanded="true">
                                                 <h3 class="text-center p-2 mb-3">Soportes Finalizados</h3>
 
-                                                <div id="mostrar_soportes_Conocimiento"
+                                                <div id="mostrar_soportes_Ingenieros"
                                                     class="bg-blanco p-2 border-radius-15">
 
                                                 </div>
@@ -371,6 +428,11 @@ include("../php/date_time.php");
                                                 <button class="btn btn-success" type="button" id="finalizar_solicitud"
                                                     name="finalizar_solicitud">Finalizar Solicitud</button>
                                             </div>
+                                            <div class="col-3 mt-4">
+                                                <button class="btn btn-warning" type="button" id="falta_componentes"
+                                                    name="falta_componentes"  data-bs-toggle="modal"
+                                                data-bs-target="#ModalComponentes">Enviar a Faltan Componentes</button>
+                                            </div>                                            
                                         </div>
                                     </form>
                                 </div>
@@ -441,8 +503,8 @@ include("../php/date_time.php");
                                         </div>
                                         <div class="col-4 my-2">
                                             <label><b>Division</b></label>
-                                            <input class="form-control" id="division_mostrar3"
-                                                name="division_mostrar3" readonly>
+                                            <input class="form-control" id="division_mostrar3" name="division_mostrar3"
+                                                readonly>
                                         </div>
                                         <div class="col-4 my-2">
                                             <label><b>Departamento</b></label>
@@ -454,8 +516,8 @@ include("../php/date_time.php");
                                         <!-- ESPECÍFICACIONES -->
                                         <div class="col-4 my-2">
                                             <label><b>Responsable</b></label>
-                                            <input class="form-control" id="responsable_edit3"
-                                                name="responsable_edit3" readonly>
+                                            <input class="form-control" id="responsable_edit3" name="responsable_edit3"
+                                                readonly>
                                         </div>
                                         <div class="col-4 my-2">
                                             <label><b>Nombre Equipo</b></label>
@@ -469,8 +531,7 @@ include("../php/date_time.php");
                                         <!-- SOLICITUD ESPECÍFICACIONES -->
                                         <div class="col-3 my-2">
                                             <label><b>Nro Soporte</b></label>
-                                            <input class="form-control" id="id_soporte3" name="id_soporte3"
-                                                readonly>
+                                            <input class="form-control" id="id_soporte3" name="id_soporte3" readonly>
                                         </div>
                                         <div class="col-3 my-2">
                                             <label><b>Nivel Soporte</b></label>
@@ -484,8 +545,7 @@ include("../php/date_time.php");
                                         </div>
                                         <div class="col-3 my-2">
                                             <label><b>Estado</b></label>
-                                            <input class="form-control" id="soporteEst3" name="soporteEst3"
-                                                readonly>
+                                            <input class="form-control" id="soporteEst3" name="soporteEst3" readonly>
                                         </div>
                                         <!-- ÚLTIMAS ESPECÍFICACIONES -->
                                         <div class="col-4 my-2">
@@ -512,6 +572,13 @@ include("../php/date_time.php");
                                     </div>
                                 </form>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- SOPORTES DATOS -->
+                    <div class="px-2 mt-3 " id="parte4">
+                        <div class="ocultar-class">
+                            <h1>GRAFICOS</h1>
                         </div>
                     </div>
                 </div>

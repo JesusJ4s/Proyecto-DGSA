@@ -2,7 +2,7 @@
     $host = "localhost";   // Será el valor de nuestra base de datos
     $basededatos = "proyecto_dgsa";
     $usuariodb = "root";
-    $clavedb = "superAdmin*";
+    $clavedb = "";
     
     //Lista de Tablas
     $tabla_db1 = "a1_usuarios";    // Tabla de usuarios
@@ -15,7 +15,7 @@
     $tabla_db5 = "b1_direcciones";
 
     $tabla_db6 = "c1_inventario_equipo";
-    $tabla_db7 = "c2_inventario_cambios"; //PROXIMA A BORRAR
+
     $tabla_db8 = "c3_solicitudes_soportes";
     $tabla_db8_2 = "c3_1_estado_soporte";
     $tabla_db9 = "c4_base_conocimiento";

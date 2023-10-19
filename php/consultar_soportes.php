@@ -1,55 +1,29 @@
 <?php
 session_start();
 ob_start();
-function darFormatoOriginal($string)
+
+function acortar_texto($texto, $cantidad)
 {
-    $string = str_replace(
-        array('à', 'ä', 'â', 'À', 'Ä', 'Â'),
-        array('a', 'a', 'a', 'A', 'A', 'A'),
-        $string
-    );
-    $string = str_replace(
-        array('ë', 'ê', 'è', 'Ë', 'Ê', 'È'),
-        array('e', 'e', 'e', 'E', 'E', 'E'),
-        $string
-    );
-    $string = str_replace(
-        array('ï', 'î', 'ì', 'Ï', 'Î', 'Ì'),
-        array('i', 'i', 'i', 'I', 'I', 'I'),
-        $string
-    );
-    $string = str_replace(
-        array('ö', 'ô', 'ò', 'Ö', 'Ô', 'Ò'),
-        array('o', 'o', 'o', 'O', 'O', 'O'),
-        $string
-    );
-    $string = str_replace(
-        array('ü', 'û', 'ù', 'Ü', 'Û', 'Ù'),
-        array('u', 'u', 'u', 'U', 'U', 'U'),
-        $string
-    );
-    $string = str_replace(
-        array('ç', 'Ç'),
-        array('c', 'C'),
-        $string
-    );
-    $string = str_replace(
-        array('[', '|', '°', '¬', '!', '^', '`', '~', '#', '$', '%', '&', '/', '(', ')', '=', '?', '¿', '{', '}', '_', '+', '<', '>', '¡', '¨', '*', ']', "'", '"'),
-        '*',
-        $string
-    );
+    if (strlen($texto) > $cantidad) {
+        $texto_corto = substr($texto, 0, $cantidad);
+        $texto_corto .= "...";
+    } else {
+        $texto_corto = $texto;
+    }
 
-    return $string;
+    return $texto_corto;
 }
-
 $comprobacion = $_POST['buscar_soporte'];
 // ARRAY PARA DEVOLVER VALORES EN JSON
 $valores = array();
 
 // AL CAMBIAR MAC POR NOMBRE ESTO SE DEJARÁ DE USAR TAN SEGUIDO
 $patron_mac = '/^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/'; // Expresión regular para validar la dirección MAC
-$patron_nombre = '/^[a-zA-Z0-9]{1,10}$/';
+$patron_nombre = '/^[a-zA-Z0-9]{1,16}$/';
 $findme = "*";
+$patron_numero = '/^[0-9]{1,11}$/';
+$soloLetras = '/^[a-zA-ZÀ-ý\s]{20,255}$/';
+
 // CONSULTAR SOPORTES Y MOSTRAR TABLA (SOLO EN ESPERA -- INTERACTIVA)
 if ($comprobacion == "tab_esp_inter") {
 
@@ -237,13 +211,12 @@ if ($comprobacion == "tab_procs_inter") {
                     <td>' . $consulta['fecha_soporte_solicitud'] . '</td>
                     <td>' . $consulta['nombre'] . '</td>
                     <td>' . $consulta['fecha_soporte_aceptacion'] . '</td>
-                    <td><button class="btn btn-secondary mb-1" id="alerta" name="alerta" onclick="FinalizarSoli();">Mostrar</button></td>
+                    <td><button class="btn btn-secondary mb-1" id="alerta" name="alerta"onclick="FinalizarSoli();">Mostrar</button></td>
                     <td>' . $consulta['nombre_estado'] . '</td>
                 </tr>
             ';
         $existe++;
         $contador++;
-
     }
     echo '</tbody>
                 <tfoot>
@@ -269,26 +242,102 @@ if ($comprobacion == "tab_procs_inter") {
     include("cerrar_conexion.php");
 
 }
-
-// CREADO PARA IMPRIMIR REPORTES, FALTA FINALIZAR - AUN EN PROCESO
-if ($comprobacion == "ESTA SERA SOLO PARA LOS ING") {
+// CONSULTAR SOPORTES Y MOSTRAR TABLA (FALTAN COMPONENTES -- INTERACTIVA)
+if ($comprobacion == "tab_espera_comp") {
 
     include("abrir_conexion.php");
 
     echo
         '
-        <table class="table table-hover" id="dataTable_fin">
+        <table class="table table-hover" id="dataTable_componentes">
+            <thead  class="bg-grey text-light">
+                <tr  class="align-middle text-center">
+                    <th class="">Nro Caso</th>
+                    <th class="">Nivel del Soporte</th>
+                    <th class="">Nombre</th>
+
+                    <th class="">Fecha Solicitud</th>
+                    <th class="">Finalizar</th>  
+                    <th class="">Información</th>
+                    <th class="">Ver más</th>
+                </tr>
+            </thead>
+            <tbody id="body-componentes">
+        ';
+
+    $existe = 0;
+    $contador = 0;
+
+    $repuesto = "6";
+
+    // Buscar en la tabla de SOPORTE TÉCNICO los equipos registrados
+    $resultados = mysqli_query($conexion, "SELECT * FROM $tabla_db8 s INNER JOIN $tabla_db1 u ON s.tecnico_soporte_id=u.id_usuario INNER JOIN $tabla_db8_2 es ON s.estado=es.id_estado_sop WHERE estado = '$repuesto'");
+    while ($consulta = mysqli_fetch_array($resultados)) {
+        echo
+            '
+                <tr  class="align-middle">
+                    <td class="text-end">' . $consulta['id_soporte'] . '</td>
+                    <td>' . $consulta['nivel_soporte'] . '</td>
+                    <td>' . $consulta['nomb_equipo_soporte'] . '</td>
+
+                    <td>' . $consulta['fecha_soporte_solicitud'] . '</td>
+                    <td><button class="btn btn-secondary mb-1" id="alerta2" name="alerta2" onclick="FinalizarSoli2();">Mostrar</button></td>
+                    <td>' . acortar_texto($consulta['historial_soporte'], 20) . '</td>
+                    <td><button class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#Modal_Notifi">Ver información</button></td>
+                </tr>
+            ';
+        $historial = $consulta['historial_soporte'];
+
+        $existe++;
+        $contador++;
+
+    }
+    $_SESSION['historial_soporte']=$historial;
+
+    echo '</tbody>
+                <tfoot>
+                    <tr  class="align-middle text-center">
+                        <th>Nro Caso</th>
+                        <th>Nivel del Soporte</th>
+                        <th>Nombre</th>
+                        <th>Fecha Solicitud</th>
+                        <th>Finalizar</th>  
+                        <th>Información</th>
+                        <th>Ver más</th>
+                    </tr>
+                </tfoot>
+            </table>';
+
+    if ($existe == 0) {
+        echo "";
+    }
+
+
+    include("cerrar_conexion.php");
+
+}
+// TODO:
+// CREADO PARA IMPRIMIR REPORTES, FALTA FINALIZAR - AUN EN PROCESO
+if ($comprobacion == "tab_final_ING") {
+
+    include("abrir_conexion.php");
+
+    echo
+        '
+        <table class="table table-hover" id="dataTable_ING">
+        <thead  class="bg-grey text-light">
             <tr  class="align-middle text-center">
                 <th class="">Nro Caso</th>
                 <th class="">Nivel del Soporte</th>
                 <th class="">Fecha Solicitud</th>
-                <th class="">Técnico Encargado</th>
                 <th class="">Fecha Aceptación</th>
                 <th class="">Fecha Finalización</th>
                 <th class="txt-td">Reporte</th>
                 <th class="">Estado</th>
-
             </tr>
+        </thead>
+        <tbody id="body-soport-ING">
         ';
 
     $existe = 0;
@@ -299,7 +348,7 @@ if ($comprobacion == "ESTA SERA SOLO PARA LOS ING") {
     // CONSULTAR DEPARTAMENTO Y CARGO POR NOMBRE
 
     // Buscar en la tabla de SOPORTE TÉCNICO los equipos registrados
-    $resultados = mysqli_query($conexion, "SELECT * FROM $tabla_db8 s INNER JOIN $tabla_db1 u ON s.tecnico_soporte_id=u.id_usuario WHERE estado = '$finalizado'");
+    $resultados = mysqli_query($conexion, "SELECT * FROM $tabla_db8 s INNER JOIN $tabla_db1 u ON s.tecnico_soporte_id=u.id_usuario INNER JOIN $tabla_db8_2 es ON s.estado=es.id_estado_sop  WHERE estado = '$finalizado'");
     while ($consulta = mysqli_fetch_array($resultados)) {
         echo
             '
@@ -307,23 +356,33 @@ if ($comprobacion == "ESTA SERA SOLO PARA LOS ING") {
                     <td class="text-end">' . $consulta['id_soporte'] . '</td>
                     <td class="">' . $consulta['nivel_soporte'] . '</td>
                     <td class="">' . $consulta['fecha_soporte_solicitud'] . '</td>
-                    <td class="">' . $consulta['nombre'] . '</td>
                     <td class="">' . $consulta['fecha_soporte_aceptacion'] . '</td>
                     <td class="">' . $consulta['fecha_soporte_final'] . '</td>
                     <td class="txt-td"><button type="button" class="btn-img-td" onclick="verReporteSoli();"  data-bs-toggle="modal" data-bs-target="#Info_Vistas"><img class="img-td" src="../assets/intranet/soporte/iconos/pdf.png"></button></td>
-                    <td class="txt-td">' . $consulta['estado'] . '</td>
+                    <td class="txt-td">' . $consulta['nombre_estado'] . '</td>
                 </tr>
             ';
         $existe++;
         $contador++;
 
     }
-    echo "</table>";
+    echo '</tbody>
+            <tfoot>
+                <tr  class="align-middle text-center">
+                    <th class="">Nro Caso</th>
+                    <th class="">Nivel del Soporte</th>
+                    <th class="">Fecha Solicitud</th>
+                    <th class="">Fecha Aceptación</th>
+                    <th class="">Fecha Finalización</th>
+                    <th class="txt-td">Reporte</th>
+                    <th class="">Estado</th>
+                </tr>
+            </tfoot>
+    </table>';
 
     if ($existe == 0) {
         echo "<p class='text-center'>No se ha finalizado ninguna solicitud</p>";
     }
-
 
     include("cerrar_conexion.php");
 
@@ -570,6 +629,8 @@ if ($comprobacion == "cantidad_Registros") {
     $espera = "1";
     $proceso = "2";
     $rechazado = "4";
+    $repuesto = "6";
+
 
     // CONSULTAR DEPARTAMENTO Y CARGO POR NOMBRE
     // CUENTA LA CANTIDAD QUE ESTÁ EN ESPERA
@@ -578,18 +639,27 @@ if ($comprobacion == "cantidad_Registros") {
         $contador++;
     }
     $valores['contador1'] = $contador;
+    // CUENTA LA CANTIDAD QUE ESTÁ EN ESPERA DE REPUESTOS
+    $resultados4 = mysqli_query($conexion, "SELECT * FROM $tabla_db8 WHERE estado = '$repuesto'");
+    while ($consulta = mysqli_fetch_array($resultados4)) {
+        $contador4++;
+    }
+    $valores['contador4'] = $contador4 + $contador;
+    $valores['respuesto'] = $contador4;
     // CUENTA LA CANTIDAD QUE ESTÁ EN PROCESO
     $resultados2 = mysqli_query($conexion, "SELECT * FROM $tabla_db8 WHERE estado = '$proceso'");
     while ($consulta = mysqli_fetch_array($resultados2)) {
         $contador2++;
     }
-    $valores['contador2'] = $contador2;
+    $valores['contador2'] = $contador2 + $contador4;
+    $valores['campana'] = $contador2 + $contador4+$contador;
     // CUENTA LA CANTIDAD QUE ESTÁ RECHAZADO
     $resultados3 = mysqli_query($conexion, "SELECT * FROM $tabla_db8 WHERE estado = '$rechazado'");
     while ($consulta = mysqli_fetch_array($resultados3)) {
         $contador3++;
     }
     $valores['contador3'] = $contador3;
+
 
     $valores = json_encode($valores);
     echo $valores;
@@ -607,13 +677,12 @@ if ($comprobacion == "llenarInputs_espera") {
 
     $nomb_equipo = $_POST['nomb_equipo'];
 
-    $id = darFormatoOriginal($_POST['id']);
-    $pos = strpos($id, $findme);
-    $EnEspera = 1;
+    $id = $_POST['id'];
 
+    $EnEspera = 1;
     $contador = 0;
 
-    if (preg_match($patron_nombre, $nomb_equipo) && $pos === false) {
+    if (preg_match($patron_nombre, $nomb_equipo) && preg_match($patron_numero, $id)) {
         $SQL_info_sopor = "SELECT * FROM $tabla_db8 WHERE nomb_equipo_soporte = '$nomb_equipo' AND id_soporte = '$id'";
 
         $resultados = mysqli_query($conexion, $SQL_info_sopor);
@@ -676,18 +745,17 @@ if ($comprobacion == "llenarInputs_proceso") {
     include("abrir_conexion.php");
 
     $nombre_equipo = $_POST['nombre_equipo'];
-    $NroCasoFinal = darFormatoOriginal($_POST['NroCasoFinal']);
-
-    $pos = strpos($NroCasoFinal, $findme);
-
-    if ($pos === false && preg_match($patron_nombre, $nombre_equipo)) {
+    $NroCasoFinal = $_POST['NroCasoFinal'];
+    
+    if (preg_match($patron_numero, $NroCasoFinal) && preg_match($patron_nombre, $nombre_equipo)) {
         $SQL_info_sopor = "SELECT * FROM $tabla_db8 WHERE nomb_equipo_soporte = '$nombre_equipo' AND id_soporte = '$NroCasoFinal'";
 
         $resultados = mysqli_query($conexion, $SQL_info_sopor);
         while ($consulta = mysqli_fetch_array($resultados)) {
             $estado_comprobar = $consulta['estado'];
         }
-        if ($estado_comprobar == "2") {
+        $_SESSION['sinComponentes']=$estado_comprobar;
+        if ($estado_comprobar == "2" || $estado_comprobar == "6") {
             // BUSCAR DATOS DEL EQUIPO Y TRAER
             $buscar_sql_cpu = "SELECT * FROM $tabla_db6 i INNER JOIN $tabla_db1 u ON i.ing_encar_inv_id = u.id_usuario INNER JOIN $tabla_db3 a ON i.dpto_inv_id = a.id_departamento INNER JOIN $tabla_db4 b ON i.division_inv_id = b.id_divisiones INNER JOIN $tabla_db5 c ON i.direccion_inv_id = c.id_direcciones WHERE nombre_equipo = '$nombre_equipo'";
             $resultados = mysqli_query($conexion, $buscar_sql_cpu);
@@ -699,10 +767,10 @@ if ($comprobacion == "llenarInputs_proceso") {
 
                 $valores['nombre_equipo'] = $consulta['nombre_equipo'];
                 $valores['ip'] = $consulta['ip'];
+                
             }
 
             // CONSULTA LOS SOPORTES
-
             $SQL_info_sopor = "SELECT * FROM $tabla_db8 WHERE nomb_equipo_soporte = '$nombre_equipo' AND id_soporte = '$NroCasoFinal'";
 
             $resultados = mysqli_query($conexion, $SQL_info_sopor);
@@ -713,6 +781,7 @@ if ($comprobacion == "llenarInputs_proceso") {
                 $valores['estado'] = $consulta['estado'];
                 $valores['fecha_soporte_aceptacion'] = $consulta['fecha_soporte_aceptacion'];
             }
+
             // REALENTIZANDO EL ENVÍO DEL FORMULARIO
             sleep(1);
             // Convirtiendo el array en algo leíble por JS
@@ -739,13 +808,11 @@ if ($comprobacion == "llenarInputs_rechazar") {
     include("abrir_conexion.php");
     // LA COMPROBAREMOS
     $nombre_equipo = $_POST['nombre_equipo'];
-    $idRech = darFormatoOriginal($_POST['idRech']);
-
-    $pos = strpos($idRech, $findme);
+    $idRech = $_POST['idRech'];
 
     $contador = 0;
 
-    if ($pos === false && preg_match($patron_nombre, $nombre_equipo)) {
+    if (preg_match($patron_numero, $idRech) && preg_match($patron_nombre, $nombre_equipo)) {
         $SQL_rech_sopor = "SELECT * FROM $tabla_db8 WHERE nomb_equipo_soporte = '$nombre_equipo' AND id_soporte = '$idRech'";
         $resultados = mysqli_query($conexion, $SQL_rech_sopor);
         while ($consulta = mysqli_fetch_array($resultados)) {
@@ -795,7 +862,6 @@ if ($comprobacion == "llenarInputs_rechazar") {
 
 }
 
-
 // *********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
 // REGISTRAR SOLICITUD (AUDITORIA LISTA)
 
@@ -803,9 +869,10 @@ if ($comprobacion == "RegisSoli") {
 
     $tipo_uso = '';
     $nivel_soporte = '';
+    $patron_nivel = '/^[a-zA-Z\s]{1,30}$/';
 
     if (isset($_POST['equipo_propiedad'])) {
-        $tipo_uso_ = darFormatoOriginal($_POST['equipo_propiedad']);
+        $tipo_uso_ = $_POST['equipo_propiedad'];
         if ($tipo_uso_ == 1) {
             $tipo_uso = "Uso Oficial";
         } else {
@@ -815,7 +882,7 @@ if ($comprobacion == "RegisSoli") {
         $tipo_uso = '';
     }
     if (isset($_POST['nivel_soporte'])) {
-        $nivel_soporte_ = darFormatoOriginal($_POST['nivel_soporte']);
+        $nivel_soporte_ = $_POST['nivel_soporte'];
         if ($nivel_soporte_ == 1) {
             $nivel_soporte = "Nivel Software";
         } else {
@@ -827,8 +894,8 @@ if ($comprobacion == "RegisSoli") {
 
 
     $name_edit = $_POST['name_edit'];
-    $descripcion = darFormatoOriginal($_POST['descripcion']);
-    $id_equipo_soporte = darFormatoOriginal($_POST['id_del_equipo']);
+    $descripcion = $_POST['descripcion'];
+    $id_equipo_soporte = $_POST['id_del_equipo'];
     $en_espera = "1";
 
     // COMPROBANDO QUE NO EXISTA LA SOLITUD YA HECHA
@@ -838,10 +905,6 @@ if ($comprobacion == "RegisSoli") {
     $existe_soporte = 0;
     $existe_equipo = 0;
 
-    $pos = strpos($tipo_uso, $findme);
-    $pos2 = strpos($nivel_soporte, $findme);
-    $pos3 = strpos($id_equipo_soporte, $findme);
-    $pos4 = strpos($descripcion, $findme);
 
     include("abrir_conexion.php");
     $NomExis = mysqli_query($conexion, "SELECT * FROM $tabla_db6 WHERE nombre_equipo = '$name_edit' AND id_case = '$id_equipo_soporte'");
@@ -849,7 +912,7 @@ if ($comprobacion == "RegisSoli") {
         $existe_equipo++;
     }
     if ($tipo_uso != '' && $nivel_soporte != '' && $name_edit != '' && $descripcion != '' && $id_equipo_soporte != '') {
-        if ($pos === false && $pos2 === false && $pos3 === false && $pos4 === false) {
+        if (preg_match($patron_nivel, $nivel_soporte) &&  preg_match($patron_nivel, $tipo_uso) && preg_match($patron_numero, $id_equipo_soporte) && preg_match($soloLetras, $descripcion)) {
             // VERIFICANDO NOMBRE DE USUARIO
             if ($name_edit != '' && $existe_equipo <> 0) {
                 // Buscar en la tabla de SOPORTE TÉCNICO los equipos registrados y no dejar pasar los ya registrados
@@ -878,8 +941,8 @@ if ($comprobacion == "RegisSoli") {
                         $valorID = $_SESSION['id_usr'];
                         $descripcion_Cambio = "Nueva solicitud de Soporte técnico, nombre del equipo: " . $nombreEquipo . ", Nro de Solicitud: " . $id_Equipo . ".";
 
-                        $accionModificacion = "1";
-                        $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
+                        $accionHecha = "8";
+                        $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionHecha', '$nombreEquipo', now(), '$descripcion_Cambio')";
                         mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
 
                         // FINAL AUDITORIA ************************************************************
@@ -909,8 +972,8 @@ if ($comprobacion == "RegisSoli") {
                     $valorID = $_SESSION['id_usr'];
                     $descripcion_Cambio = "Nueva solicitud de Soporte técnico, nombre del equipo: " . $nombreEquipo . ".";
 
-                    $accionCreacion = "1";
-                    $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionCreacion', now(), '$descripcion_Cambio')";
+                    $accionHecha = "8";
+                    $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionHecha', now(), '$descripcion_Cambio')";
                     mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
 
                     // FINAL AUDITORIA ************************************************************
@@ -942,17 +1005,22 @@ if ($comprobacion == "RegisSoli") {
 if ($comprobacion == "espera_proceso") {
     include("abrir_conexion.php");
 
-    $ingeniero_selector = darFormatoOriginal($_POST['ingeniero_selector']);
-    $id_soporte = darFormatoOriginal($_POST['nroCaso']);
+    $ingeniero_encargado = '';
+    // SI ES ADMIN ELIJE, SINO, ES EL QUE PRESIONE
+    if ($_SESSION['nivel_usuario'] == 1) {
+        $ingeniero_encargado = $_POST['ingeniero_selector'];
+    } else {
+        $ingeniero_encargado = $_SESSION['id_usr'];
+    }
+    $id_soporte = $_POST['nroCaso'];
     $nombre_equipo = $_POST['nombre_equipo'];
     $proceso = "2";
 
-    $pos = strpos($ingeniero_selector, $findme);
     $pos2 = strpos($id_soporte, $findme);
 
     $contador = 0;
 
-    if ($pos === false && $pos2 === false && preg_match($patron_nombre, $nombre_equipo)) {
+    if (preg_match($patron_numero, $id_soporte) && preg_match($patron_nombre, $nombre_equipo) && preg_match($patron_numero, $ingeniero_encargado)) {
         $VerificarNroCaso = "SELECT * FROM $tabla_db8 WHERE id_soporte = '$id_soporte'";
         $resultados = mysqli_query($conexion, $VerificarNroCaso);
         while ($consulta = mysqli_fetch_array($resultados)) {
@@ -963,7 +1031,7 @@ if ($comprobacion == "espera_proceso") {
 
         if ($estado == "1") {
             // AHORA HACEMOS LA CONSULTA QUE REGISTRARÁ LOS NUEVOS DATOS EN EL SISTEMA
-            $SQL_aceptar_soli = "UPDATE $tabla_db8 SET estado='$proceso', fecha_soporte_aceptacion=now(), tecnico_soporte_id='$ingeniero_selector' WHERE id_soporte = '$id_soporte'";
+            $SQL_aceptar_soli = "UPDATE $tabla_db8 SET estado='$proceso', fecha_soporte_aceptacion=now(), tecnico_soporte_id='$ingeniero_encargado' WHERE id_soporte = '$id_soporte'";
 
             mysqli_query($conexion, $SQL_aceptar_soli);
 
@@ -978,8 +1046,8 @@ if ($comprobacion == "espera_proceso") {
             $nombreAdm = $_SESSION['nombre'];
             $descripcion_Cambio = "Actualización de solicitud de Soporte técnico, nombre del equipo: " . $nombreEquipo . ", Nro de Solicitud: " . $id_soporte . ". Actualizada a -En Proceso-, por " . $nombreAdm . ", técnico designado: " . $nombreEncargado . ".";
 
-            $accionModificacion = "2";
-            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
+            $accionHecha = "9";
+            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionHecha', '$nombreEquipo', now(), '$descripcion_Cambio')";
             mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
 
             // FINAL AUDITORIA ************************************************************
@@ -1002,27 +1070,91 @@ if ($comprobacion == "espera_proceso") {
 
 
 }
+// SOLICITUD PUESTA EN ESPERA POR FALTA DE COMPONENTES
+if ($comprobacion == "espera_componentes") {
+    include("abrir_conexion.php");
+    $ingeniero_encargado = $_SESSION['id_usr'];
+    $id_soporte = $_POST['soporte'];
+    $nombre_equipo = $_POST['nombre_equipo'];
+    $descripcion = $_POST['texto'];
+    $repuesto = "6";
 
+    $contador = 0;
+    $VerificarNroCaso = "SELECT * FROM $tabla_db8 WHERE id_soporte = '$id_soporte' AND nomb_equipo_soporte = '$nombre_equipo'";
+    $resultados = mysqli_query($conexion, $VerificarNroCaso);
+    while ($consulta = mysqli_fetch_array($resultados)) {
+        $contador++;
+    }
+    if ($contador == 1) {
+        if (preg_match($soloLetras, $descripcion) && preg_match($patron_numero, $id_soporte) && preg_match($patron_nombre, $nombre_equipo)) {
+            $SQL_verify = "SELECT * FROM $tabla_db8 WHERE nomb_equipo_soporte = '$nombre_equipo'";
+            $resultados = mysqli_query($conexion, $SQL_verify);
+            while ($consulta = mysqli_fetch_array($resultados)) {
+                $notas = $consulta['historial_soporte'];
+            }
+
+            if ($notas == '') {
+                $nota_final = $descripcion;
+            } else {
+                $nota_final = $notas . "<br><br>" . $descripcion;
+            }
+
+            // AHORA HACEMOS LA CONSULTA QUE REGISTRARÁ LOS NUEVOS DATOS EN EL SISTEMA
+            $SQL_aceptar_soli = "UPDATE $tabla_db8 SET estado='$repuesto', fecha_soporte_aceptacion=now(), tecnico_soporte_id='$ingeniero_encargado', historial_soporte='$nota_final' WHERE id_soporte = '$id_soporte'";
+
+            mysqli_query($conexion, $SQL_aceptar_soli);
+
+            // AUDITORIA *****************************************************************
+            $buscarID = mysqli_query($conexion, "SELECT * FROM $tabla_db8 s INNER JOIN $tabla_db1 us ON s.tecnico_soporte_id=us.id_usuario WHERE id_soporte = '$id_soporte' AND estado = '$repuesto'");
+            while ($consulta = mysqli_fetch_array($buscarID)) {
+                $nombreEquipoBD = $consulta['nomb_equipo_soporte'];
+            }
+
+            $valorID = $_SESSION['id_usr'];
+            $nombreAdm = $_SESSION['nombre'];
+            $descripcion_Cambio = "Se movio la solicitud a En espera de componentes, nombre del equipo: " . $nombreEquipoBD . ", Nro de Solicitud: " . $id_soporte . ". Actualizada, por " . $nombreAdm . ", descripción: " . $descripcion . ".";
+
+            $accionHecha = "10";
+            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionHecha', '$nombreEquipoBD', now(), '$descripcion_Cambio')";
+            mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
+
+            // FINAL AUDITORIA ************************************************************
+
+
+            $mensaje = "Se movió la solicitud de manera exítosa.";
+            echo $mensaje;
+            include("cerrar_conexion.php");
+
+        } else {
+            http_response_code(501);
+            include("cerrar_conexion.php");
+        }
+
+    } else {
+        http_response_code(500);
+        include("cerrar_conexion.php");
+    }
+}
 // FINALIZAR PROCESO (AUDITORIA LISTA)
 if ($comprobacion == "finalizar_proceso") {
     include("abrir_conexion.php");
 
-    $comentario = darFormatoOriginal($_POST['comentario']);
-    $id_soporte = darFormatoOriginal($_POST['nroCaso']);
+    $comentario = $_POST['comentario'];
+    $id_soporte = $_POST['nroCaso'];
     $nombre_equipo = $_POST['nombre_equipo'];
     $finalizado = "3";
 
     $pos = strpos($comentario, $findme);
     $pos2 = strpos($id_soporte, $findme);
 
-    if ($pos === false && $pos2 === false && preg_match($patron_nombre, $nombre_equipo)) {
+    if (preg_match($patron_numero, $id_soporte) && preg_match($soloLetras, $comentario) && preg_match($patron_nombre, $nombre_equipo)) {
         if (strlen($comentario) > 20) {
             $VerificarNroCaso = "SELECT * FROM $tabla_db8 WHERE id_soporte = '$id_soporte'";
             $resultados = mysqli_query($conexion, $VerificarNroCaso);
             while ($consulta = mysqli_fetch_array($resultados)) {
                 $estado = $consulta['estado'];
             }
-            if ($estado == "2") {
+            if ($estado == "2" || $estado == "6") {
                 // AHORA HACEMOS LA CONSULTA QUE REGISTRARÁ LOS ÚLTIMOS DATOS
                 $SQL_finalizar_soli = "UPDATE $tabla_db8 SET estado='$finalizado', fecha_soporte_final=now(), comentario='$comentario' WHERE id_soporte = '$id_soporte'";
 
@@ -1039,8 +1171,8 @@ if ($comprobacion == "finalizar_proceso") {
                 $nombreAdm = $_SESSION['nombre'];
                 $descripcion_Cambio = "Culminación de la solicitud de Soporte técnico, nombre del equipo: " . $nombreEquipo . ", Nro de Solicitud: " . $id_soporte . ". Actualizada a -Finalizada-, por " . $nombreAdm . ", técnico designado de realizar el soporte: " . $nombreEncargado . ".";
 
-                $accionModificacion = "2";
-                $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
+                $accionHecha = "11";
+                $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionHecha', '$nombreEquipo', now(), '$descripcion_Cambio')";
                 mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
 
                 // FINAL AUDITORIA ************************************************************
@@ -1062,7 +1194,6 @@ if ($comprobacion == "finalizar_proceso") {
     }
 }
 // ENVIAR EL RECHAZO DESDE EL MODAL (AUDITORIA LISTA)
-
 if ($comprobacion == "iniciarRechazo") {
     include("abrir_conexion.php");
 
@@ -1093,8 +1224,8 @@ if ($comprobacion == "iniciarRechazo") {
             $nombreAdm = $_SESSION['nombre'];
             $descripcion_Cambio = "Rechazo de la solicitud de Soporte técnico, nombre del equipo: " . $nombreEquipo . ", Nro de Solicitud: " . $idRechazo . ". Se rechazó la solicitud por parte de " . $nombreAdm . "; en espera de confirmación de rechazo.";
 
-            $accionModificacion = "3";
-            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
+            $accionHecha = "12";
+            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionHecha', '$nombreEquipo', now(), '$descripcion_Cambio')";
             mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
 
             // FINAL AUDITORIA ************************************************************
@@ -1116,8 +1247,8 @@ if ($comprobacion == "iniciarRechazo") {
 if ($comprobacion == "Rechazar_Final") {
     include("abrir_conexion.php");
 
-    $comentarioRech = darFormatoOriginal($_POST['comentarioRech']);
-    $nroCasoRech = darFormatoOriginal($_POST['nroCasoRech']);
+    $comentarioRech = $_POST['comentarioRech'];
+    $nroCasoRech = $_POST['nroCasoRech'];
     $nombre_equipo = $_POST['nombre_equipo'];
 
     $pos = strpos($comentarioRech, $findme);
@@ -1125,7 +1256,7 @@ if ($comprobacion == "Rechazar_Final") {
 
     $finalRechazo = "5";
 
-    if ($pos === false && $pos2 === false && preg_match($patron_nombre, $nombre_equipo)) {
+    if (preg_match($patron_numero, $nroCasoRech) && preg_match($soloLetras, $comentarioRech) && preg_match($patron_nombre, $nombre_equipo)) {
         if (strlen($comentarioRech) > 20) {
             $VerificarNroCaso = "SELECT * FROM $tabla_db8 WHERE id_soporte = '$nroCasoRech'";
             $resultados = mysqli_query($conexion, $VerificarNroCaso);
@@ -1148,8 +1279,8 @@ if ($comprobacion == "Rechazar_Final") {
                 $nombreAdm = $_SESSION['nombre'];
                 $descripcion_Cambio = "Rechazo de la solicitud de Soporte técnico, nombre del equipo: " . $nombreEquipo . ", Nro de Solicitud: " . $nroCasoRech . ". Se rechazó la solicitud de manera definitiva por parte de " . $nombreAdm . ".";
 
-                $accionModificacion = "3";
-                $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
+                $accionHecha = "12";
+                $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionHecha', '$nombreEquipo', now(), '$descripcion_Cambio')";
                 mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
 
                 // FINAL AUDITORIA ************************************************************

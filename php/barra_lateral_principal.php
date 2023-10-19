@@ -45,7 +45,6 @@ function barra_lateral_principal(){
                         <li><a href="index_intranet.php" id="enl_barra">Inicio</a></li>
                         <li><a href="soporte_tecnico.php" id="enl_barra">Centro de Soporte</a></li>
                         <li><a href="parque_tecno.php" id="enl_barra">Parque Tecnologico</a></li>
-                        <li><a href="correspondencia_menu.php" id="enl_barra">Correspondencia</a></li>
                         
                         <li><a href="../php/cerrar_sesion.php" id="enl_barra" class="text-light">Cerrar Sesión</a></li> 
                     </ul>

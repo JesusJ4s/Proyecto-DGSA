@@ -8,7 +8,7 @@
 
     --color-grey: rgb(66, 66, 66);
     --color-grey-claro: rgb(175, 174, 174);
-
+    --color-fondo: rgb(110, 110, 110);
 
 	
 	--fondo: rgba(124, 20, 209, 0.664);
@@ -193,6 +193,10 @@
 .bg-grey {
     background-color: var(--color-grey);
 }
+.color-fondo {
+    background-color: var(--color-fondo);
+}
+
 .bg-azul {
     background-color: var(--color-blue);
 }.bg-azul1 {
@@ -522,7 +526,7 @@
     height: 40px;
 }
 .marquesina-intranet {
-    height: 80px;
+    height: auto;
     border-radius: 15px;
 }
 .footer_enlaces {

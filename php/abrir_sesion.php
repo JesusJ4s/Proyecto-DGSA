@@ -15,6 +15,8 @@ if ($ingreso == "log") {
     while ($consulta = mysqli_fetch_array($permi)) {
         $permiso = $consulta['usuario_rol_id'];
     }
+    $sesionSET = "SET GLOBAL event_scheduler='ON'";
+    mysqli_query($conexion, $sesionSET);
     if ($permiso <> 5) {
         if ($_SESSION['logged_in'] == false) {
             $pass = $_POST['contraseña'];
@@ -48,12 +50,12 @@ if ($ingreso == "log") {
                     mysqli_query($conexion, $updateSesion);
 
                     $nueva_hora = hora10();
-                    $accionCambio = "6";
+                    $accionCambio = "4";
                     $descripcion_Cambio = "Salida automática del sistema, del Usuario: " . $nombre . ".";
                     // $event = "CREATE EVENT $evento ON SCHEDULE AT '$nueva_hora' DO UPDATE $tabla_db1 SET sesion = '0' WHERE id_usuario = '$valorID'";
                     $event = "CREATE EVENT $evento ON SCHEDULE AT '$nueva_hora' DO BEGIN
                         UPDATE $tabla_db1 SET sesion = '0' WHERE id_usuario = '$valorID';
-                        INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionCambio', now(), '$descripcion_Cambio');
+                        INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionCambio', '$valorCedula', now(), '$descripcion_Cambio');
                     END";
                     mysqli_query($conexion, $event);
 
@@ -79,8 +81,8 @@ if ($ingreso == "log") {
                     }
                     // AUDITORIA *****************************************************************
                     $descripcion_Cambio = "Ingreso del Usuario: " . $nombre . ".";
-                    $accionIngreso = "5";
-                    $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionIngreso', now(), '$descripcion_Cambio')";
+                    $accionHecha = "3";
+                    $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionHecha', '$valorCedula', now(), '$descripcion_Cambio')";
                     mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
                     // FINAL AUDITORIA ************************************************************
 

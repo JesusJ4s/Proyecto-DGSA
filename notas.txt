@@ -375,6 +375,14 @@ EXISTEN 2 FORMAS DE LLAMAR DATOS DE UNA TABLA:
         nroCaso=$(this).find('#input_td').val();
     });
 
+    ESTA ES LA MEJOR 
+
+     $('#body-AudiUsr').on('click', '#VerAudi', function () {
+        fecha = $(this).closest('tr').find('td').eq(0).text();
+        cedula = $(this).closest('tr').find('td').eq(2).text();
+
+     });
+
 
 
 

@@ -39,13 +39,16 @@
             </div>
             <div class="modal-body" id="confirmarC">
                 <p>
-                    Confirme que le ha llegado el documento en físico desde Correspondencia.
+                    Confirme que le ha llegado el documento en físico desde Correspondencia. Si desea <span class="text-danger">rechazar</span> agregue la razón.
                 </p>
+                <label>Coloque una nota si lo desea sobre la correspondencia:</label>
+                <textarea class="w-100 descripcion"id="descripcion" name="descripcion" ></textarea>
                 <input type="hidden" id="cosasJS">
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" id="confirmarBTN" data-bs-dismiss="modal">Confirmar</button>
+                <button type="button" class="btn btn-danger" id="confirmarBTN" data-bs-dismiss="modal">Rechazar</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
             </div>
             </div>
@@ -178,7 +181,9 @@
 
 <script src="../js/bootstrap.bundle.min.js"></script>
 <script src="../js/correspondencia.js"></script>
-    
+    <!-- USADO PARA EL TEXTAREA -->
+    <script src="../js/editar_mostrar_datos.js"></script>
+
 
 
 </body>

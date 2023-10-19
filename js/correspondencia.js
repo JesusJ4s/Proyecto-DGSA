@@ -1,11 +1,11 @@
 $(document).ready(function () {
     notificacionesCorresp();
-
     contador_correspondencia();
     tabla_correspondencia();
     tabla_correspondencia_indiv();
     tabla_correspondencia_indiv_FIN();
     tabla_correspondencia_indiv_FIN_ADMIND();
+    notificacionesCorrespALERTA();
 })
 
 // CONFIRMAR LLEGADA DE CORRESPONDENCIA
@@ -15,15 +15,31 @@ ConfirmarSoport.addEventListener('click', confirmarCorres);
 function notificacionesCorresp(){
     var parametros =
     {
-        "correspondencia": "notificaciones"
+        "alerta": "notificaciones"
     };
     $.ajax({
         data: parametros,
-        url: '../php/correspondencia.php',
+        url: '../php/notificaciones_general.php',
         type: 'POST',
         success: function(mensaje)
         {
             $('#notificaciones').html(mensaje);
+        }
+    });
+    
+}
+function notificacionesCorrespALERTA(){
+    var parametros =
+    {
+        "alerta": "notificacionesALERTA"
+    };
+    $.ajax({
+        data: parametros,
+        url: '../php/notificaciones_general.php',
+        type: 'POST',
+        success: function(mensaje)
+        {
+            $('#notificacionesALERTA').html(mensaje);
         }
     });
     
@@ -72,7 +88,7 @@ function tabla_correspondencia_indiv() {
                     var diferencia = Date.now() - fecha2.getTime();
                     var dias = Math.abs(diferencia) / (1000 * 60 * 60 * 24);
 
-                    if (dias >= 1 ) {
+                    if (dias >= 2 ) {
                         $(this).find('td:nth-child(6)').addClass('bg-danger text-light');
                     }
                 }
@@ -97,6 +113,14 @@ function tabla_correspondencia() {
             $('#tabla_correspondencia').html(mensaje);
             new DataTable('#dataTable_corres', {
                 language: Traduccion,
+                initComplete: function () {
+                    var api = this.api();
+                    // Obtener el índice de la columna de fechas
+                    var dateColumnIndex = 0; // Reemplaza con el índice de tu columna de fechas
+
+                    // Ordenar la columna de fechas de forma descendente (más lejano a más reciente)
+                    api.column(dateColumnIndex).order('desc').draw();
+                }
             });
             $('#dataTable_corres tr').each(function () {
                 var est = $(this).find('td:last').text();
@@ -147,7 +171,7 @@ function empresas_fun() {
     })
 
 }
-
+// GUARDA EL VALOR PARA ACEPTAR CORRESPONDENCIA
 function datosTabla() {
     // TOMAR VALOR DE UNA COLUMNA DE UNA TABLA
     $('#bodyCorresInd').on('click', 'tr', function () {
@@ -158,11 +182,14 @@ function datosTabla() {
         input.value = nroAdmin;
     });
 }
+// CONFIRMAR CORRESPONDENCIA Y RECARGAR TABLAS
 function confirmarCorres() {
     const nro = document.getElementById('cosasJS').value;
+    nota_final = document.getElementById('descripcion').value;
     var parametros =
     {
         "nroAdmin": nro,
+        "nota_final": nota_final,
         "correspondencia": "confirmarCo"
     }
     $.ajax({
@@ -183,10 +210,12 @@ function confirmarCorres() {
             $('#infoCorres').modal('show');
             tabla_correspondencia_indiv();
             tabla_correspondencia_indiv_FIN();
+            tabla_correspondencia_indiv_FIN_ADMIND();
+
         }
     })
 }
-
+// TABLAS DE CORRESPONDENCIAS ACEPTADAS
 function tabla_correspondencia_indiv_FIN() {
     var parametros =
     {
@@ -229,11 +258,41 @@ function tabla_correspondencia_indiv_FIN_ADMIND() {
             $('#tabla_correspondencia_indivi_FIN_admin').html(mensaje);
             new DataTable('#dataTable_corres_ind_FIN_AD', {
                 language: Traduccion,
+                initComplete: function () {
+                    var api = this.api();
+                    // Obtener el índice de la columna de fechas
+                    var dateColumnIndex = 0; // Reemplaza con el índice de tu columna de fechas
+
+                    // Ordenar la columna de fechas de forma descendente (más lejano a más reciente)
+                    api.column(dateColumnIndex).order('desc').draw();
+                    // Agregar filtros (selectores) a la tabla
+                    api.columns([4, 7]).every(function () {
+                        var column = this;
+                        var select = $('<select class="filterE form-select "><option value="">---</option></select>')
+                            .appendTo($(column.footer()).empty())
+                            .on('change', function () {
+                                var val = $.fn.dataTable.util.escapeRegex(
+                                    $(this).val()
+                                );
+
+                                column
+                                    .search(val ? '^' + val + '$' : '', true, false)
+                                    .draw();
+                            });
+
+                        column.data().unique().sort().each(function (d, j) {
+                            select.append('<option value="' + d + '">' + d + '</option>')
+                        });
+                    });
+                }
             });
             $('#tabla_correspondencia_indivi_FIN_admin tr').each(function () {
                 var est = $(this).find('td:last').text();
                 if (est == "Confirmado") {
                     $(this).find('td:last').addClass('bg-success text-light');
+                }
+                if (est == "En espera") {
+                    $(this).find('td:last').addClass('bg-warning text-dark');
                 }
             });
         }

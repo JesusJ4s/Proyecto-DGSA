@@ -42,6 +42,11 @@ function registroCorrespondencia(){
 
                 $('#RegistroCorresC').html('Error al ingresar los datos.<br>Error: El rif no está registrado en el sistema.');
              }     
+            if(nroERROR==503){
+                $('#RegistroCorres').modal('show');
+
+                $('#RegistroCorresC').html('Error al ingresar los datos.<br>Error: Al no ser empleado de correspondencia no puede realizar ésta acción.');
+             }     
         }
     });
 }
@@ -110,8 +115,12 @@ function registroEmp(){
                 $('#RegistroCorres').modal('show');
 
                 $('#RegistroCorresC').html('Error al registrar los datos.<br>Error: Dicho rif ya fue registrado en el sistema.');
-
              }     
+             if(nroERROR==503){
+                $('#RegistroCorres').modal('show');
+
+                $('#RegistroCorresC').html('Error al ingresar los datos.<br>Error: Al no ser empleado de correspondencia no puede realizar ésta acción.');
+             }   
         }
     });
 }

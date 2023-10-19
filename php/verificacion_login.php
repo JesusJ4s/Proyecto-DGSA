@@ -4,7 +4,6 @@ session_write_close();
 ini_set('session.cookie_lifetime', 300); //tiempo de la sesion en segundos
 // Volvemos a abrir la sesión
 session_start();
-
 ob_start();
 
 // USAR EN TODAS LAS PAGINAS PARA SACAR A LA PERSONA DEL SERVER 

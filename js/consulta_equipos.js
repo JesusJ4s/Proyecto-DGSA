@@ -30,6 +30,153 @@ function consulta_dir()
         }
     });
 }
+// REPORTE INDIVIDUAL
+function consulta_PC_ind(){
+    $('#body-dir-busqueda').on('click','#btnNameEquipo',function(){
+        con_name = $(this).closest('tr').find('td').eq(2).text();
+        var parametros=
+        {
+            "con_name":con_name,
+            "busqueda":"dato_solo"
+        }
+        $.ajax({
+            data: parametros,
+            url: '../php/consultar_equipos_individuales.php',
+            type: 'POST',
+            error: function(jqXHR)
+            {
+                alert("error")
+            },   
+            success: function(mensaje)
+            {
+                // Redireccionar a la página deseada
+                window.open('../reportes/parque_tecnologico_reporte.php', "_blank");
+            }
+        });
+
+    });
+}
+// REPORTE POR FECHA
+function consulta_PC_fecha() {
+    var fecha1 = document.getElementById('fecha1').value;
+    var fecha2 = document.getElementById('fecha2').value;
+    var parametros = 
+    {
+        "fecha1":fecha1,
+        "fecha2":fecha2,
+        "busqueda":"dato_fecha"
+    }
+    $.ajax({
+        data: parametros,
+        url: '../php/consultar_equipos_individuales.php',
+        type: 'POST',
+        error: function(jqXHR)
+        {
+            alert("error")
+        },   
+        success: function(mensaje)
+        {
+            // Redireccionar a la página deseada
+            window.open('../reportes/parque_tecnologico_reporte.php', "_blank");
+        }
+    });
+
+}
+// REPORTES DE TODOS LOS EQUIPOS
+function consulta_PC_todos() {
+
+    var parametros = 
+    {
+        "busqueda":"dato_todos"
+    }
+    $.ajax({
+        data: parametros,
+        url: '../php/consultar_equipos_individuales.php',
+        type: 'POST',
+        error: function(jqXHR)
+        {
+            alert("error")
+        },   
+        success: function(mensaje)
+        {
+            // Redireccionar a la página deseada
+            window.open('../reportes/parque_tecnologico_reporte.php', "_blank");
+        }
+    });
+
+}
+// REPORTES POR DIRECCION
+function consulta_PC_direc() {
+    var direccion = document.getElementById('direccion_select').value;
+    var parametros = 
+    {
+        "direccion":direccion,
+        "busqueda":"dato_dire"
+    }
+    $.ajax({
+        data: parametros,
+        url: '../php/consultar_equipos_individuales.php',
+        type: 'POST',
+        error: function(jqXHR)
+        {
+            alert("error")
+        },   
+        success: function(mensaje)
+        {
+            // Redireccionar a la página deseada
+            window.open('../reportes/parque_tecnologico_reporte.php', "_blank");
+        }
+    });
+
+}
+// REPORTES POR DIVISION
+function consulta_PC_divi() {
+    var division = document.getElementById('division_select').value;
+    var parametros = 
+    {
+        "division":division,
+        "busqueda":"dato_divi"
+    }
+    $.ajax({
+        data: parametros,
+        url: '../php/consultar_equipos_individuales.php',
+        type: 'POST',
+        error: function(jqXHR)
+        {
+            alert("error")
+        },   
+        success: function(mensaje)
+        {
+            // Redireccionar a la página deseada
+            window.open('../reportes/parque_tecnologico_reporte.php', "_blank");
+        }
+    });
+
+}
+// REPORTES POR DEPARTAMENTO
+function consulta_PC_depa() {
+    var departamento = document.getElementById('departamento_select').value;
+    var parametros = 
+    {
+        "departamento":departamento,
+        "busqueda":"dato_depa"
+    }
+    $.ajax({
+        data: parametros,
+        url: '../php/consultar_equipos_individuales.php',
+        type: 'POST',
+        error: function(jqXHR)
+        {
+            alert("error")
+        },   
+        success: function(mensaje)
+        {
+            // Redireccionar a la página deseada
+            window.open('../reportes/parque_tecnologico_reporte.php', "_blank");
+        }
+    });
+
+}
 // Consulta de equipos de las divisiones
 function consulta_div(){
     division = document.getElementById('division_select').value;
@@ -114,34 +261,6 @@ function fechas(){
         }
     });
 }
-// Consulta por Nombre de Equipo
-
-function name_consult(){
-    nameEquipo = document.getElementById('con_name').value;
-
-
-    var parametros =
-    {
-        "nameEquipo" : nameEquipo,
-        "busqueda": "5"
-    };
-    $.ajax({
-        data: parametros,
-        url: '../php/consultar_equipos.php',
-        type: 'POST',
-
-        beforeSend: function()
-        {
-            $('#respuesta_name').html("<span class='spinner-grow spinner-grow-sm bg-primary'></span><span class='spinner-grow spinner-grow-sm bg-primary'></span><span class='spinner-grow spinner-grow-sm bg-primary'></span>");
-        },
-
-        success: function(mensaje)
-        {
-            $('#respuesta_name').html(mensaje);
-            
-        }
-    });
-}
 // MUESTRA EL TOTAL DE EQUIPOS
 function total_equi(){
 
@@ -200,7 +319,9 @@ function edit_equipo(){
             }
 
             $('.ocultar-spinner').hide(5);
-            $('.ocultar-class').show(5);                   
+            $('.ocultar-class').show(5);   
+            $('#ediciones_div').addClass('ocultar-div');
+
 
             
             formulario_equipo_edicion.reset();
@@ -248,36 +369,36 @@ function edit_equipo(){
             $("#internet_edit").val(valores.internet);
 
             $("#mouse_selector").val(valores.mouse);
-            $("#mouse_datos_edit").val(valores.BN_serial_mouse);
-            $("#mouse_marca_edit").val(valores.mouse_marca);
+            $("#mouse_datos").val(valores.BN_serial_mouse);
+            $("#mouse_marca").val(valores.mouse_marca);
             $("#mouse_conexion").val(valores.mouse_conexion);
 
             $("#monitor_selector").val(valores.monitor);
+            $("#monitor_marca").val(valores.monitor_marca);
             $("#monitor_conexion").val(valores.monitor_conexion);
-            $("#monitor_datos_edit").val(valores.BN_serial_monitor);
+            $("#monitor_datos").val(valores.BN_serial_monitor);
 
             $("#regulador_selector").val(valores.regulador);
-            $("#regulador_marca_edit").val(valores.regulador_marca);
-            $("#regulador_datos_edit").val(valores.BN_serial_regulador);
+            $("#regulador_marca").val(valores.regulador_marca);
+            $("#regulador_datos").val(valores.BN_serial_regulador);
 
             $("#teclado_selector").val(valores.teclado);
-            $("#teclado_datos_edit").val(valores.BN_serial_teclado);
+            $("#teclado_datos").val(valores.BN_serial_teclado);
 
-            $("#teclado_marca_edit").val(valores.teclado_marca);
+            $("#teclado_marca").val(valores.teclado_marca);
             $("#teclado_conexion").val(valores.teclado_conexion);
 
             $("#escaner_selector").val(valores.escaner);
-            $("#escaner_datos_edit").val(valores.BN_serial_escaner);
-            $("#escaner_modelo_edit").val(valores.escaner_modelo);
+            $("#escaner_datos").val(valores.BN_serial_escaner);
+            $("#escaner_marca").val(valores.escaner_marca);
+            $("#escaner_modelo").val(valores.escaner_modelo);
             $("#escaner_conexion").val(valores.escaner_conexion);
-            $("#descripcion").val(valores.comentario);
 
-
-
-
+            $('#ediciones_div').removeClass('ocultar-div');
         }
     });
 }
+// CONSULTA EL EQUIPO PARA SOPORTE TECNICO
 function ver_equipo_soporte(){
     name_search = document.getElementById('name_edit').value;
     var parametros =
@@ -340,4 +461,3 @@ function ver_equipo_soporte(){
         }
     });
 }
-

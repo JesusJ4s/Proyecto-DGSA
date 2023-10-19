@@ -6,11 +6,12 @@
     include("../php/verificacion_login.php");
     LoginSimple();
 ?>
-<script src="../js/reenvio.js"></script>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="../js/reenvio.js"></script>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -312,7 +313,6 @@
     <script src="../js/bootstrap.bundle.min.js"></script>
     <!-- COMPRUEBA POR EXPRESIONES REGULARES LOS INPUTS PARA LUEGO PERMITIR SUBIR LOS DATOS -->
     <script src="../js/formulario_ajustes_usuario.js"></script>
-    
 </body>
 
 

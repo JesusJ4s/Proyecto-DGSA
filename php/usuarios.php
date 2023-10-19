@@ -54,7 +54,7 @@ function darFormatoOriginal($string)
 
     return $string;
 }
-// REGISTRO DE USUARIO DESDE EL INDEX DE LA INTRANET (AUDITORIA EN PROCESO - FALTA PROBAR) 
+// REGISTRO DE USUARIO DESDE EL INDEX DE LA INTRANET (AUDITORIA EN PROCESO) 
 if ($ingreso == "Registro") {
     $nombre_USR = $_POST["usuario"];
     // Pasar nombre de usuario a mayúsculas
@@ -124,7 +124,7 @@ if ($ingreso == "Registro") {
                 $descripcion_Cambio = "Nuevo Usuario registrandose en el Sistema, nombre del empleado: " . $nombre . " " . $apellido . ", cédula " . $nacionalidad . "-" . $cedulaCreacion . ". Dicho empleado se ha registrado como trabajador en: " . $nombreDivi;
 
                 $accionCreacion = "1";
-                $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionCreacion', now(), '$descripcion_Cambio')";
+                $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionCreacion', '$cedulaCreacion', now(), '$descripcion_Cambio')";
                 mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
                 // FINAL AUDITORIA ************************************************************
 
@@ -184,7 +184,7 @@ if ($ingreso == 1) {
     include("cerrar_conexion.php");
 }
 
-// REGISTRO DE LAS PREGUNTAS DE SEGURIDAD
+// REGISTRO DE LAS PREGUNTAS DE SEGURIDAD (AUDITORIA LISTA)
 if ($ingreso == "DatosExtras") {
 
     $pregunta1 = $_POST['pregunta1'];
@@ -226,7 +226,7 @@ if ($ingreso == "DatosExtras") {
                 $descripcion_Cambio = "El usuario " . $nombre_USR_BD . ", finalizó el registro las preguntas de seguridad.";
 
                 $accionCreacion = "1";
-                $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionCreacion', now(), '$descripcion_Cambio')";
+                $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionCreacion', '$compro', now(), '$descripcion_Cambio')";
                 mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
                 // FINAL AUDITORIA ************************************************************
 
@@ -261,7 +261,7 @@ if ($ingreso == "verificacion") {
     $pregunta2 = $_POST['pregunta2'];
     $respuestaUSR2 = $_POST['respuesta_2'];
 
-    if (preg_match($ci,$cedula) && preg_match($soloNro1,$pregunta1) && preg_match($soloNro1,$pregunta2) && preg_match($respuesta,$respuestaUSR1) && preg_match($respuesta,$respuestaUSR2)) {
+    if (preg_match($ci, $cedula) && preg_match($soloNro1, $pregunta1) && preg_match($soloNro1, $pregunta2) && preg_match($respuesta, $respuestaUSR1) && preg_match($respuesta, $respuestaUSR2)) {
         if ($cedula != '' && $respuestaUSR1 != '' && $respuestaUSR2 != '' && $pregunta1 != '' && $pregunta2 != '') {
             if ($pregunta1 != $pregunta2) {
                 include("abrir_conexion.php");
@@ -435,7 +435,13 @@ if ($ingreso == "AjustesUsr") {
                                     $valor_antiguo = isset($datos_antiguos[$columna]) ? $datos_antiguos[$columna] : "";
                                     $valor_nuevo = isset($$columna) ? $$columna : "";
                                     if ($valor_antiguo != $valor_nuevo) {
-                                        array_push($cambios, "$nombre cambió de: " . $valor_antiguo . " a: " . $valor_nuevo . ".");
+                                        if (empty($valor_antiguo) && !empty($valor_nuevo)) {
+                                            array_push($cambios, "$nombre se agregó como: " . $valor_nuevo . ".");
+                                        } else if (!empty($valor_antiguo) && empty($valor_nuevo)) {
+                                            array_push($cambios, "$nombre se eliminó.");
+                                        } else {
+                                            array_push($cambios, "$nombre cambió de: " . $valor_antiguo . " a: " . $valor_nuevo . ".");
+                                        }
                                         $huboCambios = true; // Se realizó al menos un cambio
                                     }
                                     break;
@@ -446,7 +452,7 @@ if ($ingreso == "AjustesUsr") {
                             $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . implode(" ", $cambios) . " Cambios realizados.";
 
                             $accionModificacion = "2";
-                            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
+                            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, entidad_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', '$cedula', now(), '$descripcion_Cambio')";
                             mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
                         }
 
@@ -502,18 +508,24 @@ if ($ingreso == "AjustesUsr") {
                                         $valor_antiguo = isset($datos_antiguos[$columna]) ? $datos_antiguos[$columna] : "";
                                         $valor_nuevo = isset($$columna) ? $$columna : "";
                                         if ($valor_antiguo != $valor_nuevo) {
-                                            array_push($cambios, "$nombre cambió de: " . $valor_antiguo . " a: " . $valor_nuevo . ".");
+                                            if (empty($valor_antiguo) && !empty($valor_nuevo)) {
+                                                array_push($cambios, "$nombre se agregó como: " . $valor_nuevo . ".");
+                                            } else if (!empty($valor_antiguo) && empty($valor_nuevo)) {
+                                                array_push($cambios, "$nombre se eliminó.");
+                                            } else {
+                                                array_push($cambios, "$nombre cambió de: " . $valor_antiguo . " a: " . $valor_nuevo . ".");
+                                            }
                                             $huboCambios = true; // Se realizó al menos un cambio
                                         }
                                         break;
                                 }
                             }
-
+                            
                             if ($huboCambios) {
                                 $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . implode(" ", $cambios) . " Cambios realizados.";
-
+                            
                                 $accionModificacion = "2";
-                                $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
+                                $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, entidad_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$cedula', '$accionModificacion', now(), '$descripcion_Cambio')";
                                 mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
                             }
 
@@ -586,7 +598,13 @@ if ($ingreso == "AjustesUsr") {
                                 $valor_antiguo = isset($datos_antiguos[$columna]) ? $datos_antiguos[$columna] : "";
                                 $valor_nuevo = isset($$columna) ? $$columna : "";
                                 if ($valor_antiguo != $valor_nuevo) {
-                                    array_push($cambios, "$nombre cambió de: " . $valor_antiguo . " a: " . $valor_nuevo . ".");
+                                    if (empty($valor_antiguo) && !empty($valor_nuevo)) {
+                                        array_push($cambios, "$nombre se agregó como: " . $valor_nuevo . ".");
+                                    } else if (!empty($valor_antiguo) && empty($valor_nuevo)) {
+                                        array_push($cambios, "$nombre se eliminó.");
+                                    } else {
+                                        array_push($cambios, "$nombre cambió de: " . $valor_antiguo . " a: " . $valor_nuevo . ".");
+                                    }
                                     $huboCambios = true; // Se realizó al menos un cambio
                                 }
                                 break;
@@ -597,7 +615,7 @@ if ($ingreso == "AjustesUsr") {
                         $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . implode(" ", $cambios) . " Cambios realizados.";
 
                         $accionModificacion = "2";
-                        $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
+                        $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', '$cedula', now(), '$descripcion_Cambio')";
                         mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
                     }
 
@@ -654,7 +672,13 @@ if ($ingreso == "AjustesUsr") {
                                     $valor_antiguo = isset($datos_antiguos[$columna]) ? $datos_antiguos[$columna] : "";
                                     $valor_nuevo = isset($$columna) ? $$columna : "";
                                     if ($valor_antiguo != $valor_nuevo) {
-                                        array_push($cambios, "$nombre cambió de: " . $valor_antiguo . " a: " . $valor_nuevo . ".");
+                                        if (empty($valor_antiguo) && !empty($valor_nuevo)) {
+                                            array_push($cambios, "$nombre se agregó como: " . $valor_nuevo . ".");
+                                        } else if (!empty($valor_antiguo) && empty($valor_nuevo)) {
+                                            array_push($cambios, "$nombre se eliminó.");
+                                        } else {
+                                            array_push($cambios, "$nombre cambió de: " . $valor_antiguo . " a: " . $valor_nuevo . ".");
+                                        }
                                         $huboCambios = true; // Se realizó al menos un cambio
                                     }
                                     break;
@@ -665,7 +689,7 @@ if ($ingreso == "AjustesUsr") {
                             $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . implode(" ", $cambios) . " Cambios realizados.";
 
                             $accionModificacion = "2";
-                            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
+                            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', '$cedula', now(), '$descripcion_Cambio')";
                             mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
                         }
 
@@ -744,7 +768,7 @@ if ($ingreso == "datosExtrAjustes") {
         if ($huboCambios) {
             $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . implode(" ", $cambios) . " Cambios realizados.";
             $accionModificacion = "2";
-            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
+            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', '$cedula', now(), '$descripcion_Cambio')";
             mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
         }
 
@@ -793,7 +817,7 @@ if ($ingreso == "datosExtrAjustes") {
         if ($huboCambios) {
             $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . (count($cambios) > 0 ? implode(" ", $cambios) . " Cambios realizados." : "Sin cambios realizados.");
             $accionModificacion = "2";
-            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
+            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', '$cedula', now(), '$descripcion_Cambio')";
             mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
         }
         // FIN DE LA AUDITORIA *************************************************************
@@ -839,7 +863,7 @@ if ($ingreso == "datosExtrAjustes") {
         if ($huboCambios) {
             $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . (count($cambios) > 0 ? implode(" ", $cambios) . " Cambios realizados." : "Sin cambios realizados.");
             $accionModificacion = "2";
-            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
+            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', '$cedula', now(), '$descripcion_Cambio')";
             mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
         }
         // FIN DE LA AUDITORIA *************************************************************
@@ -884,7 +908,7 @@ if ($ingreso == "datosExtrAjustes") {
         if ($huboCambios) {
             $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . (count($cambios) > 0 ? implode(" ", $cambios) . " Cambios realizados." : "Sin cambios realizados.");
             $accionModificacion = "2";
-            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
+            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', '$cedula', now(), '$descripcion_Cambio')";
             mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
         }
 
@@ -929,14 +953,11 @@ if ($ingreso == "datosExtrAjustes") {
         if ($huboCambios) {
             $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . (count($cambios) > 0 ? implode(" ", $cambios) . " Cambios realizados." : "Sin cambios realizados.");
             $accionModificacion = "2";
-            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
+            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', '$cedula', now(), '$descripcion_Cambio')";
             mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
         }
 
-
-
         // FIN DE LA AUDITORIA *************************************************************
-        //TODO: CAMBIAR LA FORMA DE VERIFICAR LOS DATOS PARA GUARDAR EL REGISTRO
 
         // MODIFICAR DATOSb
         $_UPDATE_SQL = "UPDATE $tabla_db1 SET respuesta2='$respuesta2' WHERE cedula='$cedula'";
@@ -981,13 +1002,11 @@ if ($ingreso == "datosExtrAjustes") {
         if ($huboCambios) {
             $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . (count($cambios) > 0 ? implode(" ", $cambios) . " Cambios realizados." : "Sin cambios realizados.");
             $accionModificacion = "2";
-            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
+            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', '$cedula', now(), '$descripcion_Cambio')";
             mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
         }
-
-
         // FIN DE LA AUDITORIA *************************************************************
-        //TODO: CAMBIAR LA FORMA DE VERIFICAR LOS DATOS PARA GUARDAR EL REGISTRO
+
 
         // MODIFICAR DATOSb
         $_UPDATE_SQL = "UPDATE $tabla_db1 SET respuesta2='$respuesta2', respuesta3='$respuesta3' WHERE cedula='$cedula'";
@@ -1031,13 +1050,12 @@ if ($ingreso == "datosExtrAjustes") {
         if ($huboCambios) {
             $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . (count($cambios) > 0 ? implode(" ", $cambios) . " Cambios realizados." : "Sin cambios realizados.");
             $accionModificacion = "2";
-            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
+            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', '$cedula', now(), '$descripcion_Cambio')";
             mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
 
         }
 
         // FIN DE LA AUDITORIA *************************************************************
-        //TODO: CAMBIAR LA FORMA DE VERIFICAR LOS DATOS PARA GUARDAR EL REGISTRO
 
         // MODIFICAR DATOSb
         $_UPDATE_SQL = "UPDATE $tabla_db1 SET respuesta3='$respuesta3' WHERE cedula='$cedula'";
@@ -1191,8 +1209,8 @@ if ($ingreso == "gestionCargo") {
             $nombreUsrCambiado = $consulta['nombre'] . " " . $consulta['apellido'];
         }
         $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en los datos del empleado: " . $nombreUsrCambiado . ", cambios realizados: " . (count($cambios) > 0 ? implode(" ", $cambios) . " Cambios realizados." : "Sin cambios realizados.");
-        $accionModificacion = "2";
-        $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
+        $accionHecha = "2";
+        $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionHecha', '$cedulaCargo', now(), '$descripcion_Cambio')";
         mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
     }
 
@@ -1213,31 +1231,36 @@ if ($ingreso == "RecuperacionUSR") {
     $contraseña = $_POST['contraseña'];
     $cedula = $_SESSION['cedulaRecuperacion'];
     if (preg_match($CONTR, $contraseña) && preg_match($ci, $cedula)) {
-        include("abrir_conexion.php");
 
-        $contraseña = password_hash($_POST['contraseña'], PASSWORD_DEFAULT);
-        // AUDITORIA *****************************************************************
-        $buscarID = mysqli_query($conexion, "SELECT * FROM $tabla_db1 WHERE cedula='$cedula'");
-        while ($consulta = mysqli_fetch_array($buscarID)) {
-            $nombreUsuarioBD = $consulta['nombre'] . " " . $consulta['apellido'];
+        if ($_SESSION['pinBIEN'] == true) {
+            include("abrir_conexion.php");
+
+            $contraseña = password_hash($_POST['contraseña'], PASSWORD_DEFAULT);
+            // AUDITORIA *****************************************************************
+            $buscarID = mysqli_query($conexion, "SELECT * FROM $tabla_db1 WHERE cedula='$cedula'");
+            while ($consulta = mysqli_fetch_array($buscarID)) {
+                $nombreUsuarioBD = $consulta['nombre'] . " " . $consulta['apellido'];
+            }
+            $valorID = $_SESSION['id_usr'];
+            $nombreAd = $_SESSION['nombre'];
+            $descripcion_Cambio = "El usuario " . $nombreAd . " modificó la contraseña del usuario " . $nombreUsuarioBD . ". El proceso fue realizado para restaurar la contraseña del usuario.";
+
+            $accionHecha = "2";
+            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionHecha', '$cedula', now(), '$descripcion_Cambio')";
+            mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
+
+            // FINAL AUDITORIA ************************************************************
+
+            // MODIFICAR CONTRASEÑA
+            $_UPDATE_SQL = "UPDATE $tabla_db1 SET contraseña='$contraseña' WHERE cedula='$cedula'";
+
+            mysqli_query($conexion, $_UPDATE_SQL);
+            $_SESSION['cedulaRecuperacion'] = 0;
+            echo "Se modificaron correctamente los datos.";
+            include("cerrar_conexion.php");
+        }else {
+            http_response_code(502);
         }
-        $valorID = $_SESSION['id_usr'];
-        $nombreAd = $_SESSION['nombre'];
-        $descripcion_Cambio = "El usuario " . $nombreAd . " modificó la contraseña del usuario " . $nombreUsuarioBD . ". El proceso fue realizado para restaurar la contraseña del usuario.";
-
-        $accionCreacion = "2";
-        $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionCreacion', now(), '$descripcion_Cambio')";
-        mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
-
-        // FINAL AUDITORIA ************************************************************
-
-        // MODIFICAR CONTRASEÑA
-        $_UPDATE_SQL = "UPDATE $tabla_db1 SET contraseña='$contraseña' WHERE cedula='$cedula'";
-
-        mysqli_query($conexion, $_UPDATE_SQL);
-        $_SESSION['cedulaRecuperacion'] = 0;
-        echo "Se modificaron correctamente los datos.";
-        include("cerrar_conexion.php");
     } else {
         http_response_code(501);
     }
@@ -1313,8 +1336,8 @@ if ($ingreso == "cambioStatus") {
             }
         }
         $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . ", modificó el estado del usuario: " . $nombreUsuario . ". " . (count($cambios) > 0 ? implode(" ", $cambios) . " Cambios realizados." : "Sin cambios realizados.");
-        $accionModificacion = "2";
-        $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', now(), '$descripcion_Cambio')";
+        $accionHecha = "2";
+        $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionHecha', '$cedula', now(), '$descripcion_Cambio')";
         mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
         // FIN DE LA AUDITORIA ************************************************************
 

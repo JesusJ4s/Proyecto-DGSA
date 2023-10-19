@@ -36,6 +36,12 @@ function HacerEnvio(){
                 $('#RegistroCPUC').html('Error al ingresar los datos.<br>Error: La Dirección Mac o Ip ya se encuentran registradas.');
 
              }     
+             if(nroERROR==503){
+                $('#RegistroCPU').modal('show');
+
+                $('#RegistroCPUC').html('Error al ingresar los datos.<br>Error: Datos inválidos o faltan datos.');
+
+             }  
         }
     });
 }
@@ -59,7 +65,12 @@ const expresiones = {
     disco_duro_serial: /^[a-zA-Z0-9_-]{4,20}$/, //Letras
 
     mouse_datos: /^[a-zA-Z0-9_-]{4,20}$/, //Letras
+    mouse_marca: /^[a-zA-Z_-]{4,20}$/, //Letras
+
     monitor_datos: /^[a-zA-Z0-9_-]{4,20}$/, //Letras
+    monitor_marca: /^[a-zA-Z0-9_-]{4,20}$/, //Letras
+    monitor_conexion: /^[a-zA-Z0-9_-]{4,20}$/, //Letras
+
     regulador_datos: /^[a-zA-Z0-9_.-]{4,20}$/, //Letras
     regulador_marca: /^[a-zA-Z]{4,30}$/, //Letras
 
@@ -68,6 +79,10 @@ const expresiones = {
 
     escaner_datos: /^[a-zA-Z0-9_.-]{4,20}$/, //Letras
     escaner_modelo: /^[a-zA-Z0-9]{4,30}$/, //Letras
+    escaner_marca: /^[a-zA-Z]{2,30}$/, //Letras
+    escaner_operativo: /^[a-zA-Z]{1,25}$/, //Letras
+    toner_tinta: /^[a-zA-Z]{1,25}$/, //Letras
+    conectada_red: /^[a-zA-Z]{1,25}$/, //Letras
 }
 const campos = {
     supervisor_dpto: false,
@@ -83,8 +98,14 @@ const campos = {
     disco_duro_marca: false,
     disco_duro_serial: false,
     ramVel: false,
+
     mouse_datos: false,
+    mouse_marca: false,
+
     monitor_datos: false,
+    monitor_marca: false,
+    monitor_conexion: false,
+
     regulador_datos: false,
     regulador_marca: false,
 
@@ -92,7 +113,12 @@ const campos = {
     teclado_marca: false,
 
     escaner_datos: false,
-    escaner_modelo: false
+    escaner_modelo: false,
+    escaner_marca: false,
+    escaner_operativo: false,
+    toner_tinta: false,
+    conectada_red: false,
+
 }
 
 const validarFormulario = (e) => {
@@ -139,8 +165,17 @@ const validarFormulario = (e) => {
         case "mouse_datos":
             validarCampo(expresiones.mouse_datos, e.target, 'mouse_datos');
         break;
+        case "mouse_marca":
+            validarCampo(expresiones.mouse_marca, e.target, 'mouse_marca');
+        break;
         case "monitor_datos":
             validarCampo(expresiones.monitor_datos, e.target, 'monitor_datos');
+        break;
+        case "monitor_marca":
+            validarCampo(expresiones.monitor_marca, e.target, 'monitor_marca');
+        break;
+        case "monitor_conexion":
+            validarCampo(expresiones.monitor_conexion, e.target, 'monitor_conexion');
         break;
         case "regulador_datos":
             validarCampo(expresiones.regulador_datos, e.target, 'regulador_datos');
@@ -159,6 +194,18 @@ const validarFormulario = (e) => {
         break;
         case "escaner_modelo":
             validarCampo(expresiones.escaner_modelo, e.target, 'escaner_modelo');
+        break;
+        case "escaner_marca":
+            validarCampo(expresiones.escaner_marca, e.target, 'escaner_marca');
+        break;
+        case "escaner_operativo":
+            validarCampo(expresiones.escaner_operativo, e.target, 'escaner_operativo');
+        break;
+        case "toner_tinta":
+            validarCampo(expresiones.toner_tinta, e.target, 'toner_tinta');
+        break;
+        case "conectada_red":
+            validarCampo(expresiones.conectada_red, e.target, 'conectada_red');
         break;
     }
 }

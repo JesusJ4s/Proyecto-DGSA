@@ -211,7 +211,7 @@ if ($comprobacion == "tabla_recuperacion") {
     include("abrir_conexion.php");
     echo
         '
-    <table class="table table-hover table-bordered" id="Recup_contra">
+    <table class="table table-hover" id="Recup_contra">
         <thead class="bg-grey text-light">
             <tr class="align-middle">
                 <th class="">Nombre</th>
@@ -279,6 +279,8 @@ if ($comprobacion == "VerificacionPin") {
     $PIN = $_POST["pin"];
     $cedula_Admin = $_SESSION['cedula_var_global']; //USUARIO LOGUEADO
     $cedula_usr = $_POST["cedulaRecuperar"]; //USUARIO A RECUPERAR
+    $_SESSION['pinBIEN']=false;
+
 
     $pinCorrecto = 0;
     $SQL_verify = "SELECT * FROM $tabla_db1 WHERE cedula = '$cedula_Admin'";
@@ -294,10 +296,12 @@ if ($comprobacion == "VerificacionPin") {
         while ($consulta = mysqli_fetch_array($resultados)) {
             $pinCorrecto++;
         }
+        $_SESSION['pinBIEN']=true;
 
         include("php/cerrar_conexion.php");
 
     } else {
+        $_SESSION['pinBIEN']=false;
         http_response_code(500);
         include("php/cerrar_conexion.php");
 
@@ -306,7 +310,6 @@ if ($comprobacion == "VerificacionPin") {
 
 }
 // ********************************************************************************************************************************************
-// ********************************************************************************************************************************************// ********************************************************************************************************************************************// ********************************************************************************************************************************************// 
 // CUANDO SE EJECUTA SE BUSCAN LOS VALORES PARA LLENAR LA TABLA CON LOS DATOS (SOLO BUSQUEDA DE DATOS)
 if ($comprobacion == "datos_CambioCargo") {
     include("abrir_conexion.php");
@@ -374,7 +377,7 @@ if ($comprobacion == "formRecuperarUsr") {
 
 }
 // CONSULTAR TODA LA TABLA DE AUDITORIAS
-if ($comprobacion == "auditoriaUsr") {
+if ($comprobacion == "auditoriaUsrConsulta") {
     include("abrir_conexion.php");
     echo
 
@@ -480,7 +483,7 @@ if ($comprobacion == "BaseDatos") {
     // TERCER INTENTO
     $resultados = mysqli_query($conexion, "SELECT * FROM $tabla_db100 au INNER JOIN 
     $tabla_db1 us ON au.id_usuario_cambio = us.id_usuario INNER JOIN 
-    $tabla_db102 hi ON au.id_accion_cambio = hi.id_accHis WHERE id_accion_cambio = 7 ORDER BY fecha_usuario_cambio DESC");
+    $tabla_db102 hi ON au.id_accion_cambio = hi.id_accHis WHERE id_accion_cambio = 17 ORDER BY fecha_usuario_cambio DESC");
     //  ORDER BY nombre_dire DESC
 
     while ($consulta = mysqli_fetch_array($resultados)) {

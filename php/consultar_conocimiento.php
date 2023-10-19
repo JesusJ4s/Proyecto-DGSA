@@ -241,15 +241,15 @@ if ($conocimiento=="BaseConocimiento") {
                     include("abrir_conexion.php");
 
                     // REALIZANDO EL REGISTRO DEL HISTORIAL
-
+                    // AUDITORIA *****************************************************************
                     //CONTIENE EL VALOR DE LA CÉDULA
                     $cedula=$_SESSION['cedula_var_global'];
                     $valorID=$_SESSION['id_usr'];
-                    $accionCreacion = "1";
+                    $accionHecha = "16";
                     $descripcion_Cambio="El usuario: ". $_SESSION['nombre'] .", ingresó un nuevo registro a la Base de Conocimiento: ".$descripcion;
-                    $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionCreacion', now(), '$descripcion_Cambio')";
+                    $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionHecha', '$tipo_fallo', now(), '$descripcion_Cambio')";
                     mysqli_query($conexion,$SQL_DATOS_CAMBIOS);
-                
+                    // FINAL AUDITORIA *****************************************************************
 
                     // REGISTRO DEL NUEVO CONOCIMIENTO
                     $SQL_DATOS_BASE = "INSERT INTO $tabla_db9 (id_conocimiento, tipo_conocimiento, descripcion_caso, posible_solucion) values (NULL, '$tipo_fallo', '$titulo', '$descripcion')";

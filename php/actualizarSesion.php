@@ -14,6 +14,7 @@ if (isset($_SESSION['event'])) {
     $na = $_SESSION['id_usr'];
     $nueva_hora = hora10();
     $evento = $_SESSION['event'];
+    $valorCedula = $_SESSION['cedula_var_global'];
 
     // $sn = initSesion($na); //variable de inicio de sesion en BD
     $updateSesion = "UPDATE $tabla_db1 SET sesion='1' WHERE id_usuario = '$na'";
@@ -24,11 +25,11 @@ if (isset($_SESSION['event'])) {
     mysqli_query($conexion,$delevent);
 
     // $event = "CREATE EVENT $evento ON SCHEDULE AT '$nueva_hora' DO UPDATE $tabla_db1 SET sesion = '0' WHERE id_usuario = '$na'";
-    $accionCambio = "6";
+    $accionHecha = "4";
     $descripcion_Cambio = "Salida automática del sistema, del Usuario: " . $nombre . ".";
     $event = "CREATE EVENT $evento ON SCHEDULE AT '$nueva_hora' DO BEGIN
                 UPDATE $tabla_db1 SET sesion = '0' WHERE id_usuario = '$na';
-                INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$na', '$accionCambio', now(), '$descripcion_Cambio');
+                INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$na', '$accionHecha', '$valorCedula', now(), '$descripcion_Cambio');
             END";
     // $sql = $conn->query($event);
     mysqli_query($conexion,$event);

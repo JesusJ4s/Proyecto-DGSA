@@ -17,11 +17,8 @@ function EditEquipo(){
         {
             $('#ModifiCPU').modal('show');
             $('#ModifiCPU .modal-body').html(mensaje);
-
-            // verificar_bd();
-
+            $('#ediciones_div').addClass('ocultar-div');
             formulario_equipo_edicion.reset();
-
         },
         error: function(jqXHR, xhr, status, error)
         {
@@ -37,6 +34,12 @@ function EditEquipo(){
                 $('#ModifiCPU').modal('show');
 
                 $('#ModifiCPUC').html('Error al modificar los datos.<br>Error: Complete el campo <i>Descripción</i>.');
+
+             }   
+            if(nroERROR==502){
+                $('#ModifiCPU').modal('show');
+
+                $('#ModifiCPUC').html('Error al modificar los datos.<br>Error: Datos inválidos o campo vacío.');
 
              }   
         }
@@ -62,16 +65,26 @@ const expresiones = {
     disco_duro_marca_edit: /^[a-zA-Z]{4,15}$/, //Letras
     disco_duro_serial_edit: /^[a-zA-Z0-9_-]{4,20}$/, //Letras
 
-    mouse_datos_edit: /^[a-zA-Z0-9_-]{4,20}$/, //Letras
-    monitor_datos_edit: /^[a-zA-Z0-9_-]{4,20}$/, //Letras
-    regulador_datos_edit: /^[a-zA-Z0-9_.-]{4,20}$/, //Letras
-    regulador_marca_edit: /^[a-zA-Z]{4,30}$/, //Letras
+    mouse_datos: /^[a-zA-Z0-9_-]{4,20}$/, //Letras
+    mouse_marca: /^[a-zA-Z_-]{4,20}$/, //Letras
 
-    teclado_datos_edit: /^[a-zA-Z0-9_.-]{4,20}$/, //Letras
-    teclado_marca_edit: /^[a-zA-Z]{2,30}$/, //Letras
+    monitor_datos: /^[a-zA-Z0-9_-]{4,20}$/, //Letras
+    monitor_marca: /^[a-zA-Z0-9_-]{4,20}$/, //Letras
+    monitor_conexion: /^[a-zA-Z0-9_-]{4,20}$/, //Letras
 
-    escaner_datos_edit: /^[a-zA-Z0-9_.-]{4,20}$/, //Letras
-    escaner_modelo_edit: /^[a-zA-Z0-9]{4,30}$/, //Letras
+    regulador_datos: /^[a-zA-Z0-9_.-]{4,20}$/, //Letras
+    regulador_marca: /^[a-zA-Z]{4,30}$/, //Letras
+
+    teclado_datos: /^[a-zA-Z0-9_.-]{4,20}$/, //Letras
+    teclado_marca: /^[a-zA-Z]{2,30}$/, //Letras
+
+    escaner_datos: /^[a-zA-Z0-9_.-]{4,20}$/, //Letras
+    escaner_modelo: /^[a-zA-Z0-9]{4,30}$/, //Letras
+    escaner_marca: /^[a-zA-Z]{2,30}$/, //Letras
+    escaner_operativo: /^[a-zA-Z]{1,25}$/, //Letras
+    toner_tinta: /^[a-zA-Z]{1,25}$/, //Letras
+    conectada_red: /^[a-zA-Z]{1,25}$/, //Letras
+
 }
 const campos = {
     supervisor_dpto_edit: true,
@@ -89,16 +102,27 @@ const campos = {
     disco_duro_marca_edit: true,
     disco_duro_serial_edit: true,
     ram_vel_edit: true,
-    mouse_datos_edit: true,
-    monitor_datos_edit: true,
-    regulador_datos_edit: true,
-    regulador_marca_edit: true,
 
-    teclado_datos_edit: true,
-    teclado_marca_edit: true,
+    mouse_datos: true,
+    mouse_marca: true,
 
-    escaner_datos_edit: true,
-    escaner_modelo_edit: true
+    monitor_datos: true,
+    monitor_marca: true,
+    monitor_conexion: true,
+
+    regulador_datos: true,
+    regulador_marca: true,
+
+    teclado_datos: true,
+    teclado_marca: true,
+
+    escaner_datos: true,
+    escaner_modelo: true,
+    escaner_marca: true,
+    escaner_operativo: true,
+    toner_tinta: true,
+    conectada_red: true,
+
 }
 
 const validarFormulario = (e) => {
@@ -145,29 +169,50 @@ const validarFormulario = (e) => {
         case "ram_vel_edit":
             validarCampo(expresiones.ram_vel_edit, e.target, 'ram_vel_edit');
         break;
-        case "mouse_datos_edit":
-            validarCampo(expresiones.mouse_datos_edit, e.target, 'mouse_datos_edit');
+        case "mouse_datos":
+            validarCampo(expresiones.mouse_datos, e.target, 'mouse_datos');
         break;
-        case "monitor_datos_edit":
-            validarCampo(expresiones.monitor_datos_edit, e.target, 'monitor_datos_edit');
+        case "mouse_marca":
+            validarCampo(expresiones.mouse_marca, e.target, 'mouse_marca');
         break;
-        case "regulador_datos_edit":
-            validarCampo(expresiones.regulador_datos_edit, e.target, 'regulador_datos_edit');
+        case "monitor_datos":
+            validarCampo(expresiones.monitor_datos, e.target, 'monitor_datos');
         break;
-        case "regulador_marca_edit":
-            validarCampo(expresiones.regulador_marca_edit, e.target, 'regulador_marca_edit');
+        case "monitor_marca":
+            validarCampo(expresiones.monitor_marca, e.target, 'monitor_marca');
         break;
-        case "teclado_datos_edit":
-            validarCampo(expresiones.teclado_datos_edit, e.target, 'teclado_datos_edit');
+        case "monitor_conexion":
+            validarCampo(expresiones.monitor_conexion, e.target, 'monitor_conexion');
         break;
-        case "teclado_marca_edit":
-            validarCampo(expresiones.teclado_marca_edit, e.target, 'teclado_marca_edit');
+        case "regulador_datos":
+            validarCampo(expresiones.regulador_datos, e.target, 'regulador_datos');
         break;
-        case "escaner_datos_edit":
-            validarCampo(expresiones.escaner_datos_edit, e.target, 'escaner_datos_edit');
+        case "regulador_marca":
+            validarCampo(expresiones.regulador_marca, e.target, 'regulador_marca');
         break;
-        case "escaner_modelo_edit":
-            validarCampo(expresiones.escaner_modelo_edit, e.target, 'escaner_modelo_edit');
+        case "teclado_datos":
+            validarCampo(expresiones.teclado_datos, e.target, 'teclado_datos');
+        break;
+        case "teclado_marca":
+            validarCampo(expresiones.teclado_marca, e.target, 'teclado_marca');
+        break;
+        case "escaner_datos":
+            validarCampo(expresiones.escaner_datos, e.target, 'escaner_datos');
+        break;
+        case "escaner_modelo":
+            validarCampo(expresiones.escaner_modelo, e.target, 'escaner_modelo');
+        break;
+        case "escaner_marca":
+            validarCampo(expresiones.escaner_marca, e.target, 'escaner_marca');
+        break;
+        case "escaner_operativo":
+            validarCampo(expresiones.escaner_operativo, e.target, 'escaner_operativo');
+        break;
+        case "toner_tinta":
+            validarCampo(expresiones.toner_tinta, e.target, 'toner_tinta');
+        break;
+        case "conectada_red":
+            validarCampo(expresiones.conectada_red, e.target, 'conectada_red');
         break;
     }
 }

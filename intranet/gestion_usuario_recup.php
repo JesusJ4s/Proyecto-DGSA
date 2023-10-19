@@ -145,7 +145,9 @@
                             <!-- TODO: -->
                             <input type="hidden" id="ingreso" name="ingreso" value="RecuperacionUSR">
                         </div>
-
+                        <div class="formulario__mensaje" id="formulario__mensaje">
+                            <p><b>ERROR:</b> Por favor coloque la contraseña de manera correcta</p>
+                        </div>
                     </form>
                 </div>
 

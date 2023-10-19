@@ -56,7 +56,7 @@
                         Para llenar los demás apartados del formulario: puede buscar la barrla lateral izquierda y desplazarse usando los botones, o usando la barra de la parte inferior. 
                     </p>
                     <p>
-                        ¿No se envía el formulario?: Si alguna casilla está en <span class="text-primary">rojo</span>, es porque colocó un dato de manera erronea, verifique y siga llenando la información. 
+                        ¿No se envía el formulario?: Si alguna casilla está en <span class="text-danger">rojo</span>, es porque colocó un dato de manera erronea, verifique y siga llenando la información. 
                     </p>
                     
                 </div>
@@ -90,7 +90,6 @@
     <div class="container-fluid text-center px-5 mx-0 mb-0 ocultar-class">   
   
         <div class="border-radius-15 py-3">        
-
             <div class="container-fluid text-center mx-2  p-2 bg-blanco-hsl border-radius-15">
                 <form method="post" class=" px-5 pt-2 row" id="formulario_equipo_edicion">
                     <!-- PARTE SUPERIOR DEL FORMULARIO -->
@@ -103,22 +102,27 @@
 
                     <div class="col-12 px-3" id="parte1">
                     <h3>Ubicación y Responsable</h3>
-                        <div class="contenedor-grid-3">
+                        <div class="contenedor-grid-4 mb-3">
                             <!-- MAC PARA EDICIÓN -->
                             <div class="form-group text-start formulario__grupo" id="grupo__name_search">
-                                <label class="formulario__label" for="name_search">Ingrese el nombre del Equipo que desea editar.</label>
-                                <input type="text" name="name_search" id="name_search" class="form-control w-50 mt-2 d-inline formulario__input" required onblur="edit_equipo();">
+                                <label class="formulario__label" for="name_search">Nombre del Equipo a editar.</label>
+                                <input type="text" name="name_search" id="name_search" class="form-control d-inline formulario__input" required onblur="edit_equipo();">
                                 <input type="hidden" pattern="[0-9]{1,2}" maxlength="2" class="form-control w-20 text-center mt-2 d-inline" readonly id="id_del_equipo" name="id_del_equipo">
                                 <p class="formulario__input-error px-3">Use el formato adecuado para ingresar el nombre del equipo.</p>
                             </div>
+                            <div class="ocultar-div" id="ediciones_div">
+                                <label class="formulario__label">Ver ediciones</label>
+                                <button type="button" class="btn btn-success" onclick="consulta_cambios_ind()">Ver cambios en el equipo</button>
+                            </div>
+                            
                             <!-- FECHA -->
                             <div class="text-center">
-                                <p class=""><b>Fecha del Registro</b></p>
-                                <input name="fecha_reg" id="fecha_reg" class="w-50 mt-2 form-control mx-auto" readonly>                    
+                                <label class="formulario__label"><b>Fecha del Registro</b></label>
+                                <input name="fecha_reg" id="fecha_reg" class="w-85 mt-2 form-control mx-auto" readonly>                    
                             </div>
                             <div>
-                                <p ><b>Fecha edición</b></p>
-                                <input class="w-50 mt-2 form-control mx-auto text-center" readonly value="<?php
+                                <label class="formulario__label"><b>Fecha edición</b></label>
+                                <input class="w-85 mt-2 form-control mx-auto text-center" readonly value="<?php
                                     include('../php/date_time.php');
                                     echo fecha_inventario();
                                 ?>">
@@ -157,9 +161,8 @@
                             <div class="my-2">
                                 <button type="button" class="btn btn-primary" id="si_hay" onclick="cambio_si()" >Si hay cambios</button>
                                 <button type="button" class="btn btn-primary" id="no_hay" onclick="cambio_no()"disabled>No hay cambios</button>
-
                             </div>
-                        <div class="col-4">
+                            <div class="col-4">
                                 <label>Dirección</label>
                                 <select class="form-select" id="direccion_select" name="direccion_select" disabled required>
                                     <?php
@@ -180,18 +183,17 @@
                             
                             <div class="col-4">
                                 <label>División</label>
-                                    <div id="div_divisiones_select">
-                                        <select class='form-select' id='division_select' name='division_select' required disabled>
-                                        </select>
-                                    </div>
-                                    
+                                <div id="div_divisiones_select">
+                                    <select class='form-select' id='division_select' name='division_select' required disabled>
+                                    </select>
                                 </div>
+                            </div>
                             <div class="col-4">
                                 <label>Departamento del Equipo</label>
-                                    <div id="div_dpto_select">
-                                        <select class='form-select' id='departamento_select' name='departamento_select' required disabled>
-                                        </select>
-                                    </div>
+                                <div id="div_dpto_select">
+                                    <select class='form-select' id='departamento_select' name='departamento_select' required disabled>
+                                    </select>
+                                </div>
                             </div>
 
                         </div>
@@ -302,22 +304,12 @@
                             </div>
                             <div class="col-12">
                                 <div class="row">
-                                    <!-- PUEDE CAMBIAR -->
-                                    <!-- <div class="form-group text-start my-3 col-6">
-                                        <label for="ip">Dirección IP</label>
-                                        <input type="text" name="ip_edit" id="ip_edit" class="form-control w-65 mt-2" placeholder="ejemplo: 192.111.111.1" pattern="[0-9\.]+[0-9]+" maxlength="15" minlength="10">
-                                    </div> -->
                                     <div class="form-group text-start col-6 formulario__grupo" id="grupo__ip_edit">
                                         <label for="ip_edit" class=" formulario__label">Dirección IP</label>
                                         <input type="text" name="ip_edit" id="ip_edit" class="form-control w-65 formulario__input" placeholder="ejemplo: 192.111.111.1" maxlength="15" minlength="10" required>
                                         <p class="formulario__input-error px-3">Use el formato adecuado en el llenado de las direcciones IP.</p>
 
                                     </div>
-                                    <!-- NO CAMBIA -->
-                                    <!-- <div class="form-group text-start my-3 col-6">
-                                        <label for="mac">Dirección MAC</label>
-                                        <input type="text" class="btn2 bg-blanco w-65 d-block" id="mac_edit" name="mac_edit" readonly></input>
-                                    </div> -->
                                     <div class="form-group text-start col-6 formulario__grupo" id="grupo__mac_mostrar">
                                             <label for="mac_mostrar" class=" formulario__label">Dirección MAC</label>
                                             <input type="text" name="mac_mostrar" id="mac_mostrar" class="form-control w-65 formulario__input" required placeholder="ejemplo: 08-08-08-08-08-08" maxlength="17">
@@ -414,30 +406,29 @@
 
                             <div class="row border m-4 p-4 bg-grey-claro border-radius-15">
                             <h6 class="text-start">MOUSE</h6>
-                                <div class="form-group text-center  col-3">
+                                <div class="form-group text-center  my-3  col-3">
                                     <label for="mouse_selector" class=" formulario__label">Mouse</label>
                                     <select class="form-select text-center" name="mouse_selector" id="mouse_selector" required>
                                         <option value="Si">Si</option>
                                         <option value="No">No</option>     
                                     </select>
                                 </div>
-                                <div class="form-group text-center  col-3  formulario__grupo" id="grupo__mouse_datos_edit">
-                                    <label for="mouse_datos_edit" class=" formulario__label">Mouse BN o Serial</label>
-                                    <input type="text" name="mouse_datos_edit" id="mouse_datos_edit" class="form-control formulario__input">
-                                    <p class="formulario__input-error px-3">El Bien Nacional solo puede contener números. En caso de ser serial tiene permitido el uso de guiones y piso.</p>
+                                <div class="form-group text-center my-3 col-3  formulario__grupo" id="grupo__mouse_datos">
+                                    <label for="mouse_datos" class=" formulario__label">Mouse BN o Serial</label>
+                                    <input type="text" name="mouse_datos" id="mouse_datos" class="form-control formulario__input">
+                                    <p class="formulario__input-error px-3" id="mouse_bn_error">El Bien Nacional solo puede contener números. En caso de ser serial tiene permitido el uso de guiones y piso.</p>
                                 </div>
-                                <div class="form-group text-center  col-3">
+                                <div class="form-group text-center my-3 col-3 formulario__grupo" id="grupo__mouse_marca">
                                     <label for="mouse_marca" class=" formulario__label">Mouse Marca</label>
-                                    <select class="form-select text-center" name="mouse_marca" id="mouse_marca" required>
-                                        <option value="HP">HP</option>
-                                        <option value="Generico">Generico</option>     
-                                    </select>
+                                    <input class="form-control text-center formulario__input " name="mouse_marca" id="mouse_marca" >
+                                    <p class="formulario__input-error px-3" id="mouse_marca_error">Solo puede contener letras.</p>
                                 </div>
-                                <div class="form-group text-center  col-3">
+                                <div class="form-group text-center  my-3  col-3">
                                     <label for="mouse_conexion" class=" formulario__label">Mouse Conexion</label>
                                     <select class="form-select text-center" name="mouse_conexion" id="mouse_conexion">
                                         <option value="USB">USB</option>
-                                        <option value="PS/2">PS/2</option>     
+                                        <option value="PS-2">PS-2</option>   
+                                        <option value="Inalámbrico">Inalámbrico</option>     
                                     </select>
                                 </div>
                             </div>
@@ -445,47 +436,49 @@
                             <!-- ********************************************* -->
                             <div class="row border m-4 p-4 bg-grey-claro border-radius-15">
                                 <h6 class="text-start">MONITOR</h6>
-                                <div class="form-group text-center  col-4">
+                                <div class="form-group text-center my-3 col-3">
                                     <label for="monitor_selector" class=" formulario__label">Monitor</label>
                                     <select class="form-select text-center" name="monitor_selector" id="monitor_selector" required>
-                                        <option value="HP">HP</option>
-                                        <option value="Siragon">Siragon</option>
-                                        <option value="Generico">Genérico</option> 
+                                        <option value="Si">Si</option>
                                         <option value="No">No</option>    
                                     </select>
                                 </div>
-                                <div class="form-group text-center  col-4  formulario__grupo" id="grupo__monitor_datos_edit">
-                                    <label for="monitor_datos_edit" class=" formulario__label">Monitor BN o Serial</label>
-                                    <input type="text" name="monitor_datos_edit" id="monitor_datos_edit" class="form-control formulario__input">
-                                    <p class="formulario__input-error px-3">El Bien Nacional solo puede contener números. En caso de ser serial tiene permitido el uso de guiones y piso.</p>
+                                <div class="form-group text-center my-3 col-3  formulario__grupo" id="grupo__monitor_datos">
+                                    <label for="monitor_datos" class=" formulario__label">Monitor BN o Serial</label>
+                                    <input type="text" name="monitor_datos" id="monitor_datos" class="form-control formulario__input">
+                                    <p class="formulario__input-error px-3" id="monitor_bn_error">El Bien Nacional solo puede contener números. En caso de ser serial tiene permitido el uso de guiones y piso.</p>
                                 </div>
-                                <div class="form-group text-center  col-4">
+                                <div class="form-group text-center my-3 col-3 formulario__grupo" id="grupo__monitor_marca">
+                                    <label for="monitor_marca" class=" formulario__label">Monitor Marca</label>
+                                    <input class="form-control text-center formulario__input " name="monitor_marca" id="monitor_marca" >
+                                    <p class="formulario__input-error px-3" id="monitor_marca_error">Solo puede contener letras.</p>
+                                    
+                                </div>
+                                <div class="form-group text-center my-3 col-3 formulario__grupo" id="grupo__monitor_conexion">
                                     <label for="monitor_conexion" class=" formulario__label">Monitor Conexión</label>
-                                    <select class="form-select text-center" name="monitor_conexion" id="monitor_conexion">
-                                        <option value="VGA">VGA</option>
-                                        <option value="HDMI">HDMI</option> 
-                                    </select>
+                                    <input class="form-control text-center formulario__input " name="monitor_conexion" id="monitor_conexion">
+                                    <p class="formulario__input-error px-3" id="monitor_conexion_error">Solo puede contener letras.</p>
                                 </div>
                             </div>
 
                             <div class="row border m-4 p-4 bg-grey-claro border-radius-15">
                                 <h6 class="text-start">REGULADOR</h6>
-                                <div class="form-group text-center  col-4">
+                                <div class="form-group text-center my-3 col-4">
                                     <label for="regulador_selector"  class=" formulario__label">Regulador</label>
                                     <select class="form-select text-center" name="regulador_selector" id="regulador_selector" required>
                                         <option value="Si">Si</option>
                                         <option value="No">No</option>      
                                     </select>
                                 </div>
-                                <div class="form-group text-center col-4  formulario__grupo" id="grupo__regulador_datos_edit">
-                                    <label for="regulador_datos_edit" class=" formulario__label">Regulador BN o Serial</label>
-                                    <input type="text" name="regulador_datos_edit" id="regulador_datos_edit" class="form-control formulario__input">
-                                    <p class="formulario__input-error px-3">El Bien Nacional solo puede contener números. En caso de ser serial tiene permitido el uso de guiones y piso.</p>
+                                <div class="form-group text-center my-3 col-4  formulario__grupo" id="grupo__regulador_datos">
+                                    <label for="regulador_datos" class=" formulario__label">Regulador BN o Serial</label>
+                                    <input type="text" name="regulador_datos" id="regulador_datos" class="form-control formulario__input">
+                                    <p class="formulario__input-error px-3" id="regulador_bn_error">El Bien Nacional solo puede contener números. En caso de ser serial tiene permitido el uso de guiones y piso.</p>
                                 </div>
-                                <div class="form-group text-center col-4  formulario__grupo" id="grupo__regulador_marca_edit">
-                                    <label for="regulador_marca_edit" class=" formulario__label">Regulador Marca</label>
-                                    <input type="text" name="regulador_marca_edit" id="regulador_marca_edit" class="form-control formulario__input">
-                                    <p class="formulario__input-error px-3">Solo puede llevar letras sin espacios.</p>
+                                <div class="form-group text-center my-3 col-4  formulario__grupo" id="grupo__regulador_marca">
+                                    <label for="regulador_marca" class=" formulario__label">Regulador Marca</label>
+                                    <input type="text" name="regulador_marca" id="regulador_marca" class="form-control formulario__input">
+                                    <p class="formulario__input-error px-3" id="regulador_marca_error">Solo puede llevar letras sin espacios.</p>
                                 </div>
                             </div>
                         </div>
@@ -496,58 +489,86 @@
 
                             <div class="row border m-4 p-4 bg-grey-claro border-radius-15">
                                 <h6 class="text-start">TECLADO</h6>
-                                <div class="form-group text-center col-3">
+                                <div class="form-group text-center my-3 col-3">
                                     <label for="teclado_selector" class=" formulario__label">Teclado</label>
                                     <select class="form-select text-center" name="teclado_selector" id="teclado_selector" required>
                                         <option value="Si">Si</option>
                                         <option value="No">No</option>     
                                     </select>
                                 </div>
-                                <div class="form-group text-center col-3  formulario__grupo" id="grupo__teclado_datos_edit">
-                                    <label for="teclado_datos_edit" class=" formulario__label">Teclado BN o Serial</label>
-                                    <input type="text" name="teclado_datos_edit" id="teclado_datos_edit" class="form-control formulario__input">
-                                    <p class="formulario__input-error px-3">El Bien Nacional solo puede contener números. En caso de ser serial tiene permitido el uso de guiones y piso.</p>
+                                <div class="form-group text-center my-3 col-3 formulario__grupo" id="grupo__teclado_datos">
+                                    <label for="teclado_datos" class=" formulario__label">Teclado BN o Serial</label>
+                                    <input type="text" name="teclado_datos" id="teclado_datos" class="form-control formulario__input">
+                                    <p class="formulario__input-error px-3" id="teclado_bn_error">El Bien Nacional solo puede contener números. En caso de ser serial tiene permitido el uso de guiones y piso.</p>
                                 </div>
-                                <div class="form-group text-center col-3  formulario__grupo" id="grupo__teclado_marca_edit">
-                                    <label for="teclado_marca_edit" class=" formulario__label">Teclado Marca</label>
-                                    <input type="text" name="teclado_marca_edit" id="teclado_marca_edit" class="form-control formulario__input">
-                                    <p class="formulario__input-error px-3">Solo puede utilizar letras, sin espacios.</p>
+                                <div class="form-group text-center my-3 col-3 formulario__grupo" id="grupo__teclado_marca">
+                                    <label for="teclado_marca" class=" formulario__label">Teclado Marca</label>
+                                    <input type="text" name="teclado_marca" id="teclado_marca" class="form-control formulario__input">
+                                    <p class="formulario__input-error px-3" id="teclado_bn_error">Solo puede utilizar letras, sin espacios.</p>
                                 </div>
-                                <div class="form-group text-center  col-3">
+                                <div class="form-group text-center my-3 col-3">
                                     <label for="teclado_conexion" class=" formulario__label">Teclado Conexion</label>
                                     <select class="form-select text-center" name="teclado_conexion" id="teclado_conexion">
                                         <option value="USB">USB</option>
-                                        <option value="PS/2">PS/2</option>     
+                                        <option value="PS-2">PS-2</option>     
+                                        <option value="Inalámbrico">Inalámbrico</option>     
                                     </select>
                                 </div>
                             </div>
                             <div class="row border m-4 p-4 bg-grey-claro border-radius-15">
                                 <h6 class="text-start">ESCANER</h6>
-                                <div class="form-group text-center  col-3">
+                                <div class="form-group text-center my-3 col-3">
                                     <label for="escaner_selector" class=" formulario__label">Escaner</label>
                                     <select class="form-select text-center" name="escaner_selector" id="escaner_selector" required>
-                                        <option value="HP">HP</option>
-                                        <option value="Siragon">Canon</option>   
+                                        <option value="Si">Si</option>
                                         <option value="No">No</option>     
                                     </select>
                                 </div>
-                                <div class="form-group text-center col-3  formulario__grupo" id="grupo__escaner_datos_edit">
-                                    <label for="escaner_datos_edit" class=" formulario__label">Escaner BN o Serial</label>
-                                    <input type="text" name="escaner_datos_edit" id="escaner_datos_edit" class="form-control formulario__input">
-                                    <p class="formulario__input-error px-3">El Bien Nacional solo puede contener números. En caso de ser serial tiene permitido el uso de guiones y piso.</p>
+                                <hr>
+                                <div class="form-group text-center my-3 col-3 formulario__grupo" id="grupo__escaner_datos">
+                                    <label for="escaner_datos" class=" formulario__label">Escaner BN o Serial</label>
+                                    <input type="text" name="escaner_datos" id="escaner_datos" class="form-control formulario__input">
+                                    <p class="formulario__input-error px-3" id="escaner_bn_error">El Bien Nacional solo puede contener números. En caso de ser serial tiene permitido el uso de guiones y piso.</p>
                                 </div>
-                                <div class="form-group text-center col-3  formulario__grupo" id="grupo__escaner_modelo_edit">
-                                    <label for="escaner_modelo_edit" class=" formulario__label">Escaner Modelo</label>
-                                    <input type="text" name="escaner_modelo_edit" id="escaner_modelo_edit" class="form-control formulario__input">
-                                    <p class="formulario__input-error px-3">Puede utilizar letras y números para describir el modelo, sin espacios.</p>
+                                <div class="form-group text-center my-3 col-3  formulario__grupo" id="grupo__escaner_marca">
+                                    <label for="escaner_marca" class=" formulario__label">Escaner Marca</label>
+                                    <input type="text" name="escaner_marca" id="escaner_marca" class="form-control formulario__input">
+                                    <p class="formulario__input-error px-3" id="escaner_marca_error">Solo puede utilizar letras.</p>
                                 </div>
-                                <div class="form-group text-center  col-3">
+                                <div class="form-group text-center my-3 col-3 formulario__grupo" id="grupo__escaner_modelo">
+                                    <label for="escaner_modelo" class=" formulario__label">Escaner Modelo</label>
+                                    <input type="text" name="escaner_modelo" id="escaner_modelo" class="form-control formulario__input">
+                                    <p class="formulario__input-error px-3" id="escaner_modelo_error">Puede utilizar letras y números para describir el modelo, sin espacios.</p>
+                                </div>
+                                <div class="form-group text-center my-3 col-3">
                                     <label for="escaner_conexion" class=" formulario__label">Escaner Conexion</label>
                                     <select class="form-select text-center" name="escaner_conexion" id="escaner_conexion">
                                         <option value="USB">USB</option>
                                         <option value="WIFI">WIFI</option>     
                                     </select>
                                 </div>
+                                <div class="form-group text-center my-3 col-4">
+                                    <label for="escaner_operativo" class=" formulario__label">Escaner Operativo</label>
+                                    <select class="form-select text-center" name="escaner_operativo" id="escaner_operativo">
+                                        <option value="Si">Si</option>
+                                        <option value="No">No</option>     
+                                    </select>
+                                </div>
+                                <div class="form-group text-center my-3 col-4">
+                                    <label for="toner_tinta" class=" formulario__label">¿Toner o Tinta?</label>
+                                    <select class="form-select text-center" name="toner_tinta" id="toner_tinta">
+                                        <option value="Toner">Toner</option>
+                                        <option value="Tinta">Tinta</option>     
+                                    </select>
+                                </div>
+                                <div class="form-group text-center my-3 col-4">
+                                    <label for="conectada_red" class=" formulario__label">¿Conectada a la Red?</label>
+                                    <select class="form-select text-center" name="conectada_red" id="conectada_red">
+                                        <option value="Si">Si</option>
+                                        <option value="No">No</option>     
+                                    </select>
+                                </div>
+                                
                             </div>
                             <input id="busqueda" name="busqueda" value="edicionCPU" type="hidden" readonly> 
 
@@ -593,7 +614,7 @@
                                 </li> -->
                             </ul>
                         </nav>
-                    </div>
+                </div>
             </div>
         </div> 
     </div>
@@ -619,9 +640,9 @@
 <!-- ESTO ES PARA MOSTRAR Y OCULTAR PESTAÑAS -->
 <script src="../js/editar_mostrar_datos.js"></script>
 
-
 <script src="../js/consulta_equipos.js"></script>
-<script src="../js/edicion_equipos_formulario_nuevo_equipo.js"></script>
+<script src="../js/formulario_edicion_equipo.js"></script>
+<script src="../js/consulta_equipos_cambios.js"></script>
 
 
 
