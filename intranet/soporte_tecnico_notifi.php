@@ -38,15 +38,7 @@ include("../php/date_time.php");
                     <!-- AQUÍ VA EL TÍTULO -->
                 </div>
                 <div class="modal-body" id="Modal_NotifiC">
-                    <?php
-                    if (isset($_SESSION['historial_soporte'])) {
-                        echo "<b>Historial de notas hechas: </b><br><br>".$_SESSION['historial_soporte'];
-                    }else {
-                        $_SESSION['historial_soporte']='';
-                    }
-                    $_SESSION['historial_soporte']='';
-
-                    ?>
+            
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

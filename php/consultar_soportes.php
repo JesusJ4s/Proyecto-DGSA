@@ -283,18 +283,13 @@ if ($comprobacion == "tab_espera_comp") {
                     <td>' . $consulta['fecha_soporte_solicitud'] . '</td>
                     <td><button class="btn btn-secondary mb-1" id="alerta2" name="alerta2" onclick="FinalizarSoli2();">Mostrar</button></td>
                     <td>' . acortar_texto($consulta['historial_soporte'], 20) . '</td>
-                    <td><button class="btn btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#Modal_Notifi">Ver información</button></td>
+                    <td><button class="btn btn-primary" onclick="verInformacion();" id="btnInfor" name="btnInfor">Ver información</button></td>
                 </tr>
             ';
-        $historial = $consulta['historial_soporte'];
-
         $existe++;
         $contador++;
 
     }
-    $_SESSION['historial_soporte']=$historial;
-
     echo '</tbody>
                 <tfoot>
                     <tr  class="align-middle text-center">
@@ -317,8 +312,25 @@ if ($comprobacion == "tab_espera_comp") {
     include("cerrar_conexion.php");
 
 }
+if ($comprobacion == "informacion") {
+    include("abrir_conexion.php");
+    $name = $_POST['con_name'];
+    $repuesto = "6";
+
+    // Buscar en la tabla de SOPORTE TÉCNICO los equipos registrados
+    $resultados = mysqli_query($conexion, "SELECT * FROM $tabla_db8 WHERE estado = '$repuesto' AND nomb_equipo_soporte = '$name'");
+    while ($consulta = mysqli_fetch_array($resultados)) {
+        $mensaje = $consulta['historial_soporte'];
+    }
+    $descripcion = $mensaje;
+    $mensaje = str_replace("<br><br>", "<br>--", $descripcion); // Reemplazar <br> por saltos de línea
+    echo $mensaje;
+
+    include("cerrar_conexion.php");
+
+}
 // TODO:
-// CREADO PARA IMPRIMIR REPORTES, FALTA FINALIZAR - AUN EN PROCESO
+// CREADO PARA IMPRIMIR REPORTES, FALTA FINALIZAR
 if ($comprobacion == "tab_final_ING") {
 
     include("abrir_conexion.php");
@@ -329,7 +341,7 @@ if ($comprobacion == "tab_final_ING") {
         <thead  class="bg-grey text-light">
             <tr  class="align-middle text-center">
                 <th class="">Nro Caso</th>
-                <th class="">Nivel del Soporte</th>
+                <th class="">Nombre del Equipo</th>
                 <th class="">Fecha Solicitud</th>
                 <th class="">Fecha Aceptación</th>
                 <th class="">Fecha Finalización</th>
@@ -354,11 +366,11 @@ if ($comprobacion == "tab_final_ING") {
             '
                 <tr  class="align-middle">
                     <td class="text-end">' . $consulta['id_soporte'] . '</td>
-                    <td class="">' . $consulta['nivel_soporte'] . '</td>
+                    <td class="">' . $consulta['nomb_equipo_soporte'] . '</td>
                     <td class="">' . $consulta['fecha_soporte_solicitud'] . '</td>
                     <td class="">' . $consulta['fecha_soporte_aceptacion'] . '</td>
                     <td class="">' . $consulta['fecha_soporte_final'] . '</td>
-                    <td class="txt-td"><button type="button" class="btn-img-td" onclick="verReporteSoli();"  data-bs-toggle="modal" data-bs-target="#Info_Vistas"><img class="img-td" src="../assets/intranet/soporte/iconos/pdf.png"></button></td>
+                    <td class="txt-td"><button id="btnRepor" name="btnRepor" type="button" class="btn-img-td" onclick="verReporteSoli();"><img class="img-td" src="../assets/intranet/soporte/iconos/pdf.png"></button></td>
                     <td class="txt-td">' . $consulta['nombre_estado'] . '</td>
                 </tr>
             ';
@@ -370,7 +382,7 @@ if ($comprobacion == "tab_final_ING") {
             <tfoot>
                 <tr  class="align-middle text-center">
                     <th class="">Nro Caso</th>
-                    <th class="">Nivel del Soporte</th>
+                    <th class="">Nombre del Equipo</th>
                     <th class="">Fecha Solicitud</th>
                     <th class="">Fecha Aceptación</th>
                     <th class="">Fecha Finalización</th>
@@ -387,7 +399,7 @@ if ($comprobacion == "tab_final_ING") {
     include("cerrar_conexion.php");
 
 }
-// CONSULTAR SOPORTES Y MOSTRAR TABLA (FINALIZADO -- INTERACTIVA EMPLEADOS)
+// CONSULTAR SOPORTES Y MOSTRAR TABLA (FINALIZADO -- VISTA EMPLEADOS)
 if ($comprobacion == "tab_final_inter") {
 
     include("abrir_conexion.php");
@@ -404,7 +416,6 @@ if ($comprobacion == "tab_final_inter") {
                     <th class="">Técnico Encargado</th>
                     <th class="">Fecha Aceptación</th>
                     <th class="">Fecha Finalización</th>
-                    <!--<th class="txt-td">Reporte</th>-->
                     <th class="">Estado</th>
 
                 </tr>
@@ -433,7 +444,6 @@ if ($comprobacion == "tab_final_inter") {
                     <td class="">' . $consulta['nombre'] . '</td>
                     <td class="">' . $consulta['fecha_soporte_aceptacion'] . '</td>
                     <td class="">' . $consulta['fecha_soporte_final'] . '</td>
-                    <!--<td class="txt-td"><button type="button" class="btn-img-td" onclick="FinalizarSoli();"  data-bs-toggle="modal" data-bs-target="#Info_Vistas"><img class="img-td" src="../assets/intranet/soporte/iconos/computadora2.png"></button></td>-->
                     <td class="txt-td">' . $consulta['nombre_estado'] . '</td>
                 </tr>
             ';
@@ -451,7 +461,6 @@ if ($comprobacion == "tab_final_inter") {
                         <th class="">Técnico Encargado</th>
                         <th class="">Fecha Aceptación</th>
                         <th class="">Fecha Finalización</th>
-                        <!--<th class="txt-td">Reporte</th>-->
                         <th class="">Estado</th>
 
                     </tr>
@@ -467,7 +476,7 @@ if ($comprobacion == "tab_final_inter") {
 
 }
 
-// CONSULTAR SOPORTES Y MOSTRAR TABLA DE RECHAZADOS (TABLA INTERACTIVA)
+// CONSULTAR SOPORTES Y MOSTRAR TABLA DE RECHAZADOS PARA FINALIZAR (TABLA INTERACTIVA)
 if ($comprobacion == "rechazado") {
 
     include("abrir_conexion.php");
@@ -542,8 +551,8 @@ if ($comprobacion == "rechazado") {
     include("cerrar_conexion.php");
 
 }
-// CREADO PARA IMPRIMIR REPORTES, FALTA FINALIZAR
-// CONSULTAR SOPORTES Y MOSTRAR TABLA DE RECHAZADOS (TABLA VISTA)
+// CREADO PARA IMPRIMIR REPORTES
+// CONSULTAR SOPORTES Y MOSTRAR TABLA DE RECHAZADOS (TABLA INTERACTIVA)
 if ($comprobacion == "rechazado_vista") {
 
     include("abrir_conexion.php");
@@ -556,11 +565,9 @@ if ($comprobacion == "rechazado_vista") {
                 <th>Nro Caso</th>
                 <th>Uso</th>
                 <th>Nombre</th>
-                <th>Nivel del Soporte</th>
                 <th>Fecha Solicitud</th>
                 <th>Fecha de Rechazo</th>
-                <th>Comentario</th> 
-                <!--<th class="txt-td">Reporte</th>-->
+                <th class="txt-td">Reporte</th>
                 <th>Estado</th>
             </tr>
         </thead>
@@ -581,11 +588,9 @@ if ($comprobacion == "rechazado_vista") {
                 <td class="text-end">' . $consulta['id_soporte'] . '</td>
                 <td class="">' . $consulta['uso_equipo'] . '</td>
                 <td>' . $consulta['nomb_equipo_soporte'] . '</td>
-                <td class="">' . $consulta['nivel_soporte'] . '</td>
                 <td class="">' . $consulta['fecha_soporte_solicitud'] . '</td>
                 <td class="">' . $consulta['fecha_soporte_aceptacion'] . '</td>
-                <td class="">' . $consulta['comentario'] . '</td>
-                <!--<td class="txt-td"><button type="button" class="btn-img-td" onclick="verReporteSoli();"><img class="img-td" src="../assets/intranet/soporte/iconos/pdf.png"></button></td>-->
+                <td class="txt-td"><button type="button" class="btn-img-td" onclick=""><img class="img-td" src="../assets/intranet/soporte/iconos/pdf.png"></button></td>
                 <td class="">' . $consulta['nombre_estado'] . '</td>
             </tr>
         
@@ -600,11 +605,9 @@ if ($comprobacion == "rechazado_vista") {
                     <th>Nro Caso</th>
                     <th>Uso</th>
                     <th>Nombre</th>
-                    <th>Nivel del Soporte</th>
                     <th>Fecha Solicitud</th>
                     <th>Fecha de Rechazo</th>
-                    <th>Comentario</th> 
-                    <!--<th>Reporte</th>-->
+                    <th>Reporte</th>
                     <th>Estado</th>
                 </tr>
             </tfoot>
@@ -900,7 +903,7 @@ if ($comprobacion == "RegisSoli") {
 
     // COMPROBANDO QUE NO EXISTA LA SOLITUD YA HECHA
     $valor_permitido = "3"; //FINALIZADO
-    $valor_permitido2 = "5"; //RECHAZADO COMPLETO
+    $valor_permitido2 = "5"; //Rechazado Definitivo
 
     $existe_soporte = 0;
     $existe_equipo = 0;

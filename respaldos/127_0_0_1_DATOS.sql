@@ -371,7 +371,7 @@ INSERT INTO `c3_1_estado_soporte` (`id_estado_sop`, `nombre_estado`) VALUES
 (2, 'En Proceso'),
 (3, 'Finalizado'),
 (4, 'Rechazado'),
-(5, 'Rechazado Completo');
+(5, 'Rechazado Definitivo');
 
 -- --------------------------------------------------------
 

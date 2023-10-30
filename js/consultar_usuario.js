@@ -554,8 +554,9 @@ function auditoriaBD() {
             new DataTable('#dataTable_BaseDatos', {
                 language: Traduccion,
                 initComplete: function () {
+                    var api = this.api();
                     // agregar filtros (selectores) a tabla 
-                    this.api().columns([1]).every(function () {
+                    api.columns([1]).every(function () {
                         var column = this;
                         var select = $('<select class="filterE form-select "><option value="">---</option></select>')
                             .appendTo($(column.footer()).empty())
@@ -573,6 +574,10 @@ function auditoriaBD() {
                             select.append('<option value="' + d + '">' + d + '</option>')
                         });
                     });
+                    var dateColumnIndex = 0; // Reemplaza con el índice de tu columna de fechas
+
+                    // Ordenar la columna de fechas de forma descendente (más lejano a más reciente)
+                    api.column(dateColumnIndex).order('desc').draw();
                 },
             });
 

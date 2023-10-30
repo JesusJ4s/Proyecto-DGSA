@@ -1,5 +1,6 @@
 <?php
 require('../fpdf/fpdf.php');
+date_default_timezone_set('America/Caracas');
 session_start();
 ob_start();
 class PDF extends FPDF

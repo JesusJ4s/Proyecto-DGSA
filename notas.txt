@@ -321,7 +321,9 @@ dropdown
 
 // AddPage(orientacion[PORTRAIT, LANDSCAPE], tamaño[A3, A4, A5, LETTER, LEGAL], rotacion);
 //SetFont(tipo[COURIER, HELVETICA, ARIAL, TIMES, SYMBOL, ZAPDINGBATS], estilo[normal, B, I, U], tamaño);
-// Cell(ancho, alto, texto, bordes, ?, alineacion, rellenar, link);
+// Cell(ancho, alto, texto, bordes, salto de linea, alineacion, rellenar, link);
+// multicell(160, 6, "texto", 1, 'J', false);
+
 //Write(alto, texto, link);
 // OutPut(destino[I, D, F, S], nombre_archivo, utf8);
 

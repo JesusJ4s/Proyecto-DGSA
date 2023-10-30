@@ -3,6 +3,7 @@ session_start();
 ob_start();
 $busqueda = $_POST['busqueda'];
 include("abrir_conexion.php");
+$patron_numero = '/^[0-9]{1,11}$/';
 
 // IMPRIMIR INFORMACIÓN DEL EQUIPO POR NOMBRE
 if ($busqueda == "dato_solo") {
@@ -59,4 +60,15 @@ if ($busqueda == "dato_depa") {
 if ($busqueda == "equipo_cambios") {
     $_SESSION['nombreEQ'] = strtoupper($_POST['con_name']);
 
+}
+// IMPRIMIR SOPORTES FINALIZADOS
+if ($busqueda == "soporteFinalizado") {
+
+    if (preg_match($patron_numero,$_POST['con_id'])) {
+        $_SESSION['nombreEQ_Soport'] = strtoupper($_POST['con_name']);
+        $_SESSION['idEQ_Soport'] = $_POST['con_id'];
+    }else{
+        http_response_code(500);
+        include("cerrar_conexion.php");
+    }
 }

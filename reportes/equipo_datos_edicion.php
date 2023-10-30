@@ -7,7 +7,7 @@ ob_start();
 class PDF extends FPDF
 {
 
-  // Cabecera de página
+    // Cabecera de página
 //Numeros de paginas
 //SetTextColor(255,255,255);es RGB extraer colores con GIMP
 //SetFillColor()
@@ -22,43 +22,43 @@ class PDF extends FPDF
 //Image(ruta, poscisionx,pocisiony,alto,ancho,tipo,link)
 //SetMargins(10,30,20,20) luego de addpage
 
-  function Header()
-  {
-    $this->Image('img/triangulosrecortados.png', -1, -1, 85);
-    $this->Image('../assets/logos/DGSA/Imagen1.png', 150, 15, 25);
+    function Header()
+    {
+        $this->Image('img/triangulosrecortados.png', -1, -1, 85);
+        $this->Image('../assets/logos/DGSA/Imagen1.png', 150, 15, 25);
 
-    $this->SetY(40);
-    $this->SetX(125);
-    $this->SetFont('Arial', 'B', 12);
+        $this->SetY(40);
+        $this->SetX(125);
+        $this->SetFont('Arial', 'B', 12);
 
-    $this->SetTextColor(246, 130, 14);
-    $this->Cell(50, 8, utf8_decode('Dirección General de Salud Ambiental'), 0, 1);
-    $this->SetY(45);
-    $this->SetX(145);
-    $this->SetFont('Arial', '', 8);
-    $this->Cell(40, 8, utf8_decode('Departamento de Informática'));
-    $this->SetTextColor(30, 10, 32);
-    $this->Ln(20);
+        $this->SetTextColor(246, 130, 14);
+        $this->Cell(50, 8, 'Dirección General de Salud Ambiental', 0, 1);
+        $this->SetY(45);
+        $this->SetX(145);
+        $this->SetFont('Arial', '', 8);
+        $this->Cell(40, 8, 'Departamento de Informática');
+        $this->SetTextColor(30, 10, 32);
+        $this->Ln(20);
 
-  }
+    }
 
-  function Footer()
-  {
-    $UsuarioCreador = $_SESSION['nombre'];
+    function Footer()
+    {
+        $UsuarioCreador = $_SESSION['nombre'];
 
-    $this->SetFont('helvetica', 'B', 8);
-    $this->SetY(-15);
-    $this->Cell(80, 5, utf8_decode('Página ') . $this->PageNo() . ' / {nb}', 0, 0, 'L');
-    $this->Cell(30, 5, "Impreso por: ".$UsuarioCreador, 0, 0, 'C');
-    $this->Cell(80, 5, date('d/m/Y | g:i:a'), 00, 1, 'R');
-    $this->Line(10, 287, 200, 287);
-    $this->Cell(0, 5, utf8_decode("Departamento de Informática © Todos los derechos reservados."), 0, 0, "C");
+        $this->SetFont('helvetica', 'B', 8);
+        $this->SetY(-15);
+        $this->Cell(80, 5, 'Página ' . $this->PageNo() . ' / {nb}', 0, 0, 'L');
+        $this->Cell(30, 5, "Impreso por: " . $UsuarioCreador, 0, 0, 'C');
+        $this->Cell(80, 5, date('d/m/Y | g:i:a'), 00, 1, 'R');
+        $this->Line(10, 287, 200, 287);
+        $this->Cell(0, 5, "Departamento de Informática © Todos los derechos reservados.", 0, 0, "C");
 
-  }
+    }
 
 
 }
-$pdf = new PDF();
+$pdf = new PDF('P', 'mm', 'letter', true);
 $pdf->AliasNbPages();
 
 // $ValorBuscar = "M1SSPC18";
@@ -89,18 +89,18 @@ $pdf->Ln(10);
 
 while ($row = $final->fetch_assoc()) {
 
-  $pdf->SetFont('Arial', '', 10);
-  $pdf->SetX(25);
+    $pdf->SetFont('Arial', '', 10);
+    $pdf->SetX(25);
 
-  $descripcion = $row['descripcion_cambio'];
-  $descripcion = str_replace("<br><br>", "\n--", $descripcion); // Reemplazar <br> por saltos de línea
-  $pdf->SetDrawColor(0, 0, 0);
+    $descripcion = $row['descripcion_cambio'];
+    $descripcion = str_replace("<br><br>", "\n--", $descripcion); // Reemplazar <br> por saltos de línea
+    $pdf->SetDrawColor(0, 0, 0);
 
-  $pdf->multicell(160, 6, $row['fecha_usuario_cambio'].": ".utf8_decode($descripcion), 1, 'J', false);
-  $pdf->Ln(2);
+    $pdf->multicell(160, 6, $row['fecha_usuario_cambio'] . ": " . $descripcion, 1, 'J', false);
+    $pdf->Ln(2);
 
 }
-$_SESSION['nombreEQ']='';
+$_SESSION['nombreEQ'] = '';
 
 $pdf->Output('I', 'Reporte cambios.pdf', true);
 ?>

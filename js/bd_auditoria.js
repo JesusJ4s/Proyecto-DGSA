@@ -4,10 +4,10 @@ $(document).ready(function () {
             url: '../php/bd_auditoria.php',
             type: 'POST',
             success: function (response) {
-                auditoriaBD();
-                auditoriaUsr();
                 $('#BDauditoria').modal('show');
                 $('#BDauditoria .modal-body').html(response);
+                auditoriaBD();
+                auditoriaUsr();
 
             },
             error: function () {

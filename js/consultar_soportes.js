@@ -251,7 +251,7 @@ function mostrarSoportesRechazadosVista() {
             // Change the background of the last cell in each row based on the value
             $('#dataTable_rec_vista tr').each(function () {
                 var est = $(this).find('td:last').text();
-                if (est == "Rechazado Completo") {
+                if (est == "Rechazado Definitivo") {
                     $(this).find('td:last').addClass('bg-danger text-light');
                 }
             });
@@ -741,6 +741,32 @@ function enviarEspera() {
         }
     });
 }
+// SOLICITAR HISTORIAL DE DATOS
+function verInformacion(){
+    $('#body-componentes').on('click','#btnInfor',function(){
+        con_name = $(this).closest('tr').find('td').eq(2).text();
+        var parametros=
+        {
+            "con_name":con_name,
+            "buscar_soporte":"informacion"
+        }
+        $.ajax({
+            data: parametros,
+            url: '../php/consultar_soportes.php',
+            type: 'POST',
+            error: function(jqXHR)
+            {
+                alert("error")
+            },   
+            success: function(mensaje)
+            {
+                $('#Modal_Notifi .modal-body').html(mensaje);
+                $('#Modal_Notifi').modal('show');
+            }
+        });
+
+    });
+}
 //********************************************************************************************************
 // DESBLOQUEO DE BOTÓN DE ENVÍO Y RECHAZO  
 
@@ -811,7 +837,7 @@ function FinalizarSolicitud() {
         data: parametros,
         url: '../php/consultar_soportes.php',
         type: 'POST',
-        error: function (jqXHR, xhr, status, error) {
+        error: function (jqXHR) {
             // alert("No se encontraron los datos.");
             var nroERROR = jqXHR.status;
 
@@ -837,6 +863,7 @@ function FinalizarSolicitud() {
             mostrar_soportes_Conocimiento();
             mostrarSoportes_cantidad();
             mostrar_soportes_componentes();
+            mostrar_soportes_FINALIZADOS();
             $('#Modal_Notifi .modal-body').text(mensaje);
             $('#Modal_Notifi').modal('show');
             $('#parte2').removeClass("ocultar-div");
@@ -926,4 +953,38 @@ function alertaSoporte(){
         }
     });
     
+}
+// VER REPORTE
+function verReporteSoli(){
+    $('#body-soport-ING').on('click','#btnRepor',function(){
+        con_id = $(this).closest('tr').find('td').eq(0).text();
+        con_name = $(this).closest('tr').find('td').eq(1).text();
+        var parametros=
+        {
+            "con_id":con_id,
+            "con_name":con_name,
+            "busqueda":"soporteFinalizado"
+        }
+        $.ajax({
+            data: parametros,
+            url: '../php/consultar_equipos_individuales.php',
+            type: 'POST',
+            error: function(jqXHR)
+            {
+                var nroERROR = jqXHR.status;
+
+                if (nroERROR == 500) {
+                    $('#Modal_Notifi').modal('show');
+
+                    $('#Modal_NotifiC').html('Error al buscar el reporte.');
+                }
+            },   
+            success: function(mensaje)
+            {
+                window.open('../reportes/soporteEquipo.php', "_blank");
+
+            }
+        });
+
+    });
 }
