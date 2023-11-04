@@ -1,5 +1,5 @@
 <?php
-
+include("date_time.php");
 // Establecer la duración de la sesión en segundos
 $duracion_sesion = 300;
 

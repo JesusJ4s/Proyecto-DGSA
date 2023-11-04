@@ -92,7 +92,7 @@ function mantenerSesion() {
 
   // Configurar la solicitud
   xhr.open('GET', '../php/actualizarSesion.php', true);
-
+  console.log("sesion actualizada");
   // Enviar la solicitud
   xhr.send();
 }
@@ -102,3 +102,5 @@ setInterval(comprobarSesion, 1000 * duracion_advertencia);
 
 // Actualizar la última actividad de la sesión al cargar la página
 actualizarUltimaActividad();
+
+mantenerSesion();

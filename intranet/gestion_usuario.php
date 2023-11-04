@@ -1,7 +1,6 @@
 <?php
 include("../php/verificacion_login.php");
 LoginAdmin();
-include("../php/date_time.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +23,7 @@ include("../php/date_time.php");
     <title>Gestión de Usuarios</title>
 </head>
 
-<body class="min-width-index">
+<body class="min-width-index color-fondo">
 
     <!-- MODAL PARA MOSTRAR AYUDA -->
     <div class="modal fade" id="mi-modal-ayuda" data-bs-backdrop="static">
@@ -93,7 +92,7 @@ include("../php/date_time.php");
             </section>
 
             <!-- SECCIÓN PRINCIPAL -->
-            <section class="border my-3 mx-4">
+            <section class="border my-4 mx-4 bg-blanco box-shadow-plano">
                 <h6 class="my-3 mx-5 fondo-readonly" id="mensajes_entrada">Bienvenido, a continuación se muestran las
                     aplicaciones disponibles, puede acceder a la que desee utilizar haciendo click en el botón "Acceder"
                 </h6>
@@ -153,6 +152,20 @@ include("../php/date_time.php");
                 </section>
 
             </section>
+
+            
+            <!--  DATOS -->
+            <!-- ESTADISTICAS USUARIOS DEL SISTEMA VS USUARIOS ACTIVOS -->
+            <div class="container mx-auto py-4 d-flex justify-content-center row mb-5 bg-blanco box-shadow-plano border-radius-15">
+                <div class="col-4">
+                    <canvas class="" id="usuariosAc"></canvas>
+                    
+                </div>
+                <div class="col-4">
+                    <canvas class="" id="usrAc"></canvas>
+
+                </div>
+            </div>
         </div>
     </main>
 
@@ -164,7 +177,12 @@ include("../php/date_time.php");
     ?>
     <!-- JS en Bootstrap -->
     <script src="../js/bootstrap.bundle.js"></script>
+    <script src="../js/estadisticasAdmin.js" type="module"></script>
+    
+    <script src="../chart/dist/chart.umd.js"></script>
 
 </body>
-
+<?php
+    include('../php/javascript_Footer.php');
+    ?>
 </html>

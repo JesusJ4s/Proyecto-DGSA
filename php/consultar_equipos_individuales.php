@@ -4,6 +4,8 @@ ob_start();
 $busqueda = $_POST['busqueda'];
 include("abrir_conexion.php");
 $patron_numero = '/^[0-9]{1,11}$/';
+$fechaExp = '/^(\d{2,4})[-\/](\d{2,4})[-\/](\d{2,4})$/';
+$fechaExp2 = '/^(\d{2,4})[-\/](\d{2,4})[-\/](\d{2,4})$/';
 
 // IMPRIMIR INFORMACIÓN DEL EQUIPO POR NOMBRE
 if ($busqueda == "dato_solo") {
@@ -15,11 +17,25 @@ if ($busqueda == "dato_solo") {
 }
 // IMPRIMIR EQUIPO POR FECHA
 if ($busqueda == "dato_fecha") {
-    $fecha = $_POST['fecha'];
-    $fecha2 = $_POST['fecha2'];
+    $fechaIni = $_POST['fecha1'];
+    $fechaFin = $_POST['fecha2'];
 
-    $_SESSION['nombreSQL'] =  "SELECT * FROM $tabla_db6 i INNER JOIN $tabla_db1 u ON i.ing_encar_inv_id = u.id_usuario INNER JOIN $tabla_db5 d ON i.direccion_inv_id = d.id_direcciones INNER JOIN $tabla_db3 e ON i.dpto_inv_id = e.id_departamento WHERE fecha_inventario BETWEEN '$fecha' AND '$fecha2'";
-    include("cerrar_conexion.php");
+    if ($fechaIni == '') {
+        if (preg_match($fechaExp,$fechaFin)) {
+            $_SESSION['nombreSQL'] =  "SELECT * FROM $tabla_db6 i INNER JOIN $tabla_db1 u ON i.ing_encar_inv_id = u.id_usuario INNER JOIN $tabla_db5 d ON i.direccion_inv_id = d.id_direcciones INNER JOIN $tabla_db3 e ON i.dpto_inv_id = e.id_departamento WHERE fecha_inventario BETWEEN '$fechaIni' AND '$fechaFin'";
+            include("cerrar_conexion.php");
+        }else {
+            http_response_code(500);
+            include("cerrar_conexion.php");
+        }
+    }else if (preg_match($fechaExp,$fechaIni) && preg_match($fechaExp,$fechaFin)) {
+        $_SESSION['nombreSQL'] =  "SELECT * FROM $tabla_db6 i INNER JOIN $tabla_db1 u ON i.ing_encar_inv_id = u.id_usuario INNER JOIN $tabla_db5 d ON i.direccion_inv_id = d.id_direcciones INNER JOIN $tabla_db3 e ON i.dpto_inv_id = e.id_departamento WHERE fecha_inventario BETWEEN '$fechaIni' AND '$fechaFin'";
+        include("cerrar_conexion.php");
+    }else {
+        http_response_code(500);
+        include("cerrar_conexion.php");
+    }
+    
 
 }
 // IMPRIMIR TODOS LOS EQUIPOS

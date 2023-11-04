@@ -30,7 +30,7 @@ include("../php/date_time.php");
     <title>Correspondencia - Dirección</title>
 </head>
 
-<body class="min-width-index">
+<body class="min-width-index color-fondo">
 
     <!-- MODAL PARA MOSTRAR AYUDA -->
     <div class="modal fade" id="mi-modal-ayuda" data-bs-backdrop="static">
@@ -109,5 +109,7 @@ include("../php/date_time.php");
     <script src="../js/consultar_soportes.js"></script>
 
 </body>
-
+<?php
+    include('../php/javascript_Footer.php');
+    ?>
 </html>

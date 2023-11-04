@@ -25,7 +25,7 @@ LoginSimple();
     <title>Solicitudes</title>
 </head>
 
-<body class=" min-width-index">
+<body class=" min-width-index color-fondo">
 
     <!-- MODAL TERMINOS DE SERVICIO (INFORMACIÓN) -->
     <div class="modal fade" id="mi-modal-ayuda" data-bs-backdrop="static">
@@ -109,8 +109,8 @@ LoginSimple();
             ?>
     </header>
     <main class="">
-        <div class="container-fluid mt-5 mb-4 py-2 bg-blanco-hsl border-radius-15">
-            <div class="w-85 mx-auto">
+        <div class="container-fluid mt-5 mb-4 py-2  border-radius-15">
+            <div class="w-95 mx-auto bg-blanco px-3 box-shadow-plano border-radius-15">
                 <div class="ms-3">
                     <a href="soporte_tecnico.php" class="d-inline text-dark enlaces_limpios2"><u>Inicio</u></a><span
                         class="d-inline"> / </span><a class="d-inline text-dark enlaces_limpios2"
@@ -129,298 +129,300 @@ LoginSimple();
                             src="../assets/icon/multi/atras_white.png" class="wh-icon-solicitud me-2 mb-1">Volver</a>
                 </div>
                 <!-- PHP QUE REGISTRA LA SOLICITUD -->
+                <div class="soft-grey">
 
-                <div class="border mt-3 ocultar-div" id="parte1">
-                    <div>
-                        <h3 class="m-0 py-4 ps-2 bg-blanco">Registro de Solicitud</h3>
+                    <div class="border mt-3 ocultar-div" id="parte1">
+                        <div>
+                            <h3 class="m-0 py-4 ps-2 bg-blanco">Registro de Solicitud</h3>
+                        </div>
+                        <hr class="m-0">
+                        <!-- FORMULARIO -->
+                        <form class="m-0" method="post"id="formulario_solicitud_sopor" action="">
+                            <div class="m-0 py-3 row">
+                                <div class="col-2">
+                                    <p class="my-auto d-inline bold col-2">Uso del Equipo</p>
+                                    <button type="button" class="boton_toast d-inline "><img
+                                            src="../assets/intranet/pregunta.png" class="img_toast"
+                                            data-toast="#toast1"></button>
+                                    <!-- TOAST -->
+                                    <div class="toast position-absolute bg-secondary" role="alert" aria-live="assertive"
+                                        aria-atomic="true" id="toast1" data-bs-delay="4000">
+                                        <div class="toast-header">
+                                            <!-- <img src="..." class="rounded me-2" alt="..."> -->
+                                            <strong class="me-auto">USO</strong>
+                                            <!-- <small>11 mins ago</small> -->
+                                            <button type="button" class="btn-close" data-bs-dismiss="toast"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="toast-body text-white">
+                                            Indique si el ordenador es propio o pertenece a la institución.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-9">
+                                    <input type="radio" class="btn-check" name="equipo_propiedad" id="uso_oficial"
+                                        autocomplete="off" value="1" required onclick=" habilitar();">
+                                    <label class="btn btn-outline-primary" for="uso_oficial">Uso Oficial</label>
+    
+                                    <input type="radio" class="btn-check" name="equipo_propiedad" id="uso_personal"
+                                        autocomplete="off" value="2" required onclick=" habilitar();">
+                                    <label class="btn btn-outline-primary" for="uso_personal">Uso Personal</label>
+                                </div>
+                            </div>
+                            <hr class="m-0">
+                            <div class="m-0 py-3 row bg-blanco">
+                                <div class="col-2">
+                                    <p class="my-auto d-inline bold col-2">Nombre del Equipo</p>
+                                    <button type="button" class="boton_toast d-inline "><img
+                                            src="../assets/intranet/pregunta.png" class="img_toast"
+                                            data-toast="#toast2"></button>
+                                    <!-- TOAST -->
+                                    <div class="toast position-absolute bg-secondary" role="alert" aria-live="assertive"
+                                        aria-atomic="true" id="toast2" data-bs-delay="4000">
+                                        <div class="toast-header">
+                                            <!-- <img src="..." class="rounded me-2" alt="..."> -->
+                                            <strong class="me-auto">Nombre del Equipo</strong>
+                                            <!-- <small>11 mins ago</small> -->
+                                            <button type="button" class="btn-close" data-bs-dismiss="toast"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="toast-body text-white">
+                                            Su ordenador debe estar registrado en el sistema, coloque el nombre de usuario
+                                            del equipo.
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- TODO: -->
+                                <div class="col-9 formulario__grupo-input">
+                                    <input pattern="[0-9a-zA-Z]+" type="text"
+                                        class="bg-light border-black w-20 form-control d-inline" id="name_edit"
+                                        name="name_edit" required>
+                                    <button type="button" class="btn2 btn-secondary mb-1" onclick="ver_equipo_soporte();"
+                                        name="boton_buscar" id="boton_buscar">Buscar</button>
+                                    <!-- <input name="mac_mostrar" id="mac_mostrar" type="text"> -->
+    
+                                </div>
+                            </div>
+                            <hr class="m-0">
+                            <div class="m-0 py-3 row">
+                                <div class="col-2">
+    
+                                    <p class="my-auto d-inline bold col-2">Dirección:</p>
+                                    <button type="button" class="boton_toast d-inline "><img
+                                            src="../assets/intranet/pregunta.png" class="img_toast"
+                                            data-toast="#toast3"></button>
+                                    <!-- TOAST -->
+                                    <div class="toast position-absolute bg-secondary" role="alert" aria-live="assertive"
+                                        aria-atomic="true" id="toast3" data-bs-delay="4000">
+                                        <div class="toast-header">
+                                            <!-- <img src="..." class="rounded me-2" alt="..."> -->
+                                            <strong class="me-auto">Dirección</strong>
+                                            <!-- <small>11 mins ago</small> -->
+                                            <button type="button" class="btn-close" data-bs-dismiss="toast"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="toast-body text-white">
+                                            Aquí se muestra la dirección a la que pertenece el ordenador.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-9">
+                                    <input class="btn2 bg-light w-50" id="direccion_mostrar" name="direccion_mostrar"
+                                        readonly>
+                                </div>
+                            </div>
+                            <hr class="m-0">
+                            <div class="m-0 py-3 row bg-blanco">
+                                <div class="col-2">
+                                    <p class="my-auto d-inline bold col-2">Division:</p>
+                                    <button type="button" class="boton_toast d-inline "><img
+                                            src="../assets/intranet/pregunta.png" class="img_toast"
+                                            data-toast="#toast4"></button>
+                                    <!-- TOAST -->
+                                    <div class="toast position-absolute bg-secondary" role="alert" aria-live="assertive"
+                                        aria-atomic="true" id="toast4" data-bs-delay="4000">
+                                        <div class="toast-header">
+                                            <!-- <img src="..." class="rounded me-2" alt="..."> -->
+                                            <strong class="me-auto">División</strong>
+                                            <!-- <small>11 mins ago</small> -->
+                                            <button type="button" class="btn-close" data-bs-dismiss="toast"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="toast-body text-white">
+                                            Aquí se muestra la división donde se encuentra el ordenador.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-9">
+                                    <input class="btn2 bg-light w-50" id="division_mostrar" name="division_mostrar"
+                                        readonly>
+                                </div>
+                            </div>
+                            <hr class="m-0">
+                            <div class="m-0 py-3 row ">
+                                <div class="col-2">
+                                    <p class="my-auto d-inline bold col-2">Departamento:</p>
+                                    <button type="button" class="boton_toast d-inline "><img
+                                            src="../assets/intranet/pregunta.png" class="img_toast"
+                                            data-toast="#toast5"></button>
+                                    <!-- TOAST -->
+                                    <div class="toast position-absolute bg-secondary" role="alert" aria-live="assertive"
+                                        aria-atomic="true" id="toast5" data-bs-delay="4000">
+                                        <div class="toast-header">
+                                            <!-- <img src="..." class="rounded me-2" alt="..."> -->
+                                            <strong class="me-auto">Departamento</strong>
+                                            <!-- <small>11 mins ago</small> -->
+                                            <button type="button" class="btn-close" data-bs-dismiss="toast"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="toast-body text-white">
+                                            Aquí se muestra el departamento donde se encuentra el ordenador.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-9">
+                                    <input class="btn2 bg-light w-50" id="depto_mostrar" name="depto_mostrar" readonly>
+                                </div>
+                            </div>
+                            <hr class="m-0">
+                            <div class="m-0 row bg-blanco py-3">
+                                <div class="col-2">
+                                    <p class="my-auto d-inline bold col-2">Bien Nacional:</p>
+                                    <button type="button" class="boton_toast d-inline "><img
+                                            src="../assets/intranet/pregunta.png" class="img_toast"
+                                            data-toast="#toast6"></button>
+                                    <!-- TOAST -->
+                                    <div class="toast position-absolute bg-secondary" role="alert" aria-live="assertive"
+                                        aria-atomic="true" id="toast6" data-bs-delay="4000">
+                                        <div class="toast-header">
+                                            <!-- <img src="..." class="rounded me-2" alt="..."> -->
+                                            <strong class="me-auto">Bien Nacional</strong>
+                                            <!-- <small>11 mins ago</small> -->
+                                            <button type="button" class="btn-close" data-bs-dismiss="toast"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="toast-body text-white">
+                                            Identificador del equipo como Bien de la Nación, suele estár colocado a uno de
+                                            los lados del equipo.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <input class="btn2 bg-light w-75" id="BN_equipo_mostrar" name="BN_equipo_mostrar"
+                                        readonly>
+                                </div>
+                                <div class="col-2">
+                                    <p class="my-auto d-inline bold col-2 text-end">Serial:</p>
+                                    <button type="button" class="boton_toast d-inline "><img
+                                            src="../assets/intranet/pregunta.png" class="img_toast"
+                                            data-toast="#toast7"></button>
+                                    <!-- TOAST -->
+                                    <div class="toast position-absolute bg-secondary" role="alert" aria-live="assertive"
+                                        aria-atomic="true" id="toast7" data-bs-delay="4000">
+                                        <div class="toast-header">
+                                            <!-- <img src="..." class="rounded me-2" alt="..."> -->
+                                            <strong class="me-auto">Serial</strong>
+                                            <!-- <small>11 mins ago</small> -->
+                                            <button type="button" class="btn-close" data-bs-dismiss="toast"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="toast-body text-white">
+                                            Número de serie del equipo, colocado en la etiqueta de fabrica del mismo.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <input class="btn2 bg-light w-75" id="serial_equipo_mostrar"
+                                        name="serial_equipo_mostrar" readonly>
+                                </div>
+                            </div>
+                            <hr class="m-0">
+                            <div class="m-0 row py-3">
+                                <div class="col-2">
+                                    <p class="my-auto d-inline bold col-2">Nivel de Soporte:</p>
+                                    <button type="button" class="boton_toast d-inline "><img
+                                            src="../assets/intranet/pregunta.png" class="img_toast"
+                                            data-toast="#toast8"></button>
+                                    <!-- TOAST -->
+                                    <div class="toast position-absolute bg-secondary" role="alert" aria-live="assertive"
+                                        aria-atomic="true" id="toast8" data-bs-delay="4000">
+                                        <div class="toast-header">
+                                            <!-- <img src="..." class="rounded me-2" alt="..."> -->
+                                            <strong class="me-auto">Nivel de Soporte</strong>
+                                            <!-- <small>11 mins ago</small> -->
+                                            <button type="button" class="btn-close" data-bs-dismiss="toast"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="toast-body text-white">
+                                            Indique si necesita soporte de Software: falla en alguna aplicación o al iniciar
+                                            windows; o Hardware: el equipo no enciende o hace ruidos extraños. En caso de no
+                                            saber, seleccione una de las 2 y explique en la caja de comentario lo que le
+                                            ocurre.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-9">
+                                    <input type="radio" class="btn-check" name="nivel_soporte" id="nivel_soft"
+                                        autocomplete="off" value="1" required onclick=" habilitar();">
+                                    <label class="btn btn-outline-primary" for="nivel_soft">Nivel Software</label>
+    
+                                    <input type="radio" class="btn-check" name="nivel_soporte" id="nivel_hard"
+                                        autocomplete="off" value="2" required onclick=" habilitar();">
+                                    <label class="btn btn-outline-primary" for="nivel_hard">Nivel Hardware</label>
+                                </div>
+                            </div>
+    
+                            <hr class="m-0">
+                            <div class="m-0 row bg-blanco py-2">
+                                <p class="my-auto bold col-2">Descripción</p>
+                                <div class="col-9 ">
+                                    <div class="bg-amarillito text-dark border-radius-15 p-3 my-2" role="">
+                                        Por favor escriba en letras versales. <i>Ej. Su descripción es necesaria para
+                                            resolver el problema.</i>
+                                    </div>
+                                    <div>
+                                        <textarea class="bg-blanco-hsl" id="descripcion" name="descripcion" minlength="15"
+                                            maxlength="200" onfocus="habilitar();" required></textarea>
+                                        <div id="charCount"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="m-0">
+                            <div class="my-1 ms-3 row py-2">
+                                <div class="col-2">
+    
+                                </div>
+                                <div class="col-9 py-2 formulario__grupo" id="grupo__terminos">
+                                    <label class="formulario__label"></label>
+                                    <input type="checkbox" class="formulario__checkbox" name="terminos" id="terminos"
+                                        value="1" required onclick=" habilitar();">
+                                    
+                                    <button type="button" class="btn border-0" data-bs-toggle="modal"
+                                        data-bs-target="#mi-modal-ayuda">
+                                        Acepto los <span class="text-primary">Términos del Servicio</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <hr class="m-0">
+    
+                            <input id="buscar_soporte" name="buscar_soporte" value="RegisSoli" type="hidden" readonly>
+    
+                            <div class="m-0 row bg-blanco py-2">
+                                <div class="col-2">
+    
+                                </div>
+                                <div class="col-9">
+                                    <button type="submit" class="btn btn-primary" id="registrar" name="registrar"
+                                        disabled>Enviar</button>
+                                </div>
+                            </div>
+                            <input name="id_del_equipo" id="id_del_equipo" type="hidden">
+                        </form>
                     </div>
-                    <hr class="m-0">
-                    <!-- FORMULARIO -->
-                    <form class="m-0" method="post"id="formulario_solicitud_sopor" action="">
-                        <div class="m-0 py-3 row">
-                            <div class="col-2">
-                                <p class="my-auto d-inline bold col-2">Uso del Equipo</p>
-                                <button type="button" class="boton_toast d-inline "><img
-                                        src="../assets/intranet/pregunta.png" class="img_toast"
-                                        data-toast="#toast1"></button>
-                                <!-- TOAST -->
-                                <div class="toast position-absolute bg-secondary" role="alert" aria-live="assertive"
-                                    aria-atomic="true" id="toast1" data-bs-delay="4000">
-                                    <div class="toast-header">
-                                        <!-- <img src="..." class="rounded me-2" alt="..."> -->
-                                        <strong class="me-auto">USO</strong>
-                                        <!-- <small>11 mins ago</small> -->
-                                        <button type="button" class="btn-close" data-bs-dismiss="toast"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="toast-body text-white">
-                                        Indique si el ordenador es propio o pertenece a la institución.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-9">
-                                <input type="radio" class="btn-check" name="equipo_propiedad" id="uso_oficial"
-                                    autocomplete="off" value="1" required onclick=" habilitar();">
-                                <label class="btn btn-outline-primary" for="uso_oficial">Uso Oficial</label>
-
-                                <input type="radio" class="btn-check" name="equipo_propiedad" id="uso_personal"
-                                    autocomplete="off" value="2" required onclick=" habilitar();">
-                                <label class="btn btn-outline-primary" for="uso_personal">Uso Personal</label>
-                            </div>
-                        </div>
-                        <hr class="m-0">
-                        <div class="m-0 py-3 row bg-blanco">
-                            <div class="col-2">
-                                <p class="my-auto d-inline bold col-2">Nombre del Equipo</p>
-                                <button type="button" class="boton_toast d-inline "><img
-                                        src="../assets/intranet/pregunta.png" class="img_toast"
-                                        data-toast="#toast2"></button>
-                                <!-- TOAST -->
-                                <div class="toast position-absolute bg-secondary" role="alert" aria-live="assertive"
-                                    aria-atomic="true" id="toast2" data-bs-delay="4000">
-                                    <div class="toast-header">
-                                        <!-- <img src="..." class="rounded me-2" alt="..."> -->
-                                        <strong class="me-auto">Nombre del Equipo</strong>
-                                        <!-- <small>11 mins ago</small> -->
-                                        <button type="button" class="btn-close" data-bs-dismiss="toast"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="toast-body text-white">
-                                        Su ordenador debe estar registrado en el sistema, coloque el nombre de usuario
-                                        del equipo.
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- TODO: -->
-                            <div class="col-9 formulario__grupo-input">
-                                <input pattern="[0-9a-zA-Z]+" type="text"
-                                    class="bg-light border-black w-20 form-control d-inline" id="name_edit"
-                                    name="name_edit" required>
-                                <button type="button" class="btn2 btn-secondary mb-1" onclick="ver_equipo_soporte();"
-                                    name="boton_buscar" id="boton_buscar">Buscar</button>
-                                <!-- <input name="mac_mostrar" id="mac_mostrar" type="text"> -->
-
-                            </div>
-                        </div>
-                        <hr class="m-0">
-                        <div class="m-0 py-3 row">
-                            <div class="col-2">
-
-                                <p class="my-auto d-inline bold col-2">Dirección:</p>
-                                <button type="button" class="boton_toast d-inline "><img
-                                        src="../assets/intranet/pregunta.png" class="img_toast"
-                                        data-toast="#toast3"></button>
-                                <!-- TOAST -->
-                                <div class="toast position-absolute bg-secondary" role="alert" aria-live="assertive"
-                                    aria-atomic="true" id="toast3" data-bs-delay="4000">
-                                    <div class="toast-header">
-                                        <!-- <img src="..." class="rounded me-2" alt="..."> -->
-                                        <strong class="me-auto">Dirección</strong>
-                                        <!-- <small>11 mins ago</small> -->
-                                        <button type="button" class="btn-close" data-bs-dismiss="toast"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="toast-body text-white">
-                                        Aquí se muestra la dirección a la que pertenece el ordenador.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-9">
-                                <input class="btn2 bg-light w-50" id="direccion_mostrar" name="direccion_mostrar"
-                                    readonly>
-                            </div>
-                        </div>
-                        <hr class="m-0">
-                        <div class="m-0 py-3 row bg-blanco">
-                            <div class="col-2">
-                                <p class="my-auto d-inline bold col-2">Division:</p>
-                                <button type="button" class="boton_toast d-inline "><img
-                                        src="../assets/intranet/pregunta.png" class="img_toast"
-                                        data-toast="#toast4"></button>
-                                <!-- TOAST -->
-                                <div class="toast position-absolute bg-secondary" role="alert" aria-live="assertive"
-                                    aria-atomic="true" id="toast4" data-bs-delay="4000">
-                                    <div class="toast-header">
-                                        <!-- <img src="..." class="rounded me-2" alt="..."> -->
-                                        <strong class="me-auto">División</strong>
-                                        <!-- <small>11 mins ago</small> -->
-                                        <button type="button" class="btn-close" data-bs-dismiss="toast"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="toast-body text-white">
-                                        Aquí se muestra la división donde se encuentra el ordenador.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-9">
-                                <input class="btn2 bg-light w-50" id="division_mostrar" name="division_mostrar"
-                                    readonly>
-                            </div>
-                        </div>
-                        <hr class="m-0">
-                        <div class="m-0 py-3 row ">
-                            <div class="col-2">
-                                <p class="my-auto d-inline bold col-2">Departamento:</p>
-                                <button type="button" class="boton_toast d-inline "><img
-                                        src="../assets/intranet/pregunta.png" class="img_toast"
-                                        data-toast="#toast5"></button>
-                                <!-- TOAST -->
-                                <div class="toast position-absolute bg-secondary" role="alert" aria-live="assertive"
-                                    aria-atomic="true" id="toast5" data-bs-delay="4000">
-                                    <div class="toast-header">
-                                        <!-- <img src="..." class="rounded me-2" alt="..."> -->
-                                        <strong class="me-auto">Departamento</strong>
-                                        <!-- <small>11 mins ago</small> -->
-                                        <button type="button" class="btn-close" data-bs-dismiss="toast"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="toast-body text-white">
-                                        Aquí se muestra el departamento donde se encuentra el ordenador.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-9">
-                                <input class="btn2 bg-light w-50" id="depto_mostrar" name="depto_mostrar" readonly>
-                            </div>
-                        </div>
-                        <hr class="m-0">
-                        <div class="m-0 row bg-blanco py-3">
-                            <div class="col-2">
-                                <p class="my-auto d-inline bold col-2">Bien Nacional:</p>
-                                <button type="button" class="boton_toast d-inline "><img
-                                        src="../assets/intranet/pregunta.png" class="img_toast"
-                                        data-toast="#toast6"></button>
-                                <!-- TOAST -->
-                                <div class="toast position-absolute bg-secondary" role="alert" aria-live="assertive"
-                                    aria-atomic="true" id="toast6" data-bs-delay="4000">
-                                    <div class="toast-header">
-                                        <!-- <img src="..." class="rounded me-2" alt="..."> -->
-                                        <strong class="me-auto">Bien Nacional</strong>
-                                        <!-- <small>11 mins ago</small> -->
-                                        <button type="button" class="btn-close" data-bs-dismiss="toast"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="toast-body text-white">
-                                        Identificador del equipo como Bien de la Nación, suele estár colocado a uno de
-                                        los lados del equipo.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <input class="btn2 bg-light w-75" id="BN_equipo_mostrar" name="BN_equipo_mostrar"
-                                    readonly>
-                            </div>
-                            <div class="col-2">
-                                <p class="my-auto d-inline bold col-2 text-end">Serial:</p>
-                                <button type="button" class="boton_toast d-inline "><img
-                                        src="../assets/intranet/pregunta.png" class="img_toast"
-                                        data-toast="#toast7"></button>
-                                <!-- TOAST -->
-                                <div class="toast position-absolute bg-secondary" role="alert" aria-live="assertive"
-                                    aria-atomic="true" id="toast7" data-bs-delay="4000">
-                                    <div class="toast-header">
-                                        <!-- <img src="..." class="rounded me-2" alt="..."> -->
-                                        <strong class="me-auto">Serial</strong>
-                                        <!-- <small>11 mins ago</small> -->
-                                        <button type="button" class="btn-close" data-bs-dismiss="toast"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="toast-body text-white">
-                                        Número de serie del equipo, colocado en la etiqueta de fabrica del mismo.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <input class="btn2 bg-light w-75" id="serial_equipo_mostrar"
-                                    name="serial_equipo_mostrar" readonly>
-                            </div>
-                        </div>
-                        <hr class="m-0">
-                        <div class="m-0 row py-3">
-                            <div class="col-2">
-                                <p class="my-auto d-inline bold col-2">Nivel de Soporte:</p>
-                                <button type="button" class="boton_toast d-inline "><img
-                                        src="../assets/intranet/pregunta.png" class="img_toast"
-                                        data-toast="#toast8"></button>
-                                <!-- TOAST -->
-                                <div class="toast position-absolute bg-secondary" role="alert" aria-live="assertive"
-                                    aria-atomic="true" id="toast8" data-bs-delay="4000">
-                                    <div class="toast-header">
-                                        <!-- <img src="..." class="rounded me-2" alt="..."> -->
-                                        <strong class="me-auto">Nivel de Soporte</strong>
-                                        <!-- <small>11 mins ago</small> -->
-                                        <button type="button" class="btn-close" data-bs-dismiss="toast"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="toast-body text-white">
-                                        Indique si necesita soporte de Software: falla en alguna aplicación o al iniciar
-                                        windows; o Hardware: el equipo no enciende o hace ruidos extraños. En caso de no
-                                        saber, seleccione una de las 2 y explique en la caja de comentario lo que le
-                                        ocurre.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-9">
-                                <input type="radio" class="btn-check" name="nivel_soporte" id="nivel_soft"
-                                    autocomplete="off" value="1" required onclick=" habilitar();">
-                                <label class="btn btn-outline-primary" for="nivel_soft">Nivel Software</label>
-
-                                <input type="radio" class="btn-check" name="nivel_soporte" id="nivel_hard"
-                                    autocomplete="off" value="2" required onclick=" habilitar();">
-                                <label class="btn btn-outline-primary" for="nivel_hard">Nivel Hardware</label>
-                            </div>
-                        </div>
-
-                        <hr class="m-0">
-                        <div class="m-0 row bg-blanco py-2">
-                            <p class="my-auto bold col-2">Descripción</p>
-                            <div class="col-9 ">
-                                <div class="bg-amarillito text-dark border-radius-15 p-3 my-2" role="">
-                                    Por favor escriba en letras versales. <i>Ej. Su descripción es necesaria para
-                                        resolver el problema.</i>
-                                </div>
-                                <div>
-                                    <textarea class="bg-blanco-hsl" id="descripcion" name="descripcion" minlength="15"
-                                        maxlength="200" onfocus="habilitar();" required></textarea>
-                                    <div id="charCount"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <hr class="m-0">
-                        <div class="my-1 ms-3 row py-2">
-                            <div class="col-2">
-
-                            </div>
-                            <div class="col-9 py-2 formulario__grupo" id="grupo__terminos">
-                                <label class="formulario__label"></label>
-                                <input type="checkbox" class="formulario__checkbox" name="terminos" id="terminos"
-                                    value="1" required onclick=" habilitar();">
-                                
-                                <button type="button" class="btn border-0" data-bs-toggle="modal"
-                                    data-bs-target="#mi-modal-ayuda">
-                                    Acepto los <span class="text-primary">Términos del Servicio</span>
-                                </button>
-                            </div>
-                        </div>
-                        <hr class="m-0">
-
-                        <input id="buscar_soporte" name="buscar_soporte" value="RegisSoli" type="hidden" readonly>
-
-                        <div class="m-0 row bg-blanco py-2">
-                            <div class="col-2">
-
-                            </div>
-                            <div class="col-9">
-                                <button type="submit" class="btn btn-primary" id="registrar" name="registrar"
-                                    disabled>Enviar</button>
-                            </div>
-                        </div>
-                        <input name="id_del_equipo" id="id_del_equipo" type="hidden">
-                    </form>
                 </div>
                 <!-- *************************************************************************************************************************** -->
                 <!-- ESTA ES LA PESTAÑA DE SEGUIMIENTO - DONDE COLOCAREMOS LOS REGISTROS HECHOS -->
-                <div class="mt-3 ocultar-div" id="parte2">
+                <div class="mt-3 ocultar-div " id="parte2">
                     <div class="accordion" id="accordionSoliSoport">
 
                         <div class="px-2">
@@ -516,5 +518,7 @@ LoginSimple();
     </script>
     <script src="../js/consultar_soportes_ingreso.js"></script>
 </body>
-
+<?php
+    include('../php/javascript_Footer.php');
+    ?>
 </html>

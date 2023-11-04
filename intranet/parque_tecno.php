@@ -24,7 +24,7 @@
 
     <title>Parque Tecnológico</title>
 </head>
-<body class="min-width-index">
+<body class="min-width-index color-fondo">
 <!-- MODAL DE AYUDA (INFORMACIÓN) -->
     <div class="modal fade" id="mi-modal-ayuda" data-bs-backdrop="static">
         <div class="modal-dialog modal-dialog-centered">
@@ -81,7 +81,7 @@
         </section>
 
         <!-- SECCIÓN PRINCIPAL -->
-        <section class="border my-3 mx-4">
+        <section class="border my-4 mx-4 bg-blanco box-shadow-plano">
             <h6 class="my-3 mx-5 fondo-readonly" id="mensajes_entrada">Bienvenido, a continuación se muestran las aplicaciones disponibles, puede acceder a la que desee utilizar haciendo click en el botón "Acceder"</h6>
         
 
@@ -145,4 +145,7 @@
 <!-- JS en Bootstrap -->
         <script src="../js/bootstrap.bundle.js"></script>
 </body>
+<?php
+    include('../php/javascript_Footer.php');
+    ?>
 </html>

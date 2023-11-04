@@ -1,8 +1,7 @@
 <?php
-
+include("date_time.php");
 // PHP para mantener la sesión activa (actualizar la última actividad)
 session_start();
-
 // Establecer la duración de la sesión en segundos
 $duracion_sesion = 300;
 
@@ -15,11 +14,11 @@ if (isset($_SESSION['LAST_ACTIVITY'])) {
     if ($tiempo_transcurrido > $duracion_sesion) {
         session_unset();
         session_destroy();
-        header('Location: cerrar_sesion.php');
+        header('Location: ../php/cerrar_sesion.php');
     } else {
         // Actualizar la última actividad de la sesión
         $_SESSION['LAST_ACTIVITY'] = time();
     }
 } else {
-    header('Location: cerrar_sesion.php');
+    header('Location: ../php/cerrar_sesion.php');
 }

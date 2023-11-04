@@ -72,7 +72,13 @@ function consulta_PC_fecha() {
         type: 'POST',
         error: function(jqXHR)
         {
-            alert("error")
+            var nroERROR = jqXHR.status;
+
+
+            if(nroERROR==500){
+                alert("Error al buscar el rango de fecha")
+            }
+
         },   
         success: function(mensaje)
         {

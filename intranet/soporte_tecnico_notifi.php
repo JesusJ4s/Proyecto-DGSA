@@ -26,7 +26,7 @@ include("../php/date_time.php");
     <title>Notificaciones</title>
 </head>
 
-<body class="min-width-index">
+<body class="min-width-index color-fondo">
     <!-- Modal para mostrar información-->
     <div class="modal fade" id="Modal_Notifi" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true" data-bs-backdrop="static">
@@ -110,14 +110,14 @@ include("../php/date_time.php");
 
         <!-- DIV QUE CONTIENE TODO -->
         <div id="contenedor-total-total">
+            <section class="container-fluid my-2 w-95 mb-5 px-0 bg-blanco box-shadow-plano border-radius-15" id="centro-id">
 
-            <div class="mt-4 mx-5">
-                <div class="text-end d-inline mt-2 ms-3">
-                    <a href="soporte_tecnico_notifi.php"><img src="../assets/intranet/recargar.png" class="w-02"></a>
+                <div class="row">
+                    <div class="col-3 mt-2 ms-4">
+                        <a href="soporte_tecnico_notifi.php"><img src="../assets/intranet/recargar.png" class="w-10"></a>
+                    </div>
                 </div>
-            </div>
 
-            <div class="container-fluid my-2 px-0" id="centro-id">
                 <div class="w-85 mx-auto">
                     <!-- SOLICITUDES EN ESPERA -->
                     <div class="px-2 ocultar-div" id="parte1">
@@ -568,13 +568,32 @@ include("../php/date_time.php");
                     </div>
 
                     <!-- SOPORTES DATOS -->
-                    <div class="px-2 mt-3 " id="parte4">
+                    <div class="px-2" id="parte4">
                         <div class="ocultar-class">
-                            <h1>GRAFICOS</h1>
+                            <h1>Estadísticas</h1>
+                                <!-- ESTADISTICA SOLICITUDES BARRAS -->
+                            <div class="border-radius-15 d-flex justify-content-center row mt-3 bg-blanco">
+                                <div class="col-9">
+                                    <canvas class="" id="solicitudesProm"></canvas>
+
+                                </div>
+                                <div class="col-auto">
+                                    <p id="total" class="bold"></p>
+                                    <p id="numF" class="bold"></p>
+                                    <p id="numRech" class="bold"></p>
+                                    <p id="numRep" class="bold"></p>
+
+                                </div>
+                            </div>
+                            <hr>
+                            <!-- ESTADISTICAS SOLICITUDES POR FECHA -->
+                            <div class="border-radius-15 d-flex justify-content-center mt-3 bg-blanco">
+                                <canvas class="" id="lineal"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
             <!-- ÚLTIMO DIV -->
         </div>
     </main>
@@ -623,6 +642,14 @@ include("../php/date_time.php");
         rechazar_solicitud.addEventListener('click', rechazar_solicitudFunction);
 
     </script>
-</body>
 
+    <script src="../chart/dist/chart.umd.js"></script>
+
+    <script src="../js/estadisticasSoporte.js" type="module"></script>
+
+
+</body>
+<?php
+    include('../php/javascript_Footer.php');
+    ?>
 </html>

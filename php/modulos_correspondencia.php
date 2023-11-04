@@ -10,14 +10,14 @@ function Modulos_NavegacionCorrespondencia()
     if ($_SESSION['nivel_usuario'] == 3 && $_SESSION['id_departamento'] != 80) {
         echo
             '
-        <section class="border my-3 mx-4">
+        <section class="border mb-5 mx-4 bg-blanco box-shadow-plano">
             <h6 class="my-1 mx-5 fondo-readonly" id="mensajes_entrada">Bienvenido, a continuación se muestran las aplicaciones disponibles, puede acceder a la que desee utilizar haciendo click en el botón "Acceder"</h6>
         
             <section class="container-fluid contenedor-grid-3">
                 <!-- RELLENO DE ESPACIO -->
                 <div></div>
                 <!-- CONSULTA E IMPRESION CORRESPONDENCIA-->
-                    <div class="border mx-3 altura-app mb-5">
+                    <div class="border mx-3 altura-app mb-5 box-shadow-plano">
 
                         <h3 class="border text-center p-2 mb-3">Consulte su correspondencia</h3>
 
@@ -45,7 +45,7 @@ function Modulos_NavegacionCorrespondencia()
         echo
             '
             <!-- SECCIÓN PRINCIPAL -->
-            <section class="border my-3 mx-4">
+            <section class="border mb-5 mx-4 bg-blanco box-shadow-plano">
                 <h6 class="my-3 mx-5 fondo-readonly" id="mensajes_entrada">Bienvenido, a continuación se muestran las
                     aplicaciones disponibles, puede acceder a la que desee utilizar haciendo click en el botón "Acceder"
                 </h6>
@@ -54,7 +54,7 @@ function Modulos_NavegacionCorrespondencia()
                 <!-- BOTONES ASPECTO 2 -->
                 <section class="container-fluid contenedor-grid">
                     <!-- REGISTRAR CORRESPONDENCIA -->
-                    <div class="border mx-3 altura-app mb-5">
+                    <div class="border mx-3 altura-app mb-5 box-shadow-plano">
                         <h3 class="border text-center p-2 mb-3">Registro</h3>
 
                         <div class="text-center">
@@ -71,7 +71,7 @@ function Modulos_NavegacionCorrespondencia()
                     </div>
 
                     <!-- CONSULTA E IMPRESION CORRESPONDENCIA -->
-                    <div class="border mx-3 altura-app mb-5">
+                    <div class="border mx-3 altura-app mb-5 box-shadow-plano">
 
                         <h3 class="border text-center p-2 mb-3">Consulte su correspondencia</h3>
 
@@ -97,7 +97,7 @@ function Modulos_NavegacionCorrespondencia()
         echo
             '
             <!-- SECCIÓN PRINCIPAL -->
-            <section class="border my-3 mx-4">
+            <section class="border mb-5 mx-4 bg-blanco box-shadow-plano">
                 <h6 class="my-3 mx-5 fondo-readonly" id="mensajes_entrada">Bienvenido, a continuación se muestran las
                     aplicaciones disponibles, puede acceder a la que desee utilizar haciendo click en el botón "Acceder"
                 </h6>
@@ -107,7 +107,7 @@ function Modulos_NavegacionCorrespondencia()
                 <section class="container-fluid contenedor-grid-3">
                     <!-- CORRESPONDENCIA -->
                     <div></div>
-                    <div class="border mx-3 altura-app mb-5">
+                    <div class="border mx-3 altura-app mb-5 box-shadow-plano">
                         <h3 class="border text-center p-2 mb-3">Registro</h3>
 
                         <div class="text-center">

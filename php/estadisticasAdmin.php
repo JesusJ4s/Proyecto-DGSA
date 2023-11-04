@@ -83,14 +83,25 @@ if ($tipo == "usuarios") {
     $resultados2 = mysqli_query($conexion, $colis2);
     $activos = mysqli_num_rows($resultados2);
 
-    $colis3 = "SELECT * FROM $tabla_db1 WHERE sesion = 1";
-    $resultados3 = mysqli_query($conexion, $colis3);
-    $activosSis = mysqli_num_rows($resultados3);
-
     $activosPor = number_format($activos / $totalUsr * 100, 2);
     $inactivosPor = number_format($inactivos / $totalUsr * 100, 2);
 
 
     // enviamos los datos como caden json
-    echo json_encode([$totalUsr, $activosPor, $inactivosPor, $activosSis]);
+    echo json_encode([$totalUsr, $activosPor, $inactivosPor]);
+}
+if ($tipo == "usando") {
+    include("abrir_conexion.php");
+
+    // SACAR DATOS DE SOLICITUDES
+    $colis = "SELECT * FROM $tabla_db1";
+    $resultados = mysqli_query($conexion, $colis);
+    $totalUsr = mysqli_num_rows($resultados);
+
+    $colis3 = "SELECT * FROM $tabla_db1 WHERE sesion = 1";
+    $resultados3 = mysqli_query($conexion, $colis3);
+    $activosSis = mysqli_num_rows($resultados3);
+
+    // enviamos los datos como caden json
+    echo json_encode([$totalUsr, $activosSis]);
 }

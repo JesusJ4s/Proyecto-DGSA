@@ -27,7 +27,7 @@
 
     <title><?php echo $TitlePag ?></title>
 </head>
-<body class=" min-width-index">
+<body class=" min-width-index color-fondo">
             <!-- MODAL PARA CONFIRMAR CORRESPONDENCIA -->
     <div class="modal fade" id="confirmar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-bs-backdrop="static">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -108,9 +108,9 @@
         <div class="container-fluid text-center px-5 mx-0 mb-0">
             
             <div class="accordion" id="accordionSoportesJefe">
-                <div class="border-radius-15 py-3">
-                    <div class="container-fluid text-center mx-2  p-2 bg-blanco border-radius-15">
-                        <div class="px-5 row bg-blanco">
+                <div class="border-radius-15">
+                    <div class="container-fluid text-center mb-5 p-3 bg-blanco box-shadow-plano border-radius-15">
+                        <div class="row">
                             <button type="button" class="boton_toast_ayuda d-inline " data-bs-toggle="modal" data-bs-target="#mi-modal-ayuda2"><img src="../assets/intranet/pregunta.png" class="img_toast"></button>
                             <div class="pt-3 col-auto">
                                 <h2 class="my-0">Correspondencia</h2>
@@ -178,15 +178,20 @@
         include('../php/barra_lateral.php');
         barra_lateral_individual($TitlePag);
     ?>
-
-<script src="../js/bootstrap.bundle.min.js"></script>
-<script src="../js/correspondencia.js"></script>
-    <!-- USADO PARA EL TEXTAREA -->
-    <script src="../js/editar_mostrar_datos.js"></script>
-
-
-
 </body>
-
+<footer>
+    <!-- // CONFIRMAR LLEGADA DE CORRESPONDENCIA -->
+    <script>
+        var ConfirmarSoport = document.getElementById("confirmarBTN");
+        ConfirmarSoport.addEventListener('click', confirmarCorres);
+    </script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/correspondencia.js"></script>
+    <!-- // USADO PARA EL TEXTAREA -->
+    <script src="../js/editar_mostrar_datos.js"></script>
+    <?php
+    include('../php/javascript_Footer.php');
+    ?>
+</footer>
 
 </html>

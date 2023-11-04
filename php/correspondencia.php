@@ -46,7 +46,7 @@ function darFormatoOriginal($string)
 }
 $findme = "*";
 $expresion_date = "/^(\d{2})\/(\d{2})\/(\d{4})$/";
-$texto255 = '/^[a-zA-ZÀ-ý\s]{0,255}$/';
+$texto255 = '/^[a-zA-ZÀ-ý,\s]{0,255}$/';
 $nros = "/^[0-9]{1,11}$/";
 
 
@@ -345,7 +345,7 @@ if ($correspondencia == "registroCorres") {
                     // FECHA LIMITE
                     $fecha_actual = date('Y-m-d h:i:s');
     
-                    $registrarNotificacion = "INSERT INTO $tabla_db12 (id_notificacion, id_corresp, id_empresa_corresp, id_corres_divi, id_corres_dire, Jefe_Corres, Jefe_Ced_Corres, fecha_llegada_corresp, descripcion_corresp, estatus_Corres) values (NULL,'$nroAdm', '$procedencia','$division_select', '$direccion_select', '$idJefe', '$cedulaJefe', '$fecha_actual', '$asunto', '1')";
+                    $registrarNotificacion = "INSERT INTO $tabla_db12 (id_notificacion, id_corresp, id_empresa_corresp, id_corres_divi, id_corres_dire, Jefe_Corres, Jefe_Ced_Corres, fecha_llegada_corresp, descripcion_corresp, estatus_Corres) values (NULL,'$nroAdm', '$procedencia','$division_select', '$direccion_select', '$idJefe', '$cedulaJefe', now(), '$asunto', '1')";
                     $conexion->query($registrarNotificacion);
                     // ********************************************************
     
@@ -451,7 +451,7 @@ if ($correspondencia == "confirmarCo") {
         // FIN DE LA AUDITORIA ************************************************************
         
         $ConfirmarSQL = "UPDATE $tabla_db12 SET
-        fecha_confirmacion_corres='$fecha_actual', 
+        fecha_confirmacion_corres=now(), 
         estatus_Corres='$estatus_Corres', nota_final_corresp='$nota_final_corresp' 
         WHERE id_corresp = '$nroAdmision'";
         mysqli_query($conexion, $ConfirmarSQL);

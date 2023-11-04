@@ -220,7 +220,7 @@ function cambioCargo_ind2() {
                 $('.ocultar-spinner').show(2);
                 $('.ocultar-class').hide();
             },
-            error: function (jqXHR, xhr, status, error) {
+            error: function (jqXHR,status) {
                 var nroERROR = jqXHR.status;
                 alert("Estatus " + status + nroERROR)
                 $('.ocultar-class').hide();
@@ -446,16 +446,85 @@ function auditoriaUsrTABLA() {
         success: function (mensaje) {
             $('#auditoriaUsr').html(mensaje);
             new DataTable('#dataTable_AuditoUsr', {
-                dom: "<'row' <'col-md-12 d-flex flex-row-reverse'B>><'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r><'table-scrollable't><'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>",
-                    buttons: [
-                        {
-                            extend: 'pdf', titleAttr: 'Exportar a PDF', text: '<i class="bi bi-filetype-pdf" aria-hidden="true"></i> Exportar', className: 'btn btn-primary', exportOptions: { columns: [0, 1, 2, 4] },
-                            /*Centra la tabla del PDF
-                                * customize: function (doc) {
-                                doc.content[1].margin = [100, 0, 100, 0] //left, top, right, bottom
-                            }*/
+                language: Traduccion,
+                
+                initComplete: function () {
+                    
+                    // Agregar filtros (selectores) a la tabla
+                    var api = this.api();
+                    api.columns([1, 3]).every(function () {
+                        var column = this;
+                        var select = $('<select class="filterE form-select "><option value="">---</option></select>')
+                            .appendTo($(column.footer()).empty())
+                            .on('change', function () {
+                                var val = $.fn.dataTable.util.escapeRegex(
+                                    $(this).val()
+                                );
+
+                                column
+                                    .search(val ? '^' + val + '$' : '', true, false)
+                                    .draw();
+                            });
+
+                        column.data().unique().sort().each(function (d, j) {
+                            select.append('<option value="' + d + '">' + d + '</option>')
+                        });
+                    });
+
+                    // Obtener el índice de la columna de fechas
+                    var dateColumnIndex = 0; // Reemplaza con el índice de tu columna de fechas
+
+                    // Ordenar la columna de fechas de forma descendente (más lejano a más reciente)
+                    api.column(dateColumnIndex).order('desc').draw();
+
+                    
+                },
+                
+                
+            });
+        }
+    });
+}
+// IMPRIMIR TABLA DE AUDITORIA
+function auditoriaFechaTABLA() {
+    let fechaini = document.getElementById('inicial').value;
+    let fechafin = document.getElementById('final').value;
+    var parametros =
+    {
+        "fecha1":fechaini,
+        "fecha2":fechafin,
+        "que_buscar": "auditoriaFechConsulta"
+    };
+
+    $.ajax({
+        data: parametros,
+        url: '../php/consultar_cod.php',
+        type: 'POST',
+        error: function (jqXHR,status){
+            var nroERROR = jqXHR.status;
+
+            if (nroERROR==500) {
+                $.confirm({
+                    title: 'Error en la ejecución',
+                    content: 'No colocó datos válidos',
+                    type: "red",
+                    buttons: {
+                        cancel: {
+                            text: 'Cerrar',
+                            btnClass: 'btn-secondary',
+                            action: function () {
+                                // Acción cuando se hace clic en el botón de cancelación
+                                // console.log('Datos cerrados');
+                            }
                         }
-                    ],
+                    }
+                });
+            }
+        },
+        success: function (mensaje) {
+            $('#auditoriaFecha').html(mensaje);
+            $('#auditoriaUsr').addClass("ocultar-div");
+            new DataTable('#dataTable_AuditoFecha', {
                 language: Traduccion,
                 
                 initComplete: function () {

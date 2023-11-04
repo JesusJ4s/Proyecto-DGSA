@@ -544,3 +544,56 @@ MENU Desplegables
     <li><a class="dropdown-item" target="_blank" href="dir_cont_vec.php">Dirección Control de Vectores, Reserv. y Fauna Nociva</a></li>
     <li><a class="dropdown-item" target="_blank" href="dir_ing_sanit.php">Dirección Ingeniería Sanitaria</a></li>
     <li><a class="dropdown-item" target="_blank" href="dir_salud_rad.php">Dirección Salud Radiológica</a></li>
+
+
+
+        function graficoActivos(dato3, dato4){
+        const labels = [''];
+        const data = {
+            labels: labels,
+            datasets: [
+                {
+                    label: "Usuarios registrados en el Sistema ",
+                    data: [dato3],
+                    backgroundColor: ['#004756']
+                },
+                {
+                    label: "Usuarios activos en el Sistema ",
+                    data: [dato4],
+                    backgroundColor: ['#974D02']
+                }
+            ]
+        };
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        suggestedMin: 0,
+                        // suggestedMax: 100,
+                        ticks: {
+                            stepSize: 1
+                        }
+                    }
+                },
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Usuarios usando el sistema actualmente',
+                        color: '#484848',
+                        font: {
+                            size: 16,
+                            weight: 600,
+                        }
+                    },
+                },
+            },
+        };
+        new Chart(usrAc, config);
+    };

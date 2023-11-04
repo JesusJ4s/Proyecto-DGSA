@@ -8,9 +8,7 @@ $(document).ready(function () {
     notificacionesCorrespALERTA();
 })
 
-// CONFIRMAR LLEGADA DE CORRESPONDENCIA
-var ConfirmarSoport = document.getElementById("confirmarBTN");
-ConfirmarSoport.addEventListener('click', confirmarCorres);
+
 // NOTIFICACIONES DEL INDEX SOBRE LA LLEGADA DE NOTIFICACIONES
 function notificacionesCorresp(){
     var parametros =

@@ -31,7 +31,7 @@
     <title><?php echo $TitlePag ?></title>
 </head>
 
-<body class="min-width-index ">
+<body class="min-width-index color-fondo">
 
     <!-- MODAL PARA MOSTRAR INFORMACIÓN -->
     <div class="modal fade" id="recuperacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-bs-backdrop="static">
@@ -69,13 +69,13 @@
     <!-- ************************************************* -->
     <!-- DIV QUE CONTIENE TODO -->
     <div id="contenedor-total-total">
-        <div class="mt-4 mx-5">
-            <div class="text-end d-inline mt-2 ms-3">
-                <a href="gestion_usuario_recup.php"><img src="../assets/intranet/recargar.png" class="w-02"></a>
+        <section class="w-85 mx-auto mb-5 bg-blanco box-shadow-plano border-radius-15">
+            <div class="row">
+                <div class="col-4 mt-3 mb-3 ms-3">
+                    <a href="gestion_usuario_recup.php"><img src="../assets/intranet/recargar.png" class="w-10"></a>
+                </div>
             </div>
-        </div>
 
-        <section class="w-85 mx-auto my-5">
             <!-- MODIFICAR CARGO CÓDIGO HTML -->
             <!-- BARRA DE EDICIONES -->
             <div class="px-2" id="parte1"> 
@@ -90,7 +90,7 @@
                 <div id="formulario_mostrar_Cam" class="ocultar-div">
                     <form id="cambio_cargo" method="POST">
 
-                        <div class="row mx-auto bg-blanco-hsl mt-2 p-3 border-radius-15">
+                        <div class="row mx-auto mt-2 p-3 border-radius-15">
                         <h4 class="mt-4">Datos del Trabajador:</h4>
                             <div class="col-2 my-2">
                                 <label  class="formulario__label">Nombre:</label>
@@ -170,7 +170,7 @@
     <!-- BARRA LATERAL IZQUIERDA -->
     <?php
         include('../php/barra_lateral.php');
-        barra_lateral_individual($TitlePag);
+        barra_lateral_recuperacion();
     ?>
     <script src="../js/consultar_usuario.js"></script>
     <script src="../js/formulario_cont_recuperacion.js"></script>
@@ -182,4 +182,7 @@
 
     <!-- JS en Bootstrap -->
     <script src="../js/bootstrap.bundle.min.js"></script>
+    <?php
+    include('../php/javascript_Footer.php');
+    ?>
 </html>

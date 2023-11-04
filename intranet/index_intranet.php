@@ -25,7 +25,7 @@ include("../php/date_time.php");
     <title>INTRANET</title>
 </head>
 
-<body class="min-width-index">
+<body class="min-width-index color-fondo">
 
     <!-- ******************************************************* -->
     <!-- Cabecera -->
@@ -42,7 +42,7 @@ include("../php/date_time.php");
         <div id="contenedor-total-total">
 
             <!-- PARTE SUPERIOR, REDES, FECHA Y LOGO -->
-            <section class="contenedor-grid-index-horizontal border do_contenedor_entrada ">
+            <section class="contenedor-grid-index-horizontal border do_contenedor_entrada bg-blanco box-shadow-plano mb-4">
                 <div class="contenedor-grid px-5">
                     <!-- DIV PARA LA IMAGEN Y LA HORA -->
                     <div class="alinear-centro">
@@ -79,7 +79,7 @@ include("../php/date_time.php");
             </section>
             <!-- Marquesina con información -->
             <!-- <section> -->
-            <div class="container-fluid bg-amarillito marquesina-intranet w-95 p-2">
+            <div class="container-fluid bg-amarillito marquesina-intranet w-95 p-2 box-shadow-plano mb-4">
                 <p class=" text-start m-0">Notificación:</p>
                 <marquee scrollamount="10" scrolldelay="25" class="p-2">
                     <h5 class=""><a class=" enlaces_limpios2 text-dark" id="notificaciones"
@@ -106,6 +106,22 @@ include("../php/date_time.php");
             Modulos_Navegacion();
 
             ?>
+            <?php
+                $level = $_SESSION["nivel_usuario"];
+                if ($level==1) {
+                    echo
+                    '
+                    <!-- ESTADISTICAS MOVIMIENTOS DENTRO DEL SISTEMA POR FECHA (SOLO ADMIN) -->
+                    <div class="container mb-5 d-flex justify-content-center bg-blanco box-shadow-plano">
+                        <canvas class="" id="movimientos"></canvas>
+                    </div>
+                    ';
+                }else {
+
+                }
+
+
+            ?>
         </div>
     </main>
     <!-- BARRA LATERAL IZQUIERDA -->
@@ -114,11 +130,17 @@ include("../php/date_time.php");
     barra_lateral_principal();
     ?>
 
+
     <!-- JS en Bootstrap -->
     <script src="../js/bootstrap.bundle.js"></script>
     <script src="../js/correspondencia.js"></script>
     <script src="../js/consultar_soportes.js"></script>
 
-</body>
+    <script src="../chart/dist/chart.umd.js"></script>
+    <script src="../js/estadisticasAdminMovi.js"></script>
 
+</body>
+    <?php
+    include('../php/javascript_Footer.php');
+    ?>
 </html>

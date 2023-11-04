@@ -5,13 +5,13 @@ function Modulos_Navegacion_soporte(){
         echo
         '
             <!-- SECCIÓN PRINCIPAL -->
-            <section class="border my-3 mx-4">
+            <section class="border my-3 mx-4 bg-blanco box-shadow-plano mb-5">
                 <h6 class="my-3 mx-5 fondo-readonly" id="mensajes_entrada">Bienvenido, a continuación se muestran las aplicaciones disponibles, puede acceder a la que desee utilizar haciendo click en el botón "Acceder"</h6>
             
                 <!-- BOTONES ASPECTO 2 -->
                 <section class="container-fluid contenedor-grid">
                     <!-- INGRESO SOLICITUD -->
-                    <div class="border mx-3 altura-app p-2 mb-3">
+                    <div class="border mx-3 altura-app p-2 mb-3 box-shadow-plano">
                         <h3 class="border text-center p-2 mb-3">Solicitud de Soporte Técnico</h3>
 
                         <div class="text-center">
@@ -26,7 +26,7 @@ function Modulos_Navegacion_soporte(){
                         
                     </div>
                     <!-- BASE DE CONOCIMIENTO -->
-                    <div class="border mx-3 altura-app p-2 mb-3">
+                    <div class="border mx-3 altura-app p-2 mb-3 box-shadow-plano">
                         <h3 class="border text-center p-2 mb-3">Base de Conocimiento</h3>
 
                         <div class="text-center">
@@ -48,14 +48,14 @@ function Modulos_Navegacion_soporte(){
         echo
         '
             <!-- SECCIÓN PRINCIPAL -->
-            <section class="border my-3 mx-4">
+            <section class="border my-3 mx-4 bg-blanco box-shadow-plano mb-5">
                 <h6 class="my-3 mx-5 fondo-readonly" id="mensajes_entrada">Bienvenido, a continuación se muestran las aplicaciones disponibles, puede acceder a la que desee utilizar haciendo click en el botón "Acceder"</h6>
             
 
                 <!-- BOTONES ASPECTO 2 -->
                 <section class="container-fluid contenedor-grid">
                     <!-- INGRESO SOLICITUD -->
-                    <div class="border mx-3 altura-app p-2 mb-3">
+                    <div class="border mx-3 altura-app p-2 mb-3 box-shadow-plano">
                         <h3 class="border text-center p-2 mb-3">Solicitud de Soporte Técnico</h3>
 
                         <div class="text-center">
@@ -70,7 +70,7 @@ function Modulos_Navegacion_soporte(){
                         
                     </div>
                     <!-- BASE DE CONOCIMIENTO -->
-                    <div class="border mx-3 altura-app p-2 mb-3">
+                    <div class="border mx-3 altura-app p-2 mb-3 box-shadow-plano">
                         <h3 class="border text-center p-2 mb-3">Base de Conocimiento</h3>
 
                         <div class="text-center">
@@ -94,7 +94,7 @@ function Modulos_Navegacion_soporte(){
         echo
         '
             <!-- SECCIÓN PRINCIPAL -->
-            <section class="border my-3 mx-4">
+            <section class="border my-3 mx-4 bg-blanco box-shadow-plano mb-5">
                 <h6 class="my-3 mx-5 fondo-readonly" id="mensajes_entrada">Bienvenido, a continuación se muestran las aplicaciones disponibles, puede acceder a la que desee utilizar haciendo click en el botón "Acceder"</h6>
             
 
@@ -102,7 +102,7 @@ function Modulos_Navegacion_soporte(){
                 <section class="container-fluid contenedor-grid-3">
 
                     <!-- INGRESO SOLICITUD -->
-                    <div class="border mx-3 altura-app mb-5">
+                    <div class="border mx-3 altura-app mb-5 box-shadow-plano">
                         <h3 class="border text-center p-2 mb-3">Solicitud de Soporte Técnico</h3>
 
                         <div class="text-center">
@@ -117,7 +117,7 @@ function Modulos_Navegacion_soporte(){
                         
                     </div>
                     <!-- BASE DE CONOCIMIENTO -->
-                    <div class="border mx-3 altura-app mb-5">
+                    <div class="border mx-3 altura-app mb-5 box-shadow-plano">
                         <h3 class="border text-center p-2 mb-3">Base de Conocimiento</h3>
 
                         <div class="text-center">
@@ -131,7 +131,7 @@ function Modulos_Navegacion_soporte(){
                         </div>
                     </div>
                     <!-- VER SOLICITUDES -->
-                    <div class="border mx-3 altura-app mb-5">
+                    <div class="border mx-3 altura-app mb-5 box-shadow-plano">
                                 
                         <h3 class="border text-center p-2">Notificaciones de Soporte<img src="../assets/intranet/soporte/iconos/notificacion.png" class="campana" ><input id="cant_sopor" readonly type="text" class="texto_campana"></h3>
 

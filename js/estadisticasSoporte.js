@@ -47,19 +47,25 @@ function estadisticaSoporteB() {
                     labels: labels,
                     datasets: [
                         {
-                            label: "Finalizadas " + Fina + "%",
+                            label: "Finalizadas",
                             data: [Fina],
-                            backgroundColor: ['#004756']
+                            backgroundColor: ['rgba(0, 145, 174, 0.2)'],
+                            borderColor: ['rgb(0, 71, 86)'],
+                            borderWidth: 1
                         },
                         {
-                            label: "Rechazadas " + Rech + "%",
+                            label: "Rechazadas",
                             data: [Rech],
-                            backgroundColor: ['#974D02']
+                            backgroundColor: ['rgba(209, 105, 2, 0.2)'],
+                            borderColor: ['rgb(151, 77, 2)'],
+                            borderWidth: 1
                         },
                         {
-                            label: "Repuesto " + Resp + "%",
+                            label: "Repuesto",
                             data: [Resp],
-                            backgroundColor: ['#55B896']
+                            backgroundColor: ['rgba(85, 184, 150, 0.2)'],
+                            borderColor: ['rgb(44, 96, 78)'],
+                            borderWidth: 1
                         }
                     ]
                 };
@@ -89,6 +95,17 @@ function estadisticaSoporteB() {
                                     weight: 600,
                                 }
                             },
+                            tooltip: {
+                                callbacks: {
+                                    label: function (context) {
+                                        let label = context.dataset.label || '';
+                                        if (label) {
+                                            label += ': '+ context.parsed.y + '%';
+                                        }
+                                        return label;
+                                    }
+                                }
+                            }
                         },
                     },
                 };

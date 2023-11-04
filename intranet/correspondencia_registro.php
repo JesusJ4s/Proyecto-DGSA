@@ -27,7 +27,7 @@ Login_JefCorrespondencia__Admin();
     <title>Registro Correspondencia</title>
 </head>
 
-<body class=" min-width-index">
+<body class=" min-width-index color-fondo">
     <!-- Modal para mostrar información-->
     <div class="modal fade" id="RegistroCorres" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true" data-bs-backdrop="static">
@@ -109,15 +109,15 @@ Login_JefCorrespondencia__Admin();
     <main class="contenedor-grid-index-horizontal">
 
         <!-- DIV QUE CONTIENE TODO -->
-        <div id="contenedor-total-total">
+        <div id="contenedor-total-total" class="">
 
             <!-- ************************************************* -->
             <!-- AGREGAR NUEVO EQUIPO -->
-            <div class="container-fluid text-center px-5 mx-0 mb-0" id="parte1">
+            <div class="container-fluid text-center px-5 mx-0 mb-0 ocultar-div mb-5" id="parte1">
 
-                <div class="border-radius-15 py-3">
+                <div class="border-radius-15 py-3 bg-blanco box-shadow-plano p-2">
 
-                    <div class="container-fluid text-center mx-2  p-2 bg-blanco border-radius-15">
+                    <div class="container-fluid text-center m-0 p-2">
                         <form id="formCorrespondencia" method="POST" class="px-5 pt-2 row">
                             <!-- PARTE SUPERIOR DEL FORMULARIO -->
                             <!-- TOAST CON INFORMACIÓN DE NAVEGACIÓN -->
@@ -331,24 +331,34 @@ Login_JefCorrespondencia__Admin();
                     </div>
                 </div>
             </div>
-            <div class="container-fluid text-center px-5 mx-0 mb-0 ocultar-div" id="parte2">
-                <div class="border-radius-15 py-3">
-                    <div class="container-fluid text-center mx-2  p-2 bg-blanco border-radius-15 row">
-                        <div class="px-5 pt-2 row bg-blanco">
-                            <button type="button" class="boton_toast_ayuda d-inline " data-bs-toggle="modal"
-                                data-bs-target="#mi-modal-ayuda2"><img src="../assets/intranet/pregunta.png"
-                                    class="img_toast"></button>
-                            <div class="col-auto">
-                                <h2 class="pt-3">Correspondencia</h2>
-                            </div>
-                            <hr class="my-3">
-                            <div id="tabla_correspondencia">
+            <div class="container-fluid text-center px-5 mx-0 mb-0 ocultar-div mb-5" id="parte2">
+                <div class="border-radius-15 py-3 bg-blanco box-shadow-plano p-2">
+                    <div class="container-fluid text-center m-0 p-2 bg-blanco border-radius-15 row">
+                        <button type="button" class="boton_toast_ayuda d-inline " data-bs-toggle="modal" data-bs-target="#mi-modal-ayuda2"><img src="../assets/intranet/pregunta.png" class="img_toast">
+                        </button>
+                        <div class="col-auto">
+                            <h2 class="pt-3">Correspondencia</h2>
+                        </div>
+                        <hr class="my-3">
+                        <div id="tabla_correspondencia">
 
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div class="container-fluid py-4 col-12 w-75 mb-5 mt-2 bg-blanco box-shadow-plano border-radius-15" id="parte3">
+                <!-- ESTADISTICAS CORRESPONDENCIA -->
+                <h3>Datos de la Correspondencia:</h3>
+
+                <div class="container-fluid d-flex justify-content-center row p-3">
+                    <div class="col-12">
+                        <canvas class="border-radius-15 bg-blanco" id="estaCorresp"></canvas>
+                        
+                    </div>
+                </div>
+            </div>
+             
 
         </div>
 
@@ -384,7 +394,12 @@ Login_JefCorrespondencia__Admin();
         }
     </script>
 
-</body>
+    <script src="../chart/dist/chart.umd.js"></script>
+    <script src="../js/estadisticasCorresp.js" type="module"></script>
 
+</body>
+<?php
+    include('../php/javascript_Footer.php');
+    ?>
 
 </html>

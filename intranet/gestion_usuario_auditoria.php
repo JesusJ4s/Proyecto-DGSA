@@ -40,7 +40,7 @@ LoginAdmin();
     <title>Auditoría</title>
 </head>
 
-<body class="min-width-index ">
+<body class="min-width-index color-fondo">
 
     <!-- MODAL PARA MOSTRAR INFORMACIÓN DE LA AUDITORIA -->
     <div class="modal fade" id="AuditoriaDatos" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
@@ -153,14 +153,15 @@ LoginAdmin();
         <!-- DIV QUE CONTIENE TODO -->
         <div id="contenedor-total-total">
 
-            <div class="mt-4 mx-5">
+        <section class="w-85 mx-auto mb-5 bg-blanco box-shadow-plano border-radius-15">
+
                 <div class="row">
-                    <div class="col-4 ms-4">
+                    <div class="col-3 mt-2 ms-4">
 
                         <a href="gestion_usuario_auditoria.php" class="d-inline"><img
                                 src="../assets/intranet/recargar.png" class="w-10"></a>
                     </div>
-                    <div class="col-4">
+                    <div class="col-auto">
 
                         <h1>Auditoría del sistema</h1>
 
@@ -169,10 +170,6 @@ LoginAdmin();
 
 
                 </div>
-                <hr>
-            </div>
-            <section class="w-85 mx-auto mb-5">
-
                 <!-- MODIFICAR CARGO CÓDIGO HTML -->
                 <!-- BARRA DE EDICIONES -->
 
@@ -181,78 +178,20 @@ LoginAdmin();
                         <h2>Usuarios</h2>
                         <div>
                             <label>Fecha Inicial
-                                <input type="datetime-local" class="form-control" id="min">
+                                <input type="date" class="form-control" id="inicial">
                             </label>
                             <label>Fecha Final
-                                <input type="datetime-local" class="form-control" id="max">
+                                <input type="date" class="form-control" id="final">
                             </label>
+                            <button class="btn btn-secondary" type="button" onclick="auditoriaFechaTABLA();">Buscar</button>
                         </div>
 
                         <div id="auditoriaUsr" class="bg-blanco p-2">
                             <!-- AQUÍ SE IMPRIME LA TABLA -->
-                        </div>
-                            <script>
-                                // Create date inputs
-                                const minDate = new DateTime('#min', {
-                                    format: 'YYYY-MM-DD',
-                                });
-                                const maxDate = new DateTime('#max', {
-                                    format: 'YYYY-MM-DD',
-                                });
-
-                                // Custom filtering function which will search data in column four between two values
-                                DataTable.ext.search.push(function (settings, data, dataIndex) {
-                                    const min = minDate.val();
-                                    const max = maxDate.val();
-                                    const date = new Date(data[4]);
-
-                                    if (
-                                        (min === null && max === null) ||
-                                        (min === null && date <= max) ||
-                                        (min <= date && max === null) ||
-                                        (min <= date && date <= max)
-                                    ) {
-                                        return true;
-                                    }
-                                    return false;
-                                });
-
-                                var moviT = $('#dataTable_AuditoUsr').DataTable({
-                                    "processing": false,
-                                    "scrollY": 370,
-                                    dom: 'Bfrtip',
-                                    buttons: [
-                                        'pdf'
-                                    ],
-                                    language: {
-                                        "decimal": "",
-                                        "emptyTable": "No hay información",
-                                        "info": "Mostrando START a END de TOTAL Entradas",
-                                        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
-                                        "infoFiltered": "(Filtrado de MAX total entradas)",
-                                        "infoPostFix": "",
-                                        "thousands": ",",
-                                        "lengthMenu": "Mostrar MENU Entradas",
-                                        "loadingRecords": "Cargando...",
-                                        "processing": "Procesando...",
-                                        "search": "Buscar:",
-                                        "zeroRecords": "Sin resultados encontrados",
-                                        "paginate": {
-                                            "first": "Primero",
-                                            "last": "Ultimo",
-                                            "next": "Siguiente",
-                                            "previous": "Anterior"
-                                        }
-                                    },
-                                });
-
-                                // Refilter the table
-                                $('#min, #max').on('change', function () {
-                                    moviT.draw();
-                                });
-                            </script>
-
-                        
+                        </div>                        
+                        <div id="auditoriaFecha" class="bg-blanco p-2">
+                            <!-- AQUÍ SE IMPRIME LA TABLA -->
+                        </div>                        
                     </div>
                 </div>
 
@@ -297,5 +236,7 @@ LoginAdmin();
 <script src="../js/bootstrap.bundle.min.js"></script>
 <!-- JS DE LA AUDITORIA DE LA BD -->
 <script src="../js/bd_auditoria.js"></script>
-
+<?php
+    include('../php/javascript_Footer.php');
+    ?>
 </html>

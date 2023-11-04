@@ -24,7 +24,7 @@ LoginSimple();
     <title>Base de Conocimiento</title>
 </head>
 
-<body class="min-width-index">
+<body class="min-width-index color-fondo">
     <!-- Modal -->
     <div class="modal fade" id="Info_Cono" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true">
@@ -50,8 +50,8 @@ LoginSimple();
             ?>
     </header>
 
-    <div class="container-fluid border my-2 px-0" id="centro-id">
-        <div class="w-85 mx-auto px-2 my-3">
+    <div class="container-fluid" id="centro-id">
+        <div class="w-95 mx-auto px-2 py-4 my-3 bg-blanco box-shadow-plano">
             <h3 class="text-center p-2 mb-3">Base de conocimiento</h3>
 
             <!-- DEPENDIENDO DEL CARGO ESTO DEBE CAMBIAR, USAR VARIABLES GLOBALES Y PHP -->
@@ -99,5 +99,7 @@ LoginSimple();
 
 
 </body>
-
+<?php
+    include('../php/javascript_Footer.php');
+    ?>
 </html>

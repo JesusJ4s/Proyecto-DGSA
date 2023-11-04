@@ -27,7 +27,7 @@ Login_ING_Admin();
     <title>Consultar Equipos</title>
 </head>
 
-<body class="min-width-index">
+<body class="min-width-index color-fondo">
 
     <header id="inicio-pag" class="caja-superior mx-4">
         <?php
@@ -43,25 +43,30 @@ Login_ING_Admin();
             <!-- AGREGAR NUEVO EQUIPO -->
             <div class="container-fluid text-center  px-5 mx-0 ">
                 <h2 class="">Consultar Equipos</h2>
-                <div class="border-radius-15 px-5 py-3">
-                    <!-- CUADRO DE LA DERECHA -->
-                    <div class="container-fluid text-center mx-2  p-2 bg-blanco-hsl border-radius-15">
+                <div class="border-radius-15 px-5">
+                    <div class="container-fluid text-center mx-2 p-2 mb-5 bg-blanco box-shadow-plano border-radius-15">
                         <div class="p-5 border-radius-15 row">
 
                             <!--  DATOS -->
 
-                            <!-- <div class="container-fluid border py-4 col-12 bg-blanco border-radius-15" id="parte1">
+                            <div class="container-fluid border py-4 col-12 bg-blanco box-shadow border-radius-15" id="parte4">
                                 <h5>Datos de la institución:</h5>
-
-                            </div> -->
+                                <!-- ESTADISTICAS INVENTARIO TECNOLOGICO -->
+                                <div class="container-fluid d-flex justify-content-center row">
+                                    <div class="col-12">
+                                        <canvas class="" id="equipUbi"></canvas>
+                                        
+                                    </div>
+                                </div>
+                            </div>
                             <!-- ***************************************************************************************************************************** -->
                             <!--  CONSULTA POR UBICACION -->
-                            <div class="col-12 mb-5 p-3 bg-blanco border-radius-15" id="parte1">
+                            <div class="col-12 mb-5 p-3 border-radius-15 ocultar-div" id="parte1">
 
                                 <!-- CONSULTA -->
                                 <div class="contenedor-grid-3 gap-4">
                                     <!-- CONSULTA POR DIRECCION -->
-                                    <div class=" border p-2 border-radius-15">
+                                    <div class=" border p-2 border-radius-15 bg-blanco box-shadow-plano">
                                         <h5 class="my-2">Direcciones</h5>
                                         <!-- Tabla que contiene las Direcciones -->
                                             <div class="my-5">
@@ -96,7 +101,7 @@ Login_ING_Admin();
                                     </div>
                                     <!-- ******************************************************************************************************** -->
                                     <!-- CONSULTA POR DEPARTAMENTO -->
-                                    <div class=" border p-2 border-radius-15">
+                                    <div class=" border p-2 border-radius-15  bg-blanco box-shadow-plano">
                                             <h5 class="my-2">Divisiones</h5>
                                             <div class="my-5">
                                                 <div id="div_divisiones_select">
@@ -116,7 +121,7 @@ Login_ING_Admin();
                                     </div>
                                     <!-- ******************************************************************************************************** -->
                                     <!-- CONSULTA POR DEPARTAMENTO -->
-                                    <div class=" border p-2 border-radius-15">
+                                    <div class=" border p-2 border-radius-15 bg-blanco box-shadow-plano">
                                             <h5 class="my-2">Departamentos</h5>
                                             <div class="my-5">
                                                 <div id="div_dpto_select">
@@ -143,8 +148,7 @@ Login_ING_Admin();
                             <!-- ***************************************************************************************************************************** -->
                             <!--  CONSULTA POR FECHA -->
 
-                            <div class="container-fluid border py-4 ocultar-div col-12 bg-blanco border-radius-15"
-                                id="parte2">
+                            <div class="container-fluid border py-4 ocultar-div col-12 bg-blanco box-shadow border-radius-15" id="parte2">
                                 <h5>Ingrese la fecha:</h5>
                                 <!-- CONSULTA -->
                                 <div class="contenedor-grid-3">
@@ -164,8 +168,7 @@ Login_ING_Admin();
                             </div>
                             <!-- ***************************************************************************************************************************** -->
                             <!--  CONSULTA TOTAL -->
-                            <div class="container-fluid border py-4 ocultar-div col-12 bg-blanco border-radius-15"
-                                id="parte3">
+                            <div class="container-fluid border py-4 ocultar-div col-12 bg-blanco box-shadow border-radius-15" id="parte3">
                                 <h5>Visualizar reporte de todos los equipos de la Institución</h5>
                                 <div class="contenedor-grid">
                                     <div>
@@ -210,7 +213,14 @@ Login_ING_Admin();
     <!-- Busca los departamentos o direcciones -->
     <script src="../js/division_select.js"></script>
     <script src="../js/departamento_select.js"></script>
+
+
+    <script src="../chart/dist/chart.umd.js"></script>
+
+    <script src="../js/estadisticasEquipos.js" type="module"></script>
 </body>
 
-
+<?php
+    include('../php/javascript_Footer.php');
+    ?>
 </html>

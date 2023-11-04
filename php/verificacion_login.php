@@ -52,12 +52,5 @@ function Login_ING_Admin()
         header('location: ../intranet/index_intranet.php');
     }
 }
-// PERMITE LA ENTRADA DE TODOS
-// function Login_Emp(){
-//     if($_SESSION['sesion_exito']<>1 || $_SESSION['nivel_usuario']<>1 || $_SESSION['nivel_usuario']<>3 || $_SESSION['nivel_usuario']<>2 || $_SESSION['nivel_usuario']<>4)
-//     {
-//         header('location: ../intranet/index_intranet.php');
-//     }
-// } 
 
 ?>

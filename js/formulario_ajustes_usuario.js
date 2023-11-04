@@ -11,9 +11,13 @@ const submitButton2 = document.querySelector('#extr_submit');
 function HacerEnvio(){
 
     var formAjustes = $('#formulario_ajustesUSR').serialize();
-
+    var parametros =
+    {
+        "formAjustes": formAjustes,
+        "ingreso": "AjustesUsr"
+    }
     $.ajax({
-        data: formAjustes,
+        data: parametros,
         url: '../php/usuarios.php',
         type: 'POST',
       

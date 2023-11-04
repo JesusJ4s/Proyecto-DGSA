@@ -5,6 +5,7 @@ ob_start();
 
 $comprobacion = $_POST['que_buscar'];
 $valores = array();
+$regex = "/^(\d{2,4})[-\/](\d{2,4})[-\/](\d{2,4})$/";
 // IMPRIMIR MENOS TEXTO
 function acortar_texto($texto, $cantidad)
 {
@@ -279,7 +280,7 @@ if ($comprobacion == "VerificacionPin") {
     $PIN = $_POST["pin"];
     $cedula_Admin = $_SESSION['cedula_var_global']; //USUARIO LOGUEADO
     $cedula_usr = $_POST["cedulaRecuperar"]; //USUARIO A RECUPERAR
-    $_SESSION['pinBIEN']=false;
+    $_SESSION['pinBIEN'] = false;
 
 
     $pinCorrecto = 0;
@@ -296,12 +297,12 @@ if ($comprobacion == "VerificacionPin") {
         while ($consulta = mysqli_fetch_array($resultados)) {
             $pinCorrecto++;
         }
-        $_SESSION['pinBIEN']=true;
+        $_SESSION['pinBIEN'] = true;
 
         include("php/cerrar_conexion.php");
 
     } else {
-        $_SESSION['pinBIEN']=false;
+        $_SESSION['pinBIEN'] = false;
         http_response_code(500);
         include("php/cerrar_conexion.php");
 
@@ -432,6 +433,76 @@ if ($comprobacion == "auditoriaUsrConsulta") {
 
     include("cerrar_conexion.php");
 }
+// CONSULTAR TABLA DE AUDITORIAS POR FECHA
+if ($comprobacion == "auditoriaFechConsulta") {
+    include("abrir_conexion.php");
+    $fechaIni= $_POST['fecha1'];
+    $fechaFinal= $_POST['fecha2'];
+
+
+    if (empty($fechaIni)) {
+        $fechaIni="2000-01-01";
+    };
+
+    if (preg_match($regex, $fechaIni) && preg_match($regex, $fechaFinal)) {
+        echo
+
+            '
+        <table class="table table-striped" id="dataTable_AuditoFecha">
+            <thead class="bg-grey text-light">
+                <tr class="align-middle">
+                    <th>Fecha</th>
+                    <th>Nombre Responsable</th>
+                    <th>Cedula</th>
+                    <th>Acción</th>
+                    <th>Descripción</th>
+                    <th>Leer</th>
+                </tr>
+            </thead>
+            <tbody id="body-AudiFecha">
+        ';
+        // SE PUEDE USAR LIMIT EN LA CONSULTA PARA LIMITAR LA CANTIDAD MOSTRADA
+        // TERCER INTENTO
+        $resultados = mysqli_query($conexion, "SELECT * FROM $tabla_db100 au INNER JOIN 
+        $tabla_db1 us ON au.id_usuario_cambio = us.id_usuario INNER JOIN 
+        $tabla_db102 hi ON au.id_accion_cambio = hi.id_accHis WHERE fecha_usuario_cambio BETWEEN '$fechaIni' AND '$fechaFinal'");
+        //  ORDER BY nombre_dire DESC
+
+        while ($consulta = mysqli_fetch_array($resultados)) {
+            echo
+                '
+            <tr class="align-middle">
+                <td class="">' . $consulta['fecha_usuario_cambio'] . '</td>
+                <td class="">' . $consulta['nombre'] . ' ' . $consulta['apellido'] . '</td>
+                <td class="">' . $consulta['cedula'] . '</td>
+                <td class="">' . $consulta['nombre_accion'] . '</td>
+                <td class="">' . acortar_texto($consulta['descripcion_cambio'], 80) . '</td>
+
+                <td class=" text-center"><button class="btn btn-secondary mb-1" id="VerAudi" name="VerAudi" onclick="auditoriaDatos();">Ver</button></td>
+
+            </tr>
+        ';
+        }
+        echo '</tbody>
+                <tfoot>
+                    <tr class="align-middle">
+                        <th>Fecha</th>
+                        <th>Nombre Responsable</th>
+                        <th>Cedula</th>
+                        <th>Acción</th>
+                        <th>Descripción</th>
+                        <th>Leer</th>
+                    </tr>
+                </tfoot>
+            </table>';
+
+    }else {
+        http_response_code(500);
+        include("cerrar_conexion.php");
+    }
+
+    include("cerrar_conexion.php");
+}
 // IMPRIMIR DATOS EN MODAL DE LA AUDITORIA
 if ($comprobacion == "auditoriaDatos") {
     include("abrir_conexion.php");
@@ -446,7 +517,7 @@ if ($comprobacion == "auditoriaDatos") {
     $tabla_db102 hi ON au.id_accion_cambio = hi.id_accHis WHERE cedula = '$Cedula' AND fecha_usuario_cambio = '$fecha'";
     $resultados = mysqli_query($conexion, $SQL_audiDatos_info);
     while ($consulta = mysqli_fetch_array($resultados)) {
-        $valores['nombre'] = $consulta['nombre']." ".$consulta['apellido'];
+        $valores['nombre'] = $consulta['nombre'] . " " . $consulta['apellido'];
         $valores['cedulaCargo'] = $consulta['cedula'];
         $valores['nombreUsuario'] = $consulta['nombre_usuario'];
         $valores['fecha_cambio'] = $consulta['fecha_usuario_cambio'];
@@ -515,4 +586,50 @@ if ($comprobacion == "BaseDatos") {
 
     include("cerrar_conexion.php");
 }
+// CONSULTAR USUARIOS ACTIVOS EN EL SISTEMA
+if ($comprobacion == "usandoSIS") {
+
+    include("abrir_conexion.php");
+
+    echo
+
+    '
+    <table class="table table-striped" id="dataTable_usando">
+        <thead class="bg-grey text-light">
+            <tr class="align-middle">
+                <th>Nombre</th>
+                <th>Departamento</th>
+                <th>Activo</th>
+            </tr>
+        </thead>
+        <tbody id="body-usando">
+    ';
+    $resultados = mysqli_query($conexion, "SELECT * FROM $tabla_db1 us INNER JOIN 
+    $tabla_db3 de ON us.usuario_departamento_id = de.id_departamento WHERE sesion = 1");
+        //  ORDER BY nombre_dire DESC
+        while ($consulta = mysqli_fetch_array($resultados)) {
+            echo
+                '
+        <tr class="align-middle">
+            <td class="">' . $consulta['nombre']." ".$consulta['apellido'] . '</td>
+            <td class="col-2">' . $consulta['nombre_dpto']. '</td>
+            <td class="col-2"><img src="../assets/icon/comprobado.png" class="w-50"></td>
+        </tr>
+    ';
+        }
+        echo '</tbody>
+            <tfoot>
+                <tr class="align-middle">
+                    <th>Nombre</th>
+                    <th>Departamento</th>
+                    <th>Activo</th>
+                </tr>
+            </tfoot>
+        </table>';
+
+    include("cerrar_conexion.php");
+
+
+}
+
 ?>

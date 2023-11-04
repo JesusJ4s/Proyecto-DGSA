@@ -25,7 +25,7 @@
     ?>
     <title>Editar Equipo</title>
 </head>
-<body class=" min-width-index">
+<body class=" min-width-index color-fondo">
     <!-- Modal para mostrar información-->
     <div class="modal fade" id="ModifiCPU" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-bs-backdrop="static">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -87,10 +87,10 @@
 
     <!-- ************************************************* -->
     <!-- AGREGAR NUEVO EQUIPO -->
-    <div class="container-fluid text-center px-5 mx-0 mb-0 ocultar-class">   
+    <div class="container-fluid text-center px-5 mx-0 mb-5 ocultar-class">   
   
         <div class="border-radius-15 py-3">        
-            <div class="container-fluid text-center mx-2  p-2 bg-blanco-hsl border-radius-15">
+            <div class="container-fluid text-center mx-2  p-2 bg-blanco box-shadow-plano border-radius-15">
                 <form method="post" class=" px-5 pt-2 row" id="formulario_equipo_edicion">
                     <!-- PARTE SUPERIOR DEL FORMULARIO -->
                     <!-- TOAST CON INFORMACIÓN DE NAVEGACIÓN -->
@@ -575,7 +575,7 @@
                             <div class="row mx-2 px-4">
                                 <div class="form-group my-3 col-12 ">
                                     <label for="descripcion" class="bold formulario__label">Indique la razón del cambio</label>
-                                    <textarea required class="bg-blanco-hsl descripcion" id="descripcion" name="descripcion"  minlength="20" maxlength="200"></textarea>
+                                    <textarea required class=" descripcion" id="descripcion" name="descripcion"  minlength="20" maxlength="200"></textarea>
                                 </div>
                                 <div class="formulario__mensaje" id="formulario__mensaje">
                                     <p><b>ERROR:</b> Por favor rellene el formulario de manera correcta</p>
@@ -648,6 +648,8 @@
 
     
 </body>
-
+<?php
+    include('../php/javascript_Footer.php');
+    ?>
 
 </html>

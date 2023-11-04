@@ -30,7 +30,7 @@
     <title>Modificar Datos</title>
 </head>
 
-<body class="min-width-index ">
+<body class="min-width-index color-fondo" id="bodySesion">
 
     <!-- MODAL PARA MOSTRAR INFORMACIÓN -->
     <div class="modal fade" id="myModal_ajustes" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-bs-backdrop="static">
@@ -76,7 +76,7 @@
             <!-- BARRA DE EDICIONES -->
             <div class="px-2" id="parte1">  
             
-                <form id="formulario_ajustesUSR" method="post" action="" class="p-3 mb-2  bg-blanco-hsl border-radius-15">
+                <form id="formulario_ajustesUSR" method="post" action="" class="p-3 mb-4 bg-blanco box-shadow-plano border-radius-15">
                 <h2 class="my-2 text-start">Modificar Usuario</h2>  
                     <h3>INFORMACIÓN DE LA CUENTA</h3>
                         <div class="form-group text-start my-2">
@@ -150,7 +150,7 @@
                             
                         </div>
                         
-                        <input type="hidden" id="ingreso" name="ingreso" value="AjustesUsr">
+                        <!-- <input type="hidden" id="ingreso" name="ingreso" value="AjustesUsr"> -->
 
                     </div>
                     <div class="formulario__mensaje" id="formulario__mensaje">
@@ -171,7 +171,7 @@
 
             <!-- PREGUNTAS DE SEGURIDAD -->
             <div class="px-2 ocultar-div" id="parte2">   
-                <form method="post" class="p-3 mb-2 bg-blanco-hsl border-radius-15" id="AjustesPreguntas" action="">
+                <form method="post" class="p-3 mb-4 bg-blanco box-shadow-plano border-radius-15" id="AjustesPreguntas" action="">
                     <h2 class="my-2 text-start">Modificar Preguntas de Seguridad</h2>  
                     <!-- <h3>Preguntas de Seguridad</h3> -->
                     <br>
@@ -314,6 +314,8 @@
     <!-- COMPRUEBA POR EXPRESIONES REGULARES LOS INPUTS PARA LUEGO PERMITIR SUBIR LOS DATOS -->
     <script src="../js/formulario_ajustes_usuario.js"></script>
 </body>
-
+    <?php
+    include('../php/javascript_Footer.php');
+    ?>
 
 </html>

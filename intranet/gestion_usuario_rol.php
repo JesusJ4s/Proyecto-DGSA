@@ -31,7 +31,7 @@
     <title><?php echo $TitlePag ?></title>
 </head>
 
-<body class="min-width-index ">
+<body class="min-width-index color-fondo">
 
     <!-- MODAL PARA MOSTRAR INFORMACIÓN -->
     <div class="modal fade" id="myModal_gestion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-bs-backdrop="static">
@@ -90,14 +90,14 @@
     <!-- ************************************************* -->
     <!-- DIV QUE CONTIENE TODO -->
     <div id="contenedor-total-total">
-
-        <div class="mt-4 mx-5">
-            <div class="text-end d-inline mt-2 ms-3">
-                <a href="gestion_usuario_rol.php"><img src="../assets/intranet/recargar.png" class="w-02"></a>
+        
+        <section class="w-85 mx-auto mt-5 mb-5 bg-blanco box-shadow-plano border-radius-15">
+            <div class="row">
+                <div class="col-4 mt-3 mb-3 ms-3">
+                    <a href="gestion_usuario_rol.php"><img src="../assets/intranet/recargar.png" class="w-10"></a>
+                </div>
             </div>
-        </div>
 
-        <section class="w-85 mx-auto mt-5 mb-5">
            
             <div class="px-2" id="parte1"> 
                 <div class="accordion" id="accordionROL">
@@ -137,7 +137,7 @@
                         <h2 id="tituloUsr" class="ocultar-div">Datos del usuario:</h2>
                         <form id="cambio_cargo" method="POST">
 
-                            <div class="row mx-auto bg-blanco-hsl mt-2 p-3 border-radius-15">
+                            <div class="row mx-auto mt-2 p-3 border-radius-15">
                             <h4 class="mt-4">Datos del Trabajador:</h4>
 
                                 <div class="col-3 my-2">
@@ -313,4 +313,7 @@
 
         });
     </script>
+        <?php
+    include('../php/javascript_Footer.php');
+    ?>
 </html>
