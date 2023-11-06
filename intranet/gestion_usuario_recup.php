@@ -82,7 +82,7 @@
                 
     
 
-            <h2 class="">Usuario a Modificar:</h2>
+            <h2 class="">Restablecer Contraseña:</h2>
 
                 <div id="mostrar_mensaje_ci" class=" border-radius-15">
                     <!-- AQUÍ SE IMPRIME LA TABLA CUANDO SE BUSCA POR CÉDULA -->

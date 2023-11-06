@@ -183,7 +183,7 @@ function datosTabla() {
 // CONFIRMAR CORRESPONDENCIA Y RECARGAR TABLAS
 function confirmarCorres() {
     const nro = document.getElementById('cosasJS').value;
-    nota_final = document.getElementById('descripcion').value;
+    const nota_final = document.getElementById('descripcion').value;
     var parametros =
     {
         "nroAdmin": nro,
@@ -295,4 +295,41 @@ function tabla_correspondencia_indiv_FIN_ADMIND() {
             });
         }
     })
+}
+// REPORTE CORRESPONDENCIA
+function reporteCorres(){
+    const fecha1 = document.getElementById('inicial').value;
+    const fecha2 = document.getElementById('final').value;
+    var parametros = 
+    {
+        "fecha1": fecha1,
+        "fecha2": fecha2,
+        "buscar": "reporte"
+    }
+    $.ajax({
+        data: parametros,
+        type: "POST",
+        url: "../php/reportes_corresp.php",
+        error: function (jqXHR) {
+            var nroERROR = jqXHR.status;
+            $.alert({
+                title: 'Error',
+                content: "Error en las fechas",
+                type: "red",
+                buttons: {
+                    cancel: {
+                        text: 'Cerrar',
+                        btnClass: 'btn-secondary',
+                        action: function () {
+                            // Acción cuando se hace clic en el botón de cancelación
+                            // console.log('Datos cerrados');
+                        }
+                    }
+                }
+            });
+        },
+        success: function (mensaje) {
+            window.open('../reportes/reporte_correspondencia.php', "_blank");
+        }
+    });
 }

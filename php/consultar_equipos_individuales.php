@@ -28,7 +28,7 @@ if ($busqueda == "dato_fecha") {
             http_response_code(500);
             include("cerrar_conexion.php");
         }
-    }else if (preg_match($fechaExp,$fechaIni) && preg_match($fechaExp,$fechaFin)) {
+    }else if (preg_match($fechaExp,$fechaIni) && preg_match($fechaExp,$fechaFin) && $fechaIni < $fechaFin) {
         $_SESSION['nombreSQL'] =  "SELECT * FROM $tabla_db6 i INNER JOIN $tabla_db1 u ON i.ing_encar_inv_id = u.id_usuario INNER JOIN $tabla_db5 d ON i.direccion_inv_id = d.id_direcciones INNER JOIN $tabla_db3 e ON i.dpto_inv_id = e.id_departamento WHERE fecha_inventario BETWEEN '$fechaIni' AND '$fechaFin'";
         include("cerrar_conexion.php");
     }else {

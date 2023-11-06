@@ -4,50 +4,13 @@ session_start();
 ob_start();
 date_default_timezone_set("America/Caracas");
 
-function darFormatoOriginal($string)
-{
-    $string = str_replace(
-        array('à', 'ä', 'â', 'À', 'Ä', 'Â'),
-        array('a', 'a', 'a', 'A', 'A', 'A'),
-        $string
-    );
-    $string = str_replace(
-        array('ë', 'ê', 'è', 'Ë', 'Ê', 'È'),
-        array('e', 'e', 'e', 'E', 'E', 'E'),
-        $string
-    );
-    $string = str_replace(
-        array('ï', 'î', 'ì', 'Ï', 'Î', 'Ì'),
-        array('i', 'i', 'i', 'I', 'I', 'I'),
-        $string
-    );
-    $string = str_replace(
-        array('ö', 'ô', 'ò', 'Ö', 'Ô', 'Ò'),
-        array('o', 'o', 'o', 'O', 'O', 'O'),
-        $string
-    );
-    $string = str_replace(
-        array('ü', 'û', 'ù', 'Ü', 'Û', 'Ù'),
-        array('u', 'u', 'u', 'U', 'U', 'U'),
-        $string
-    );
-    $string = str_replace(
-        array('ç', 'Ç'),
-        array('c', 'C'),
-        $string
-    );
-    $string = str_replace(
-        array('[', '|', '°', '¬', '!', '^', '`', '~', '#', '$', '%', '&', '/', '(', ')', '=', '?', '¿', '{', '}', '+', '<', '>', '¡', '¨', '*', ':', ';', ']', "'", '"'),
-        '*',
-        $string
-    );
 
-    return $string;
-}
 $findme = "*";
 $expresion_date = "/^(\d{2})\/(\d{2})\/(\d{4})$/";
 $texto255 = '/^[a-zA-ZÀ-ý,\s]{0,255}$/';
+$texto100 = '/^[a-zA-ZÀ-ý,\s]{0,100}$/';
 $nros = "/^[0-9]{1,11}$/";
+$identMatch = "/^[A-Z]{1}$/";
 
 
 $correspondencia = $_POST['correspondencia'];
@@ -82,8 +45,8 @@ if ($correspondencia == "tabla") {
     <table id="dataTable_corres" class="table table-striped table-hover">
         <thead class="bg-grey text-light">
             <tr class="align-middle text-center">
-                <th>Nro de oficio</th>
                 <th>Fecha</th>
+                <th>Nro de oficio</th>
                 <th>Procedencia</th>
                 <th>Asunto</th>
                 <th>Nro de adminsión</th>
@@ -101,8 +64,8 @@ if ($correspondencia == "tabla") {
         echo
             '
             <tr>
-                <td>' . $consulta['nro_oficio'] . '</td>
                 <td>' . $consulta['fecha_sal_empresa'] . '</td>
+                <td>' . $consulta['nro_oficio'] . '</td>
                 <td>' . $consulta['nombre_empresa'] . '</td>
                 <td>' . $consulta['asunto'] . '</td>
                 <td class="col-1">' . $consulta['id_nro_admision'] . '</td>
@@ -118,8 +81,8 @@ if ($correspondencia == "tabla") {
     echo '</tbody>
             <tfoot>
                 <tr class="align-middle text-center">
-                    <th>Nro de oficio</th>
                     <th>Fecha</th>
+                    <th>Nro de oficio</th>
                     <th>Procedencia</th>
                     <th>Asunto</th>
                     <th>Nro de adminsión</th>
@@ -235,13 +198,8 @@ if ($correspondencia == "registroEmp") {
     $nombre_empresa = $_POST['nombre'];
     $dedicacion = $_POST['dediEmp'];
 
-    $pos = strpos($rif, $findme);
-    $pos1 = strpos($identificador, $findme);
-    $pos2 = strpos($nombre_empresa, $findme);
-    $pos3 = strpos($dedicacion, $findme);
-
     if ($_SESSION['id_departamento'] == 80) {
-        if ($pos === false && $pos1 === false && $pos2 === false && $pos3 === false) {
+        if (preg_match($nros,$rif) && preg_match($identMatch,$identificador) && preg_match($texto100,$nombre_empresa) && preg_match($texto255,$dedicacion)) {
             if ($rif != '' && $identificador != '' && $nombre_empresa != '' && $dedicacion != '') {
                 include("abrir_conexion.php");
                 $rifExiste = 0;
@@ -306,15 +264,9 @@ if ($correspondencia == "registroCorres") {
     $direccion_select = $_POST['direccion_select'];
     $division_select = $_POST['division_select'];
 
-    $pos = strpos($nroOficio, $findme);
-    $pos1 = strpos($procedencia, $findme);
-    $pos2 = strpos($asunto, $findme);
-    $pos3 = strpos($rif_empresa, $findme);
-    $pos4 = strpos($direccion_select, $findme);
-
     if ($_SESSION['id_departamento'] == 80) {
-        if ($pos === false && $pos1 === false && $pos2 === false && $pos3 === false && $pos4 === false) {
-            if ($nroOficio != '' && $fecha_salida != '' && $procedencia != '' && $asunto != '' && $fecha_llegada != '' && $rif_empresa != '' && $direccion_select != '') {
+        if (preg_match($nros,$nroOficio) && preg_match($nros,$procedencia) && preg_match($texto255,$asunto) && preg_match($nros,$rif_empresa) && preg_match($nros,$direccion_select) && preg_match($nros,$division_select)) {
+            if ($nroOficio != '' && $fecha_salida != '' && $procedencia != '' && $asunto != '' && $fecha_llegada != '' && $rif_empresa != '' && $direccion_select != '' && $division_select != '') {
                 // $nroOficio!=''&&$fecha_salida!=''&&$procedencia!=''&&$asunto!=''&&  $fecha_llegada!=''&&$rif_empresa!=''&&$departamento_select!=''
                 include("abrir_conexion.php");
                 $rifExiste = 0;
@@ -325,12 +277,12 @@ if ($correspondencia == "registroCorres") {
                 }
                 if ($rifExiste <> 0) {
                     // REGISTRANDO CORRESPONDENCIA
-                    $registrar_correspo = "INSERT INTO $tabla_db10 (id_nro_admision, nro_oficio, fecha_sal_empresa, procedencia, rif_corresp_emp, asunto, fecha_llegada, oficina_destino, coordi_destino) values (NULL,'$nroOficio', '$fecha_salida', '$procedencia', '$rif_empresa', '$asunto', '$fecha_llegada','$direccion_select', '$division_select')";
+                    $registrar_correspo = "INSERT INTO $tabla_db10 (id_nro_admision, nro_oficio, fecha_sal_empresa, procedencia, rif_corresp_emp, asunto, fecha_llegada, oficina_destino, coordi_destino) values (NULL,'$nroOficio', '$fecha_salida', '$procedencia', '$rif_empresa', '$asunto', now(),'$direccion_select', '$division_select')";
                     $conexion->query($registrar_correspo);
     
                     // REGISTRANDO NOTIFICACIÓN PARA EL JEFE DE DIVISIÓN **************************************
                     // CONSULTAS A LA BASE DE DATOS
-                    $buscarRegistro = "SELECT * FROM $tabla_db10 WHERE rif_corresp_emp = '$rif_empresa' AND nro_oficio = '$nroOficio' AND fecha_llegada = '$fecha_llegada' AND coordi_destino = '$division_select'";
+                    $buscarRegistro = "SELECT * FROM $tabla_db10 WHERE rif_corresp_emp = '$rif_empresa' AND nro_oficio = '$nroOficio' AND coordi_destino = '$division_select'";
                     $resultados = mysqli_query($conexion, $buscarRegistro);
                     while ($consulta = mysqli_fetch_array($resultados)) {
                         $nroAdm = $consulta['id_nro_admision'];
@@ -474,8 +426,8 @@ if ($correspondencia == "tabla_indiv_FIN") {
     <table id="dataTable_corres_ind_FIN" class="table table-striped table-hover">
         <thead class="bg-grey text-light">
             <tr class="align-middle text-center">
-                <th>Nro de oficio</th>
                 <th>Fecha</th>
+                <th>Nro de oficio</th>
                 <th>Procedencia</th>
                 <th>Asunto</th>
                 <th>Nro de adminsión</th>
@@ -500,8 +452,8 @@ if ($correspondencia == "tabla_indiv_FIN") {
         echo
             '
             <tr>
-                <td>' . $consulta['nro_oficio'] . '</td>
                 <td>' . $consulta['fecha_sal_empresa'] . '</td>
+                <td>' . $consulta['nro_oficio'] . '</td>
                 <td>' . $consulta['nombre_empresa'] . '</td>
                 <td>' . $consulta['asunto'] . '</td>
                 <td>' . $consulta['id_nro_admision'] . '</td>
@@ -515,8 +467,8 @@ if ($correspondencia == "tabla_indiv_FIN") {
     echo '</tbody>
             <tfoot>
                 <tr class="align-middle text-center">
-                    <th>Nro de oficio</th>
                     <th>Fecha</th>
+                    <th>Nro de oficio</th>
                     <th>Procedencia</th>
                     <th>Asunto</th>
                     <th>Nro de adminsión</th>
@@ -545,8 +497,8 @@ if ($correspondencia == "tabla_indiv_FIN_ADMIN") {
     <table id="dataTable_corres_ind_FIN_AD" class="table table-striped table-hover">
         <thead class="bg-grey text-light">
             <tr class="align-middle text-center">
-                <th>Nro de oficio</th>
                 <th>Fecha</th>
+                <th>Nro de oficio</th>
                 <th>Procedencia</th>
                 <th>Asunto</th>
                 <th>Nombre Coordinación</th>
@@ -570,8 +522,8 @@ if ($correspondencia == "tabla_indiv_FIN_ADMIN") {
         echo
             '
             <tr>
-                <td>' . $consulta['nro_oficio'] . '</td>
                 <td>' . $consulta['fecha_sal_empresa'] . '</td>
+                <td>' . $consulta['nro_oficio'] . '</td>
                 <td>' . $consulta['nombre_empresa'] . '</td>
                 <td>' . $consulta['asunto'] . '</td>
                 <td>' . $consulta['nombre_div'] . '</td>
@@ -585,8 +537,8 @@ if ($correspondencia == "tabla_indiv_FIN_ADMIN") {
     echo '</tbody>
             <tfoot>
                 <tr class="align-middle text-center">
-                    <th>Nro de oficio</th>
                     <th>Fecha</th>
+                    <th>Nro de oficio</th>
                     <th>Procedencia</th>
                     <th>Asunto</th>
                     <th>Nombre Coordinación</th>

@@ -444,7 +444,7 @@ if ($comprobacion == "auditoriaFechConsulta") {
         $fechaIni="2000-01-01";
     };
 
-    if (preg_match($regex, $fechaIni) && preg_match($regex, $fechaFinal)) {
+    if (preg_match($regex, $fechaIni) && preg_match($regex, $fechaFinal) && $fechaIni < $fechaFinal) {
         echo
 
             '

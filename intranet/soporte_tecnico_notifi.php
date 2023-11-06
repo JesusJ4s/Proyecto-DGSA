@@ -138,9 +138,9 @@ include("../php/date_time.php");
                             <!-- AQUÍ SERÁ LA MEGA CONSULTA PARA VER LAS SOLICITUDES Y COMENZAR LA REVISIÓN -->
                             <div id="formulario_mostrar" class="ocultar-div">
 
-                                <form id="form_aceptar_soli">
+                                <form class="" id="form_aceptar_soli">
                                     <!-- AQUÍ SE GUARDAN LOS DATOS DE LA SOLICITUD -->
-                                    <div class="row mx-auto bg-grey-claro mt-2 mb-5 p-3 border-radius-15">
+                                    <div class="row mx-auto bg-grey-claro mt-2 p-3 border-radius-15">
                                         <div class="col-3 my-2">
                                             <label><b>Tipo de Uso</b></label>
                                             <input class="form-control" readonly id="soporteUso" name="soporteUso">
@@ -568,13 +568,13 @@ include("../php/date_time.php");
                     </div>
 
                     <!-- SOPORTES DATOS -->
-                    <div class="px-2" id="parte4">
+                    <div class="px-2 ms-5 mt-3" id="parte4">
                         <div class="ocultar-class">
                             <h1>Estadísticas</h1>
                                 <!-- ESTADISTICA SOLICITUDES BARRAS -->
                             <div class="border-radius-15 d-flex justify-content-center row mt-3 bg-blanco">
                                 <div class="col-9">
-                                    <canvas class="" id="solicitudesProm"></canvas>
+                                    <canvas class="box-shadow-total p-2 border-radius-15" id="solicitudesProm"></canvas>
 
                                 </div>
                                 <div class="col-auto">
@@ -587,8 +587,8 @@ include("../php/date_time.php");
                             </div>
                             <hr>
                             <!-- ESTADISTICAS SOLICITUDES POR FECHA -->
-                            <div class="border-radius-15 d-flex justify-content-center mt-3 bg-blanco">
-                                <canvas class="" id="lineal"></canvas>
+                            <div class=" d-flex justify-content-center mt-3 bg-blanco">
+                                <canvas class="box-shadow-total border-radius-15 p-2 mb-5" id="lineal"></canvas>
                             </div>
                         </div>
                     </div>

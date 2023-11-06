@@ -86,6 +86,10 @@ $pdf->Cell(91, 6, $ValorBuscar, 1, 1, 'C', 0);
 
 while ($row = $final->fetch_assoc()) {
     $pdf->SetX(15);
+    $pdf->Cell(51, 6, 'Numero de Solicitud:', 1, 0, 'C', 1);
+    $pdf->Cell(40, 6, $row['id_soporte'], 1, 1, 'C', 0);
+
+    $pdf->SetX(15);
     $pdf->Cell(51, 6, 'Tipo de Uso:', 1, 0, 'C', 1);
     $pdf->Cell(40, 6, $row['uso_equipo'], 1, 0, 'C', 0);
     // 
@@ -150,7 +154,8 @@ while ($row = $final->fetch_assoc()) {
 
 
 }
-$_SESSION['nombreEQ'] = '';
+$_SESSION['nombreEQ_Soport'] = '';
+$_SESSION['idEQ_Soport'] = '';
 
 $pdf->Output('I', 'Reporte cambios.pdf', true);
 ?>

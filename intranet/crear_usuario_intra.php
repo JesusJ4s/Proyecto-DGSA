@@ -104,15 +104,15 @@ $_SESSION["comprobante"] = 0;
                                 <label class="ms-4 formulario__label  p-0 pb-1" for="cedula">Cedula</label>
                                 <div class="ms-4" id="mostrar_mensaje_ci"></div>
 
-                                <div class="row">
-                                    <div class="col-4 ms-4">
-                                        <select class="ps-3 formulario__input" id="nacionalidad" name="nacionalidad"
+                                <div class="row ms-4">
+                                    <div class="col-4 p-0">
+                                        <select class="ps-2 formulario__input" id="nacionalidad" name="nacionalidad"
                                             required>
                                             <option class="form-control ms-4 formulario__input" value="V">V</option>
                                             <option class="form-control ms-4 formulario__input" value="E">E</option>
                                         </select>
                                     </div>
-                                    <div class="col-6 p-0">
+                                    <div class="col-7 p-0">
                                         <div class="" id="mostrar_mensaje_ci"></div>
                                         <div class=" formulario__grupo-input">
                                             <input type="text" class="form-control formulario__input"

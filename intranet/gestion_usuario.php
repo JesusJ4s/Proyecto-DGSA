@@ -101,7 +101,7 @@ LoginAdmin();
                 <!-- BOTONES ASPECTO 2 -->
                 <section class="container-fluid contenedor-grid-3">
                     <!-- INGRESO DE NUEVO EQUIPO -->
-                    <div class="border mx-3 altura-app mb-5">
+                    <div class="border mx-3 altura-app mb-5 box-shadow-plano">
                         <h3 class="border text-center p-2 mb-3">Asignación de Rol del Sistema</h3>
 
                         <div class="text-center">
@@ -118,7 +118,7 @@ LoginAdmin();
 
                     </div>
                     <!-- REVISION Y MODIFICACION -->
-                    <div class="border mx-3 altura-app mb-5">
+                    <div class="border mx-3 altura-app mb-5 box-shadow-plano">
                         <h3 class="border text-center p-2 mb-3">Recuperación de Usuario</h3>
 
                         <div class="text-center">
@@ -134,7 +134,7 @@ LoginAdmin();
                         </div>
                     </div>
                     <!-- CONSULTA E IMPRESION -->
-                    <div class="border mx-3 altura-app mb-5">
+                    <div class="border mx-3 altura-app mb-5 box-shadow-plano">
 
                         <h3 class="border text-center p-2 mb-3">Auditoría</h3>
 

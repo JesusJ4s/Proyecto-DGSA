@@ -52,8 +52,8 @@ const expresiones = {
     responsable: /^[a-zA-ZÀ-ÿ\s]{4,30}$/, //Letras
     nomb_equip: /^[a-zA-Z0-9]{4,30}$/, //Letras
 
-    BN_equipo: /^[0-9a-zA-Z]{7}$/, //Letras
-    serial: /^[a-zA-Z0-9\-\_]{4,20}$/, //Letras
+    BN_equipo: /^[0-9a-zA-Z]{0,7}$/, //Letras
+    serial: /^[a-zA-Z0-9\-\_]{0,20}$/, //Letras
     cpu_mod: /^[a-zA-Z0-9\s]{4,25}$/, //Letras
     cpu_vel: /^\d\.\d{2}[gG][hH][zZ]$/, //Letras /\d+\.[a-zA-Z0-9]+/
     // /^\d+\.\d+[gG][hH][zZ]$/
@@ -68,8 +68,8 @@ const expresiones = {
     mouse_marca: /^[a-zA-Z_-]{4,20}$/, //Letras
 
     monitor_datos: /^[a-zA-Z0-9_-]{4,20}$/, //Letras
-    monitor_marca: /^[a-zA-Z0-9_-]{4,20}$/, //Letras
-    monitor_conexion: /^[a-zA-Z0-9_-]{4,20}$/, //Letras
+    monitor_marca: /^[a-zA-Z0-9_-]{2,20}$/, //Letras
+    monitor_conexion: /^[a-zA-Z0-9_-]{2,20}$/, //Letras
 
     regulador_datos: /^[a-zA-Z0-9_.-]{4,20}$/, //Letras
     regulador_marca: /^[a-zA-Z]{4,30}$/, //Letras

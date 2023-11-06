@@ -954,11 +954,45 @@ function alertaSoporte(){
     });
     
 }
-// VER REPORTE
+// VER REPORTE FINALIZADOS
 function verReporteSoli(){
     $('#body-soport-ING').on('click','#btnRepor',function(){
         con_id = $(this).closest('tr').find('td').eq(0).text();
         con_name = $(this).closest('tr').find('td').eq(1).text();
+        var parametros=
+        {
+            "con_id":con_id,
+            "con_name":con_name,
+            "busqueda":"soporteFinalizado"
+        }
+        $.ajax({
+            data: parametros,
+            url: '../php/consultar_equipos_individuales.php',
+            type: 'POST',
+            error: function(jqXHR)
+            {
+                var nroERROR = jqXHR.status;
+
+                if (nroERROR == 500) {
+                    $('#Modal_Notifi').modal('show');
+
+                    $('#Modal_NotifiC').html('Error al buscar el reporte.');
+                }
+            },   
+            success: function(mensaje)
+            {
+                window.open('../reportes/soporteEquipo.php', "_blank");
+
+            }
+        });
+
+    });
+}
+// VER REPORTE RECHAZADOS
+function verReporteSoliRecha(){
+    $('#body-repo-recha').on('click','#btnRec',function(){
+        con_id = $(this).closest('tr').find('td').eq(0).text();
+        con_name = $(this).closest('tr').find('td').eq(2).text();
         var parametros=
         {
             "con_id":con_id,

@@ -105,34 +105,6 @@ LoginAdmin();
             </div>
         </div>
     </div>
-    <!-- MODAL PARA RESTAURAR LA BASE DE DATOS -->
-    <div class="modal fade" id="RestaurarBD" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true" data-bs-backdrop="static">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5>Notificación:</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    <!-- AQUÍ VA EL TÍTULO -->
-                </div>
-                <div class="modal-body" id="RestaurarBDC">
-                    <h4 class="mb-3">Restaurar Base de Datos</h4>
-                    <form action="../php/Restore.php" method="POST">
-
-                        <div class="input-group mb-3">
-                            <button class="btn btn-outline-secondary" type="submit">Restaurar</button>
-                            <input type="file" class="form-control" id="restorePoint" name="restorePoint"
-                                aria-describedby="inputGroupFileAddon03" aria-label="Upload" accept=".sql">
-                        </div>
-
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- SPINNER QUE APARECE EN LA CARGA DE INFORMACIÓN -->
     <div class=" d-flex justify-content-center position-absolute top-50 start-50">
         <div class="ocultar-spinner spinner-border text-secondary" role="status" id="spinner">

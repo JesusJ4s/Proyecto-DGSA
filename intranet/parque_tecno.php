@@ -88,7 +88,7 @@
             <!-- BOTONES ASPECTO 2 -->
             <section class="container-fluid contenedor-grid-3">
                 <!-- INGRESO DE NUEVO EQUIPO -->
-                <div class="border mx-3 altura-app mb-5">
+                <div class="border mx-3 altura-app mb-5 box-shadow-plano">
                     <h3 class="border text-center p-2">Ingresar Nuevo Equipo</h3>
 
                     <div class="text-center">
@@ -103,7 +103,7 @@
                     
                 </div>
                 <!-- REVISION Y MODIFICACION -->
-                <div class="border mx-3 altura-app mb-5">
+                <div class="border mx-3 altura-app mb-5 box-shadow-plano">
                     <h3 class="border text-center p-2">Revisión y Modificación</h3>
 
                     <div class="text-center">
@@ -117,7 +117,7 @@
                     </div>
                 </div>
                 <!-- CONSULTA E IMPRESION -->
-                <div class="border mx-3 altura-app mb-5">
+                <div class="border mx-3 altura-app mb-5 box-shadow-plano">
                     <h3 class="border text-center p-2">Consulta de Equipos</h3>
 
                     <div class="text-center">

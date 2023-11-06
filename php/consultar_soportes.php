@@ -22,7 +22,7 @@ $patron_mac = '/^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/'; // Expresión regul
 $patron_nombre = '/^[a-zA-Z0-9]{1,16}$/';
 $findme = "*";
 $patron_numero = '/^[0-9]{1,11}$/';
-$soloLetras = '/^[a-zA-ZÀ-ý\s]{20,255}$/';
+$soloLetras = '/^[a-zA-ZÀ-ý,\.\s]{20,255}$/';
 
 // CONSULTAR SOPORTES Y MOSTRAR TABLA (SOLO EN ESPERA -- INTERACTIVA)
 if ($comprobacion == "tab_esp_inter") {
@@ -312,6 +312,7 @@ if ($comprobacion == "tab_espera_comp") {
     include("cerrar_conexion.php");
 
 }
+// INFORMACIÓN EQUIPO EN ESPERA
 if ($comprobacion == "informacion") {
     include("abrir_conexion.php");
     $name = $_POST['con_name'];
@@ -329,8 +330,7 @@ if ($comprobacion == "informacion") {
     include("cerrar_conexion.php");
 
 }
-// TODO:
-// CREADO PARA IMPRIMIR REPORTES, FALTA FINALIZAR
+// CREADO PARA IMPRIMIR REPORTES, SOPORTES FINALIZADOS
 if ($comprobacion == "tab_final_ING") {
 
     include("abrir_conexion.php");
@@ -571,7 +571,7 @@ if ($comprobacion == "rechazado_vista") {
                 <th>Estado</th>
             </tr>
         </thead>
-        <tbody id="">
+        <tbody id="body-repo-recha">
     ';
 
     $existe = 0;
@@ -590,7 +590,7 @@ if ($comprobacion == "rechazado_vista") {
                 <td>' . $consulta['nomb_equipo_soporte'] . '</td>
                 <td class="">' . $consulta['fecha_soporte_solicitud'] . '</td>
                 <td class="">' . $consulta['fecha_soporte_aceptacion'] . '</td>
-                <td class="txt-td"><button type="button" class="btn-img-td" onclick=""><img class="img-td" src="../assets/intranet/soporte/iconos/pdf.png"></button></td>
+                <td class="txt-td"><button id="btnRec" name="btnRec" type="button" class="btn-img-td" onclick="verReporteSoliRecha();"><img class="img-td" src="../assets/intranet/soporte/iconos/pdf.png"></button></td>
                 <td class="">' . $consulta['nombre_estado'] . '</td>
             </tr>
         

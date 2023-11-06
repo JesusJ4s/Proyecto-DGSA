@@ -340,6 +340,15 @@ Login_JefCorrespondencia__Admin();
                             <h2 class="pt-3">Correspondencia</h2>
                         </div>
                         <hr class="my-3">
+                        <div>
+                            <label>Fecha Inicial
+                                <input type="date" class="form-control" id="inicial">
+                            </label>
+                            <label>Fecha Final
+                                <input type="date" class="form-control" id="final">
+                            </label>
+                            <button class="btn btn-secondary" type="button" onclick="reporteCorres()">Imprimir Reporte</button>
+                        </div>
                         <div id="tabla_correspondencia">
 
                         </div>
@@ -353,7 +362,7 @@ Login_JefCorrespondencia__Admin();
 
                 <div class="container-fluid d-flex justify-content-center row p-3">
                     <div class="col-12">
-                        <canvas class="border-radius-15 bg-blanco" id="estaCorresp"></canvas>
+                        <canvas class="border-radius-15 bg-blanco box-shadow-total p-3" id="estaCorresp"></canvas>
                         
                     </div>
                 </div>

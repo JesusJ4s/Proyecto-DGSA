@@ -45,18 +45,18 @@ Login_ING_Admin();
                 <h2 class="">Consultar Equipos</h2>
                 <div class="border-radius-15 px-5">
                     <div class="container-fluid text-center mx-2 p-2 mb-5 bg-blanco box-shadow-plano border-radius-15">
-                        <div class="p-5 border-radius-15 row">
+                        <div class="p-3 border-radius-15 row">
 
                             <!--  DATOS -->
 
-                            <div class="container-fluid border py-4 col-12 bg-blanco box-shadow border-radius-15" id="parte4">
-                                <h5>Datos de la institución:</h5>
+                            <div class="p-3 container-fluid col-12 bg-blanco border-radius-15" id="parte4">
+                                <h2 class="mb-3">Datos de la institución:</h2>
                                 <!-- ESTADISTICAS INVENTARIO TECNOLOGICO -->
-                                <div class="container-fluid d-flex justify-content-center row">
-                                    <div class="col-12">
-                                        <canvas class="" id="equipUbi"></canvas>
+                                <div class="container-fluid d-flex justify-content-center">
+                                    <!-- <div class=""> -->
+                                        <canvas class="box-shadow-total border-radius-15 p-3" id="equipUbi"></canvas>
                                         
-                                    </div>
+                                    <!-- </div> -->
                                 </div>
                             </div>
                             <!-- ***************************************************************************************************************************** -->

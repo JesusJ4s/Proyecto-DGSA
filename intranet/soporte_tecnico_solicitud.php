@@ -187,8 +187,7 @@ LoginSimple();
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="toast-body text-white">
-                                            Su ordenador debe estar registrado en el sistema, coloque el nombre de usuario
-                                            del equipo.
+                                            Su ordenador debe estar registrado en el sistema, coloque el nombre del equipo.
                                         </div>
                                     </div>
                                 </div>
@@ -465,6 +464,8 @@ LoginSimple();
                         </div>
                     </div>
                 </div>
+                <div class="ocultar-div" id="parte3"></div>
+                <div class="ocultar-div" id="parte4"></div>
             </div>
         </div>
 
