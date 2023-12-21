@@ -208,6 +208,7 @@ LoginAdmin();
 <script src="../js/bootstrap.bundle.min.js"></script>
 <!-- JS DE LA AUDITORIA DE LA BD -->
 <script src="../js/bd_auditoria.js"></script>
+<script src="../js/auditoria_datos.js"></script>
 <?php
     include('../php/javascript_Footer.php');
     ?>

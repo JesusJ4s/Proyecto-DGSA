@@ -36,7 +36,7 @@ function hideForm() {
     document.getElementById('nroOficio').setAttribute('required', true);
     document.getElementById('fecha_salida').setAttribute('required', true);
     document.getElementById('asunto').setAttribute('required', true);
-    document.getElementById('fecha_llegada').setAttribute('required', true);
+    // document.getElementById('fecha_llegada').setAttribute('required', true);
     document.getElementById('rif_empresa').setAttribute('required', true);
 
 }
@@ -64,7 +64,7 @@ function showForm() {
     document.getElementById('nroOficio').removeAttribute('required');
     document.getElementById('fecha_salida').removeAttribute('required');
     document.getElementById('asunto').removeAttribute('required');
-    document.getElementById('fecha_llegada').removeAttribute('required');
+    // document.getElementById('fecha_llegada').removeAttribute('required');
     document.getElementById('rif_empresa').removeAttribute('required');
 
 }

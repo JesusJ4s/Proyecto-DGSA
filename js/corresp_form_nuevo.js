@@ -15,6 +15,7 @@ function registroCorrespondencia(){
       
         success: function(mensaje)
         {
+            $('#modal_registro').modal('hide');
             $('#RegistroCorres').modal('show');
             $('#RegistroCorres .modal-body').html(mensaje);
 
@@ -27,24 +28,24 @@ function registroCorrespondencia(){
         {
             var nroERROR = jqXHR.status;
 
-            if(nroERROR==500){
-                $('#RegistroCorres').modal('show');
+            $('#modal_registro').modal('hide');
 
+            if(nroERROR==500){
+                formCorrespondencia.reset();
+                $('#RegistroCorres').modal('show');
                 $('#RegistroCorresC').html('Error al registrar los datos.<br>Error: Ingreso digitos indebidos.');
              }    
             if(nroERROR==501){
                 $('#RegistroCorres').modal('show');
-
                 $('#RegistroCorresC').html('Error al ingresar los datos.<br>Error: Hay campos vacíos, por favor verifique.');
              }     
             if(nroERROR==502){
                 $('#RegistroCorres').modal('show');
-
                 $('#RegistroCorresC').html('Error al ingresar los datos.<br>Error: El rif no está registrado en el sistema.');
              }     
             if(nroERROR==503){
+                formCorrespondencia.reset();
                 $('#RegistroCorres').modal('show');
-
                 $('#RegistroCorresC').html('Error al ingresar los datos.<br>Error: Al no ser empleado de correspondencia no puede realizar ésta acción.');
              }     
         }
@@ -53,7 +54,7 @@ function registroCorrespondencia(){
 // FORMULARIO PARA REGISTRAR EMPRESA
 function registroEmp(){
     rif = document.getElementById('rif_empresa_regis').value;
-    identi = document.getElementById('identificador').value;
+    identi = document.getElementById('identificador2').value;
     nombre = document.getElementById('nombre_emp').value;
     dediEmp = document.getElementById('dedicacion').value;
     var datos =
@@ -72,32 +73,30 @@ function registroEmp(){
       
         success: function(mensaje)
         {
+            $('#registroEmpresaM').modal('hide');
             $('#RegistroCorres').modal('show');
             $('#RegistroCorres .modal-body').html(mensaje);
-            var radio2 = document.getElementById('radiosi');
-            var radio1 = document.getElementById('radiono');
-
-            // Desactivar el elemento de entrada radio1 y activar radio2
-            radio1.disabled = true;
-            radio2.disabled = false;
-            radio2.checked = true; 
 
             // AGREGANDO NUEVOS VALORES A LOS INPUTS
             var rif_safe = document.getElementById('rif_empresa_regis').value;
             document.getElementById('rif_empresa').value=rif_safe;
-                        // Obtener referencia al campo de entrada "rif_empresa"
-                        var rifEmpresaInput = document.getElementById('rif_empresa');
+                // Obtener referencia al campo de entrada "rif_empresa"
+                var rifEmpresaInput = document.getElementById('rif_empresa');
 
-                        // Asignar el foco al campo de entrada
-                        rifEmpresaInput.focus();
+                // Asignar el foco al campo de entrada
+                rifEmpresaInput.focus();
             empresas_fun();
-            hideForm();
             finalizando();
+            tabla_empresas_corr();
                  
         },
-        error: function(jqXHR, xhr, status, error)
+        error: function(jqXHR)
         {
             var nroERROR = jqXHR.status;
+
+            $('#registroEmpresaM').modal('hide');
+            $('#modal_registro').modal('hide');
+
 
             if(nroERROR==500){
                 $('#RegistroCorres').modal('show');
@@ -143,7 +142,6 @@ const expresiones = {
     nroOficio: /^[0-9]{1,20}$/,
     fecha_salida: /^\d{4}-\d{2}-\d{2}$/,
     asunto: /^[a-zA-ZÀ-ÿ\s]{4,255}$/,
-    fecha_llegada: /^\d{4}-\d{2}-\d{2}$/,
     rif_empresa: /^[0-9\-]{1,20}$/,
     idEmpresa: /^[0-9]$/,
     rif_empresa_regis: /^[0-9\-]{1,20}$/,
@@ -215,7 +213,7 @@ inputs.forEach((input)=>{
 submit1.addEventListener('click', (e)=>{
     e.preventDefault();
 
-    if (campos.nroOficio && campos.fecha_salida && campos.asunto && campos.fecha_llegada && campos.rif_empresa) {
+    if (campos.nroOficio && campos.fecha_salida && campos.asunto && campos.rif_empresa) {
         let empresa = document.getElementById('idEmpresa').value;
         let contador = empresa.length;
         if (contador > 0) {

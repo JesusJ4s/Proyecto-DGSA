@@ -8,7 +8,7 @@ date_default_timezone_set("America/Caracas");
 $findme = "*";
 $expresion_date = "/^(\d{2})\/(\d{2})\/(\d{4})$/";
 $texto255 = '/^[a-zA-ZÀ-ý,\s]{0,255}$/';
-$texto100 = '/^[a-zA-ZÀ-ý,\s]{0,100}$/';
+$texto100 = '/^[a-zA-ZÀ-ý0-9,\s]{0,100}$/';
 $nros = "/^[0-9]{1,11}$/";
 $identMatch = "/^[A-Z]{1}$/";
 
@@ -89,6 +89,119 @@ if ($correspondencia == "tabla") {
                     <th>Fecha llegada</th>
                     <th>Dirección</th>
                     <th>Estatus</th>
+                </tr>
+            </tfoot>
+        </table>';
+    if ($cuenta == 0) {
+        echo "";
+    }
+    include("cerrar_conexion.php");
+
+}
+// TABLA EMPRESAS REGISTRADAS
+if ($correspondencia == "tabla_empresas") {
+    $cuenta = 0;
+
+    include("abrir_conexion.php");
+
+    echo
+        '
+    <table id="dataTable_empresas" class="table table-striped table-hover">
+        <thead class="bg-grey text-light">
+            <tr class="align-middle text-center">
+                <th>Identificador</th>
+                <th>Rif</th>
+                <th>Nombre Empresa</th>
+                <th>Dedicación</th>
+            </tr>
+        </thead>
+        <tbody id="body-empresa" class="align-middle">
+    ';
+
+    $tabla_Buscar = mysqli_query($conexion, "SELECT * FROM $tabla_db11");
+    // $resultados = mysqli_query($conexion,$tabla_Buscar);
+    while ($consulta = mysqli_fetch_array($tabla_Buscar)) {
+        echo
+            '
+            <tr>
+                <td class="col-1">' . $consulta['identificador_rif'] . '</td>
+                <td class="col-2">' . $consulta['rif'] . '</td>
+                <td class="col-3">' . $consulta['nombre_empresa'] . '</td>
+                <td class="col-auto">' . $consulta['dedicacion'] . '</td>
+            </tr>
+        
+        ';
+        $cuenta++;
+    }
+    echo '</tbody>
+            <tfoot>
+                <tr class="align-middle text-center">
+                    <th>Identificador</th>
+                    <th>Rif</th>
+                    <th>Nombre Empresa</th>
+                    <th>Dedicación</th>
+                </tr>
+            </tfoot>
+        </table>';
+    if ($cuenta == 0) {
+        echo "";
+    }
+    include("cerrar_conexion.php");
+
+}
+// GENERANDO TABLA CON TODOS LOS REGISTROS
+if ($correspondencia == "tabla_registro") {
+    $cuenta = 0;
+
+    include("abrir_conexion.php");
+
+    echo
+        '
+    <table id="dataTable_corres_registro" class="table table-striped table-hover">
+        <thead class="bg-grey text-light">
+            <tr class="align-middle text-center">
+                <th>Fecha</th>
+                <th>Nro de oficio</th>
+                <th>Procedencia</th>
+                <th>Asunto</th>
+                <th>Nro de adminsión</th>
+                <th>Fecha llegada</th>
+                <th>Dirección</th>
+            </tr>
+        </thead>
+        <tbody id="body-body" class="align-middle">
+    ';
+
+    $tabla_Buscar = mysqli_query($conexion, "SELECT * FROM $tabla_db10 c INNER JOIN $tabla_db11 e ON c.procedencia = e.id_empresas INNER JOIN $tabla_db12 nt ON c.id_nro_admision = nt.id_corresp INNER JOIN $tabla_db5 di ON c.oficina_destino = di.id_direcciones INNER JOIN $tabla_db4 dv ON c.coordi_destino = dv.id_divisiones ORDER BY id_nro_admision DESC");
+    // $resultados = mysqli_query($conexion,$tabla_Buscar);
+    while ($consulta = mysqli_fetch_array($tabla_Buscar)) {
+        echo
+            '
+            <tr>
+                <td>' . $consulta['fecha_sal_empresa'] . '</td>
+                <td>' . $consulta['nro_oficio'] . '</td>
+                <td>' . $consulta['nombre_empresa'] . '</td>
+                <td>' . $consulta['asunto'] . '</td>
+                <td class="col-1">' . $consulta['id_nro_admision'] . '</td>
+                <td>' . $consulta['fecha_llegada'] . '</td>
+                <td><b>' . $consulta['nombre_dire'] . '</b><br>
+                ' . $consulta['nombre_div'] . '</td>
+            </tr>
+        
+        ';
+        $cuenta++;
+    }
+    echo '</tbody>
+            <tfoot>
+                <tr class="align-middle text-center">
+                    <th>Registrar Nueva Correspondencia</th>
+                    <th><button type="button" class="btn btn-primary"  data-bs-toggle="modal"
+                    data-bs-target="#modal_registro">Registrar</button></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </tfoot>
         </table>';
@@ -258,7 +371,7 @@ if ($correspondencia == "registroCorres") {
     $fecha_salida = $_POST['fecha_salida'];
     $procedencia = $_POST['idEmpresa'];
     $asunto = $_POST['asunto'];
-    $fecha_llegada = $_POST['fecha_llegada'];
+    // $fecha_llegada = $_POST['fecha_llegada'];
     $rif_empresa = $_POST['rif_empresa'];
 
     $direccion_select = $_POST['direccion_select'];
@@ -266,8 +379,7 @@ if ($correspondencia == "registroCorres") {
 
     if ($_SESSION['id_departamento'] == 80) {
         if (preg_match($nros,$nroOficio) && preg_match($nros,$procedencia) && preg_match($texto255,$asunto) && preg_match($nros,$rif_empresa) && preg_match($nros,$direccion_select) && preg_match($nros,$division_select)) {
-            if ($nroOficio != '' && $fecha_salida != '' && $procedencia != '' && $asunto != '' && $fecha_llegada != '' && $rif_empresa != '' && $direccion_select != '' && $division_select != '') {
-                // $nroOficio!=''&&$fecha_salida!=''&&$procedencia!=''&&$asunto!=''&&  $fecha_llegada!=''&&$rif_empresa!=''&&$departamento_select!=''
+            if ($nroOficio != '' && $fecha_salida != '' && $procedencia != '' && $asunto != '' && $rif_empresa != '' && $direccion_select != '' && $division_select != '') {
                 include("abrir_conexion.php");
                 $rifExiste = 0;
                 $buscar_rif = "SELECT * FROM $tabla_db11 WHERE rif = '$rif_empresa' AND id_empresas = '$procedencia'";

@@ -311,7 +311,7 @@ if ($comprobacion == "VerificacionPin") {
 
 }
 // ********************************************************************************************************************************************
-// CUANDO SE EJECUTA SE BUSCAN LOS VALORES PARA LLENAR LA TABLA CON LOS DATOS (SOLO BUSQUEDA DE DATOS)
+// CUANDO SE EJECUTA SE BUSCAN LOS VALORES PARA LLENAR LA TABLA CON LOS DATOS (SOLO BUSQUEDA DE DATOS) cambio de cargo
 if ($comprobacion == "datos_CambioCargo") {
     include("abrir_conexion.php");
 
@@ -413,7 +413,7 @@ if ($comprobacion == "auditoriaUsrConsulta") {
             <td class="">' . $consulta['nombre_accion'] . '</td>
             <td class="">' . acortar_texto($consulta['descripcion_cambio'], 80) . '</td>
 
-            <td class=" text-center"><button class="btn btn-secondary mb-1" id="VerAudi" name="VerAudi" onclick="auditoriaDatos();">Ver</button></td>
+            <td class=" text-center"><button class="btn btn-secondary mb-1" id="VerAudi" name="VerAudi" onclick="consultar_datos1();">Ver</button></td>
 
         </tr>
     ';
@@ -478,7 +478,7 @@ if ($comprobacion == "auditoriaFechConsulta") {
                 <td class="">' . $consulta['nombre_accion'] . '</td>
                 <td class="">' . acortar_texto($consulta['descripcion_cambio'], 80) . '</td>
 
-                <td class=" text-center"><button class="btn btn-secondary mb-1" id="VerAudi" name="VerAudi" onclick="auditoriaDatos();">Ver</button></td>
+                <td class=" text-center"><button class="btn btn-secondary mb-1" id="VerAudiFecha" name="VerAudiFecha" onclick="consultar_datos2();">Ver</button></td>
 
             </tr>
         ';

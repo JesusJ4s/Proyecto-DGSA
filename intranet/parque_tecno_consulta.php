@@ -168,7 +168,7 @@ Login_ING_Admin();
                             </div>
                             <!-- ***************************************************************************************************************************** -->
                             <!--  CONSULTA TOTAL -->
-                            <div class="container-fluid border py-4 ocultar-div col-12 bg-blanco box-shadow border-radius-15" id="parte3">
+                            <div class="container-fluid border py-4 ocultar-div col-12 bg-blanco border-radius-15" id="parte3">
                                 <h5>Visualizar reporte de todos los equipos de la Institución</h5>
                                 <div class="contenedor-grid">
                                     <div>

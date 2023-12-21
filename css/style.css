@@ -637,7 +637,7 @@ hr {
 
 }
 .border-grey {
-    border: 3px solid #5e5e5e;
+    border: 3px solid #5e5e5e !important;
     /* box-shadow: 0 0 0 0.25rem #29bb4986; */
 
 }
@@ -650,6 +650,7 @@ input.border-limpiar:focus {
     outline: none;
 
   }
+
 /* *********************** Tamaños ********************** */
 .w-02 {
     width: 2% !important;

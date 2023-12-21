@@ -605,6 +605,46 @@ function auditoriaDatos() {
     });
 
 }
+function auditoriaDatos2() {
+    // TOMAR VALOR DE UNA COLUMNA DE UNA TABLA
+    $('#body-AudiFecha').on('click', '#VerAudiFecha', function () {
+        fecha = $(this).closest('tr').find('td').eq(0).text();
+        cedula = $(this).closest('tr').find('td').eq(2).text();
+        var parametros =
+        {
+            "fecha": fecha,
+            "cedula": cedula,
+            "que_buscar": "auditoriaDatos"
+        };
+        $.ajax({
+            data: parametros,
+            dataType: 'json',
+            url: '../php/consultar_cod.php',
+            type: 'POST',
+            error: function (jqXHR, xhr, status, error) {
+                var nroERROR = jqXHR.status;
+                alert("Estatus " + status + nroERROR)
+            },
+            success: function (valores) {
+                $('#AuditoriaDatos').modal('show');
+                $("#nombreAudi").val(valores.nombre);
+                $("#cedulaAudi").val(valores.cedulaCargo);
+                $("#UsrAudi").val(valores.nombreUsuario);
+                $("#fechaAudi").val(valores.fecha_cambio);
+                $("#AccionAudi").val(valores.nombreAccion);
+                // $("#descripcionAudi").val(valores.descripcion);
+                
+                // Utilizar split() en valores.descripcion
+                var descripcionParts = valores.descripcion.split('<br><br>');
+
+                // Mostrar las partes divididas en $("#descripcionAudi")
+                $("#descripcionAudi").val(descripcionParts.join('\n'));
+            }
+        });
+
+    });
+
+}
 
 // IMPRIMIR TABLA DE AUDITORIA DE LA BASE DE DATOS - DATOS INDIVIDUALES
 function auditoriaBD() {

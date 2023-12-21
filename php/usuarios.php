@@ -268,46 +268,65 @@ if ($ingreso == "verificacion") {
                 // BUSCANDO VALORES CON LA CEDULA
                 $query = "SELECT * FROM $tabla_db1 WHERE cedula = '$cedula'";
                 $resultados = mysqli_query($conexion, $query);
-                // Arreglo para almacenar las respuestas a las preguntas seleccionadas
-                $respuestas = array();
-                while ($consulta = mysqli_fetch_array($resultados)) {
-                    if ($consulta['id_pregunta1'] == $pregunta1 || $consulta['id_pregunta2'] == $pregunta1 || $consulta['id_pregunta3'] == $pregunta1) {
-                        $respuestas[$pregunta1] = $consulta['respuesta1'];
+                $existencia = mysqli_num_rows($resultados);
+
+                if ($existencia > 0) {                
+                    $sql1 = "SELECT * FROM $tabla_db1 WHERE cedula = '$cedula'";
+                    $resultado = mysqli_query($conexion, $sql1);
+                    $encontrado = mysqli_num_rows($resultado);
+                    while ($consulta = mysqli_fetch_array($resultado)) {
+                        $pregunta1BD = $consulta['id_pregunta1'];
+                        $respuesta1BD = $consulta['respuesta1'];
+                        $pregunta2BD = $consulta['id_pregunta2'];
+                        $respuesta2BD = $consulta['respuesta2'];
+                        $pregunta3BD = $consulta['id_pregunta3'];
+                        $respuesta3BD = $consulta['respuesta3'];
                     }
-                    if ($consulta['id_pregunta1'] == $pregunta2 || $consulta['id_pregunta2'] == $pregunta2 || $consulta['id_pregunta3'] == $pregunta2) {
-                        $respuestas[$pregunta2] = $consulta['respuesta2'];
-                    }
-                }
-                // Verifica si las respuestas proporcionadas por el usuario son correctas
-                $respuestas_correctas = true;
-                foreach ($respuestas as $id_pregunta => $respuesta_bd) {
-                    $respuesta_usuario = $_POST['respuesta_' . $id_pregunta];
-                    if (empty($respuesta_usuario)) {
-                        $respuestas_correctas = false;
-                        echo "La respuesta proporcionada está vacía<br>";
-                    } else if (!password_verify($respuesta_usuario, $respuesta_bd)) {
-                        $respuestas_correctas = false;
-                        echo "Las respuestas no coinciden. O colocó una errada<br>";
-                    } else {
-                        // echo "Las respuestas coinciden<br>";
-                        // Agregar verificación adicional para ambas respuestas
-                        if (!isset($respuesta1_correcta)) {
-                            $respuesta1_correcta = ($id_pregunta == 1);
-                        } else {
-                            $respuesta2_correcta = ($id_pregunta == 2);
+                    // COMPROBANDO PREGUNTAS
+                    if ($pregunta1 == $pregunta1BD && $pregunta2 == $pregunta2BD || $pregunta1 == $pregunta2BD && $pregunta2 == $pregunta1BD) {
+                        if (password_verify($respuestaUSR1, $respuesta1BD) && password_verify($respuestaUSR2, $respuesta2BD) || password_verify($respuestaUSR1, $respuesta2BD) && password_verify($respuestaUSR2, $respuesta1BD)) {
+                            echo "RESPUESTAS CORRECTAS";
+                            $_SESSION["recuperar_contraseña"] = 1;
+                            $_SESSION['comprobante'] = $cedula;
+                            include("cerrar_conexion.php");
+                        }else {
+                            // Las respuestas son incorrectas
+                            http_response_code(503);
+                            include("cerrar_conexion.php");
                         }
                     }
-                }
-                // Verificar si ambas respuestas son correctas
-                if ($respuesta1_correcta && $respuesta2_correcta) {
-                    // Las respuestas son correctas
-                    echo "RESPUESTAS CORRECTAS";
-                    $_SESSION["recuperar_contraseña"] = 1;
-                    $_SESSION['comprobante'] = $cedula;
-                    include("cerrar_conexion.php");
-                } else {
+                    else if ($pregunta1 == $pregunta1BD && $pregunta2 == $pregunta3BD || $pregunta1 == $pregunta3BD && $pregunta2 == $pregunta1BD) {
+                        if (password_verify($respuestaUSR1, $respuesta1BD) && password_verify($respuestaUSR2, $respuesta3BD) || password_verify($respuestaUSR1, $respuesta3BD) && password_verify($respuestaUSR2, $respuesta1BD)) {
+                            echo "RESPUESTAS CORRECTAS";
+                            $_SESSION["recuperar_contraseña"] = 1;
+                            $_SESSION['comprobante'] = $cedula;
+                            include("cerrar_conexion.php");
+                        }else {
+                            // Las respuestas son incorrectas
+                            http_response_code(503);
+                            include("cerrar_conexion.php");
+                        }
+                    }
+                    else if ($pregunta1 == $pregunta2BD && $pregunta2 == $pregunta3BD || $pregunta1 == $pregunta3BD && $pregunta2 == $pregunta2BD) {
+                        if (password_verify($respuestaUSR1, $respuesta2BD) && password_verify($respuestaUSR2, $respuesta3BD) || password_verify($respuestaUSR1, $respuesta3BD) && password_verify($respuestaUSR2, $respuesta2BD)) {
+                            echo "RESPUESTAS CORRECTAS";
+                            $_SESSION["recuperar_contraseña"] = 1;
+                            $_SESSION['comprobante'] = $cedula;
+                            include("cerrar_conexion.php");
+                        }else {
+                            // Las respuestas son incorrectas
+                            http_response_code(503);
+                            include("cerrar_conexion.php");
+                        }
+                    }
+                    else {
+                        // Las respuestas son incorrectas
+                        http_response_code(503);
+                        include("cerrar_conexion.php");
+                    }
+                }else {
                     // Las respuestas son incorrectas
-                    http_response_code(503);
+                    http_response_code(500);
                     include("cerrar_conexion.php");
                 }
             } else {

@@ -6,8 +6,9 @@ $(document).ready(function () {
     tabla_correspondencia_indiv_FIN();
     tabla_correspondencia_indiv_FIN_ADMIND();
     notificacionesCorrespALERTA();
+    tabla_correspondencia_registro();
+    tabla_empresas_corr();
 })
-
 
 // NOTIFICACIONES DEL INDEX SOBRE LA LLEGADA DE NOTIFICACIONES
 function notificacionesCorresp(){
@@ -94,6 +95,26 @@ function tabla_correspondencia_indiv() {
         }
     })
 }
+function tabla_empresas_corr(){
+    var parametros =
+    {
+        "correspondencia": "tabla_empresas"
+    }
+    $.ajax({
+        data: parametros,
+        type: "POST",
+        url: "../php/correspondencia.php",
+        error: function () {
+            alert("error al imprimir la tabla");
+        },
+        success: function (mensaje) {
+            $('#tabla_empresas_corr').html(mensaje);
+            new DataTable('#dataTable_empresas', {
+                language: Traduccion,
+            });
+        }
+    })
+}
 // TODOS LOS REGISTROS (SOLO JEFE CORRESPONDENCIA)
 function tabla_correspondencia() {
     var parametros =
@@ -133,6 +154,49 @@ function tabla_correspondencia() {
         }
     })
 }
+// TODOS LOS REGISTROS (SOLO JEFE CORRESPONDENCIA - REGISTRO)
+function tabla_correspondencia_registro() {
+    var parametros =
+    {
+        "correspondencia": "tabla_registro"
+    }
+    $.ajax({
+        data: parametros,
+        type: "POST",
+        url: "../php/correspondencia.php",
+        error: function () {
+            alert("error al imprimir la tabla");
+        },
+        success: function (mensaje) {
+            $('#tabla_correspondencia_registro').html(mensaje);
+            new DataTable('#dataTable_corres_registro', {
+                language: Traduccion,
+                "lengthChange": false,
+                "pageLength": 5,
+            
+                initComplete: function () {
+                    var api = this.api();
+                    // Obtener el índice de la columna de fechas
+                    var dateColumnIndex = 0; // Reemplaza con el índice de tu columna de fechas
+
+                    // Ordenar la columna de fechas de forma descendente (más lejano a más reciente)
+                    api.column(dateColumnIndex).order('desc').draw();
+                }
+            });
+
+            $('#dataTable_corres_registro tr').each(function () {
+                var est = $(this).find('td:last').text();
+                if (est == "En espera") {
+                    $(this).find('td:last').addClass('bg-warning text-dark');
+                } else if (est == "Confirmado") {
+                    $(this).find('td:last').addClass('bg-success text-dark');
+                }else if (est == "Alerta") {
+                    $(this).find('td:last').addClass('bg-danger text-dark');
+                }
+            });
+        }
+    })
+}
 // BUSCAR EMPRESA
 function empresas_fun() {
     Rif = document.getElementById('rif_empresa').value;
@@ -148,15 +212,14 @@ function empresas_fun() {
         dataType: 'json',
         type: "POST",
         url: "../php/correspondencia.php",
-        error: function (jqXHR, xhr, status, error) {
+        error: function (jqXHR) {
             var nroERROR = jqXHR.status;
             if (nroERROR == 500) {
-                document.getElementById('rif_empresa').classList.add('border-grey');
                 document.getElementById('rif_empresa').classList.remove('border-good');
+                document.getElementById('rif_empresa').classList.add('border-grey');
+                document.getElementById('letra_registro').classList.remove('ocultar-div');
                 document.getElementById('procedencia').value = '';
                 document.getElementById('idEmpresa').value = '';
-
-
             }
 
         },
@@ -164,7 +227,9 @@ function empresas_fun() {
             $('#procedencia').val(valores.nombre_emp);
             $('#idEmpresa').val(valores.idEmpresa);
             document.getElementById('rif_empresa').classList.remove('border-grey');
-            document.getElementById('rif_empresa').classList.add('border-good');
+            document.getElementById('rif_empresa').classList.add('border-gooda');
+            document.getElementById('letra_registro').classList.add('ocultar-div');
+
         }
     })
 

@@ -1,16 +1,16 @@
-// $(document).ready(function(){
+$(document).ready(function(){
 
-//     $('#pregunta1').change(function(){
-//         recargarPregunta();
-//         // alert("Selecciono una Dirección");
-//     });
+    $('#pregunta1').change(function(){
+        recargarPregunta();
+        // alert("Selecciono una Dirección");
+    });
 
-// })
+})
 
 
 // LLENANDO SELECTS
 function ListPreg(){
-    cedulaPreg = document.getElementById('cedula').value;
+    var cedulaPreg = document.getElementById('cedula').value;
     var parametros =
     
     {
@@ -39,36 +39,39 @@ function ListPreg(){
         },
         success: function(mensaje)
         {
-            $('#pregunta1').html(mensaje);
-            $('#pregunta2').html(mensaje);
             document.getElementById('cedula').setAttribute('readonly', true);  
             // $('#cedula').addClass('border-good '); 
-            $('#cedula').css("border", "1px solid green", "bg-grey");
+            $('#cedula').css("background", "#c4c4c4");
+            $('#cedula').css("border", "3px solid green", "bg-grey");
+            $('#pregunta1').html(mensaje);
+            // $('#pregunta2').html(mensaje);
 
             // alert("logrado");
         }
     })
 }
 
-// FUNCION PARA CARGAR LA LISTA DE DIVISIONES
-// function recargarPregunta(){
-//     var pregunta1 = document.getElementById('pregunta1').value;
-//     var cedulaPreg = document.getElementById('cedula').value;
+// FUNCION PARA CARGAR LA LISTA DE PREGUNTAS
+function recargarPregunta(){
+    var pregunta1 = document.getElementById('pregunta1').value;
+    // var pregunta2 = document.getElementById('pregunta2').value;
+    var cedulaPreg = document.getElementById('cedula').value;
 
-//     var parametros =
-//     {
-//         "pregunta1": pregunta1,
-//         "cedul":cedulaPreg,
-//         "preguntas": "preguntas"
-//     }
-//     $.ajax({
-//         type:"POST",
-//         url:"../php/preguntas_seguridad.php",
-//         data:parametros,
+    var parametros =
+    {
+        "pregunta1": pregunta1,
+        // "pregunta2": pregunta2,
+        "cedul":cedulaPreg,
+        "preguntas": "preguntas"
+    }
+    $.ajax({
+        type:"POST",
+        url:"../php/preguntas_seguridad.php",
+        data:parametros,
 
-//         success:function(r){
-//             $('#pregunta2').html(r);
-//         }
-//     });
+        success:function(r){
+            $('#pregunta2').html(r);
+        }
+    });
     
-// }
+}

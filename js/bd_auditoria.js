@@ -8,6 +8,8 @@ $(document).ready(function () {
                 $('#BDauditoria .modal-body').html(response);
                 auditoriaBD();
                 auditoriaUsr();
+                auditoriaDatos();
+                auditoriaDatos2();
 
             },
             error: function () {

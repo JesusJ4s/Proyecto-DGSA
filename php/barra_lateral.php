@@ -346,6 +346,9 @@ function barra_lateral_corr(){
                     <li>
                         <button id="cambio2" class="limpiador-botones" onclick="cambioPesta2();" ><img src="../assets/intranet/correspondencia/envio.png" class="img-btn">Registros</button>
                     </li>
+                    <li>
+                        <button id="cambio4" class="limpiador-botones" onclick="cambioPesta4();" ><img src="../assets/intranet/correspondencia/edificio.png" class="img-btn">Empresas</button>
+                    </li>
 
                     <li>
                         <button class="limpiador-botones" >

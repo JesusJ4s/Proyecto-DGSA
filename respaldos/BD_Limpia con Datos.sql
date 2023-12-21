@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-09-2023 a las 07:42:01
+-- Tiempo de generación: 21-12-2023 a las 02:48:47
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -54,6 +54,19 @@ CREATE TABLE `a1_usuarios` (
   `pin_seguridad` varchar(6) COLLATE utf8_bin NOT NULL,
   `sesion` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `a1_usuarios`
+--
+
+INSERT INTO `a1_usuarios` (`id_usuario`, `ActivoInactivo`, `nombre`, `apellido`, `nacionalidad`, `cedula`, `nombre_usuario`, `telefono`, `telefono_secundario`, `email`, `usuario_departamento_id`, `usuario_division_id`, `usuario_direccion_id`, `usuario_rol_id`, `contraseña`, `id_pregunta1`, `respuesta1`, `id_pregunta2`, `respuesta2`, `id_pregunta3`, `respuesta3`, `pin_seguridad`, `sesion`) VALUES
+(1, 1, 'Jesus', 'Castillo', 'V', '27146430', 'ADMINJ', '04124457287', '04120391931', 'jesusgole33@gmail.com', 21, 11, 1, 1, '$2y$10$NvPGv9rpQ7IfVRFLwb1MpOx5sNd1yBv2Ko2Z8y9qOrGRpYZHEyqt.', 1, '$2y$10$12dYgK7dVi/DK4/wMJx46.l1bObrpUOkiK/GIEjp7O4cVu0TtFROi', 2, '$2y$10$n3YQggpfcELpdrKvpqf8feJVOAzUUSseJP6tWBVYnUEJKm0A3qF4e', 3, '$2y$10$zuZ7nkTq.tHf/8HcvihtieEVvKXAJLeH6djAEQwyM3F9aAov/ADOC', '030303', 0),
+(2, 1, 'Prueba', 'Tecnico', 'V', '27146431', 'TECNICO1', '04124457287', '', 'jesusgole33@gmail.com', 21, 11, 1, 2, '$2y$10$C/HpR5XniJUcGBFMHJw3GOheL3dG2D255EqAHFx5p3nuOUsvlMJqu', 1, '$2y$10$pMo0iPT6zpu4apIwNmyR6OqCbOEVP.HuoTLwvKoneoGlpVhe2k052', 2, '$2y$10$WozaJtNhQnEbKm7bV1TLSuoKJtWNAfK.ScFB3G.cb.ju3RUFFe5g.', 3, '$2y$10$W2xfe7SZsIXW6K1frp90/OvEl9pJJEa4HgDnbnfy2zu/28RrlYmr2', '030303', 0),
+(3, 1, 'Jefe', 'Correspondencia', 'V', '27146432', 'JEFECORR', '04124457287', '', 'jesusgole33@gmail.com', 80, 1, 1, 3, '$2y$10$J/Va.zo22hYZDkBDf1uaROYAEQHA/.7aimYG1hRXouZzZrTH4XOsy', 1, '$2y$10$6/IlcYLcakRstuM8a0.tAO8q419kYX3FoeXgc78m7cLDb35UBnqCC', 2, '$2y$10$ZPiu6F64nWaHsh1q4M9yxOczLlyuNeOiuCSznieKTXjSJlZqIGg/K', 3, '$2y$10$Zpdz2QPby1bhi0zBpONwDuabmfktPzKrJ5pAp9x965iwWad/u2nvq', '030303', 0),
+(4, 1, 'Empleado', 'Vista', 'V', '27146433', 'EMPLEADO', '04124457287', '', 'jesusgole33@gmail.com', 25, 15, 1, 4, '$2y$10$vIQOE8Vk0x2UinfutOtqhOX.wEeRkZBuuREMt76RuhkCJ16r22pOW', 1, '$2y$10$GY0IcODJAc2YSJdm0y/Fru43BbTUxJpnTg1icM1e3Q1qj/KQD0jBS', 2, '$2y$10$M3R//RYBCpzYBbEldq4PSeloIexkktbayOXZMubGshVkB0IBRCApq', 3, '$2y$10$vc3weLGWv4eOwx0rLmlRbueMMPze/F1S12VbDWjqnr9cSAX22ZL1y', '030303', 0),
+(5, 1, 'Salud', 'Radiologica', 'V', '27146434', 'RADIOLOGO', '04124457287', '', 'jesusgole33@gmail.com', 72, 30, 3, 3, '$2y$10$3xqE/4YErRTagfCBGvd6f.Ajagr7OOubm9d3UdgoRJfT2fdyAlqDC', 1, '$2y$10$LFw/K3WLbKj3dCW5vqkZ.e7.w6lqs0O6QR126FVJFQ8jzGx7IQbyS', 2, '$2y$10$nUdPAGKoDnb5MInuXO/AAeaTXjy/ouTAgCSWQrA1v0tE3M3sZZN8W', 3, '$2y$10$6Fzsi/yQJVaG08ZM7W/nheny/6Ttypyxq1BtFc.cGWXJ0kVaJJ/VW', '030303', 0),
+(6, 1, 'Emi', 'Gia', 'V', '27146435', 'EPIDEMIOLOGIA', '04124457287', '', 'jesusgole33@gmail.com', 40, 21, 5, 3, '$2y$10$Q6HluVEBpK.mwO7Umgkq3O0rJaPmfEAQ..iBuReRhE/yP5jFBTmO6', 1, '$2y$10$d9.crVeMKgUH7SCNPOTNXORKI7ttCh6OXrx115WA9S.s1S86GKKZ.', 2, '$2y$10$1/ZSKCNWpPf/T14hmQOj2.c0LFMpuYzj8zYAZko5L65pSZWWV867a', 3, '$2y$10$kUHDC63CChXgw7Da/ulYq.jeSia4cpsaWC1Mui6Vc/bmsd2uj/UwW', '030303', 0),
+(7, 1, 'Jesus', 'Castillo', 'V', '271464300', 'JESUS', '04124457287', '', 'jesusgole33@gmail.com', 21, 11, 1, 5, '$2y$10$Q7krDxyQouhIn9aPktvT3O2m/8WVPzj6vD5WJ7jB7NE6VAgvbDxBW', 1, '$2y$10$51ap3oYt5/0fSK5VJVOUkeJ63YPDws3Eufb1UGZwmAjOuevFwbxCe', 2, '$2y$10$ZvZFxJOjQAw/m2jMLUhA6OO5dfK7CHznRwZhOpVT5Ik9IHe9QHfMi', 4, '$2y$10$omk8.M4c0qTE18iLFyiwIOmLhImleEVqlJvlyfM8s/mc7H/fx2tg6', '030303', 0);
 
 -- --------------------------------------------------------
 
@@ -185,7 +198,7 @@ INSERT INTO `b2_divisiones` (`id_divisiones`, `nombre_div`, `division_direccion_
 (21, 'Sala de Inspectores', 5),
 (22, 'Sala Dibujo', 5),
 (23, 'Coordinación Gestión de Medicamentos', 5),
-(24, 'Sala Situacional', 5),
+(24, 'Sala Situacional', 1),
 (25, 'Laboratorio de Malaria', 5),
 (26, 'Laboratorio de Parasitología', 5),
 (27, 'Laboratorio de Chagas', 5),
@@ -267,7 +280,8 @@ INSERT INTO `b3_departamentos` (`id_departamento`, `nombre_dpto`, `departamento_
 (76, 'Departamento Informática (Dosimetria Externa)', 31),
 (77, 'Dosimetria Ambiental', 31),
 (78, 'Dosimetria Clinica y Auditoria de Equipos', 31),
-(79, 'Registro Nacional de Dosimetria', 31);
+(79, 'Registro Nacional de Dosimetria', 31),
+(80, 'Correspondencia', 1);
 
 -- --------------------------------------------------------
 
@@ -306,6 +320,7 @@ CREATE TABLE `c1_inventario_equipo` (
   `mouse_marca` varchar(45) COLLATE utf8_bin NOT NULL,
   `mouse_conexion` varchar(45) COLLATE utf8_bin NOT NULL,
   `monitor` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `monitor_marca` varchar(100) COLLATE utf8_bin NOT NULL,
   `monitor_conexion` varchar(45) COLLATE utf8_bin NOT NULL,
   `BN_serial_monitor` varchar(45) COLLATE utf8_bin DEFAULT NULL,
   `regulador` varchar(45) COLLATE utf8_bin DEFAULT NULL,
@@ -316,11 +331,25 @@ CREATE TABLE `c1_inventario_equipo` (
   `teclado_conexion` varchar(45) COLLATE utf8_bin NOT NULL,
   `BN_serial_teclado` varchar(45) COLLATE utf8_bin DEFAULT NULL,
   `escaner` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `escaner_marca` varchar(100) COLLATE utf8_bin NOT NULL,
   `escaner_modelo` varchar(45) COLLATE utf8_bin NOT NULL,
   `escaner_conexion` varchar(45) COLLATE utf8_bin NOT NULL,
+  `escaner_operativo` varchar(25) COLLATE utf8_bin NOT NULL,
+  `toner_tinta` varchar(25) COLLATE utf8_bin NOT NULL,
+  `conectada_red` varchar(25) COLLATE utf8_bin NOT NULL,
   `BN_serial_escaner` varchar(45) COLLATE utf8_bin DEFAULT NULL,
-  `comentario` varchar(255) COLLATE utf8_bin DEFAULT NULL
+  `comentario` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `notas_edicion` longtext COLLATE utf8_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `c1_inventario_equipo`
+--
+
+INSERT INTO `c1_inventario_equipo` (`id_case`, `fecha_inventario`, `ing_encar_inv_id`, `dpto_inv_id`, `division_inv_id`, `direccion_inv_id`, `responsable`, `supervisor_dpto`, `nombre_equipo`, `BN_equipo`, `serial_equipo`, `tipo_de_equipo`, `cpu_modelo`, `cpu_velocidad`, `mac`, `ip`, `disco_duro_cap`, `disco_duro_marca`, `disco_duro_serial`, `ram`, `ram_velocidad`, `windows_ver`, `conect_red`, `tipo_conexion`, `internet`, `mouse`, `BN_serial_mouse`, `mouse_marca`, `mouse_conexion`, `monitor`, `monitor_marca`, `monitor_conexion`, `BN_serial_monitor`, `regulador`, `regulador_marca`, `BN_serial_regulador`, `teclado`, `teclado_marca`, `teclado_conexion`, `BN_serial_teclado`, `escaner`, `escaner_marca`, `escaner_modelo`, `escaner_conexion`, `escaner_operativo`, `toner_tinta`, `conectada_red`, `BN_serial_escaner`, `comentario`, `notas_edicion`) VALUES
+(1, '2023-09-26', 2, 43, 24, 1, 'Javier Martinez', 'Rodolfo Mejias', 'M1SSPC18', '5080795', 'SinSerial', 'Escritorio', 'i5 10505', '3.20Ghz', 'D0-8E-79-0F-A4-C6', '10.72.3.236', '512gb', 'desconocida', '42D54D8B', '1', '8Gb', '10', 'Si', 'Ambas', 'Si', 'Si', 'SinBN', 'HP', 'USB', 'Si', 'Dell', 'VGA', '5080795', 'Si', 'Generico', '5080795', 'Si', 'Generico', 'USB', '5080795', 'No', '', '', '', '', '', '', '', 'Primer registro del equipo de inventario tecnológico', 'Haciendo un cambio en el jefe de departamento por una prueba<br><br>Siguiente prueba en la edicion del equipo'),
+(2, '2023-10-02', 2, 1, 1, 1, 'Elirrog Cruces', 'Ing Rodolfo Mejias', 'M1SSPC17', '5080796', 'SinSerial', 'Escritorio', 'Intel i5 10505', '3.20Ghz', 'D0-8E-79-0F-A3-11', '10.72.3.225', '500gb', 'seagate', 'CL-3D512-Q11NVMe', '1', '8gb', '10', 'Si', 'Cableada', 'Si', 'Si', '5080796', 'Dell', 'USB', 'Si', 'Dell', 'HDMI', '5080796', 'Si', 'Dell', '5080796', 'Si', 'Dell', 'USB', '5080796', 'Si', 'HP', 'besto', 'USB', 'Si', 'Toner', 'No', '5080796', 'Posee un escaner, pero actualmente se encuentra dañado', 'Segunda edicion para probar la concatenacion<br><br>Tercer intento para irme a dormir<br><br>Prueba de funcionamiento de la auditoria version 2<br><br>Se reparo el escaner asignado al equipo de sala situacional'),
+(3, '2023-11-05', 2, 1, 1, 1, 'Jose Mejias', 'Ing Rodolfo Mejias', 'M1SSPC16', '3690090', '', 'Escritorio', 'i3 2100', '3.10GHz', 'D0-27-88-6D-56-21', '10.72.3.238', '500Gb', 'WesternDigital', 'WD5000AAKX', '2', '8gb', '10', 'Si', 'Cableada', 'Si', 'Si', '3690090', 'DELL', 'USB', '', 'HPHP', 'VGAA', '3690090', 'Si', 'OMEGA', '5015987', 'Si', 'HP', 'USB', '3690090', 'No', '', '', '', '', '', '', '', 'Se registra nuevo equipo en la base de datos', NULL);
 
 -- --------------------------------------------------------
 
@@ -342,7 +371,8 @@ INSERT INTO `c3_1_estado_soporte` (`id_estado_sop`, `nombre_estado`) VALUES
 (2, 'En Proceso'),
 (3, 'Finalizado'),
 (4, 'Rechazado'),
-(5, 'Rechazado Definitivo');
+(5, 'Rechazado Definitivo'),
+(6, 'Falta Repuesto');
 
 -- --------------------------------------------------------
 
@@ -362,7 +392,8 @@ CREATE TABLE `c3_solicitudes_soportes` (
   `fecha_soporte_aceptacion` datetime NOT NULL,
   `tecnico_soporte_id` int(11) DEFAULT NULL,
   `fecha_soporte_final` datetime NOT NULL,
-  `comentario` varchar(255) COLLATE utf8_bin NOT NULL
+  `comentario` varchar(255) COLLATE utf8_bin NOT NULL,
+  `historial_soporte` text COLLATE utf8_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
@@ -425,10 +456,10 @@ CREATE TABLE `d3_notificaciones_div` (
   `Jefe_Corres` int(11) NOT NULL,
   `Jefe_Ced_Corres` varchar(45) COLLATE utf8_bin NOT NULL,
   `fecha_llegada_corresp` datetime NOT NULL,
-  `fecha_elim_notifi` datetime NOT NULL,
   `fecha_confirmacion_corres` datetime DEFAULT NULL,
   `descripcion_corresp` varchar(255) COLLATE utf8_bin NOT NULL,
-  `estatus_Corres` int(1) NOT NULL
+  `estatus_Corres` int(1) NOT NULL,
+  `nota_final_corresp` varchar(255) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
@@ -449,7 +480,8 @@ CREATE TABLE `d4_notificaciones_estatus` (
 INSERT INTO `d4_notificaciones_estatus` (`id_estatus_notifi`, `nombre_estatus_notifi`) VALUES
 (1, 'En espera'),
 (2, 'Confirmado'),
-(3, 'Alerta');
+(3, 'Alerta'),
+(4, 'Rechazado');
 
 -- --------------------------------------------------------
 
@@ -461,9 +493,20 @@ CREATE TABLE `z1_historial_camb_sis` (
   `id_historial_cambios` int(11) NOT NULL,
   `id_usuario_cambio` int(11) NOT NULL,
   `id_accion_cambio` int(11) NOT NULL,
+  `entidad_cambio` varchar(100) COLLATE utf8_bin NOT NULL,
   `fecha_usuario_cambio` datetime DEFAULT NULL,
   `descripcion_cambio` text COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `z1_historial_camb_sis`
+--
+
+INSERT INTO `z1_historial_camb_sis` (`id_historial_cambios`, `id_usuario_cambio`, `id_accion_cambio`, `entidad_cambio`, `fecha_usuario_cambio`, `descripcion_cambio`) VALUES
+(1, 1, 3, '27146430', '2023-12-20 21:47:23', 'Ingreso del Usuario: Jesus Castillo.'),
+(2, 1, 4, '27146430', '2023-12-20 21:47:47', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(3, 1, 3, '27146430', '2023-12-20 21:47:56', 'Ingreso del Usuario: Jesus Castillo.'),
+(4, 1, 4, '27146430', '2023-12-20 21:48:30', 'Salida del sistema del Usuario: Jesus Castillo.');
 
 -- --------------------------------------------------------
 
@@ -481,13 +524,23 @@ CREATE TABLE `z2_historial_acciones` (
 --
 
 INSERT INTO `z2_historial_acciones` (`id_accHis`, `nombre_accion`) VALUES
-(1, 'Registro'),
-(2, 'Modificación'),
-(3, 'Rechazo'),
-(4, 'Eliminacion'),
-(5, 'Ingreso al Sistema'),
-(6, 'Salida del Sistema'),
-(7, 'Creación Respaldo');
+(1, 'Registro Datos Usuario'),
+(2, 'Modificación Datos Usuario'),
+(3, 'Ingreso al Sistema'),
+(4, 'Salida del Sistema'),
+(5, 'Registro Equipo Tecnológico'),
+(6, 'Edición Equipo Tecnológico'),
+(7, 'Desincorporación de Equipo Tecnológico'),
+(8, 'Solicitud de Soporte Técnico'),
+(9, 'Soporte Técnico Aceptado'),
+(10, 'Soporte Técnico Falta de Componente'),
+(11, 'Soporte Técnico Finalizado'),
+(12, 'Soporte Técnico Rechazado'),
+(13, 'Registro Correspondencia'),
+(14, 'Correspondencia aceptada'),
+(15, 'Registro Institución Correspondencia'),
+(16, 'Registro Base de Conocimiento'),
+(17, 'Creación Respaldo');
 
 --
 -- Índices para tablas volcadas
@@ -631,7 +684,7 @@ ALTER TABLE `z2_historial_acciones`
 -- AUTO_INCREMENT de la tabla `a1_usuarios`
 --
 ALTER TABLE `a1_usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `a2_rol`
@@ -667,19 +720,19 @@ ALTER TABLE `b2_divisiones`
 -- AUTO_INCREMENT de la tabla `b3_departamentos`
 --
 ALTER TABLE `b3_departamentos`
-  MODIFY `id_departamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `id_departamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT de la tabla `c1_inventario_equipo`
 --
 ALTER TABLE `c1_inventario_equipo`
-  MODIFY `id_case` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_case` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `c3_1_estado_soporte`
 --
 ALTER TABLE `c3_1_estado_soporte`
-  MODIFY `id_estado_sop` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_estado_sop` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `c3_solicitudes_soportes`
@@ -694,40 +747,16 @@ ALTER TABLE `c4_base_conocimiento`
   MODIFY `id_conocimiento` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `d1_correspondencia`
---
-ALTER TABLE `d1_correspondencia`
-  MODIFY `id_nro_admision` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `d2_empresas_corresp`
---
-ALTER TABLE `d2_empresas_corresp`
-  MODIFY `id_empresas` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `d3_notificaciones_div`
---
-ALTER TABLE `d3_notificaciones_div`
-  MODIFY `id_notificacion` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `d4_notificaciones_estatus`
---
-ALTER TABLE `d4_notificaciones_estatus`
-  MODIFY `id_estatus_notifi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- AUTO_INCREMENT de la tabla `z1_historial_camb_sis`
 --
 ALTER TABLE `z1_historial_camb_sis`
-  MODIFY `id_historial_cambios` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_historial_cambios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `z2_historial_acciones`
 --
 ALTER TABLE `z2_historial_acciones`
-  MODIFY `id_accHis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_accHis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Restricciones para tablas volcadas

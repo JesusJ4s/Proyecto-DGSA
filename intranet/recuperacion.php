@@ -54,91 +54,93 @@ $_SESSION["comprobante"] = 0;
             <!-- ******************************************************* -->
             <div class="container d-flex justify-content-center gap-0">
 
-                <form class="text-center box-shadow-intra rounded formulario__usr-crear row p-4" method="post"
-                    id="recuperacion">
-                    <h3 class="m-0" id="title_recuperacion">Para recuperar su usuario, ingrese sus datos</h3>
+                <form class="box-shadow-intra rounded formulario__usr-crear row p-4 text-center" method="post"
+                id="recuperacion">
+                    <!-- <div> -->
+                        <h3 class="m-0" id="title_recuperacion">Para recuperar su usuario, ingrese sus datos</h3>
+                        
+                    <!-- </div> -->
                     <!-- Grupo Cedula -->
-                    <div class="col-6">
-                        <div class="formulario__grupo m-0" id="grupo__cedula">
-                            <div class="text-start">
-                                <label class="ms-4 formulario__label w-50 p-0" for="cedula">Cedula</label>
-                                <div class="ms-4" id="mostrar_mensaje_ci"></div>
-                                <div class="w-85 formulario__grupo-input" id="div_cedula">
-                                    <input type="text" class="form-control ms-4 formulario__input w-65" id="cedula"
-                                        name="cedula" placeholder="*Obligatoria*" maxlength="9" minlength="7" required
-                                        onblur="ListPreg();">
+                    <div class="col-12 d-flex justify-content-center row">
+                        <div class="mx-3 p-3 col-4 box-shadow-total">
+                            <div class="formulario__grupo m-0" id="grupo__cedula">
+                                <div class="text-start">
+                                    <label class="ms-4 formulario__label w-50 p-0" for="cedula">Cedula</label>
+                                    <div class="ms-4" id="mostrar_mensaje_ci"></div>
+                                    <div class="formulario__grupo-input" id="div_cedula">
+                                        <input type="text" class="form-control ms-4 formulario__input w-85" id="cedula"
+                                            name="cedula" placeholder="*Obligatoria*" maxlength="9" minlength="7" required
+                                            onblur="ListPreg();">
+                                    </div>
+                                    <p class="formulario__input-error px-3">La cédula debe ser de un máximo de 9 dígitos y un mínimo de 7</p>
                                 </div>
-                                <p class="formulario__input-error px-3">La cédula debe ser de un máximo de 9 dígitos y
-                                    un
-                                    mínimo de 7</p>
+                            </div>
+                            <!-- Grupo botones de salida y envío -->
+                            <div class="formulario__grupo formulario__grupo-btn-enviar d-flex justify-content-start">
+                                <button type="submit" class="btn btn-primary btn-lg" id="verificar"
+                                    name="verificar">Verificar</button>
+                                <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado
+                                    correctamente</p>
+
+                                <div class='container-fluid text-center ocultar-div' id="div_cambiar"><a id='cambiar'
+                                        class='btn btn-secondary mt-2' href='recuperacion_contr.php'>Cambiar Contraseña</a>
+                                </div>
+
+                                <a id="salir" class="btn btn-secondary mt-2" href="intranet.php">Volver</a>
                             </div>
                         </div>
-                        <!-- Grupo botones de salida y envío -->
-                        <div class="formulario__grupo formulario__grupo-btn-enviar d-flex justify-content-start">
-                            <button type="submit" class="btn btn-primary btn-lg" id="verificar"
-                                name="verificar">Verificar</button>
-                            <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado
-                                correctamente</p>
+                        <div class="mx-3 p-3 col-6 box-shadow-total">
+                            <!-- PREGUNTA 1 -->
+                            <div class="formulario__grupo m-0" id="">
+                                <div class="text-start">
+                                    <label class="ms-4 formulario__label" for="pregunta1">Pregunta 1:</label>
+                                    <select class="form-select" id="pregunta1" name="pregunta1">
+                                        <option value="0">-- opciones --</option>
 
-                            <div class='container-fluid text-center ocultar-div' id="div_cambiar"><a id='cambiar'
-                                    class='btn btn-secondary mt-2' href='recuperacion_contr.php'>Cambiar Contraseña</a>
+                                    </select>
+                                    <!-- <input id="pregunta1" name="pregunta1" readonly> -->
+
+                                </div>
                             </div>
 
-                            <a id="salir" class="btn btn-secondary mt-2" href="intranet.php">Volver</a>
+                            <!-- RESPUESTA1 -->
+                            <div class="formulario__grupo m-0" id="grupo__respuesta1">
+                                <div class="text-start">
+                                    <label class="ms-4 formulario__label" for="respuesta1">Respuesta:</label>
+                                    <div class="w-85 formulario__grupo-input">
+                                        <input type="text" class="form-control ms-4 formulario__input"
+                                            placeholder="respuesta" id="respuesta_1" name="respuesta_1" required
+                                            pattern="[a-zA-ZÀ-ý%\s]+" minlength="3" maxlength="18">
+                                    </div>
+                                    <p class="formulario__input-error px-3">Responda a la pregunta con solo letras.</p>
+                                </div>
+                            </div>
+
+                            <!-- PREGUNTA 2 -->
+                            <div class="col-10 formulario__grupo m-0" id="">
+                                <div class="text-start">
+                                    <label class="ms-4 formulario__label" for="pregunta2">Pregunta 2:</label>
+                                    <select class="form-select" id="pregunta2" name="pregunta2">
+                                        <option value="0">-- opciones --</option>
+                                    </select>
+                                    <!-- <input id="pregunta2" name="pregunta2" readonly> -->
+                                </div>
+                            </div>
+
+                            <!-- RESPUESTA 2 -->
+                            <div class="col-10 formulario__grupo m-0" id="grupo__respuesta2">
+                                <div class="text-start">
+                                    <label class="ms-4 formulario__label" for="respuesta2">Respuesta</label>
+                                    <div class="w-85 formulario__grupo-input">
+                                        <input type="text" class="form-control ms-4 formulario__input"
+                                            placeholder="respuesta" id="respuesta_2" name="respuesta_2" required>
+                                    </div>
+                                    <p class="formulario__input-error px-3">Responda a la pregunta con solo letras.</p>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-                    <div class="col-6">
-                        <!-- PREGUNTA 1 -->
-                        <div class="col-10 formulario__grupo m-0" id="">
-                            <div class="text-start">
-                                <label class="ms-4 formulario__label" for="pregunta1">Pregunta 1:</label>
-                                <select class="form-select" id="pregunta1" name="pregunta1">
-                                    <option value="0">-- opciones --</option>
-
-                                </select>
-                                <!-- <input id="pregunta1" name="pregunta1" readonly> -->
-
-                            </div>
-                        </div>
-
-                        <!-- RESPUESTA1 -->
-                        <div class="col-10 formulario__grupo m-0" id="grupo__respuesta1">
-                            <div class="text-start">
-                                <label class="ms-4 formulario__label" for="respuesta1">Respuesta:</label>
-                                <div class="w-85 formulario__grupo-input">
-                                    <input type="text" class="form-control ms-4 formulario__input"
-                                        placeholder="respuesta" id="respuesta_1" name="respuesta_1" required
-                                        pattern="[a-zA-ZÀ-ý%\s]+" minlength="3" maxlength="18">
-                                </div>
-                                <p class="formulario__input-error px-3">Responda a la pregunta con solo letras.</p>
-                            </div>
-                        </div>
-
-                        <!-- PREGUNTA 2 -->
-                        <div class="col-10 formulario__grupo m-0" id="">
-                            <div class="text-start">
-                                <label class="ms-4 formulario__label" for="pregunta2">Pregunta 2:</label>
-                                <select class="form-select" id="pregunta2" name="pregunta2">
-                                    <option value="0">-- opciones --</option>
-                                </select>
-                                <!-- <input id="pregunta2" name="pregunta2" readonly> -->
-                            </div>
-                        </div>
-
-                        <!-- RESPUESTA 2 -->
-                        <div class="col-10 formulario__grupo m-0" id="grupo__respuesta2">
-                            <div class="text-start">
-                                <label class="ms-4 formulario__label" for="respuesta2">Respuesta</label>
-                                <div class="w-85 formulario__grupo-input">
-                                    <input type="text" class="form-control ms-4 formulario__input"
-                                        placeholder="respuesta" id="respuesta_2" name="respuesta_2" required>
-                                </div>
-                                <p class="formulario__input-error px-3">Responda a la pregunta con solo letras.</p>
-                            </div>
-                        </div>
-
-                    </div>
-
                     <!-- TODO: -->
                     <input type="hidden" id="ingreso" name="ingreso" value="verificacion">
 
