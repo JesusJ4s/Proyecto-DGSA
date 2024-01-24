@@ -1,4 +1,6 @@
 Iconos
+<a href="https://www.flaticon.es/iconos-gratis/galeria" title="galería iconos">Galería iconos creados por Freepik - Flaticon</a>
+
 <a href="https://www.flaticon.es/iconos-gratis/garrapata" title="garrapata iconos">Garrapata iconos creados por Roundicons - Flaticon</a>
 
 <a href="https://www.flaticon.es/iconos-gratis/sql" title="sql iconos">Sql iconos creados por Smashicons - Flaticon</a>

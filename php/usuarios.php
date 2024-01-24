@@ -10,9 +10,11 @@ $soloLetras = '/^[a-zA-ZÀ-ý]{1,45}$/';
 $CONTR = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_]{8,15}$/';
 $ci = '/^[0-9]{7,9}$/';
 $soloNro1 = '/^[1-9]{1}$/';
-$USR = '/^[a-zA-Z0-9\_\-]{4,16}$/';
+$USR = '/^[a-zA-Z0-9À-ý\_-]{4,16}$/';
 $respuesta = '/^[a-zA-ZÀ-ý]{1,20}$/';
 $preguntas = '/^[a-zA-ZÀ-ý\s]{1,45}$/';
+
+$telefonoPREG = '/^(?:\d{4}-?\d{7}|\d{11})?$/'; // 7 a 14
 
 function darFormatoOriginal($string)
 {
@@ -382,11 +384,11 @@ if ($ingreso == "AjustesUsr") {
     $cedula = $_SESSION['cedula_var_global'];
     $existe_ci = 0;
     $nombre_USR = $_POST["usuario"];
-    $pin_seguridad = darFormatoOriginal($_POST["pinSeguridad"]);
+    $pin_seguridad = $_POST["pinSeguridad"];
 
 
     // Pasar nombre de usuario a mayúsculas
-    $nombre_usuario = darFormatoOriginal(strtoupper($nombre_USR));
+    $nombre_usuario = strtoupper($nombre_USR);
 
     $contr_verificador = $_POST["contraseña"];
     if ($contr_verificador == '') {
@@ -395,18 +397,14 @@ if ($ingreso == "AjustesUsr") {
         $contraseña = password_hash($_POST["contraseña"], PASSWORD_DEFAULT);
     }
 
-    $telefono = darFormatoOriginal($_POST["telefono"]);
-    $telefono_secundario = darFormatoOriginal($_POST["telefono2"]);
-
-    $pos = strpos($nombre_usuario, $findme);
-    $pos2 = strpos($telefono, $findme);
-    $pos3 = strpos($telefono_secundario, $findme);
+    $telefono = $_POST["telefono"];
+    $telefono_secundario = $_POST["telefono2"];
 
     $email = $_POST["correo"];
-
-    if ($pos === false && $pos2 === false && $pos3 === false) {
+    // echo $telefono." ".$telefono_secundario." ".$nombre_usuario;
+    if (preg_match($USR,$nombre_usuario) && preg_match($telefonoPREG,$telefono) && preg_match($telefonoPREG,$telefono_secundario)) {
         if ($contraseña == '') {
-            if (preg_match($USR, $nombre_usuario)) {
+            if (preg_match($USR,$nombre_usuario)) {
                 include("abrir_conexion.php");
 
                 //VERIFICAR SI LA CEDULA EXISTE EN EL SISTEMA
@@ -471,7 +469,7 @@ if ($ingreso == "AjustesUsr") {
                             $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . implode(" ", $cambios) . " Cambios realizados.";
 
                             $accionModificacion = "2";
-                            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, entidad_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', '$cedula', now(), '$descripcion_Cambio')";
+                            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', '$cedula', now(), '$descripcion_Cambio')";
                             mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
                         }
 
@@ -544,7 +542,7 @@ if ($ingreso == "AjustesUsr") {
                                 $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en sus datos: " . implode(" ", $cambios) . " Cambios realizados.";
                             
                                 $accionModificacion = "2";
-                                $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, entidad_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$cedula', '$accionModificacion', now(), '$descripcion_Cambio')";
+                                $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionModificacion', '$cedula', now(), '$descripcion_Cambio')";
                                 mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
                             }
 
@@ -567,7 +565,7 @@ if ($ingreso == "AjustesUsr") {
                     http_response_code(501);
                 }
             } else {
-                http_response_code(500);
+                http_response_code(507);
             }
         } else if ($contraseña != '' && preg_match($USR, $nombre_usuario)) {
             include("abrir_conexion.php");
@@ -734,8 +732,10 @@ if ($ingreso == "AjustesUsr") {
             http_response_code(500);
         }
     } else {
-        http_response_code(504);
-        include("php/cerrar_conexion.php");
+        echo $telefono." ".$telefono_secundario." ".$nombre_usuario;
+
+        // http_response_code(504);
+        // include("php/cerrar_conexion.php");
     }
 }
 
@@ -1375,4 +1375,3 @@ if ($ingreso == "cambioStatus") {
 
 
 }
-?>

@@ -2,17 +2,7 @@ $(document).ready(function () {
     estadisticaSoporteB();
     estadisticaSoporteL();
 })
- //     
-        //     (                               (                             
-        //         *   )   )        )\ )                            )\ ) (                        
-        //       ` )  /(( /(   (   (()/(  (      ) (  (            (()/( )\   ) (      (  (       
-        //        ( )(_))\()) ))\   /(_)) )(  ( /( )\))( (   (      /(_)|(_| /( )\ )  ))\ )(  (   
-        //       (_(_()|(_)\ /((_) (_))_ (()\ )(_)|(_))\ )\  )\ )  (_)__ ())(__()) _ )(_)|()/( / 
-        //       |_   _| |(_|_))    |_   _| ((_|(_)_ (()(_|(_)_(_/(  |  | ^ |  ||(|| ((_)_ )(_)|) 
-        //         | | | ' \/ -_)     | |   /__  / -_)| / / _` | |   |   / \   |/ _` ||  _)/__ 
-        //         |_| |_||_\___|   |_____|/___/ \___||_\_\__,_| |   |__/   \__|\__,_|| | /____/ 
-        //                                 
-        //        Corregido por pankercito (Eiker Rodriguez) 
+
 function estadisticaSoporteB() {
     const promedio = document.querySelector('#solicitudesProm');
     var parametros =
@@ -25,9 +15,10 @@ function estadisticaSoporteB() {
         url: "../php/estadisticasSoporte.php",
         success: function (response) {
             if (response != null) {
+                console.log(response);
                 var colon = JSON.parse(response);
                 // ordenar datos de array 
-                // console.log(colon);
+                // alert("llego");
                 const Fina = colon[0];
                 const Rech = colon[1];
                 const Resp = colon[2];
@@ -128,7 +119,7 @@ function estadisticaSoporteL() {
         url: "../php/estadisticasSoporte.php",
         success: function (response) {
             var datosJson = JSON.parse(response);
-            console.log(datosJson);
+            // console.log(datosJson);
 
             // crear grafico con variables de base de dato
             const fin = datosJson[0][0].join().split(",");

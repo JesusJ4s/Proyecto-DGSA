@@ -9,6 +9,8 @@
         include("php/estilosCss.php");
         stile1();
     ?>
+    <script src="jquery/jquery-3.6.4.min.js"></script>
+
     <title>Epidemiología Ambiental</title>
 </head>
 <body class=" min-width-index">
@@ -35,31 +37,17 @@
     <?php
         include("php/marquesina.php")
     ?>
-
-
-    <!-- **************************************************************** -->
+        <!-- **************************************************************** -->
     <!-- TITULO PAGINA -->
-    <!-- <div class="container-fluid text-center">
+    <div class="container-fluid text-center">
         <p class="display-4 bold-title">
             Dirección Epidemiología Ambiental
         </p>
-    </div> -->
-
+    </div>
     <!-- **************************************************************** -->
     <!-- Barra de navegación -->
     <div class="accordion mb-5" id="accordionExample">    
-        <!-- <nav class="ms-5 me-5">
-            <div class="container-fluid p-3 my-4  bg-azul-claro-cromatico5 box-shadow-nav text-center rounded">
-            <ul class="list-group list-group-horizontal">
-            <a class="list-group-item list-group-item-action bg-azul-claro-cromatico5" href="#DEA_Obj">Objetivo</a>
-            <a class="list-group-item list-group-item-action bg-azul-claro-cromatico5" href="#DEA_Mis_Vis">Misión y Visión</a>
-            <a class="list-group-item list-group-item-action bg-azul-claro-cromatico5" href="#DEA_Estructura*">Estructura organizativa</a>
-            <a class="list-group-item list-group-item-action bg-azul-claro-cromatico5" href="#DEA_Funciones">Funciones</a>
-            <a class="list-group-item bg-azul-claro-cromatico5" href='dir_epid_amb.php'><img src='assets/icon/inicio2.png' id='PaginaPrin' class='w-50x50'></a>
-          
-                          
-            </div>
-        </nav> -->
+
         <nav class="navbar navbar-expand-lg navbar-light bg-barra py-4">
             <div class="container-lg text-center">
                 <!-- <h4 class="me-5" >Nosotros</h4> -->
@@ -76,11 +64,6 @@
                                 <b>Organigrama</b>
                             </button>
                         </li>
-                        <!-- <li class="nav-item my-2">
-                            <button class="btn bg-barra btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseResena" aria-expanded="false" aria-controls="collapseResena">
-                                <b>Reseña Histórica</b>
-                            </button>
-                        </li> -->
                         <li class="nav-item my-2">
                             <button class="btn bg-barra btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#DEA_Mis_Vis" aria-expanded="false" aria-controls="DEA_Mis_Vis">
                                 <b>Misión y Visión</b>
@@ -102,17 +85,8 @@
             </div>
         </nav> 
            
-
-        
-        <!-- </ul> -->
-        <!-- *********************************************************************************** -->
-        <!-- LISTA PARA ELEGIR TEMA -->
-
-   
-
         <hr class="my-5">
         
-        <!-- ******************************************************************************* -->
         <!-- CONTENIDO -->
         
         <!-- Estructura Organizativa -->
@@ -170,13 +144,11 @@
             </div>
         </section>
 
-
-
         <!-- Funciones -->
-        <section class="container-fluid w-95 my-5">
+        <section class="container-fluid w-85 my-5">
             <div class="accordion-collapse collapse" id="DEA_Funciones" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
                 <div class="">
-                    <h2 id="DEA_Funciones" class="bold text-start mb-4"><u>Funciones</u></h2>
+                    <h2 id="" class="bold text-start mb-4"><u>Funciones</u></h2>
                     <table class="table table-bordered" id="">
                         <thead class="bg-primary text-light">
                             <tr class="">

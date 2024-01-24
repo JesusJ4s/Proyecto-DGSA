@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-12-2023 a las 02:14:34
+-- Tiempo de generación: 24-01-2024 a las 12:45:23
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -32,7 +32,7 @@ USE `proyecto_dgsa`;
 CREATE TABLE `a1_usuarios` (
   `id_usuario` int(11) NOT NULL,
   `ActivoInactivo` int(11) NOT NULL,
-  `nombre` varchar(100) COLLATE utf8_bin NOT NULL,
+  `nombre` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `apellido` varchar(100) COLLATE utf8_bin NOT NULL,
   `nacionalidad` varchar(45) COLLATE utf8_bin NOT NULL,
   `cedula` varchar(45) COLLATE utf8_bin NOT NULL,
@@ -54,10 +54,6 @@ CREATE TABLE `a1_usuarios` (
   `pin_seguridad` varchar(6) COLLATE utf8_bin NOT NULL,
   `sesion` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Volcado de datos para la tabla `a1_usuarios`
---
 
 -- --------------------------------------------------------
 
@@ -272,7 +268,8 @@ INSERT INTO `b3_departamentos` (`id_departamento`, `nombre_dpto`, `departamento_
 (77, 'Dosimetria Ambiental', 31),
 (78, 'Dosimetria Clinica y Auditoria de Equipos', 31),
 (79, 'Registro Nacional de Dosimetria', 31),
-(80, 'Correspondencia', 1);
+(80, 'Correspondencia', 1),
+(81, 'Diseño y Publicidad', 11);
 
 -- --------------------------------------------------------
 
@@ -333,10 +330,6 @@ CREATE TABLE `c1_inventario_equipo` (
   `notas_edicion` longtext COLLATE utf8_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
---
--- Volcado de datos para la tabla `c1_inventario_equipo`
---
-
 -- --------------------------------------------------------
 
 --
@@ -382,9 +375,6 @@ CREATE TABLE `c3_solicitudes_soportes` (
   `historial_soporte` text COLLATE utf8_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
---
--- Volcado de datos para la tabla `c3_solicitudes_soportes`
---
 -- --------------------------------------------------------
 
 --
@@ -416,10 +406,6 @@ CREATE TABLE `d1_correspondencia` (
   `coordi_destino` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
---
--- Volcado de datos para la tabla `d1_correspondencia`
---
-
 -- --------------------------------------------------------
 
 --
@@ -434,9 +420,6 @@ CREATE TABLE `d2_empresas_corresp` (
   `dedicacion` varchar(255) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
---
--- Volcado de datos para la tabla `d2_empresas_corresp`
---
 -- --------------------------------------------------------
 
 --
@@ -457,10 +440,6 @@ CREATE TABLE `d3_notificaciones_div` (
   `estatus_Corres` int(1) NOT NULL,
   `nota_final_corresp` varchar(255) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Volcado de datos para la tabla `d3_notificaciones_div`
---
 
 -- --------------------------------------------------------
 
@@ -486,6 +465,54 @@ INSERT INTO `d4_notificaciones_estatus` (`id_estatus_notifi`, `nombre_estatus_no
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `e1_galerias`
+--
+
+CREATE TABLE `e1_galerias` (
+  `id_galeria` int(11) NOT NULL,
+  `titulo_archivo` varchar(100) COLLATE utf8_bin DEFAULT NULL,
+  `descripcion_archivo` text CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
+  `nombre_archivo` varchar(255) COLLATE utf8_bin NOT NULL,
+  `id_galeria_direccion` int(11) NOT NULL,
+  `id_galeria_tipo` int(11) NOT NULL,
+  `id_galeria_grupo` int(11) NOT NULL,
+  `visible` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `e2_galerias_tipos`
+--
+
+CREATE TABLE `e2_galerias_tipos` (
+  `id_tipo` int(11) NOT NULL,
+  `nombre_tipo` varchar(100) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `e2_galerias_tipos`
+--
+
+INSERT INTO `e2_galerias_tipos` (`id_tipo`, `nombre_tipo`) VALUES
+(1, 'Imagen'),
+(2, 'Video');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `e3_galerias_grupos`
+--
+
+CREATE TABLE `e3_galerias_grupos` (
+  `id_grupo` int(11) NOT NULL,
+  `nombre_grupo_galeria` varchar(200) COLLATE utf8_bin NOT NULL,
+  `id_direccion_grupo` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `z1_historial_camb_sis`
 --
 
@@ -497,10 +524,6 @@ CREATE TABLE `z1_historial_camb_sis` (
   `fecha_usuario_cambio` datetime DEFAULT NULL,
   `descripcion_cambio` text COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Volcado de datos para la tabla `z1_historial_camb_sis`
---
 
 -- --------------------------------------------------------
 
@@ -534,7 +557,11 @@ INSERT INTO `z2_historial_acciones` (`id_accHis`, `nombre_accion`) VALUES
 (14, 'Correspondencia aceptada'),
 (15, 'Registro Institución Correspondencia'),
 (16, 'Registro Base de Conocimiento'),
-(17, 'Creación Respaldo');
+(17, 'Creación Respaldo'),
+(18, 'Registro de Nuevo Grupo Galería'),
+(19, 'Registro de Imagen'),
+(20, 'Registro de Video'),
+(21, 'Modificacion Imagen-Video');
 
 --
 -- Índices para tablas volcadas
@@ -657,6 +684,29 @@ ALTER TABLE `d4_notificaciones_estatus`
   ADD PRIMARY KEY (`id_estatus_notifi`);
 
 --
+-- Indices de la tabla `e1_galerias`
+--
+ALTER TABLE `e1_galerias`
+  ADD PRIMARY KEY (`id_galeria`),
+  ADD KEY `id_galeria_direccion` (`id_galeria_direccion`),
+  ADD KEY `id_galeria_tipo` (`id_galeria_tipo`),
+  ADD KEY `id_galeria_grupo` (`id_galeria_grupo`),
+  ADD KEY `id_visible_estado` (`visible`);
+
+--
+-- Indices de la tabla `e2_galerias_tipos`
+--
+ALTER TABLE `e2_galerias_tipos`
+  ADD PRIMARY KEY (`id_tipo`);
+
+--
+-- Indices de la tabla `e3_galerias_grupos`
+--
+ALTER TABLE `e3_galerias_grupos`
+  ADD PRIMARY KEY (`id_grupo`),
+  ADD KEY `id_direccion_grupo` (`id_direccion_grupo`);
+
+--
 -- Indices de la tabla `z1_historial_camb_sis`
 --
 ALTER TABLE `z1_historial_camb_sis`
@@ -678,7 +728,7 @@ ALTER TABLE `z2_historial_acciones`
 -- AUTO_INCREMENT de la tabla `a1_usuarios`
 --
 ALTER TABLE `a1_usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `a2_rol`
@@ -714,25 +764,25 @@ ALTER TABLE `b2_divisiones`
 -- AUTO_INCREMENT de la tabla `b3_departamentos`
 --
 ALTER TABLE `b3_departamentos`
-  MODIFY `id_departamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `id_departamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT de la tabla `c1_inventario_equipo`
 --
 ALTER TABLE `c1_inventario_equipo`
-  MODIFY `id_case` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_case` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `c3_1_estado_soporte`
 --
 ALTER TABLE `c3_1_estado_soporte`
-  MODIFY `id_estado_sop` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_estado_sop` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `c3_solicitudes_soportes`
 --
 ALTER TABLE `c3_solicitudes_soportes`
-  MODIFY `id_soporte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_soporte` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `c4_base_conocimiento`
@@ -744,19 +794,19 @@ ALTER TABLE `c4_base_conocimiento`
 -- AUTO_INCREMENT de la tabla `d1_correspondencia`
 --
 ALTER TABLE `d1_correspondencia`
-  MODIFY `id_nro_admision` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_nro_admision` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `d2_empresas_corresp`
 --
 ALTER TABLE `d2_empresas_corresp`
-  MODIFY `id_empresas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_empresas` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `d3_notificaciones_div`
 --
 ALTER TABLE `d3_notificaciones_div`
-  MODIFY `id_notificacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_notificacion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `d4_notificaciones_estatus`
@@ -765,16 +815,34 @@ ALTER TABLE `d4_notificaciones_estatus`
   MODIFY `id_estatus_notifi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT de la tabla `e1_galerias`
+--
+ALTER TABLE `e1_galerias`
+  MODIFY `id_galeria` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `e2_galerias_tipos`
+--
+ALTER TABLE `e2_galerias_tipos`
+  MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `e3_galerias_grupos`
+--
+ALTER TABLE `e3_galerias_grupos`
+  MODIFY `id_grupo` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `z1_historial_camb_sis`
 --
 ALTER TABLE `z1_historial_camb_sis`
-  MODIFY `id_historial_cambios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1127;
+  MODIFY `id_historial_cambios` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `z2_historial_acciones`
 --
 ALTER TABLE `z2_historial_acciones`
-  MODIFY `id_accHis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_accHis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Restricciones para tablas volcadas
@@ -840,6 +908,21 @@ ALTER TABLE `d3_notificaciones_div`
   ADD CONSTRAINT `id_empresa_correspon_fk` FOREIGN KEY (`id_empresa_corresp`) REFERENCES `d2_empresas_corresp` (`id_empresas`),
   ADD CONSTRAINT `id_estatus_nombres_fk` FOREIGN KEY (`estatus_Corres`) REFERENCES `d4_notificaciones_estatus` (`id_estatus_notifi`),
   ADD CONSTRAINT `id_jefe_division_corres_fk` FOREIGN KEY (`Jefe_Corres`) REFERENCES `a1_usuarios` (`id_usuario`);
+
+--
+-- Filtros para la tabla `e1_galerias`
+--
+ALTER TABLE `e1_galerias`
+  ADD CONSTRAINT `id_galeria_direccion` FOREIGN KEY (`id_galeria_direccion`) REFERENCES `b1_direcciones` (`id_direcciones`),
+  ADD CONSTRAINT `id_galeria_grupo` FOREIGN KEY (`id_galeria_grupo`) REFERENCES `e3_galerias_grupos` (`id_grupo`),
+  ADD CONSTRAINT `id_galeria_tipo` FOREIGN KEY (`id_galeria_tipo`) REFERENCES `e2_galerias_tipos` (`id_tipo`),
+  ADD CONSTRAINT `id_visible_estado` FOREIGN KEY (`visible`) REFERENCES `a4_estado` (`id_estado`);
+
+--
+-- Filtros para la tabla `e3_galerias_grupos`
+--
+ALTER TABLE `e3_galerias_grupos`
+  ADD CONSTRAINT `id_direccion_grupo` FOREIGN KEY (`id_direccion_grupo`) REFERENCES `b1_direcciones` (`id_direcciones`);
 
 --
 -- Filtros para la tabla `z1_historial_camb_sis`

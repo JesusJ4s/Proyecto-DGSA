@@ -21,6 +21,7 @@ function registroCorrespondencia(){
 
             contador_correspondencia();
             tabla_correspondencia();
+            tabla_correspondencia_registro();
             formCorrespondencia.reset();
             finalizando();
         },

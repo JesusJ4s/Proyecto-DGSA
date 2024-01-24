@@ -15,22 +15,15 @@
     <title>Dirección General de Salud Ambiental</title>
 
 </head>
-
-<?php
-?>
-
 <!-- DESPUES DE LOS 1150PX YA NO SE COMPRIME MÁS, SOLO HAY QUE QUITAR max-width-mio PARA QUE FUNCIONE NORMAL (PERO ES UN DESASTRE), NECESITO APRENDER MÁS SOBRE RESPONSIVE -->
 
 <body class=" min-width-index">
-
-
-
     <!-- ******************************************************* -->
     <!-- Cabecera -->
     <header id="inicio-pag">
         <?php
-        include("php/logos.php")
-            ?>
+            include("php/logos.php")
+        ?>
     </header>
 
     <!-- ******************************************************* -->

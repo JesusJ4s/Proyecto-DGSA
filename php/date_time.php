@@ -83,6 +83,3 @@ $hora_sola = date("h");
 $minuto_solo = date("i");
 $segundo_solo = date("s");
 $AntPost_solo = date("a");
-
-
-?>

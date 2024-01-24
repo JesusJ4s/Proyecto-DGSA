@@ -11,13 +11,9 @@ const submitButton2 = document.querySelector('#extr_submit');
 function HacerEnvio(){
 
     var formAjustes = $('#formulario_ajustesUSR').serialize();
-    var parametros =
-    {
-        "formAjustes": formAjustes,
-        "ingreso": "AjustesUsr"
-    }
+
     $.ajax({
-        data: parametros,
+        data: formAjustes,
         url: '../php/usuarios.php',
         type: 'POST',
       
@@ -35,7 +31,13 @@ function HacerEnvio(){
             if(nroERROR==500){
                 $('#myModal_ajustes').modal('show');
 
-                $('#myModal_ajustesC').html('Error al actualizar los datos.<br>Error: Datos obligatorios vacíos. 500');
+                $('#myModal_ajustesC').html('Error al actualizar los datos.<br>Error: Datos obligatorios vacíos.');
+
+             }   
+            if(nroERROR==507){
+                $('#myModal_ajustes').modal('show');
+
+                $('#myModal_ajustesC').html('Error al actualizar los datos.<br>Error: Datos obligatorios vacíos. ');
 
              }   
              if(nroERROR==501){
@@ -59,7 +61,7 @@ function HacerEnvio(){
              if(nroERROR==504){
                 $('#myModal_ajustes').modal('show');
 
-                $('#myModal_ajustesC').html('Error al actualizar los datos.<br>Error: Datos inválidos ingresados.');
+                $('#myModal_ajustesC').html('Error al actualizar los datos.<br>Error: Datos inválidos ingresados.404');
 
              } 
         }
@@ -68,14 +70,14 @@ function HacerEnvio(){
 
 
 const expresiones = {
-    usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, //Letras, números, guion y guion_bajo
-    correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-z]+$/,
+    usuario: /^[a-zA-Z0-9À-ý\_\-]{4,16}$/, //Letras, números, guion y guion_bajo
+    correo: /^[a-zA-ZÀ-ý0-9_.+-]+@[a-zA-Z0-9-]+\.[a-z]+$/,
     contraseña: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_]{8,15}$/, // 8 a 15 dígitos
-    telefono: /^[0-9]{10,14}$/, // 7 a 14
-    telefono2: /^[0-9]{10,14}$/, // 7 a 14
-    respuesta_1: /^[a-zA-Z]{3,16}$/, //Letras, números
-    respuesta_2: /^[a-zA-Z]{3,16}$/, //Letras, números
-    respuesta_3: /^[a-zA-Z]{3,16}$/, //Letras, números
+    telefono: /^\d{4}-?\d{7}$|^\d{11}$/, // 7 a 14
+    telefono2: /^\d{4}-?\d{7}$|^\d{11}$/, // 7 a 14
+    respuesta_1: /^[a-zA-ZÀ-ý]{3,16}$/, //Letras, números
+    respuesta_2: /^[a-zA-ZÀ-ý]{3,16}$/, //Letras, números
+    respuesta_3: /^[a-zA-ZÀ-ý]{3,16}$/, //Letras, números
     pinSeguridad: /^[0-9]{4,6}$/ // 7 a 14
 
 

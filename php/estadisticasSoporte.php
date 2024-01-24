@@ -29,9 +29,24 @@ if ($tipo == "barras") {
     $numFi = $finalizadas;
     $numRh = $rechazadas;
     $numRe = $repuesto;
-    $finalizadas = number_format($finalizadas / $total * 100, 2);
-    $rechazadas = number_format($rechazadas / $total * 100, 2);
-    $repuesto = number_format($repuesto / $total * 100, 2);
+    if ($finalizadas == null || $finalizadas == 0) {
+        $finalizadas = 0;
+    }else {
+        $finalizadas = number_format($finalizadas / $total * 100, 2);
+    }
+
+    if ($rechazadas == null || $rechazadas == 0) {
+        $rechazadas = 0;
+    }else {
+        $rechazadas = number_format($rechazadas / $total * 100, 2);
+    }
+    if ($repuesto == null || $repuesto == 0) {
+        $repuesto = 0;
+    }else {
+        $repuesto = number_format($repuesto / $total * 100, 2);
+    }
+    // $rechazadas = number_format($rechazadas / $total * 100, 2);
+    // $repuesto = number_format($repuesto / $total * 100, 2);
 
     // enviamos los datos como caden json
     echo json_encode([$finalizadas, $rechazadas, $repuesto, $total, $numFi, $numRh, $numRe]);

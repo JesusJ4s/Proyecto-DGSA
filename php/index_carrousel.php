@@ -42,8 +42,24 @@ echo
         </button>
     </div>
 </div>
-'
 
 
+<!-- MODAL PARA MOSTRAR SOLUCITUD EXITOSA-->
+    <div class="modal fade" id="ImgVidGalery" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-md modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>Información:</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
 
-?>
+                    </div>
+                <div class="modal-body" id="ImgVidGaleryC">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+';

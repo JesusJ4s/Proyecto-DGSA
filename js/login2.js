@@ -49,8 +49,8 @@ function login(){
 
 }
 const expresiones = {
-  usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, //Letras, números, guion y guion_bajo
-  password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_]{8,15}$/, // 8 a 15 dígitos
+  usuario: /^[a-zA-Z0-9À-ý\_\-]{4,16}$/, //Letras, números, guion y guion_bajo
+  password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-zÀ-ý\d$@$!%*?&#.$($)$-$_]{8,15}$/, // 8 a 15 dígitos
   
 }
 

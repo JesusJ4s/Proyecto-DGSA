@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-12-2023 a las 02:48:47
+-- Tiempo de generación: 22-01-2024 a las 21:41:18
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -66,7 +66,8 @@ INSERT INTO `a1_usuarios` (`id_usuario`, `ActivoInactivo`, `nombre`, `apellido`,
 (4, 1, 'Empleado', 'Vista', 'V', '27146433', 'EMPLEADO', '04124457287', '', 'jesusgole33@gmail.com', 25, 15, 1, 4, '$2y$10$vIQOE8Vk0x2UinfutOtqhOX.wEeRkZBuuREMt76RuhkCJ16r22pOW', 1, '$2y$10$GY0IcODJAc2YSJdm0y/Fru43BbTUxJpnTg1icM1e3Q1qj/KQD0jBS', 2, '$2y$10$M3R//RYBCpzYBbEldq4PSeloIexkktbayOXZMubGshVkB0IBRCApq', 3, '$2y$10$vc3weLGWv4eOwx0rLmlRbueMMPze/F1S12VbDWjqnr9cSAX22ZL1y', '030303', 0),
 (5, 1, 'Salud', 'Radiologica', 'V', '27146434', 'RADIOLOGO', '04124457287', '', 'jesusgole33@gmail.com', 72, 30, 3, 3, '$2y$10$3xqE/4YErRTagfCBGvd6f.Ajagr7OOubm9d3UdgoRJfT2fdyAlqDC', 1, '$2y$10$LFw/K3WLbKj3dCW5vqkZ.e7.w6lqs0O6QR126FVJFQ8jzGx7IQbyS', 2, '$2y$10$nUdPAGKoDnb5MInuXO/AAeaTXjy/ouTAgCSWQrA1v0tE3M3sZZN8W', 3, '$2y$10$6Fzsi/yQJVaG08ZM7W/nheny/6Ttypyxq1BtFc.cGWXJ0kVaJJ/VW', '030303', 0),
 (6, 1, 'Emi', 'Gia', 'V', '27146435', 'EPIDEMIOLOGIA', '04124457287', '', 'jesusgole33@gmail.com', 40, 21, 5, 3, '$2y$10$Q6HluVEBpK.mwO7Umgkq3O0rJaPmfEAQ..iBuReRhE/yP5jFBTmO6', 1, '$2y$10$d9.crVeMKgUH7SCNPOTNXORKI7ttCh6OXrx115WA9S.s1S86GKKZ.', 2, '$2y$10$1/ZSKCNWpPf/T14hmQOj2.c0LFMpuYzj8zYAZko5L65pSZWWV867a', 3, '$2y$10$kUHDC63CChXgw7Da/ulYq.jeSia4cpsaWC1Mui6Vc/bmsd2uj/UwW', '030303', 0),
-(7, 1, 'Jesus', 'Castillo', 'V', '271464300', 'JESUS', '04124457287', '', 'jesusgole33@gmail.com', 21, 11, 1, 5, '$2y$10$Q7krDxyQouhIn9aPktvT3O2m/8WVPzj6vD5WJ7jB7NE6VAgvbDxBW', 1, '$2y$10$51ap3oYt5/0fSK5VJVOUkeJ63YPDws3Eufb1UGZwmAjOuevFwbxCe', 2, '$2y$10$ZvZFxJOjQAw/m2jMLUhA6OO5dfK7CHznRwZhOpVT5Ik9IHe9QHfMi', 4, '$2y$10$omk8.M4c0qTE18iLFyiwIOmLhImleEVqlJvlyfM8s/mc7H/fx2tg6', '030303', 0);
+(7, 1, 'Jesus', 'Castillo', 'V', '271464300', 'JESUS', '04124457287', '', 'jesusgole33@gmail.com', 21, 11, 1, 5, '$2y$10$Q7krDxyQouhIn9aPktvT3O2m/8WVPzj6vD5WJ7jB7NE6VAgvbDxBW', 1, '$2y$10$51ap3oYt5/0fSK5VJVOUkeJ63YPDws3Eufb1UGZwmAjOuevFwbxCe', 2, '$2y$10$ZvZFxJOjQAw/m2jMLUhA6OO5dfK7CHznRwZhOpVT5Ik9IHe9QHfMi', 4, '$2y$10$omk8.M4c0qTE18iLFyiwIOmLhImleEVqlJvlyfM8s/mc7H/fx2tg6', '030303', 0),
+(8, 1, 'Carla', 'Lopez', 'V', '28034625', 'DISEñADORA', '0412-4457287', '', 'jesusgole33@gmail.com', 81, 11, 1, 4, '$2y$10$8lOjEBBbWxlU5f.Bj6pypuCf7PqDaZQZdrGJR5Czsaf0ll9x9eREG', 1, '$2y$10$/f.P2VGcgos8e1OyWmLQwe/VWAhgHH/iqUo6SBsmEVfWz72kbejFm', 2, '$2y$10$3jYULqgB2n0HOW8VqL79r.qAvNkWSPXZSJMw2NASieBWj4uJ/0ane', 4, '$2y$10$LgcGnThO4A16Y6G7CM9PNO0z6mKz./wrMboAkmfzQroTsd/Z.ntW2', '0303', 0);
 
 -- --------------------------------------------------------
 
@@ -281,7 +282,8 @@ INSERT INTO `b3_departamentos` (`id_departamento`, `nombre_dpto`, `departamento_
 (77, 'Dosimetria Ambiental', 31),
 (78, 'Dosimetria Clinica y Auditoria de Equipos', 31),
 (79, 'Registro Nacional de Dosimetria', 31),
-(80, 'Correspondencia', 1);
+(80, 'Correspondencia', 1),
+(81, 'Diseño y Publicidad', 11);
 
 -- --------------------------------------------------------
 
@@ -486,6 +488,103 @@ INSERT INTO `d4_notificaciones_estatus` (`id_estatus_notifi`, `nombre_estatus_no
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `e1_galerias`
+--
+
+CREATE TABLE `e1_galerias` (
+  `id_galeria` int(11) NOT NULL,
+  `titulo_archivo` varchar(100) COLLATE utf8_bin DEFAULT NULL,
+  `descripcion_archivo` text COLLATE utf8_bin DEFAULT NULL,
+  `nombre_archivo` varchar(255) COLLATE utf8_bin NOT NULL,
+  `id_galeria_direccion` int(11) NOT NULL,
+  `id_galeria_tipo` int(11) NOT NULL,
+  `id_galeria_grupo` int(11) NOT NULL,
+  `visible` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `e1_galerias`
+--
+
+INSERT INTO `e1_galerias` (`id_galeria`, `titulo_archivo`, `descripcion_archivo`, `nombre_archivo`, `id_galeria_direccion`, `id_galeria_tipo`, `id_galeria_grupo`, `visible`) VALUES
+(24, 'Entrada Direccion General', 'Entrada a la dirección general de salud ambiental', '../../assets/gallery/DGSA/2024/1/1/20221129_133338.jpg', 1, 1, 1, 1),
+(25, 'Fachada Dirección General', 'Fachada de la Dirección General de Salud Ambiental', '../../assets/gallery/DGSA/2024/1/1/20221129_134914.jpg', 1, 1, 1, 1),
+(26, 'Doctor Arnoldo Gabaldon', 'Imagen del Doctor Arnoldo Gabaldón vistiendo traje', '../../assets/gallery/DGSA/2024/1/2/01.jpeg', 1, 1, 2, 1),
+(27, '', 'Doctor Arnoldo Gabaldón', '../../assets/gallery/DGSA/2024/1/2/02.jpg', 1, 1, 2, 1),
+(28, 'Colegio', 'Doctor Arnoldo Gabaldón', '../../assets/gallery/DGSA/2024/1/2/4.jpg', 1, 1, 2, 1),
+(29, 'Dirección General', 'Doctor Arnoldo Gabaldón', '../../assets/gallery/DGSA/2024/1/2/5.1.jpg', 1, 1, 2, 1),
+(30, 'Dirección General', '', '../../assets/gallery/DGSA/2024/1/1/DGSA.jpg', 1, 1, 1, 1),
+(31, 'Dirección General', '', '../../assets/gallery/DGSA/2024/1/1/20221129_135211.jpg', 1, 1, 1, 1),
+(32, 'Aedes Aegipty', 'Esta especie es más tolerante de las bajas temperaturas y mantiene una amplia variedad de criaderos, tanto en recipientes artificiales como naturales inclusive e n ambientes silvestres.\r\n\r\nEl adulto se caracteriza por presentar un diseño de escamas plateadas, en cabeza y en dorso de tórax en forma de franja longitudinal.', '../../assets/gallery/DGSA/2024/2/5/Aedes Aegipty.mp4', 1, 2, 5, 1),
+(33, 'Plan Picale adelante al Dengue', '- La inspección se iniciará por el patio en sentido contrario a las agujas del reloj; entrando y saliendo en todos los anexos y divisiones que se encuentren como: jardines, gallineros, etc., hasta regresar al punto de partida.\r\n- Inspeccionar todos los depósitos que tengan o puedan contener agua.', '../../assets/gallery/DGSA/2024/2/5/Dengue.mp4', 1, 2, 5, 1),
+(34, 'Capacitación Personal Camatagua - Aragua 2013', 'Capacitación realizada al personal Camatagua', '../../assets/gallery/DEA/2024/1/3/100_1509.JPG', 5, 1, 3, 1),
+(35, 'Capacitación - Charla', 'Capacitación Personal', '../../assets/gallery/DEA/2024/1/3/100_1511.JPG', 5, 1, 3, 1),
+(36, 'Charla Chagas', '', '../../assets/gallery/DEA/2024/1/3/100_1513.JPG', 5, 1, 3, 1),
+(37, 'Capacitación de Personal', '', '../../assets/gallery/DEA/2024/1/4/IMG_20160413_091744.jpg', 5, 1, 4, 1),
+(38, 'Saneamiento Epidemiología', 'Video corto sobre el Saneamiento.', '../../assets/gallery/DEA/2024/2/6/SaneamientoBasico.mp4', 5, 2, 6, 1),
+(39, 'Zancudo Aedes Aegypti', 'Charla sobre el Mosquito Patas Blancas', '../../assets/gallery/DCVRFN/2024/1/7/aedes aegypti.jpg', 4, 1, 7, 1),
+(40, 'Eliminación de Criaderos', 'Eliminación de los mosquitos y criaderos', '../../assets/gallery/DCVRFN/2024/1/7/FOTO 3.jpg', 4, 1, 7, 1),
+(41, 'Verificación de componentes', 'Planeación para la eliminación de los criaderos', '../../assets/gallery/DCVRFN/2024/1/7/23.JPG', 4, 1, 7, 1),
+(42, 'Lucha contra el dengue', 'Video explicativo sobre la erradicación de los criaderos', '../../assets/gallery/DCVRFN/2024/2/7/dengue Lucha contra el mosquito.mp4', 4, 2, 7, 1),
+(43, 'Charla Riesgo Sanitario', 'Charla para la prevención de los riesgos sanitarios en la actualidad', '../../assets/gallery/DIS/2024/1/8/IMG_20151124_095021.jpg', 2, 1, 8, 1),
+(44, 'Viaje de ida para charlas', 'Video donde se detalla el recorrido realizado durante el viaje para la charla sobre el riesgo sanitario', '../../assets/gallery/DIS/2024/2/8/VID_20160112_121837.mp4', 2, 2, 8, 1),
+(45, 'Micro reunión en Dosimetria', 'Charla al equipo de dosimetría', '../../assets/gallery/DSR/2024/1/9/IMG_20151125_141028.jpg', 3, 1, 9, 1),
+(46, 'Charla Dosimetría', '', '../../assets/gallery/DSR/2024/1/9/IMG_20151125_141050.jpg', 3, 1, 9, 1),
+(47, 'Charla Dosimetría', '', '../../assets/gallery/DSR/2024/1/9/IMG_20151125_141345.jpg', 3, 1, 9, 1),
+(48, 'ASIC', '', '../../assets/gallery/DSR/2024/2/9/Conoce qué son las ASIC, Áreas de Salud Integral Comunitarias[1].mp4', 3, 2, 9, 1),
+(49, 'Charla Dosimetría', '', '../../assets/gallery/DSR/2024/2/9/SaneamientoBasico.mp4', 3, 2, 9, 1),
+(50, 'ASIC Salud Radiológica', '', '../../assets/gallery/DSR/2024/2/9/Conoce qué son las ASIC.mp4', 3, 2, 9, 1),
+(51, 'Entrada Principal', 'Entrada principal al edificio de la Dirección General de Salud Ambiental', '../../assets/gallery/DGSA/2024/1/1/20221129_135211.jpg', 1, 1, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `e2_galerias_tipos`
+--
+
+CREATE TABLE `e2_galerias_tipos` (
+  `id_tipo` int(11) NOT NULL,
+  `nombre_tipo` varchar(100) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `e2_galerias_tipos`
+--
+
+INSERT INTO `e2_galerias_tipos` (`id_tipo`, `nombre_tipo`) VALUES
+(1, 'Imagen'),
+(2, 'Video');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `e3_galerias_grupos`
+--
+
+CREATE TABLE `e3_galerias_grupos` (
+  `id_grupo` int(11) NOT NULL,
+  `nombre_grupo_galeria` varchar(200) COLLATE utf8_bin NOT NULL,
+  `id_direccion_grupo` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `e3_galerias_grupos`
+--
+
+INSERT INTO `e3_galerias_grupos` (`id_grupo`, `nombre_grupo_galeria`, `id_direccion_grupo`) VALUES
+(1, 'Dirección General de Salud Ambiental', 1),
+(2, 'Dr. Arnoldo Gabaldón', 1),
+(3, 'Programa Chagas 2013', 5),
+(4, 'Capacitación Personal Programa Amazonas 2016', 5),
+(5, 'Dengue', 1),
+(6, 'Saneamiento Epidemiologo', 5),
+(7, 'Dengue', 4),
+(8, 'Riesgo Sanitario', 2),
+(9, 'Charla Dosimetría', 3);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `z1_historial_camb_sis`
 --
 
@@ -506,7 +605,193 @@ INSERT INTO `z1_historial_camb_sis` (`id_historial_cambios`, `id_usuario_cambio`
 (1, 1, 3, '27146430', '2023-12-20 21:47:23', 'Ingreso del Usuario: Jesus Castillo.'),
 (2, 1, 4, '27146430', '2023-12-20 21:47:47', 'Salida del sistema del Usuario: Jesus Castillo.'),
 (3, 1, 3, '27146430', '2023-12-20 21:47:56', 'Ingreso del Usuario: Jesus Castillo.'),
-(4, 1, 4, '27146430', '2023-12-20 21:48:30', 'Salida del sistema del Usuario: Jesus Castillo.');
+(4, 1, 4, '27146430', '2023-12-20 21:48:30', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(7, 1, 3, '27146430', '2024-01-14 20:30:39', 'Ingreso del Usuario: Jesus Castillo.'),
+(8, 1, 4, '27146430', '2024-01-14 20:32:47', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(9, 1, 3, '27146430', '2024-01-18 23:14:02', 'Ingreso del Usuario: Jesus Castillo.'),
+(10, 1, 8, '', '2024-01-18 23:34:17', 'Nueva solicitud de Soporte técnico, nombre del equipo: M1SSPC18.'),
+(11, 1, 9, 'M1SSPC18', '2024-01-18 23:40:58', 'Actualización de solicitud de Soporte técnico, nombre del equipo: M1SSPC18, Nro de Solicitud: 1. Actualizada a -En Proceso-, por Jesus Castillo, técnico designado: Prueba Tecnico.'),
+(12, 1, 17, '27146430', '2024-01-18 23:43:09', 'Nuevo respaldo de la base de datos creado en fecha: 2024-01-18. Creado por el usuario: Jesus Castillo.'),
+(13, 1, 4, '27146430', '2024-01-18 23:44:52', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(14, 4, 3, '27146433', '2024-01-18 23:44:55', 'Ingreso del Usuario: Empleado Vista.'),
+(15, 4, 4, '27146433', '2024-01-18 23:45:25', 'Salida del sistema del Usuario: Empleado Vista.'),
+(16, 3, 3, '27146432', '2024-01-18 23:45:33', 'Ingreso del Usuario: Jefe Correspondencia.'),
+(17, 3, 4, '27146432', '2024-01-18 23:52:30', 'Salida del sistema del Usuario: Jefe Correspondencia.'),
+(18, 4, 3, '27146433', '2024-01-18 23:52:34', 'Ingreso del Usuario: Empleado Vista.'),
+(19, 4, 4, '27146433', '2024-01-18 23:57:43', 'Salida del sistema del Usuario: Empleado Vista.'),
+(20, 1, 3, '27146430', '2024-01-18 23:57:46', 'Ingreso del Usuario: Jesus Castillo.'),
+(21, 1, 4, '27146430', '2024-01-18 23:58:02', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(22, 4, 3, '27146433', '2024-01-18 23:58:04', 'Ingreso del Usuario: Empleado Vista.'),
+(23, 4, 4, '27146433', '2024-01-18 23:58:08', 'Salida del sistema del Usuario: Empleado Vista.'),
+(24, 1, 3, '27146430', '2024-01-18 23:58:11', 'Ingreso del Usuario: Jesus Castillo.'),
+(25, 1, 9, 'M1SSPC18', '2024-01-18 23:59:40', 'Actualización de solicitud de Soporte técnico, nombre del equipo: M1SSPC18, Nro de Solicitud: 1. Actualizada a -En Proceso-, por Jesus Castillo, técnico designado: Prueba Tecnico.'),
+(26, 1, 4, '27146430', '2024-01-18 23:59:54', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(27, 4, 3, '27146433', '2024-01-18 23:59:56', 'Ingreso del Usuario: Empleado Vista.'),
+(28, 4, 4, '27146433', '2024-01-19 00:01:24', 'Salida del sistema del Usuario: Empleado Vista.'),
+(29, 3, 3, '27146432', '2024-01-19 00:01:27', 'Ingreso del Usuario: Jefe Correspondencia.'),
+(30, 3, 4, '27146432', '2024-01-19 00:01:29', 'Salida del sistema del Usuario: Jefe Correspondencia.'),
+(31, 1, 3, '27146430', '2024-01-19 00:01:31', 'Ingreso del Usuario: Jesus Castillo.'),
+(32, 1, 4, '27146430', '2024-01-19 00:01:33', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(33, 4, 3, '27146433', '2024-01-19 00:01:36', 'Ingreso del Usuario: Empleado Vista.'),
+(34, 4, 4, '27146433', '2024-01-19 00:03:58', 'Salida del sistema del Usuario: Empleado Vista.'),
+(35, 1, 3, '27146430', '2024-01-19 00:04:00', 'Ingreso del Usuario: Jesus Castillo.'),
+(36, 1, 4, '27146430', '2024-01-19 00:04:02', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(37, 2, 3, '27146431', '2024-01-19 00:04:32', 'Ingreso del Usuario: Prueba Tecnico.'),
+(38, 2, 4, '27146431', '2024-01-19 00:05:18', 'Salida del sistema del Usuario: Prueba Tecnico.'),
+(39, 1, 3, '27146430', '2024-01-19 00:05:20', 'Ingreso del Usuario: Jesus Castillo.'),
+(40, 1, 4, '27146430', '2024-01-19 00:15:51', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(41, 2, 3, '27146431', '2024-01-19 00:15:54', 'Ingreso del Usuario: Prueba Tecnico.'),
+(42, 2, 11, 'M1SSPC18', '2024-01-19 00:16:12', 'Culminación de la solicitud de Soporte técnico, nombre del equipo: M1SSPC18, Nro de Solicitud: 1. Actualizada a -Finalizada-, por Prueba Tecnico, técnico designado de realizar el soporte: Prueba Tecnico.'),
+(43, 2, 4, '27146431', '2024-01-19 00:17:31', 'Salida del sistema del Usuario: Prueba Tecnico.'),
+(44, 3, 3, '27146432', '2024-01-19 00:17:34', 'Ingreso del Usuario: Jefe Correspondencia.'),
+(45, 3, 4, '27146432', '2024-01-19 00:17:56', 'Salida del sistema del Usuario: Jefe Correspondencia.'),
+(46, 1, 3, '27146430', '2024-01-19 00:18:38', 'Ingreso del Usuario: Jesus Castillo.'),
+(47, 1, 4, '27146430', '2024-01-19 00:18:49', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(48, 3, 3, '27146432', '2024-01-19 00:18:53', 'Ingreso del Usuario: Jefe Correspondencia.'),
+(49, 2, 4, '27146431', '2024-01-19 00:22:31', 'Salida automática del sistema, del Usuario: .'),
+(50, 3, 4, '27146432', '2024-01-19 00:23:02', 'Salida del sistema del Usuario: Jefe Correspondencia.'),
+(51, 2, 3, '27146431', '2024-01-19 00:23:07', 'Ingreso del Usuario: Prueba Tecnico.'),
+(52, 3, 4, '27146432', '2024-01-19 00:28:02', 'Salida automática del sistema, del Usuario: .'),
+(53, 2, 4, '27146431', '2024-01-19 00:30:21', 'Salida del sistema del Usuario: Prueba Tecnico.'),
+(54, 1, 3, '27146430', '2024-01-19 00:30:25', 'Ingreso del Usuario: Jesus Castillo.'),
+(55, 1, 4, '27146430', '2024-01-19 00:30:26', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(56, 2, 3, '27146431', '2024-01-19 00:30:30', 'Ingreso del Usuario: Prueba Tecnico.'),
+(57, 2, 8, '', '2024-01-19 00:33:55', 'Nueva solicitud de Soporte técnico, nombre del equipo: M1SSPC17.'),
+(58, 2, 4, '27146431', '2024-01-19 00:41:44', 'Salida del sistema del Usuario: Prueba Tecnico.'),
+(59, 1, 3, '27146430', '2024-01-19 00:41:47', 'Ingreso del Usuario: Jesus Castillo.'),
+(60, 1, 4, '27146430', '2024-01-19 00:41:56', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(61, 2, 3, '27146431', '2024-01-19 00:41:59', 'Ingreso del Usuario: Prueba Tecnico.'),
+(62, 2, 9, 'M1SSPC17', '2024-01-19 00:42:08', 'Actualización de solicitud de Soporte técnico, nombre del equipo: M1SSPC17, Nro de Solicitud: 2. Actualizada a -En Proceso-, por Prueba Tecnico, técnico designado: Prueba Tecnico.'),
+(63, 2, 4, '27146431', '2024-01-19 00:42:59', 'Salida del sistema del Usuario: Prueba Tecnico.'),
+(64, 1, 3, '27146430', '2024-01-19 00:44:15', 'Ingreso del Usuario: Jesus Castillo.'),
+(65, 1, 4, '27146430', '2024-01-19 00:45:01', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(66, 1, 3, '27146430', '2024-01-20 18:02:26', 'Ingreso del Usuario: Jesus Castillo.'),
+(67, 1, 8, '', '2024-01-20 18:03:02', 'Nueva solicitud de Soporte técnico, nombre del equipo: M1SSPC16.'),
+(68, 1, 8, 'M1SSPC16', '2024-01-20 18:08:02', 'Nueva solicitud de Soporte técnico, nombre del equipo: M1SSPC16.'),
+(69, 1, 9, 'M1SSPC16', '2024-01-20 18:08:26', 'Actualización de solicitud de Soporte técnico, nombre del equipo: M1SSPC16, Nro de Solicitud: 4. Actualizada a -En Proceso-, por Jesus Castillo, técnico designado: Prueba Tecnico.'),
+(70, 1, 4, '27146430', '2024-01-20 18:08:54', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(71, 2, 3, '27146431', '2024-01-20 18:08:58', 'Ingreso del Usuario: Prueba Tecnico.'),
+(72, 2, 10, 'M1SSPC16', '2024-01-20 18:09:50', 'Se movio la solicitud a En espera de componentes, nombre del equipo: M1SSPC16, Nro de Solicitud: 4. Actualizada, por Prueba Tecnico, descripción: Se envía a falta da componentes por falta de fuente de poder.'),
+(73, 2, 11, 'M1SSPC16', '2024-01-20 18:10:11', 'Culminación de la solicitud de Soporte técnico, nombre del equipo: M1SSPC16, Nro de Solicitud: 4. Actualizada a -Finalizada-, por Prueba Tecnico, técnico designado de realizar el soporte: Prueba Tecnico.'),
+(74, 2, 12, 'M1SSPC18', '2024-01-20 18:10:58', 'Rechazo de la solicitud de Soporte técnico, nombre del equipo: M1SSPC18, Nro de Solicitud: 1. Se rechazó la solicitud por parte de Prueba Tecnico; en espera de confirmación de rechazo.'),
+(75, 2, 12, 'M1SSPC18', '2024-01-20 18:16:43', 'Rechazo de la solicitud de Soporte técnico, nombre del equipo: M1SSPC18, Nro de Solicitud: 1. Se rechazó la solicitud de manera definitiva por parte de Prueba Tecnico.'),
+(76, 2, 4, '27146431', '2024-01-20 18:17:22', 'Salida del sistema del Usuario: Prueba Tecnico.'),
+(77, 8, 1, '28034625', '2024-01-21 01:28:07', 'Nuevo Usuario registrandose en el Sistema, nombre del empleado: Carla Lopez, cédula V-28034625. Dicho empleado se ha registrado como trabajador en: Coordinación de Informática'),
+(78, 8, 1, '28034625', '2024-01-21 01:28:39', 'El usuario Carla Lopez, finalizó el registro las preguntas de seguridad.'),
+(79, 1, 3, '27146430', '2024-01-21 01:29:49', 'Ingreso del Usuario: Jesus Castillo.'),
+(80, 1, 2, '28034625', '2024-01-21 01:30:13', 'El usuario: Jesus Castillo realizó cambios en los datos del empleado: Carla Lopez, cambios realizados: Rol del Usuario cambió de: Sin Acceso a: Secretario. Cambios realizados.'),
+(81, 1, 4, '27146430', '2024-01-21 01:30:18', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(82, 8, 3, '28034625', '2024-01-21 01:30:20', 'Ingreso del Usuario: Carla Lopez.'),
+(83, 8, 4, '28034625', '2024-01-21 02:04:34', 'Salida del sistema del Usuario: Carla Lopez.'),
+(84, 8, 3, '28034625', '2024-01-21 02:13:56', 'Ingreso del Usuario: Carla Lopez.'),
+(85, 8, 4, '28034625', '2024-01-21 03:47:34', 'Salida automática del sistema, del Usuario: .'),
+(87, 8, 4, '28034625', '2024-01-21 03:52:57', 'Salida automática del sistema, del Usuario: .'),
+(88, 8, 3, '28034625', '2024-01-21 03:56:27', 'Ingreso del Usuario: Carla Lopez.'),
+(89, 8, 18, 'Registro de Grupo de Galería, en Imágenes/Videos', '2024-01-21 03:59:53', 'Nuevo registro de Grupo, para la categorías de la Galería de la Página Web. Registro realizado por: Carla Lopez'),
+(90, 8, 18, 'Registro de Grupo de Galería, en Imágenes/Videos', '2024-01-21 04:00:49', 'Nuevo registro de Grupo, para la categorías de la Galería de la Página Web. Registro realizado por: Carla Lopez'),
+(91, 8, 4, '28034625', '2024-01-21 09:26:24', 'Salida automática del sistema, del Usuario: .'),
+(92, 8, 3, '28034625', '2024-01-21 09:26:24', 'Ingreso del Usuario: Carla Lopez.'),
+(93, 8, 4, '28034625', '2024-01-21 09:31:35', 'Salida automática del sistema, del Usuario: .'),
+(94, 8, 4, '28034625', '2024-01-21 09:33:26', 'Salida del sistema del Usuario: Carla Lopez.'),
+(95, 8, 3, '28034625', '2024-01-21 10:17:20', 'Ingreso del Usuario: Carla Lopez.'),
+(96, 8, 4, '28034625', '2024-01-21 10:28:13', 'Salida del sistema del Usuario: Carla Lopez.'),
+(97, 8, 3, '28034625', '2024-01-21 10:45:15', 'Ingreso del Usuario: Carla Lopez.'),
+(98, 8, 4, '28034625', '2024-01-21 11:02:19', 'Salida del sistema del Usuario: Carla Lopez.'),
+(99, 8, 3, '28034625', '2024-01-21 11:14:43', 'Ingreso del Usuario: Carla Lopez.'),
+(100, 8, 4, '28034625', '2024-01-21 11:37:13', 'Salida automática del sistema, del Usuario: .'),
+(102, 8, 3, '28034625', '2024-01-21 11:37:57', 'Ingreso del Usuario: Carla Lopez.'),
+(103, 8, 4, '28034625', '2024-01-21 12:05:11', 'Salida del sistema del Usuario: Carla Lopez.'),
+(104, 8, 3, '28034625', '2024-01-21 12:08:58', 'Ingreso del Usuario: Carla Lopez.'),
+(105, 8, 4, '28034625', '2024-01-21 12:17:11', 'Salida del sistema del Usuario: Carla Lopez.'),
+(106, 8, 3, '28034625', '2024-01-21 12:44:19', 'Ingreso del Usuario: Carla Lopez.'),
+(107, 8, 4, '28034625', '2024-01-21 12:51:22', 'Salida del sistema del Usuario: Carla Lopez.'),
+(108, 1, 3, '27146430', '2024-01-21 13:13:44', 'Ingreso del Usuario: Jesus Castillo.'),
+(109, 1, 4, '27146430', '2024-01-21 13:13:51', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(110, 8, 3, '28034625', '2024-01-21 13:13:55', 'Ingreso del Usuario: Carla Lopez.'),
+(111, 8, 4, '28034625', '2024-01-21 13:27:18', 'Salida automática del sistema, del Usuario: .'),
+(113, 8, 3, '28034625', '2024-01-21 13:31:16', 'Ingreso del Usuario: Carla Lopez.'),
+(114, 8, 4, '28034625', '2024-01-21 14:57:17', 'Salida automática del sistema, del Usuario: .'),
+(115, 8, 4, '28034625', '2024-01-21 14:57:24', 'Salida del sistema del Usuario: Carla Lopez.'),
+(116, 8, 3, '28034625', '2024-01-21 15:00:16', 'Ingreso del Usuario: Carla Lopez.'),
+(117, 8, 4, '28034625', '2024-01-21 15:11:03', 'Salida automática del sistema, del Usuario: .'),
+(119, 8, 3, '28034625', '2024-01-21 15:12:55', 'Ingreso del Usuario: Carla Lopez.'),
+(120, 8, 4, '28034625', '2024-01-21 15:35:35', 'Salida del sistema del Usuario: Carla Lopez.'),
+(121, 8, 3, '28034625', '2024-01-21 15:44:43', 'Ingreso del Usuario: Carla Lopez.'),
+(122, 8, 4, '28034625', '2024-01-21 16:05:47', 'Salida del sistema del Usuario: Carla Lopez.'),
+(123, 8, 3, '28034625', '2024-01-21 16:09:06', 'Ingreso del Usuario: Carla Lopez.'),
+(124, 8, 4, '28034625', '2024-01-21 16:10:09', 'Salida del sistema del Usuario: Carla Lopez.'),
+(125, 8, 3, '28034625', '2024-01-21 16:12:19', 'Ingreso del Usuario: Carla Lopez.'),
+(126, 8, 4, '28034625', '2024-01-21 16:27:42', 'Salida del sistema del Usuario: Carla Lopez.'),
+(127, 8, 3, '28034625', '2024-01-21 16:31:55', 'Ingreso del Usuario: Carla Lopez.'),
+(128, 8, 4, '28034625', '2024-01-21 16:32:55', 'Salida del sistema del Usuario: Carla Lopez.'),
+(129, 8, 3, '28034625', '2024-01-21 17:26:25', 'Ingreso del Usuario: Carla Lopez.'),
+(130, 8, 4, '28034625', '2024-01-21 17:30:49', 'Salida del sistema del Usuario: Carla Lopez.'),
+(131, 8, 3, '28034625', '2024-01-21 17:47:32', 'Ingreso del Usuario: Carla Lopez.'),
+(132, 8, 4, '28034625', '2024-01-21 17:48:29', 'Salida del sistema del Usuario: Carla Lopez.'),
+(133, 8, 3, '28034625', '2024-01-21 17:50:56', 'Ingreso del Usuario: Carla Lopez.'),
+(134, 8, 4, '28034625', '2024-01-21 17:52:52', 'Salida del sistema del Usuario: Carla Lopez.'),
+(135, 8, 3, '28034625', '2024-01-21 18:46:37', 'Ingreso del Usuario: Carla Lopez.'),
+(136, 8, 4, '28034625', '2024-01-21 18:51:02', 'Salida del sistema del Usuario: Carla Lopez.'),
+(137, 8, 3, '28034625', '2024-01-21 19:20:09', 'Ingreso del Usuario: Carla Lopez.'),
+(138, 8, 18, 'Registro de Grupo de Galería, en Imágenes/Videos', '2024-01-21 19:23:09', 'Nuevo registro de Grupo, para la categorías de la Galería de la Página Web. Registro realizado por: Carla Lopez'),
+(139, 8, 4, '28034625', '2024-01-21 19:31:08', 'Salida del sistema del Usuario: Carla Lopez.'),
+(140, 8, 3, '28034625', '2024-01-21 19:38:07', 'Ingreso del Usuario: Carla Lopez.'),
+(141, 8, 4, '28034625', '2024-01-21 19:38:20', 'Salida del sistema del Usuario: Carla Lopez.'),
+(142, 8, 3, '28034625', '2024-01-21 19:38:48', 'Ingreso del Usuario: Carla Lopez.'),
+(143, 8, 4, '28034625', '2024-01-21 19:43:20', 'Salida del sistema del Usuario: Carla Lopez.'),
+(144, 8, 3, '28034625', '2024-01-21 20:00:53', 'Ingreso del Usuario: Carla Lopez.'),
+(145, 8, 4, '28034625', '2024-01-21 20:27:04', 'Salida automática del sistema, del Usuario: .'),
+(147, 8, 3, '28034625', '2024-01-21 20:32:09', 'Ingreso del Usuario: Carla Lopez.'),
+(148, 8, 4, '28034625', '2024-01-21 20:47:25', 'Salida del sistema del Usuario: Carla Lopez.'),
+(149, 8, 3, '28034625', '2024-01-21 20:47:29', 'Ingreso del Usuario: Carla Lopez.'),
+(150, 8, 18, 'Registro de Grupo de Galería, en Imágenes/Videos', '2024-01-21 20:59:33', 'Nuevo registro de Grupo, para la categorías de la Galería de la Página Web. Registro realizado por: Carla Lopez'),
+(151, 8, 4, '28034625', '2024-01-21 21:03:49', 'Salida del sistema del Usuario: Carla Lopez.'),
+(152, 8, 3, '28034625', '2024-01-21 21:09:18', 'Ingreso del Usuario: Carla Lopez.'),
+(153, 8, 18, 'Registro de Grupo de Galería, en Imágenes/Videos', '2024-01-21 21:10:02', 'Nuevo registro de Grupo, para la categorías de la Galería de la Página Web. Registro realizado por: Carla Lopez'),
+(154, 8, 4, '28034625', '2024-01-21 21:34:29', 'Salida del sistema del Usuario: Carla Lopez.'),
+(155, 8, 3, '28034625', '2024-01-21 21:45:26', 'Ingreso del Usuario: Carla Lopez.'),
+(156, 8, 18, 'Registro de Grupo de Galería, en Imágenes/Videos', '2024-01-21 21:46:07', 'Nuevo registro de Grupo, para la categorías de la Galería de la Página Web. Registro realizado por: Carla Lopez'),
+(157, 8, 18, 'Registro de Grupo de Galería, en Imágenes/Videos', '2024-01-21 21:50:36', 'Nuevo registro de Grupo, para la categorías de la Galería de la Página Web. Registro realizado por: Carla Lopez'),
+(158, 8, 4, '28034625', '2024-01-21 21:52:05', 'Salida del sistema del Usuario: Carla Lopez.'),
+(159, 8, 3, '28034625', '2024-01-21 22:05:26', 'Ingreso del Usuario: Carla Lopez.'),
+(160, 8, 4, '28034625', '2024-01-21 22:21:58', 'Salida del sistema del Usuario: Carla Lopez.'),
+(161, 1, 3, '27146430', '2024-01-21 23:03:31', 'Ingreso del Usuario: Jesus Castillo.'),
+(162, 1, 4, '27146430', '2024-01-21 23:04:59', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(163, 8, 3, '28034625', '2024-01-21 23:21:35', 'Ingreso del Usuario: Carla Lopez.'),
+(164, 8, 19, 'Registro de  en la Dir. General.', '2024-01-21 23:22:26', 'Nuevo registro de  en la Galería de la Página Web de la Dir. General, ubicación: ../../assets/gallery/DGSA/2024/1/1/20221129_135211.jpg; realizado por: Carla Lopez'),
+(165, 8, 4, '28034625', '2024-01-21 23:22:31', 'Salida del sistema del Usuario: Carla Lopez.'),
+(166, 1, 3, '27146430', '2024-01-21 23:22:45', 'Ingreso del Usuario: Jesus Castillo.'),
+(167, 1, 4, '27146430', '2024-01-21 23:24:20', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(168, 8, 3, '28034625', '2024-01-21 23:24:34', 'Ingreso del Usuario: Carla Lopez.'),
+(169, 8, 4, '28034625', '2024-01-21 23:30:20', 'Salida del sistema del Usuario: Carla Lopez.'),
+(170, 8, 3, '28034625', '2024-01-21 23:30:51', 'Ingreso del Usuario: Carla Lopez.'),
+(171, 8, 4, '28034625', '2024-01-21 23:31:45', 'Salida del sistema del Usuario: Carla Lopez.'),
+(172, 8, 3, '28034625', '2024-01-22 00:39:06', 'Ingreso del Usuario: Carla Lopez.'),
+(173, 1, 3, '27146430', '2024-01-22 01:13:03', 'Ingreso del Usuario: Jesus Castillo.'),
+(174, 1, 4, '27146430', '2024-01-22 01:13:50', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(175, 1, 3, '27146430', '2024-01-22 01:27:29', 'Ingreso del Usuario: Jesus Castillo.'),
+(176, 1, 4, '27146430', '2024-01-22 01:28:01', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(177, 8, 4, '28034625', '2024-01-22 01:34:39', 'Salida del sistema del Usuario: Carla Lopez.'),
+(178, 3, 3, '27146432', '2024-01-22 01:34:42', 'Ingreso del Usuario: Jefe Correspondencia.'),
+(179, 3, 15, 'EmpresasYisus', '2024-01-22 01:38:02', 'Se registra una nueva empresa en el sistema, bajo el nombre. EmpresasYisus, y cuyo RIF es: V-271464300. Registro hecho por: Jefe Correspondencia.'),
+(180, 3, 13, '27146432', '2024-01-22 01:40:24', 'Se registra una nueva correspondencia, nro de oficio: 1515151, bajo el nombre de la empresa: EmpresasYisus, cuyo rif es: V-271464300. Usuario encargado del registro: Jefe Correspondencia'),
+(181, 3, 8, 'M1SSPC18', '2024-01-22 01:49:55', 'Nueva solicitud de Soporte técnico, nombre del equipo: M1SSPC18, Nro de Solicitud: 5.'),
+(182, 3, 4, '27146432', '2024-01-22 01:57:28', 'Salida del sistema del Usuario: Jefe Correspondencia.'),
+(183, 1, 3, '27146430', '2024-01-22 01:57:41', 'Ingreso del Usuario: Jesus Castillo.'),
+(184, 1, 4, '27146430', '2024-01-22 01:57:43', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(185, 1, 3, '27146430', '2024-01-22 01:57:47', 'Ingreso del Usuario: Jesus Castillo.'),
+(186, 1, 4, '27146430', '2024-01-22 01:58:07', 'Salida del sistema del Usuario: Jesus Castillo.'),
+(187, 3, 4, '27146432', '2024-01-22 14:58:20', 'Salida automática del sistema, del Usuario: .'),
+(188, 3, 3, '27146432', '2024-01-22 14:58:20', 'Ingreso del Usuario: Jefe Correspondencia.'),
+(189, 3, 4, '27146432', '2024-01-22 14:58:23', 'Salida del sistema del Usuario: Jefe Correspondencia.'),
+(190, 3, 3, '27146432', '2024-01-22 15:03:03', 'Ingreso del Usuario: Jefe Correspondencia.'),
+(191, 3, 4, '27146432', '2024-01-22 15:03:07', 'Salida del sistema del Usuario: Jefe Correspondencia.'),
+(192, 3, 3, '27146432', '2024-01-22 15:07:23', 'Ingreso del Usuario: Jefe Correspondencia.'),
+(193, 3, 4, '27146432', '2024-01-22 15:12:35', 'Salida del sistema del Usuario: Jefe Correspondencia.'),
+(194, 4, 3, '27146433', '2024-01-22 15:14:36', 'Ingreso del Usuario: Empleado Vista.'),
+(195, 4, 8, 'M1SSPC16', '2024-01-22 15:14:59', 'Nueva solicitud de Soporte técnico, nombre del equipo: M1SSPC16, Nro de Solicitud: 6.'),
+(196, 4, 4, '27146433', '2024-01-22 15:15:58', 'Salida del sistema del Usuario: Empleado Vista.'),
+(197, 4, 4, '27146433', '2024-01-22 15:20:58', 'Salida automática del sistema, del Usuario: .');
 
 -- --------------------------------------------------------
 
@@ -540,7 +825,10 @@ INSERT INTO `z2_historial_acciones` (`id_accHis`, `nombre_accion`) VALUES
 (14, 'Correspondencia aceptada'),
 (15, 'Registro Institución Correspondencia'),
 (16, 'Registro Base de Conocimiento'),
-(17, 'Creación Respaldo');
+(17, 'Creación Respaldo'),
+(18, 'Registro de Nuevo Grupo Galería'),
+(19, 'Registro de Imagen'),
+(20, 'Registro de Video');
 
 --
 -- Índices para tablas volcadas
@@ -663,6 +951,29 @@ ALTER TABLE `d4_notificaciones_estatus`
   ADD PRIMARY KEY (`id_estatus_notifi`);
 
 --
+-- Indices de la tabla `e1_galerias`
+--
+ALTER TABLE `e1_galerias`
+  ADD PRIMARY KEY (`id_galeria`),
+  ADD KEY `id_galeria_direccion` (`id_galeria_direccion`),
+  ADD KEY `id_galeria_tipo` (`id_galeria_tipo`),
+  ADD KEY `id_galeria_grupo` (`id_galeria_grupo`),
+  ADD KEY `id_visible_estado` (`visible`);
+
+--
+-- Indices de la tabla `e2_galerias_tipos`
+--
+ALTER TABLE `e2_galerias_tipos`
+  ADD PRIMARY KEY (`id_tipo`);
+
+--
+-- Indices de la tabla `e3_galerias_grupos`
+--
+ALTER TABLE `e3_galerias_grupos`
+  ADD PRIMARY KEY (`id_grupo`),
+  ADD KEY `id_direccion_grupo` (`id_direccion_grupo`);
+
+--
 -- Indices de la tabla `z1_historial_camb_sis`
 --
 ALTER TABLE `z1_historial_camb_sis`
@@ -684,7 +995,7 @@ ALTER TABLE `z2_historial_acciones`
 -- AUTO_INCREMENT de la tabla `a1_usuarios`
 --
 ALTER TABLE `a1_usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `a2_rol`
@@ -720,7 +1031,7 @@ ALTER TABLE `b2_divisiones`
 -- AUTO_INCREMENT de la tabla `b3_departamentos`
 --
 ALTER TABLE `b3_departamentos`
-  MODIFY `id_departamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `id_departamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT de la tabla `c1_inventario_equipo`
@@ -747,16 +1058,58 @@ ALTER TABLE `c4_base_conocimiento`
   MODIFY `id_conocimiento` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `d1_correspondencia`
+--
+ALTER TABLE `d1_correspondencia`
+  MODIFY `id_nro_admision` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `d2_empresas_corresp`
+--
+ALTER TABLE `d2_empresas_corresp`
+  MODIFY `id_empresas` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `d3_notificaciones_div`
+--
+ALTER TABLE `d3_notificaciones_div`
+  MODIFY `id_notificacion` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `d4_notificaciones_estatus`
+--
+ALTER TABLE `d4_notificaciones_estatus`
+  MODIFY `id_estatus_notifi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `e1_galerias`
+--
+ALTER TABLE `e1_galerias`
+  MODIFY `id_galeria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+
+--
+-- AUTO_INCREMENT de la tabla `e2_galerias_tipos`
+--
+ALTER TABLE `e2_galerias_tipos`
+  MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `e3_galerias_grupos`
+--
+ALTER TABLE `e3_galerias_grupos`
+  MODIFY `id_grupo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT de la tabla `z1_historial_camb_sis`
 --
 ALTER TABLE `z1_historial_camb_sis`
-  MODIFY `id_historial_cambios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_historial_cambios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=198;
 
 --
 -- AUTO_INCREMENT de la tabla `z2_historial_acciones`
 --
 ALTER TABLE `z2_historial_acciones`
-  MODIFY `id_accHis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_accHis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Restricciones para tablas volcadas
@@ -822,6 +1175,21 @@ ALTER TABLE `d3_notificaciones_div`
   ADD CONSTRAINT `id_empresa_correspon_fk` FOREIGN KEY (`id_empresa_corresp`) REFERENCES `d2_empresas_corresp` (`id_empresas`),
   ADD CONSTRAINT `id_estatus_nombres_fk` FOREIGN KEY (`estatus_Corres`) REFERENCES `d4_notificaciones_estatus` (`id_estatus_notifi`),
   ADD CONSTRAINT `id_jefe_division_corres_fk` FOREIGN KEY (`Jefe_Corres`) REFERENCES `a1_usuarios` (`id_usuario`);
+
+--
+-- Filtros para la tabla `e1_galerias`
+--
+ALTER TABLE `e1_galerias`
+  ADD CONSTRAINT `id_galeria_direccion` FOREIGN KEY (`id_galeria_direccion`) REFERENCES `b1_direcciones` (`id_direcciones`),
+  ADD CONSTRAINT `id_galeria_grupo` FOREIGN KEY (`id_galeria_grupo`) REFERENCES `e3_galerias_grupos` (`id_grupo`),
+  ADD CONSTRAINT `id_galeria_tipo` FOREIGN KEY (`id_galeria_tipo`) REFERENCES `e2_galerias_tipos` (`id_tipo`),
+  ADD CONSTRAINT `id_visible_estado` FOREIGN KEY (`visible`) REFERENCES `a4_estado` (`id_estado`);
+
+--
+-- Filtros para la tabla `e3_galerias_grupos`
+--
+ALTER TABLE `e3_galerias_grupos`
+  ADD CONSTRAINT `id_direccion_grupo` FOREIGN KEY (`id_direccion_grupo`) REFERENCES `b1_direcciones` (`id_direcciones`);
 
 --
 -- Filtros para la tabla `z1_historial_camb_sis`

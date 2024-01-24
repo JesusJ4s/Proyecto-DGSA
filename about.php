@@ -9,6 +9,8 @@
         include("php/estilosCss.php");
         stile1();
     ?>
+    <script src="jquery/jquery-3.6.4.min.js"></script>
+
     <title>Dirección General de Salud Ambiental</title>
 </head>
 <body class=" min-width-index">
@@ -36,69 +38,35 @@
 
 
 
-<!-- **************************************************************************************************** -->
-<!-- QUIENES SOMOS  -->
+    <!-- **************************************************************************************************** -->
+    <!-- BARRA DE NAVEGACIÓN  -->
 
-    <!-- LISTA PARA ELEGIR TEMA -->
-    <!-- <nav class="ms-5 me-5">
-        <div class="container-fluid p-3 my-3  bg-azul-claro-cromatico5 box-shadow-nav text-center rounded">
-            
-            <ul class="list-group list-group-horizontal">
-                <a class="list-group-item bg-azul-claro-cromatico5" href='index.php'><img src='assets/icon/botones/inicio2.png' id='' class='w-50'></a>
-                <button class="list-group-item list-group-item-action bg-azul-claro-cromatico5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOrganigrama" aria-expanded="false" aria-controls="collapseExample">Organigrama</button>
-                <button class="list-group-item list-group-item-action bg-azul-claro-cromatico5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseResena" aria-expanded="false" aria-controls="collapseExample">Reseña Histórica</button>
-                <button class="list-group-item list-group-item-action bg-azul-claro-cromatico5" type="button" data-bs-toggle="collapse" data-bs-target="#DGSA_Mis_Vis" aria-expanded="false" aria-controls="collapseExample">Misión y Visión</button>
-                <button class="list-group-item list-group-item-action bg-azul-claro-cromatico5" type="button" data-bs-toggle="collapse" data-bs-target="#Objetivo" aria-expanded="false" aria-controls="collapseExample">Objetivo</button>
-                <button class="list-group-item list-group-item-action bg-azul-claro-cromatico5" type="button" data-bs-toggle="collapse" data-bs-target="#DGSA_Funciones" aria-expanded="false" aria-controls="collapseExample">Funciones</button>
-        
-            </ul>
-            
-        
+    <div class="accordion mb-5" id="accordionAbout">
+
+        <div class="d-flex justify-content-center bg-barra py-4">
+
+            <a href="index.php"><img src="assets/icon/botones/flecha-hacia-atras-mora.png" class="w-50x50 mx-2"></a>
+
+            <button class="btn bg-barra btn-outline-primary mx-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOrganigrama" aria-expanded="true" aria-controls="collapseOrganigrama">
+                <b>Organigrama</b>
+            </button>
+
+            <button class="btn bg-barra btn-outline-primary mx-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseResena" aria-expanded="false" aria-controls="collapseResena">
+                <b>Reseña Histórica</b>
+            </button>
+
+            <button class="btn bg-barra btn-outline-primary mx-2" type="button" data-bs-toggle="collapse" data-bs-target="#DGSA_Mis_Vis" aria-expanded="false" aria-controls="DGSA_Mis_Vis">
+                <b>Misión y Visión</b>
+            </button>
+
+            <button class="btn bg-barra btn-outline-primary mx-2" type="button" data-bs-toggle="collapse" data-bs-target="#Objetivo" aria-expanded="false" aria-controls="Objetivo">
+                <b>Objetivo</b>
+            </button>
+
+            <button class="btn bg-barra btn-outline-primary mx-2" type="button" data-bs-toggle="collapse" data-bs-target="#DGSA_Funciones" aria-expanded="false" aria-controls="DGSA_Funciones">
+                <b>Funciones</b>
+            </button>
         </div>
-    </nav> -->
-
-    <div class="accordion mb-5" id="accordionExample">
-        <nav class="navbar navbar-expand-lg navbar-light bg-barra py-4">
-            <div class="container-lg text-center">
-                <!-- <h4 class="me-5" >Nosotros</h4> -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
-                    <!-- <div> -->
-                        <a href="index.php"><img src="assets/icon/botones/flecha-hacia-atras-mora.png" class="w-50x50"></a>
-
-                        <li class="nav-item my-2">
-                            <button class="btn bg-barra btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOrganigrama" aria-expanded="true" aria-controls="collapseOrganigrama">
-                                <b>Organigrama</b>
-                            </button>
-                        </li>
-                        <li class="nav-item my-2">
-                            <button class="btn bg-barra btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseResena" aria-expanded="false" aria-controls="collapseResena">
-                                <b>Reseña Histórica</b>
-                            </button>
-                        </li>
-                        <li class="nav-item my-2">
-                            <button class="btn bg-barra btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#DGSA_Mis_Vis" aria-expanded="false" aria-controls="DGSA_Mis_Vis">
-                                <b>Misión y Visión</b>
-                            </button>
-                        </li>
-                        <li class="nav-item my-2">
-                            <button class="btn bg-barra btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#Objetivo" aria-expanded="false" aria-controls="Objetivo">
-                                <b>Objetivo</b>
-                            </button>
-                        </li>
-                        <li class="nav-item my-2">
-                            <button class="btn bg-barra btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#DGSA_Funciones" aria-expanded="false" aria-controls="DGSA_Funciones">
-                                <b>Funciones</b>
-                            </button>
-                        </li>
-                    <!-- </div> -->
-                </ul>
-                </div>
-            </div>
-        </nav>
         
         <hr class="my-5">
     
@@ -106,7 +74,7 @@
         <!-- CONTENIDO -->
         <!-- Organigrama -->
         <section class="container-fluid w-95 my-5">
-            <div class="accordion-collapse collapse show" id="collapseOrganigrama" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-collapse collapse show" id="collapseOrganigrama" aria-labelledby="headingOne" data-bs-parent="#accordionAbout">
                 <div class="row accordion-body"  aria-expanded="true">
                     <h2 id="DGSA_Organigrama" class="bold text-start mb-4"><u>Organigrama</u></h2>
                     <div class="col-4">
@@ -123,7 +91,7 @@
 
         <!-- Reseña Historica -->
         <section class="container-fluid w-95 my-5">
-            <div class="accordion-collapse collapse" id="collapseResena" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+            <div class="accordion-collapse collapse" id="collapseResena" aria-labelledby="headingTwo" data-bs-parent="#accordionAbout">
                 <div class="card card-body">
                     <h2 id="DGSA_Res_Hist" class="text-start mb-4"><u>Reseña Histórica</u></h2>
 
@@ -147,16 +115,15 @@
 
         <!-- Mision - Vision -->
         <section class="container-fluid w-95 my-5">
-            <div class="accordion-collapse collapse" id="DGSA_Mis_Vis" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                <div class="row accordion-body"  aria-expanded="true">
+            <div class="accordion-collapse collapse" id="DGSA_Mis_Vis" aria-labelledby="headingThree" data-bs-parent="#accordionAbout">
+                <div class="accordion-body"  aria-expanded="true">
                     <div class="card card-body mb-5">
-                        <h2 id="DGSA_Mis_Vis" class="bold  text-start mb-4"><u>Misión</u></h2>
+                        <h2 id="DGSA_Mis" class="bold text-start mb-4"><u>Misión</u></h2>
                         <p class="py-3 text-justify sangria">
                             Ejercer el ejercicio de la función Rectora del Ministerio de Poder Popular para la Salud (MPPS); en materia Sanitario Ambiental, mediante la normalización, la supervisión, la investigación operativa, la capacitación, la asesoría y asistencia técnica, para lograr el desarrollo de planes y programas de control y prevención de enfermedades asociadas a factores físicos, químicos y biológicos presentes en el entorno humano.
                         </p>
                         
                     </div>
-                    
                     <div class="card card-body">
                         <h2 id="DGSA_Vis" class="bold text-start mb-4"><u>Visión</u></h2>
                         <p class="py-3 text-justify sangria">
@@ -169,7 +136,7 @@
 
         <!-- Objetivo -->
         <section class="container-fluid w-95 my-5">
-            <div class="accordion-collapse collapse" id="Objetivo" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+            <div class="accordion-collapse collapse" id="Objetivo" aria-labelledby="headingFour" data-bs-parent="#accordionAbout">
                 <div class="card card-body">
                     <h2 id="DGSA_objetivos" class="bold text-start mb-4"><u>Objetivo</u></h2>
                     <div class="">
@@ -183,9 +150,9 @@
 
         <!-- Funciones -->
         <section class="container-fluid w-95 my-5">
-            <div class="accordion-collapse collapse" id="DGSA_Funciones" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-                <div class="">
-                    <h2 id="DGSA_Funciones" class="bold text-start mb-4"><u>Funciones</u></h2>
+            <div class="accordion-collapse collapse" id="DGSA_Funciones" aria-labelledby="headingFive" data-bs-parent="#accordionAbout">
+                <div class="card card-body">
+                    <h2 id="Funciones" class="bold text-start mb-4"><u>Funciones</u></h2>
                     <table class="table table-bordered" id="">
                         <thead class="bg-primary text-light">
                             <tr class="">

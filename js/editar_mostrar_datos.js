@@ -96,7 +96,7 @@ for (let i = 0; i < textareas.length; i++) {
     const textLength = textarea.value.length;
 
     // Calcular los caracteres restantes
-    const remainingChars = 200 - textLength;
+    const remainingChars = 250 - textLength;
 
     // Verificar si se ha alcanzado el mínimo de caracteres requeridos
     const isValid = textLength >= minChars;

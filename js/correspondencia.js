@@ -133,13 +133,31 @@ function tabla_correspondencia() {
             new DataTable('#dataTable_corres', {
                 language: Traduccion,
                 initComplete: function () {
+                    
+                    // Agregar filtros (selectores) a la tabla
                     var api = this.api();
-                    // Obtener el índice de la columna de fechas
-                    var dateColumnIndex = 0; // Reemplaza con el índice de tu columna de fechas
+                    api.columns([6]).every(function () {
+                        var column = this;
+                        var select = $('<select class="filterE form-select "><option value="">---</option></select>')
+                            .appendTo($(column.footer()).empty())
+                            .on('change', function () {
+                                var val = $.fn.dataTable.util.escapeRegex(
+                                    $(this).val()
+                                );
 
-                    // Ordenar la columna de fechas de forma descendente (más lejano a más reciente)
-                    api.column(dateColumnIndex).order('desc').draw();
-                }
+                                column
+                                    .search(val ? '^' + val + '$' : '', true, false)
+                                    .draw();
+                            });
+
+                        column.data().unique().sort().each(function (d, j) {
+                            select.append('<option value="' + d + '">' + d + '</option>')
+                        });
+                    });                   
+                },
+            })
+            .on('draw.dt', function () {
+                ActoSeguido();
             });
             $('#dataTable_corres tr').each(function () {
                 var est = $(this).find('td:last').text();
@@ -153,6 +171,18 @@ function tabla_correspondencia() {
             });
         }
     })
+}
+function ActoSeguido(){
+    $('#dataTable_corres tr').each(function () {
+        var est = $(this).find('td:last').text();
+        if (est == "En espera") {
+            $(this).find('td:last').addClass('bg-warning text-dark');
+        } else if (est == "Confirmado") {
+            $(this).find('td:last').addClass('bg-success text-dark');
+        }else if (est == "Alerta") {
+            $(this).find('td:last').addClass('bg-danger text-dark');
+        }
+    });
 }
 // TODOS LOS REGISTROS (SOLO JEFE CORRESPONDENCIA - REGISTRO)
 function tabla_correspondencia_registro() {
@@ -181,17 +211,6 @@ function tabla_correspondencia_registro() {
 
                     // Ordenar la columna de fechas de forma descendente (más lejano a más reciente)
                     api.column(dateColumnIndex).order('desc').draw();
-                }
-            });
-
-            $('#dataTable_corres_registro tr').each(function () {
-                var est = $(this).find('td:last').text();
-                if (est == "En espera") {
-                    $(this).find('td:last').addClass('bg-warning text-dark');
-                } else if (est == "Confirmado") {
-                    $(this).find('td:last').addClass('bg-success text-dark');
-                }else if (est == "Alerta") {
-                    $(this).find('td:last').addClass('bg-danger text-dark');
                 }
             });
         }
@@ -348,6 +367,9 @@ function tabla_correspondencia_indiv_FIN_ADMIND() {
                         });
                     });
                 }
+            })
+            .on('draw.dt', function () {
+                ActoSeguido2();
             });
             $('#tabla_correspondencia_indivi_FIN_admin tr').each(function () {
                 var est = $(this).find('td:last').text();
@@ -360,6 +382,17 @@ function tabla_correspondencia_indiv_FIN_ADMIND() {
             });
         }
     })
+}
+function ActoSeguido2(){
+    $('#tabla_correspondencia_indivi_FIN_admin tr').each(function () {
+        var est = $(this).find('td:last').text();
+        if (est == "Confirmado") {
+            $(this).find('td:last').addClass('bg-success text-light');
+        }
+        if (est == "En espera") {
+            $(this).find('td:last').addClass('bg-warning text-dark');
+        }
+    });
 }
 // REPORTE CORRESPONDENCIA
 function reporteCorres(){

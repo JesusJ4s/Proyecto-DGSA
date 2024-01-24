@@ -8,6 +8,3 @@ $AntPost_solo = date("a");
 
 $horaActual = "<kbd>$hora_sola</kbd>:<kbd>$minuto_solo</kbd>:<kbd class=\"bg-light text-dark\">$segundo_solo</kbd>";
 echo $horaActual;
-
-
-?>

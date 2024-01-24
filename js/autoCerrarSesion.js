@@ -3,15 +3,17 @@
 var duracion_sesion = 300; 
 
 // Definir la duración del tiempo de advertencia en segundos
-var duracion_advertencia = 289;
+var duracion_advertencia = 285;
 
 // Función para comprobar el estado de la sesión
 function comprobarSesion() {
+
   // Crear una nueva solicitud XMLHttpRequest
   var xhr = new XMLHttpRequest();
 
   // Configurar la solicitud
   xhr.open('GET', '../php/comprobarSesion.php', true);
+  console.log('Se comprobó la sesión');
 
   // Configurar la función de devolución de llamada para manejar la respuesta
   xhr.onreadystatechange = function () {
@@ -92,7 +94,7 @@ function mantenerSesion() {
 
   // Configurar la solicitud
   xhr.open('GET', '../php/actualizarSesion.php', true);
-  console.log("sesion actualizada");
+  console.log("sesion actualizada mantener");
   // Enviar la solicitud
   xhr.send();
 }

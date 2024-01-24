@@ -67,6 +67,10 @@ include("../php/date_time.php");
                                     id="btn_usr_entrada">Usuario</button>
                                 <ul class='dropdown-menu'>
                                     <li><a class='dropdown-item' href='ajustes_de_usuario.php'>Ajustes</a></li>
+                                    <?php
+                                        include('../php/manuales_usuario.php');
+                                        manuales();
+                                    ?>
                                     <li><a class='dropdown-item' href='../php/cerrar_sesion.php'>Cerrar Sesión</a><img
                                             src="../assets/icon/users/turn-off.png" class="wh-logout-icon"></li>
                                 </ul>
@@ -88,14 +92,21 @@ include("../php/date_time.php");
                     <h5 class=""><a class=" enlaces_limpios2 text-danger" id="notificacionesALERTA"
                             href="correspondencia_jefes.php"></a>
                     </h5>
-                    <h5 class=""><a class=" enlaces_limpios2" id="notificaciones3"
-                            href="soporte_tecnico_notifi.php"></a>
-                    </h5>
+                    <?php
+                        $level = $_SESSION["nivel_usuario"];
 
-                    <!-- <h5>hola</h5> -->
-                    <!-- <h5>hola2</h5> -->
-                    <!-- <h5><a class=" enlaces_limpios2 text-dark" id="notificaciones"
-                            href="correspondencia_jefes.php"></h5> -->
+                        if ($level == 1 || $level == 2) {
+                            echo 
+                            '
+                            <h5 class=""><a class=" enlaces_limpios2" id="notificaciones3"
+                                href="soporte_tecnico_notifi.php"></a>
+                            </h5>
+                            <h5 class=""><a class=" enlaces_limpios2 text-dark" id="notificaciones4"
+                                    href="soporte_tecnico_notifi.php"></a>
+                            </h5>
+                            ';
+                        }
+                    ?>
                 </marquee>
             </div>
             <!-- </section> -->
@@ -137,7 +148,20 @@ include("../php/date_time.php");
     <script src="../js/consultar_soportes.js"></script>
 
     <script src="../chart/dist/chart.umd.js"></script>
-    <script src="../js/estadisticasAdminMovi.js"></script>
+
+    <?php
+        $level = $_SESSION["nivel_usuario"];
+
+        if ($level == 1) {
+            echo 
+            '
+                <script src="../js/estadisticasAdminMovi.js"></script>
+            
+            ';
+        }
+
+
+    ?>
 
 </body>
     <?php

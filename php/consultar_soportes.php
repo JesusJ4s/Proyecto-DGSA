@@ -938,14 +938,13 @@ if ($comprobacion == "RegisSoli") {
                         $buscarID = mysqli_query($conexion, "SELECT * FROM $tabla_db8 s WHERE nomb_equipo_soporte = '$name_edit' AND estado = '$en_espera'");
                         while ($consulta = mysqli_fetch_array($buscarID)) {
                             $id_Equipo = $consulta['id_soporte'];
-                            $nombreEquipo = $consulta['nomb_equipo_soporte'];
                         }
 
                         $valorID = $_SESSION['id_usr'];
-                        $descripcion_Cambio = "Nueva solicitud de Soporte técnico, nombre del equipo: " . $nombreEquipo . ", Nro de Solicitud: " . $id_Equipo . ".";
+                        $descripcion_Cambio = "Nueva solicitud de Soporte técnico, nombre del equipo: " . $name_edit . ", Nro de Solicitud: " . $id_Equipo . ".";
 
                         $accionHecha = "8";
-                        $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionHecha', '$nombreEquipo', now(), '$descripcion_Cambio')";
+                        $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionHecha', '$name_edit', now(), '$descripcion_Cambio')";
                         mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
 
                         // FINAL AUDITORIA ************************************************************
@@ -973,10 +972,10 @@ if ($comprobacion == "RegisSoli") {
                     }
 
                     $valorID = $_SESSION['id_usr'];
-                    $descripcion_Cambio = "Nueva solicitud de Soporte técnico, nombre del equipo: " . $nombreEquipo . ".";
+                    $descripcion_Cambio = "Nueva solicitud de Soporte técnico, nombre del equipo: " . $name_edit . ".";
 
                     $accionHecha = "8";
-                    $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionHecha', now(), '$descripcion_Cambio')";
+                    $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionHecha', '$name_edit', now(), '$descripcion_Cambio')";
                     mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
 
                     // FINAL AUDITORIA ************************************************************
@@ -1086,59 +1085,66 @@ if ($comprobacion == "espera_componentes") {
     $VerificarNroCaso = "SELECT * FROM $tabla_db8 WHERE id_soporte = '$id_soporte' AND nomb_equipo_soporte = '$nombre_equipo'";
     $resultados = mysqli_query($conexion, $VerificarNroCaso);
     while ($consulta = mysqli_fetch_array($resultados)) {
+        $encargado = $consulta['tecnico_soporte_id'];
         $contador++;
     }
-    if ($contador == 1) {
-        if (preg_match($soloLetras, $descripcion) && preg_match($patron_numero, $id_soporte) && preg_match($patron_nombre, $nombre_equipo)) {
-            $SQL_verify = "SELECT * FROM $tabla_db8 WHERE nomb_equipo_soporte = '$nombre_equipo'";
-            $resultados = mysqli_query($conexion, $SQL_verify);
-            while ($consulta = mysqli_fetch_array($resultados)) {
-                $notas = $consulta['historial_soporte'];
-            }
-
-            if ($notas == '') {
-                $nota_final = $descripcion;
+    if ($encargado == $ingeniero_encargado) {
+        if ($contador == 1) {
+            if (preg_match($soloLetras, $descripcion) && preg_match($patron_numero, $id_soporte) && preg_match($patron_nombre, $nombre_equipo)) {
+                $SQL_verify = "SELECT * FROM $tabla_db8 WHERE nomb_equipo_soporte = '$nombre_equipo'";
+                $resultados = mysqli_query($conexion, $SQL_verify);
+                while ($consulta = mysqli_fetch_array($resultados)) {
+                    $notas = $consulta['historial_soporte'];
+                }
+    
+                if ($notas == '') {
+                    $nota_final = $descripcion;
+                } else {
+                    $nota_final = $notas . "<br><br>" . $descripcion;
+                }
+    
+                // AHORA HACEMOS LA CONSULTA QUE REGISTRARÁ LOS NUEVOS DATOS EN EL SISTEMA
+                $SQL_aceptar_soli = "UPDATE $tabla_db8 SET estado='$repuesto', fecha_soporte_aceptacion=now(), tecnico_soporte_id='$ingeniero_encargado', historial_soporte='$nota_final' WHERE id_soporte = '$id_soporte'";
+    
+                mysqli_query($conexion, $SQL_aceptar_soli);
+    
+                // AUDITORIA *****************************************************************
+                $buscarID = mysqli_query($conexion, "SELECT * FROM $tabla_db8 s INNER JOIN $tabla_db1 us ON s.tecnico_soporte_id=us.id_usuario WHERE id_soporte = '$id_soporte' AND estado = '$repuesto'");
+                while ($consulta = mysqli_fetch_array($buscarID)) {
+                    $nombreEquipoBD = $consulta['nomb_equipo_soporte'];
+                }
+    
+                $valorID = $_SESSION['id_usr'];
+                $nombreAdm = $_SESSION['nombre'];
+                $descripcion_Cambio = "Se movio la solicitud a En espera de componentes, nombre del equipo: " . $nombreEquipoBD . ", Nro de Solicitud: " . $id_soporte . ". Actualizada, por " . $nombreAdm . ", descripción: " . $descripcion . ".";
+    
+                $accionHecha = "10";
+                $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionHecha', '$nombreEquipoBD', now(), '$descripcion_Cambio')";
+                mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
+    
+                // FINAL AUDITORIA ************************************************************
+    
+    
+                $mensaje = "Se movió la solicitud de manera exítosa.";
+                echo $mensaje;
+                include("cerrar_conexion.php");
+    
             } else {
-                $nota_final = $notas . "<br><br>" . $descripcion;
+                http_response_code(501);
+                include("cerrar_conexion.php");
             }
-
-            // AHORA HACEMOS LA CONSULTA QUE REGISTRARÁ LOS NUEVOS DATOS EN EL SISTEMA
-            $SQL_aceptar_soli = "UPDATE $tabla_db8 SET estado='$repuesto', fecha_soporte_aceptacion=now(), tecnico_soporte_id='$ingeniero_encargado', historial_soporte='$nota_final' WHERE id_soporte = '$id_soporte'";
-
-            mysqli_query($conexion, $SQL_aceptar_soli);
-
-            // AUDITORIA *****************************************************************
-            $buscarID = mysqli_query($conexion, "SELECT * FROM $tabla_db8 s INNER JOIN $tabla_db1 us ON s.tecnico_soporte_id=us.id_usuario WHERE id_soporte = '$id_soporte' AND estado = '$repuesto'");
-            while ($consulta = mysqli_fetch_array($buscarID)) {
-                $nombreEquipoBD = $consulta['nomb_equipo_soporte'];
-            }
-
-            $valorID = $_SESSION['id_usr'];
-            $nombreAdm = $_SESSION['nombre'];
-            $descripcion_Cambio = "Se movio la solicitud a En espera de componentes, nombre del equipo: " . $nombreEquipoBD . ", Nro de Solicitud: " . $id_soporte . ". Actualizada, por " . $nombreAdm . ", descripción: " . $descripcion . ".";
-
-            $accionHecha = "10";
-            $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionHecha', '$nombreEquipoBD', now(), '$descripcion_Cambio')";
-            mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
-
-            // FINAL AUDITORIA ************************************************************
-
-
-            $mensaje = "Se movió la solicitud de manera exítosa.";
-            echo $mensaje;
-            include("cerrar_conexion.php");
-
+    
         } else {
-            http_response_code(501);
+            http_response_code(500);
             include("cerrar_conexion.php");
         }
 
-    } else {
-        http_response_code(500);
-        include("cerrar_conexion.php");
+    }else {
+        http_response_code(502);
+            include("cerrar_conexion.php");
     }
 }
-// FINALIZAR PROCESO (AUDITORIA LISTA)
+// FINALIZAR PROCESO (AUDITORIA LISTA) TODO:
 if ($comprobacion == "finalizar_proceso") {
     include("abrir_conexion.php");
 
@@ -1146,6 +1152,7 @@ if ($comprobacion == "finalizar_proceso") {
     $id_soporte = $_POST['nroCaso'];
     $nombre_equipo = $_POST['nombre_equipo'];
     $finalizado = "3";
+    $ID_usuarioActual = $_SESSION['id_usr'];
 
     $pos = strpos($comentario, $findme);
     $pos2 = strpos($id_soporte, $findme);
@@ -1156,8 +1163,9 @@ if ($comprobacion == "finalizar_proceso") {
             $resultados = mysqli_query($conexion, $VerificarNroCaso);
             while ($consulta = mysqli_fetch_array($resultados)) {
                 $estado = $consulta['estado'];
+                $encargado = $consulta['tecnico_soporte_id'];
             }
-            if ($estado == "2" || $estado == "6") {
+            if ($encargado == $ID_usuarioActual && $estado == "2" || $estado == "6") {
                 // AHORA HACEMOS LA CONSULTA QUE REGISTRARÁ LOS ÚLTIMOS DATOS
                 $SQL_finalizar_soli = "UPDATE $tabla_db8 SET estado='$finalizado', fecha_soporte_final=now(), comentario='$comentario' WHERE id_soporte = '$id_soporte'";
 
@@ -1305,5 +1313,3 @@ if ($comprobacion == "Rechazar_Final") {
     }
 
 }
-
-?>

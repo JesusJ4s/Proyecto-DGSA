@@ -71,23 +71,59 @@ if ($alerta == "soporteTecnico") {
     $id_USR_LOGIN = $_SESSION['id_usr'];
     $usuario_coordinacion = $_SESSION['id_Coordinacion'];
     // $id_USR_LOGIN = 1;
+    $notificaciones = "";
     $poseeSoli = 0;
-    $numerador = 1;
+    $contador = 0;
 
     // ******************************************************************************
 
-    $tabla_Buscar = "SELECT * FROM $tabla_db8 WHERE estado = 2 OR estado = 6";
+    $buscarSolicitudes = "SELECT * FROM $tabla_db8 WHERE estado = 1";
+    $resultados = mysqli_query($conexion, $buscarSolicitudes);
+    while ($consulta = mysqli_fetch_array($resultados)) {
+        $contador++;
+    }
+    if ($contador != 0) {
+        $notificaciones = "Posee solicitudes de soporte técnico en espera";
+    }
+    $tabla_Buscar = "SELECT * FROM $tabla_db8 WHERE tecnico_soporte_id = $id_USR_LOGIN AND estado = 2 OR estado = 6 OR estado = 4";
     $resultados = mysqli_query($conexion,$tabla_Buscar);
     $registros = mysqli_fetch_all($resultados,MYSQLI_ASSOC);
     foreach ($registros as $registro) {
-        $Intro='<b>Posee solicitudes de Soporte Técnico</b>';
+        $Intro='Posee solicitudes de Soporte Técnico por culminar';
         $poseeSoli++;
     }
-    echo $Intro;
-
+    
     if ($poseeSoli==0) {
         echo "";
         include("cerrar_conexion.php");
+    }else {
+        echo $Intro;
+    }
+
+}
+// NOTIFICACION SOPORTE TÉCNICO GENERAL
+if ($alerta == "soporteGeneral") {
+    include("abrir_conexion.php");
+    $notificaciones = "";
+    $contador = 0;
+
+    // ******************************************************************************
+
+    $buscarSolicitudes = "SELECT * FROM $tabla_db8 WHERE estado = 1 or estado = 4";
+    $resultados = mysqli_query($conexion, $buscarSolicitudes);
+    while ($consulta = mysqli_fetch_array($resultados)) {
+        $contador++;
+    }
+    if ($contador != 0) {
+        $notificaciones = "Posee solicitudes de soporte técnico en espera y/o por rechazar";
+    }   
+    if ($contador==0) {
+        echo "";
+        include("cerrar_conexion.php");
+    }else {
+        echo $notificaciones;
+        include("cerrar_conexion.php");
+
     }
 
 }

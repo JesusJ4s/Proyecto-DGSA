@@ -13,6 +13,8 @@ $(document).ready(function () {
     mostrarSoportesRechazados();
     mostrarSoportesRechazadosVista();
 
+    alertaSoporteGeneral();
+
 });
 // MUESTRA AUTOMÁTICAMENTE LOS SOPORTES DEL SISTEMA EN ESPERA (TABLA INTERACTIVA)
 function mostrarSoportes() {
@@ -129,13 +131,6 @@ function mostrar_soportes_componentes() {
             new DataTable('#dataTable_componentes', {
                 language: Traduccion,
             });
-            // Change the background of the last cell in each row based on the value
-            // $('#dataTable_componentes tr').each(function () {
-            //     var est = $(this).find('td:last').text();
-            //     if (est == "Falta Repuesto") {
-            //         $(this).find('td:last').addClass('bg-secondary text-light');
-            //     }
-            // });
         }
     });
 }
@@ -732,6 +727,11 @@ function enviarEspera() {
 
                 $('#Modal_NotifiC').html('Error al mover solicitud.<br>Error: Colocó menos de 20 carácteres en la descripción o colocó datos inválidos.');
             }
+            if (nroERROR == 502) {
+                $('#Modal_Notifi').modal('show');
+
+                $('#Modal_NotifiC').html('Error al mover solicitud.<br>Error: Usted no es el técnico designado para la revisión.');
+            }
         },
         success: function (mensaje) {
             $('#Modal_Notifi .modal-body').html(mensaje);
@@ -854,7 +854,7 @@ function FinalizarSolicitud() {
             if (nroERROR == 502) {
                 $('#Modal_Notifi').modal('show');
 
-                $('#Modal_NotifiC').html('Error al finalizar el rechazo.<br>Error: La solicitud ya fue procesada.');
+                $('#Modal_NotifiC').html('Error al finalizar el rechazo.<br>Error: La solicitud ya fue procesada. O usted no es el técnico designado para la revisión');
             }
 
         },
@@ -937,6 +937,23 @@ function rechazar_solicitudFunction() {
     });
 }
 //********************************************************************************************************
+// ALERTAS GENERAL
+function alertaSoporteGeneral(){
+    var parametros =
+    {
+        "alerta": "soporteGeneral"
+    };
+    $.ajax({
+        data: parametros,
+        url: '../php/notificaciones_general.php',
+        type: 'POST',
+        success: function(mensaje)
+        {
+            $('#notificaciones4').html(mensaje);
+        }
+    });
+    
+}
 // ALERTAS
 function alertaSoporte(){
     var parametros =

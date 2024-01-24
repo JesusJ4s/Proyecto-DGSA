@@ -38,15 +38,6 @@
         include("php/marquesina.php")
     ?>
 
-
-    <!-- **************************************************************** -->
-    <!-- TITULO PAGINA -->
-    <!-- <div class="container-fluid text-center">
-        <p class="display-4 bold-title">
-            Dirección Epidemiología Ambiental
-        </p>
-    </div> -->
-
     <!-- **************************************************************** -->
     <!-- Barra de navegación -->
     <?php

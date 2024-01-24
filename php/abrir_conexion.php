@@ -25,6 +25,11 @@
     $tabla_db12 = "d3_notificaciones_div";
     $tabla_db13 = "d4_notificaciones_estatus";
 
+    $tabla_db14 = "e1_galerias";
+    $tabla_db15 = "e2_galerias_tipos";
+    $tabla_db16 = "e3_galerias_grupos";
+
+
     $tabla_evento = "aa_eventos_sesion";
 
     $tabla_db100 = "z1_historial_camb_sis";
@@ -37,5 +42,3 @@
     if ($conexion->connect_error){
         die('Nuestro sitio experimenta fallos. Error de Conexión: ' . $conexion->connect_error);
     }
-
-?>

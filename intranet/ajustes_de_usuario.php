@@ -153,6 +153,7 @@
                         <!-- <input type="hidden" id="ingreso" name="ingreso" value="AjustesUsr"> -->
 
                     </div>
+                    <input type="hidden" id="ingreso" name="ingreso" value="AjustesUsr">
                     <div class="formulario__mensaje" id="formulario__mensaje">
                         <p><b>ERROR:</b> Por favor rellene el formulario de manera correcta</p>
                     </div>

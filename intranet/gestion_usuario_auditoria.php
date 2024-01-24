@@ -28,15 +28,6 @@ LoginAdmin();
     <?php
     include('../php/javascript.php');
     ?>
-    <script src="../DataTables/dataTables.dateTime.min.js"></script>
-    <script src="../jquery/moment.min.js"></script>
-    <link rel="stylesheet" href="../jquery/buttons.dataTables.min.css">
-    <script src="../jquery/dataTables.buttons.min.js"></script>
-    <script src="../jquery/pdfmake.min.js"></script>
-    <script src="../jquery/buttons.html5.min.js"></script>
-    <script src="../jquery/buttons.print.min.js"></script>
-    <script src="../jquery/vfs_fonts.js"></script>
-
     <title>Auditoría</title>
 </head>
 
