@@ -9,6 +9,8 @@
         include("php/estilosCss.php");
         stile1();
     ?>
+    <script src="jquery/jquery-3.6.4.min.js"></script>
+
     <title>Epidemiología Ambiental</title>
 </head>
 
@@ -55,49 +57,17 @@
             <!-- **************************************** -->
             <!-- Carrusel -->
             <div class="container-lg mb-2 p-0" id="carrousel-info-index">
-
                 <div id="carousel-info" class="carousel slide mt-3" data-bs-ride="carousel">
-
                     <!-- Contenedor de las imágenes en carrousel -->
-
                     <h2 class="display-5">Boletín</h2>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="assets/informacion/DAE informa/Programa_Chagas.jpg" alt="Chagas" class="d-block width-carousel-info border-radius-15">
-                            <p class="display-5">
-                                Programa <i>Chagas</i>
-                            </p>
-                            <p class="px-3 text-justify sangria">
-                                Disminuir los factores de riesgo asociados a la Enfermedad de  Chagas, a través de la ejecución de actividades de vigilancia epidemiológica, entomológica y de promoción de la salud a nivel nacional...<br>
-                                <a target="_blank" href="en_const.html" class="leer-mas">Leer más...</a>
-                            </p>
-                        </div>
+                    <div class="carousel-inner" id="boletines_principales">
 
-                        <div class="carousel-item">
-                            <img src="assets/informacion/DAE informa/Programa_Esquistosomosis.jpg" alt="Esquistosomosis" class="d-block width-carousel-info border-radius-15">
-                            <p class="display-5">
-                                Programa <i>Esquistosomosis</i>
-                            </p>
-                            <p class="px-3 text-justify sangria">
-                                Establecer estrategias para la prevención, vigilancia epidemiológica, control y farma-coterapia de los principales helmintos, protozoos intestinales y esquistosomosis... <br>
-                                <a target="_blank" href="en_const.html" class="leer-mas text-center">Leer más...</a>
-                            </p>
-                        </div>
+                    <!-- BOLETINES DINAMICOS -->
 
-                        <div class="carousel-item">
-                            <img src="assets/informacion/DAE informa/Programa_Malaria.jpg" alt="Malaria" class="d-block width-carousel-info border-radius-15">
-                            <p class="display-5">
-                                Programa <i>Malaria</i>
-                            </p>
-                            <p class="p-3 text-justify sangria">
-                                Establecer estrategias integrales para la prevención, vigilancia epidemiológica, y terapéutica de la malaria, para disminuir la morbilidad y mortalidad en la población venezolana a fin de que no constituya un problema de salud pública.
-                                 <br>
-                                <a target="_blank" href="en_const.html" class="leer-mas text-center">Leer más...</a>
-                            </p>
-                        </div>
+
                     </div>
 
-                <!-- Botones para cambiar imágenes (altura normal) -->
+                    <!-- Botones para cambiar imágenes (altura normal) -->
                     <button class="carousel-control-prev" data-bs-target="#carousel-info" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon"></span>
                     </button>
@@ -106,6 +76,7 @@
                         <span class="carousel-control-next-icon"></span>
                     </button>
                 </div>
+                
             </div>
         </section>
 
@@ -113,49 +84,49 @@
         <!-- ****************************************************************************************** -->
         <!-- Extras -->
         <aside class="col-3 mb-3">
-            <div class="bg-azul-claro-cromatico2 mt-5 border-radius-15">
-                <p class="text-white fs-5 p-1 ps-3">Programa Malaria</p>
-            </div>
-            <div class="text-center">
-                <a target="_blank" href="en_const.html" class="">
-                    <img src="assets/gallery/DEA/Fotos actividades Programa de Chagas/Fotos Varias/100_3050.JPG" alt="Programa Malaria" class="w-50 border-radius-15">
-                </a>
-            </div>
-            <div class="bg-azul-claro-cromatico2 mt-5 border-radius-15">
-                <p class="text-white fs-5 p-1 ps-3">Programa Chagas</p>
-            </div>
-            <div class="text-center">
-                <a target="_blank" href="en_const.html" class="">
-                    <img src="assets/gallery/DEA/Fotos actividades Programa de Chagas/Capacitación Personal Camatagua, Edo. Aragua/100_1514.JPG" alt="Programa Chagas" class="w-50 border-radius-15">
-                </a>
-            </div>
-            <div class="bg-azul-claro-cromatico2 mt-5 border-radius-15">
-                <p class="text-white fs-5 p-1 ps-3">Programa Esquistosomosis</p>
-            </div>
-            <div class="text-center">
-                <a target="_blank" href="en_const.html" class="">
-                    <img src="assets/gallery/DEA/Fotos actividades Programa de Chagas/Evaluación Brote Mérida 2012/100_0403.JPG" alt="Programa Esquistosomosis" class="w-50 border-radius-15">
-                </a>
-            </div>
-            
-            <!-- AQUÍ DEBO USAR PHP-->
-            <!-- <div class="text-center mt-4">
-                <form action="">
-                    <input id="Buscar" class="btn btn-outline-primary " type="text" placeholder="Buscar..." required>
-                    <br>
-                    <input class="btn bg-azul-claro-cromatico5 mt-2" type="submit" placeholder="Buscar">
-                </form>
-            </div> -->
+            <?php
+
+                include("php/abrir_conexion.php");
+                $Boletines = mysqli_query($conexion, "SELECT * FROM $tabla_db17 WHERE id_boletin_direccion = 5 AND boletin_visible = 1 ORDER BY fecha_actualizacion_bol LIMIT 10");
+                while ($consulta = mysqli_fetch_array($Boletines)) {
+                    // Imprimir el contenido de cada registro
+                    $boletinesBD = '
+
+                    <div class="bg-azul-claro-cromatico2 mt-5 border-radius-15 text-center barra_Aside">
+                        <p class="text-white fs-5 p-1 ps-3">'.$consulta['titulo_boletin'].'</p>
+                    </div>
+                    <div class="text-center">
+                            <img src="'.$consulta['img1_boletin'].'" alt="" class="informacion_Aside w-50 border-radius-15">
+                            <p class="mb-0">'.$consulta['fecha_creacion_bol'].'</p>
+                    </div>
+                    <div class="text-center">
+                        <input type="hidden" id="consulta" name="consulta" value="'.$consulta['id_boletin'].'">
+                        <button type="button" class="btn btn-outline-secondary" onclick="verBoletinDEA(this);">Leer</button>
+                    </div>
+                        
+                    ';
+                    echo $boletinesBD;
+                }
+            ?>
         </aside>
 
 </body>
 
 <footer id="dk-footer" class="dk-footer">
-<?php
-    include("php/index_foot.php");
-    include("php/subir_flecha.php");
-?>
+
       <script src="js/bootstrap.bundle.js"></script>
       <script src="js/bottom.js"></script>
+      <script>
+        $(document).ready(function(){
+            boletinesDEA();
+        })
+      </script>
+<?php
+        include("php/index_foot.php");
+        include("php/subir_flecha.php");
+        include("php/web_dinamica.php");
+
+    ?>
+
 </footer>
 </html>

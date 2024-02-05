@@ -64,6 +64,9 @@
     <script src="js/verWeb.js"></script>
 </body>
 <?php
-    include("php/subir_flecha.php");
-?>
+        include("php/index_foot.php");
+        include("php/subir_flecha.php");
+        include("php/web_dinamica.php");
+
+    ?>
 </html>

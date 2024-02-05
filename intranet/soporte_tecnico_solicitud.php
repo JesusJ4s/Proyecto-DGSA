@@ -483,6 +483,7 @@ LoginSimple();
 
 
     <script src="../js/editar_mostrar_datos.js"></script>
+    <script src="../js/descripcionDosc.js"></script>
 
     <script>
         function habilitar() {

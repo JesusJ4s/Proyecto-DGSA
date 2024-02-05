@@ -36,7 +36,7 @@ function Modulos_Navegacion()
                     <div class=" text-center py-3 px-3">
                         <h2>Web</h2>
                         <p class="text-justify">A través del siguiente modulo podrá controlar lo que se muestra en la página web.</p>
-                        <a class="btn btn-primary w-65 hover-boton mt-4" href="../diseñador/pagina_web.php">Acceder</a>
+                        <a class="btn btn-primary w-65 hover-boton mt-4" href="../diseñador/modulo_desing.php">Acceder</a>
                     </div>
                 </div>
                 <!-- RELLENO DE ESPACIO -->
@@ -59,7 +59,7 @@ function Modulos_Navegacion()
                     <!-- SOPORTE TÉCNICO -->
                     <div class="border mx-3 altura-app mb-5 box-shadow-plano">
                         <div class="text-center">
-                            <img src="../assets/intranet/soporte/Soporte_Tecnico3.jpg" class="w-100 mt-2 mb-2">
+                            <img src="../assets/intranet/soporte/Soporte_Tecnico3_JEFE.jpg" class="w-100 mt-2 mb-2">
                         </div>
                         <div class=" text-center py-3 px-3">
                             <h2>Centro de Soporte</h2>
@@ -145,6 +145,21 @@ function Modulos_Navegacion()
 
                 </div>
             </section>
+            <section class="container-fluid contenedor-grid-4">
+                <!-- CONTROL DE LA WEB -->
+                <div class="border mx-3 altura-app mb-5 box-shadow-plano">
+                    <div class="text-center">
+                        <img src="../assets/intranet/diseñador/diseñador.jpg" class="w-100 mt-2 mb-2">
+                    </div>
+                    <div class=" text-center py-3 px-3">
+                        <h2>Web</h2>
+                        <p class="text-justify">A través del siguiente modulo podrá controlar lo que se muestra en la página web.</p>
+                        <a class="btn btn-primary w-65 hover-boton mt-4" href="../diseñador/modulo_desing.php">Acceder</a>
+                    </div>
+                </div>
+
+            </section>
+
 
         </section>
         

@@ -22,6 +22,3 @@ function stile2(){
         <link rel="stylesheet" href="css/style.css">
     ';
 } 
-
-
-?>

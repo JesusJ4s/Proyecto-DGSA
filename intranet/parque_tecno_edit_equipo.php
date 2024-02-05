@@ -639,6 +639,7 @@
 
 <!-- ESTO ES PARA MOSTRAR Y OCULTAR PESTAÑAS -->
 <script src="../js/editar_mostrar_datos.js"></script>
+<script src="../js/descripcionDosc.js"></script>
 
 <script src="../js/consulta_equipos.js"></script>
 <script src="../js/formulario_edicion_equipo.js"></script>

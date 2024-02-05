@@ -53,7 +53,7 @@
     <!-- Barra de navegación -->
     <?php
         include("php/index_nav.php");
-        echo dir_cont_vec_nav();       
+        echo dir_cont_vec_nav2();       
     ?>
     
     <hr>
@@ -75,11 +75,19 @@
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/bottom.js"></script>
 <script src="js/galeria_dcv.js"></script>
+<script>
+        $(document).ready(function(){
+            boletinesDCVFN();
+        })
+      </script>
 </body>
 
 <footer>
-    <?php 
-       
+<?php
+        include("php/index_foot.php");
+        include("php/subir_flecha.php");
+        include("php/web_dinamica.php");
+
     ?>
 </footer>
 </html>

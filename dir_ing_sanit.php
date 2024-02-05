@@ -59,44 +59,12 @@
 
                 <div id="carousel-info" class="carousel slide mt-3" data-bs-ride="carousel">
 
-                    <!-- Contenedor de las imágenes en carrousel -->
+                <h2 class="display-5">Boletín</h2>
+                    <div class="carousel-inner" id="boletines_principales">
 
-                    <h2 class="display-5">Boletín</h2>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="assets/informacion/DIS informa/Ingenieria-Sanitaria.jpg" alt="Ingenieria Sanitaria" class="d-block width-carousel-info">
-                            <p class="display-5">
-                              ¿Que es la <i>Ingeneria Sanitaria?</i>
-                            </p>
-                            <p class="px-3 text-justify sangria">
-                                La ingeniería sanitaria es la rama de la ingeniería dedicada básicamente al saneamiento de los ámbitos en que se desarrolla la actividad humana. Se vale para ello de los conocimientos que se imparten en disciplinas como la hidráulica, la ingeniería química, la biología (particularmente la microbiología), la física, la matemática, la mecánica, electromagnetismo, la electromecánica, la Termodinámica, entre otras. Su campo se complementa y se comparte en los últimos años con las tareas que afronta la ingeniería ambiental, que extiende su actividad a los ambientes aéreos y edáficos.                                <a target="_blank" href="en_const.html" class="leer-mas">Leer más...</a>
-                            </p>
-                        </div>
+                    <!-- BOLETINES DINAMICOS -->
 
-                        <div class="carousel-item">
-                            <img src="assets/informacion/DIS informa/importancia.jpg" alt="importancia" class="d-block width-carousel-info">
-                            <p class="display-5">
-                             importancia<i>de la Ingeneria Sanitaria</i>
-                            </p>
-                            <p class="px-3 text-justify sangria">
-                                La ingeniería sanitaria, por su importancia, es considerada en muchos países como una carrera separada, en otros países es considerada una especialización de la ingeniería hidráulica. Se ocupa de diseñar, construir y operar:
 
-                                Sistemas de abastecimiento de agua potable, en todos sus componentes, destinados a la captación, del agua desde ríos o lagos, relacionándose aquí con la ingeniería fluvial, hasta la distribución del agua potabilizada a los usuarios.
-                                Sistemas de alcantarillado sanitario y plantas de tratamiento de aguas servidas, incluyendo las estructuras destinadas a la devolución del agua ya tratada adecuadamente al ambiente.
-                                Sistemas de gestión integral de residuos sólidos.                                <a target="_blank" href="en_const.html" class="leer-mas text-center">Leer más...</a>
-                            </p>
-                        </div>
-
-                        <div class="carousel-item">
-                            <img src="assets/informacion/DIS informa/agua potable.jpg" alt="Agua potable" class="d-block width-carousel-info">
-                            <p class="display-5">
-                                El agua potable y <i> las enfermedades</i>
-                            </p>
-                            <p class="p-3 text-justify sangria">
-                                El acceso al agua potable con garantías para la salud es un avance social de gran relevancia y es, posiblemente, el ejemplo más característico de la importancia de la ingeniería sanitaria. El agua como recurso, su abastecimiento a toda la población y la garantía de calidad permite que la población en su conjunto no padezca una serie de enfermedades, conocidas como enfermedades de origen hídrico (disentería o fiebres tifoideas).                                 <br>
-                                <a target="_blank" href="en_const.html" class="leer-mas text-center">Leer más...</a>
-                            </p>
-                        </div>
                     </div>
 
                 <!-- Botones para cambiar imágenes (altura normal) -->
@@ -115,38 +83,30 @@
         <!-- ****************************************************************************************** -->
         <!-- Extras -->
         <aside class="col-3 mb-3">
-            <div class="bg-azul-claro-cromatico2 mt-5 border-radius-15">
-                <p class="text-white fs-5 p-1 ps-3">Agua potable</p>
-            </div>
-            <div class="text-center">
-                <a target="_blank" href="en_const.html" class="">
-                    <img src="assets/informacion/DIS informa/agua potable2.png" alt="Programa Chagas" class="w-50 border-radius-15">
-                </a>
-            </div>
-            <div class="bg-azul-claro-cromatico2 mt-5 border-radius-15">
-                <p class="text-white fs-5 p-1 ps-3">enfermedades</p>
-            </div>
-            <div class="text-center">
-                <a target="_blank" href="en_const.html" class="">
-                    <img src="assets/informacion/DIS informa/enfermedades21.webp" alt="Programa Esquistosomosis" class="w-50 border-radius-15">
-                </a>
-            </div>
-            <div class="bg-azul-claro-cromatico2 mt-5 border-radius-15">
-                <p class="text-white fs-5 p-1 ps-3">Agua residuales</p>
-            </div>
-            <div class="text-center">
-                <a target="_blank" href="en_const.html" class="">
-                    <img src="assets/informacion/DIS informa/agua residuales.jpg" alt="Programa Malaria" class="w-50 border-radius-15">
-                </a>
-            </div>
-            <!-- AQUÍ DEBO USAR PHP-->
-            <!-- <div class="text-center mt-4">
-                <form action="">
-                    <input id="Buscar" class="btn btn-outline-primary " type="text" placeholder="Buscar..." required>
-                    <br>
-                    <input class="btn bg-azul-claro-cromatico5 mt-2" type="submit" placeholder="Buscar">
-                </form>
-            </div> -->
+            <?php
+
+                include("php/abrir_conexion.php");
+                $Boletines = mysqli_query($conexion, "SELECT * FROM $tabla_db17 WHERE id_boletin_direccion = 2 AND boletin_visible = 1 ORDER BY fecha_actualizacion_bol LIMIT 10");
+                while ($consulta = mysqli_fetch_array($Boletines)) {
+                    // Imprimir el contenido de cada registro
+                    $boletinesBD = '
+
+                    <div class="bg-azul-claro-cromatico2 mt-5 border-radius-15 text-center barra_Aside">
+                        <p class="text-white fs-5 p-1 ps-3">'.$consulta['titulo_boletin'].'</p>
+                    </div>
+                    <div class="text-center">
+                            <img src="'.$consulta['img1_boletin'].'" alt="" class="informacion_Aside w-50 border-radius-15">
+                            <p class="mb-0">'.$consulta['fecha_creacion_bol'].'</p>
+                    </div>
+                    <div class="text-center">
+                        <input type="hidden" id="consulta" name="consulta" value="'.$consulta['id_boletin'].'">
+                        <button type="button" class="btn btn-outline-secondary" onclick="verBoletinDIS(this);">Leer</button>
+                    </div>
+                        
+                    ';
+                    echo $boletinesBD;
+                }
+                ?>
         </aside>
 
     </main>   
@@ -154,12 +114,20 @@
 </body>
 
 
-<?php
-    include("php/index_foot.php");
-    include("php/subir_flecha.php");
-?>
+
 
 </footer>
     <script src="js/bootstrap.bundle.js"></script>
     <script src="js/bottom.js"></script>
+    <script>
+        $(document).ready(function(){
+            boletinesDIS();
+        })
+      </script>
+    <?php
+        include("php/index_foot.php");
+        include("php/subir_flecha.php");
+        include("php/web_dinamica.php");
+
+    ?>
 </html>

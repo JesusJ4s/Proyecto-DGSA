@@ -25,7 +25,7 @@ function consultaImagenes() {
                     
                     // Agregar filtros (selectores) a la tabla
                     var api = this.api();
-                    api.columns([1, 3, 4, 6]).every(function () {
+                    api.columns([2, 3, 5, 7]).every(function () {
                         var column = this;
                         var select = $('<select class="filterE form-select "><option value="">---</option></select>')
                             .appendTo($(column.footer()).empty())
@@ -42,7 +42,12 @@ function consultaImagenes() {
                         column.data().unique().sort().each(function (d, j) {
                             select.append('<option value="' + d + '">' + d + '</option>')
                         });
-                    });                   
+                    }); 
+                    // Obtener el índice de la columna de fechas
+                    var dateColumnIndex = 1; // Reemplaza con el índice de tu columna de fechas
+
+                    // Ordenar la columna de fechas de forma descendente (más lejano a más reciente)
+                    api.column(dateColumnIndex).order('desc').draw();                  
                 },
             })
             .on('draw.dt', function () {
@@ -55,6 +60,8 @@ function consultaImagenes() {
                     $(this).find('td:last').addClass('bg-success text-light');
                 }else if (est == "Inactivo"){
                     $(this).find('td:last').addClass('bg-secondary text-light');
+                }else if (est == "Eliminado"){
+                    $(this).find('td:last').addClass('bg-danger text-dark');
                 }
             });
         }
@@ -69,9 +76,12 @@ function ActoSeguido(){
             $(this).find('td:last').addClass('bg-success text-light');
         }else if (est == "Inactivo"){
             $(this).find('td:last').addClass('bg-secondary text-light');
+        }else if (est == "Eliminado"){
+            $(this).find('td:last').addClass('bg-danger text-dark');
         }
     })
 }
+// SUBE LOS VALORES AL MODAL PARA
 function ModfImg(){
      // TOMAR VALOR DE UNA COLUMNA DE UNA TABLA
      $('#bodyImg').on('click', '#modificarImg', function () {
@@ -86,17 +96,34 @@ function ModfImg(){
             dataType: 'json',
             url: './php/consultasImgVid.php',
             type: 'POST',
-            error: function (jqXHR, xhr, status, error) {
+            error: function(jqXHR, xhr, status, error){
                 var nroERROR = jqXHR.status;
-                // alert("Estatus aloja" + status + nroERROR);
-                alert(jqXHR+" "+xhr+" "+status+" "+error);
+                if (nroERROR == 500) {
+                    $.alert({
+                        title: 'Error',
+                        content: "Error al Modificar el archivo.<br>Error: Falla en el sistema.",
+                        type: "red",
+                        buttons: {
+                            cancel: {
+                                text: 'Cerrar',
+                                btnClass: 'btn-secondary',
+                                action: function () {
+    
+                                }
+                            }
+                        }
+                    });                       
+                }
             },
             success: function (valores) {
                 $('#ModifiImg_Vid').modal('show');
 
                 $("#titulo").val(valores.titulo);
                 $("#nombre_dire").val(valores.nombre_dire);
+                $("#id_direccionVieja").val(valores.id_direccionVieja);
                 $("#nombre_grupo").val(valores.nombre_grupo);
+                $("#nombre_tipo").val(valores.nombre_tipo);
+                $("#nombre_ImagenV").val(valores.nombre_archivo);
                 $("#visible").val(valores.visible);
                 $("#descripcion").val(valores.descripcion);
 
@@ -114,10 +141,24 @@ function ModfImg(){
                     data: parametros,
                     url: './php/consultasImgVid.php',
                     type: 'POST',
-                    error: function (jqXHR, xhr, status, error) {
+                    error: function(jqXHR, xhr, status, error){
                         var nroERROR = jqXHR.status;
-                        // alert("Estatus aloja" + status + nroERROR);
-                        alert(jqXHR+" "+xhr+" "+status+" "+error);
+                        if (nroERROR == 500) {
+                            $.alert({
+                                title: 'Error',
+                                content: "Error al Modificar el archivo.<br>Error: Falla en el sistema.",
+                                type: "red",
+                                buttons: {
+                                    cancel: {
+                                        text: 'Cerrar',
+                                        btnClass: 'btn-secondary',
+                                        action: function () {
+            
+                                        }
+                                    }
+                                }
+                            });                       
+                        }
                     },
                     success: function (mensaje) {
                         $('#imV').html(mensaje);

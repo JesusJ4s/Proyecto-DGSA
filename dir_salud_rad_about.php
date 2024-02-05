@@ -42,7 +42,7 @@
 
     <!-- **************************************************************** -->
     <!-- Barra de navegación -->
-    <div class="accordion mb-5" id="accordionAbout">
+    <div class="accordion" id="accordionAbout">
 
         <div class="d-flex justify-content-center bg-barra py-4">
 
@@ -53,10 +53,6 @@
             </button>
 
             <button class="btn bg-barra btn-outline-primary mx-2" type="button" data-bs-toggle="collapse" data-bs-target="#DSR_Mis_Vis" aria-expanded="false" aria-controls="DSR_Mis_Vis">
-                <b>Misión y Visión</b>
-            </button>
-
-            <button class="btn bg-barra btn-outline-primary mx-2" type="button" data-bs-toggle="collapse" data-bs-target="#DGSA_Mis_Vis" aria-expanded="false" aria-controls="DGSA_Mis_Vis">
                 <b>Misión y Visión</b>
             </button>
 
@@ -168,5 +164,11 @@
 </body>
     
 <footer>
+<?php
+        include("php/index_foot.php");
+        include("php/subir_flecha.php");
+        include("php/web_dinamica.php");
+
+    ?>
 </footer>
 </html>

@@ -72,6 +72,32 @@ function ModificarArchivo(){
     
                     $('#InfoGeneral .modal-body').html('El archivo al que intenta acceder no fue encontrado.');
                 }
+    
+                if(nroERROR==503){
+                    $('#InfoGeneral').modal('show');
+    
+                    $('#InfoGeneral .modal-body').html('Error al intentar Eliminar, no colocó un dato válido o la imagen ya se encuentra eliminada.');
+                }
+                if(nroERROR==505){
+                    $('#InfoGeneral').modal('show');
+    
+                    $('#InfoGeneral .modal-body').html('Error al intentar Actualizar el archivo.');
+                }
+                if(nroERROR==506){
+                    $('#InfoGeneral').modal('show');
+    
+                    $('#InfoGeneral .modal-body').html('Colocó un formato no aceptado en el nuevo archivo.');
+                }
+                if(nroERROR==507){
+                    $('#InfoGeneral').modal('show');
+    
+                    $('#InfoGeneral .modal-body').html('La Imagen previa no existe en el sistema.');
+                }
+                if(nroERROR==508){
+                    $('#InfoGeneral').modal('show');
+    
+                    $('#InfoGeneral .modal-body').html('Error al subir el nuevo archivo.');
+                }
             }
         });
 

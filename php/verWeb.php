@@ -1,9 +1,9 @@
-<?php
+ <?php
 $patron_numero = '/^[0-9]{1,11}$/';
 
 $idMostrar = $_POST['valor'];
 
-if (preg_match($patron_numero,$idMostrar)) {
+if (preg_match($patron_numero,$idMostrar) && $idMostrar != 0) {
     include("abrir_conexion.php");
 
     $fotos = mysqli_query($conexion, "SELECT * FROM $tabla_db14 WHERE id_galeria = '$idMostrar'");
@@ -37,7 +37,10 @@ if (preg_match($patron_numero,$idMostrar)) {
                 </div>
                 <div class="" id="grupo__tituloR">
                     <label class="formulario__label" for="tituloR">Descripción</label>
-                    <textarea id="descripcion" name="descripcion" class="form-control mb-3" disabled>'.$consulta['descripcion_archivo'].'</textarea>  
+
+                    <div class="textbox" contenteditable="false" id="descripcion" name="descripcion">
+                    '.$consulta['descripcion_archivo'].'
+                    </div>  
                 </div>
             </div>
                 ';
@@ -69,7 +72,10 @@ if (preg_match($patron_numero,$idMostrar)) {
                 </div>
                 <div class="" id="grupo__tituloR">
                     <label class="formulario__label" for="tituloR">Descripción</label>
-                    <textarea id="descripcion" name="descripcion" class="form-control mb-3" disabled>'.$consulta['descripcion_archivo'].'</textarea>  
+
+                    <div class="textbox" contenteditable="false" id="descripcion" name="descripcion">
+                    '.$consulta['descripcion_archivo'].'
+                    </div>
                 </div>
             </div>
                 ';

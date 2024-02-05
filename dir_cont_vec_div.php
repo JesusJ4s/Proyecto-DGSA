@@ -75,8 +75,11 @@
     <script src="js/bottom.js"></script>
 </body>
 <footer>
-    <?php 
-       
+<?php
+        include("php/index_foot.php");
+        include("php/subir_flecha.php");
+        include("php/web_dinamica.php");
+
     ?>
 </footer>
 

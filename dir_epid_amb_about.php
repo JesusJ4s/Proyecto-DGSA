@@ -46,7 +46,7 @@
     </div>
     <!-- **************************************************************** -->
     <!-- Barra de navegación -->
-    <div class="accordion mb-5" id="accordionExample">    
+    <div class="accordion" id="accordionExample">    
 
         <nav class="navbar navbar-expand-lg navbar-light bg-barra py-4">
             <div class="container-lg text-center">
@@ -199,9 +199,11 @@
     <!-- JS en Bootstrap -->
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/bottom.js"></script>
-
     <?php
+        include("php/index_foot.php");
         include("php/subir_flecha.php");
+        include("php/web_dinamica.php");
+
     ?>
 </body>
 </html>

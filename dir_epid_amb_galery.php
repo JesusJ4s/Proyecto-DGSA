@@ -52,7 +52,7 @@
     <!-- Barra de navegación -->
     <?php
         include("php/index_nav.php");
-        echo dir_epid_amb_nav();
+        echo dir_epid_amb_nav2();
        
     ?>
     
@@ -76,14 +76,23 @@
 
 <!-- JS en Bootstrap -->
 
-<script src="js/bootstrap.bundle.min.js"></script>
-<script src="js/bottom.js"></script>
-<script src="js/galeria_dea.js"></script>
-<script src="js/verWeb.js"></script>
-
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/bottom.js"></script>
+    <script src="js/galeria_dea.js"></script>
+    <script src="js/verWeb.js"></script>
+    <script>
+        $(document).ready(function(){
+            boletinesDEA();
+        })
+      </script>
 </body>
 
 <footer>
+<?php
+        include("php/index_foot.php");
+        include("php/subir_flecha.php");
+        include("php/web_dinamica.php");
 
+    ?>
 </footer>
 </html>

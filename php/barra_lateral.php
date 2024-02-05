@@ -362,6 +362,3 @@ function barra_lateral_corr(){
     
     ';
 }
-
-
-?>

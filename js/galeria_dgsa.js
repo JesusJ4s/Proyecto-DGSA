@@ -1,6 +1,7 @@
 $(document).ready(function(){
     GaleriaFotos();
     GaleriaVideos();
+    GaleriaDocumentos();
 })
 
 function GaleriaFotos(){
@@ -31,6 +32,22 @@ function GaleriaVideos(){
         data: identificador,
         success:function(mensaje){
             $('#galeria_videos').html(mensaje);
+
+        }
+    });
+}
+function GaleriaDocumentos(){
+
+    var identificador = 
+    {
+        "identificador": "docs_dgsa"
+    }
+    $.ajax({
+        type:"POST",
+        url:"./php/galerias.php",
+        data: identificador,
+        success:function(mensaje){
+            $('#galeria_documentos').html(mensaje);
 
         }
     });

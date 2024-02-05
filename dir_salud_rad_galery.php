@@ -49,7 +49,7 @@
     <!-- Barra de navegación -->
     <?php
         include("php/index_nav.php");
-        echo dir_salud_radi_nav();
+        echo dir_salud_radi_nav2();
        
     ?>
     <hr>
@@ -73,6 +73,17 @@
     <script src="js/bottom.js"></script>
     <script src="js/galeria_dsr.js"></script>
     <script src="js/verWeb.js"></script>
+    <script>
+        $(document).ready(function(){
+            boletinesDSR();
+        })
+      </script>
+    <?php
+        include("php/index_foot.php");
+        include("php/subir_flecha.php");
+        include("php/web_dinamica.php");
+
+    ?>
 
 </body>
 

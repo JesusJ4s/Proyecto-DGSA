@@ -208,12 +208,15 @@
         </section>
     </div>
 </body>
-<?php
-    include("php/subir_flecha.php");
-?>
+
     <!-- JS en Bootstrap -->
 
     <script src="js/bootstrap.bundle.js"></script>
     <script src="js/bottom.js"></script>
+    <?php
+        include("php/index_foot.php");
+        include("php/subir_flecha.php");
+        include("php/web_dinamica.php");
 
+    ?>
 </html>

@@ -66,6 +66,32 @@ if ($identificador == "videos_dgsa") {
         ';
     }
 }
+if ($identificador == "docs_dgsa") {
+    include("abrir_conexion.php");
+
+    $fotos = mysqli_query($conexion, "SELECT * FROM $tabla_db14 ga INNER JOIN $tabla_db16 gr ON ga.id_galeria_grupo = gr.id_grupo WHERE id_galeria_direccion = 1 AND id_galeria_tipo = 3 AND visible = 1 ORDER BY id_galeria_grupo ASC");
+    $grupo_actual = ""; // Variable para almacenar el grupo actual
+
+    while ($consulta = mysqli_fetch_array($fotos)) {
+        $id_galeria_grupo = $consulta['id_galeria_grupo'];
+
+        // Verificar si el grupo actual es diferente al nuevo grupo
+        if ($id_galeria_grupo != $grupo_actual) {
+            $grupo_actual = $id_galeria_grupo;
+            echo "<h1 id='".$consulta["id_galeria_grupo"]."'>".$consulta["nombre_grupo_galeria"]."</h1>";
+        }
+        // Imprimir el contenido de cada registro
+        echo '
+            <div class="text-center wh-doc mx-2 d-inline-block">
+                <div class="p-1 border-css">
+                    <embed src="'.$consulta['nombre_archivo'].'#toolbar=0" type="application/pdf" class="pdf_mini">
+                    <h4 class="card-title">'.$consulta['titulo_archivo'].'</h4>
+                    <a target="_blank" id="lib_dgsa" class="btn btn-outline-primary" href="'.$consulta['nombre_archivo'].'">Leer</a>
+                </div>
+            </div>
+        ';
+    }
+}
 
 // DIRECCIÓN DE EPIDEMIOLOGÍA AMBIENTAL
 if ($identificador == "fotos_dea") {

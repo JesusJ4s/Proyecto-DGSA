@@ -128,7 +128,36 @@
     box-shadow: 10px 5px 30px black;
 
 }
-
+.barra_Aside {
+    width: 310px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+.informacion_Aside {
+    width: 200px;
+    height: auto;
+}
+.informacion_web {
+    width: 650px;
+    height: auto;
+    transition: all 1s;
+}
+@media (min-width: 1550px) {
+    .informacion_web {
+        width: 680px;
+    }
+}
+@media (min-width: 1700px) {
+    .informacion_web {
+        width: 700px;
+    }
+}
+@media (min-width: 1850px) {
+    .informacion_web {
+        width: 730px;
+    }
+}
 .input-style {
     display: block;
     width: 100%;
@@ -443,6 +472,23 @@
     height: 130px;
     resize: none;
 }
+.textbox {
+    width: auto;
+    padding: 12px;
+    box-sizing: border-box;
+    text-align: justify;
+    border: .5px solid #3a3a3a;
+    border-radius: 15px 15px 15px 15px;
+
+  }
+.textbox {
+    width: auto;
+    padding: 12px;
+    box-sizing: border-box;
+    text-align: justify;
+
+
+  }
 #explicacion {
     width: 100%;
     height: 130px;
@@ -731,8 +777,10 @@ input.border-limpiar:focus {
 }
 
 .width-carousel-info {
-    width: 100%;
+    width: 85%;
     height: 320px;
+    margin-right: auto;
+    margin-left: auto;
     transition: ease all 1s;
 }
 
@@ -745,7 +793,7 @@ input.border-limpiar:focus {
         width: 70%;
     }
     .width-carousel-info {
-        width: 100%;
+        width: 82%;
         height: 350px;
     }
 }
@@ -754,7 +802,7 @@ input.border-limpiar:focus {
         width: 66%;
     }
     .width-carousel-info {
-        width: 100%;
+        width: 79%;
         height: 360px;
     }
 }
@@ -763,12 +811,13 @@ input.border-limpiar:focus {
         width: 62%;
     }
     .width-carousel-info {
-        width: 100%;
+        width: 75%;
         height: 380px;
     }
 }
 .min-width-index {
     min-width: 1256px;
+    max-width: 2500px;
 }
 .wh-textarea {
     height: 100px;

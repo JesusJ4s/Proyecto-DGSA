@@ -6,7 +6,7 @@
         $grupo= $_POST['direccion'];
 
         // HACER LA CONSULTA DE LOS RELACIONADOS
-        $sql="SELECT * FROM $tabla_db16 WHERE id_direccion_grupo ='$grupo'";
+        $sql="SELECT * FROM $tabla_db16 WHERE id_direccion_grupo ='$grupo' ORDER BY actualizacion_galeria_grupos DESC";
         // GUARDAR EL RESULTADO
         $result=mysqli_query($conexion,$sql);
         // CREAR UNA CADENA Y LUEGO UN WHILE QUE SE REPITA TANTOS VALORES EXISTAN

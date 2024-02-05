@@ -9,6 +9,8 @@
         include("php/estilosCss.php");
         stile1();
     ?>
+    <script src="jquery/jquery-3.6.4.min.js"></script>
+
     <title>Dirección General de Salud Ambiental</title>
 </head>
 
@@ -52,96 +54,64 @@
         ?>
     </nav>
 
+    <!-- **************************************************************** -->
+    <!-- Barra de navegación -->
+    <div class="d-flex justify-content-center bg-barra py-4" id="barraDescargas">
+        <?php
+            include("php/abrir_conexion.php");
+
+            $BarraGaleria = mysqli_query($conexion, "SELECT * FROM $tabla_db14 gl INNER JOIN $tabla_db16 gg ON gl.id_galeria_grupo = gg.id_grupo WHERE visible = '1' AND id_galeria_direccion = '1' AND id_galeria_tipo = '3'");
+            $grupo_actual = ""; // Variable para almacenar el grupo actual
+
+            while ($consulta = mysqli_fetch_array($BarraGaleria)) {
+            $id_barra_grupo = $consulta['id_galeria_grupo'];
+
+            // Verificar si el grupo actual es diferente al nuevo grupo
+            if ($id_barra_grupo != $grupo_actual) {
+                $grupo_actual = $id_barra_grupo;
+                echo "
+                    <button class='btn bg-barra btn-outline-primary mx-2' type='button'>
+                        <a class='list-group-item list-group-item-action' href='#".$consulta["id_galeria_grupo"]."'><b>".$consulta["nombre_grupo_galeria"]."</b></a>
+                    </button>
+                ";
+            }
+            // Imprimir el contenido de cada registro
+            echo '
+                    
+                ';
+            }
+        ?>
+
+    </div>
+    
+
     <!-- **************************************************************************************************************** -->
     <!-- PDF -->
-    
-    <section class="my-5">
-        <div class="container-fluid ps-4 mt-5">
-            <h1 class="my-5 ms-5">Libros</h2>
-            <div class="text-center gap-3">
-                <div class="card bg-light wh-doc mx-2 d-inline-block">
-                    <div class="card-body border-css">
-                        <!-- <embed src="assets/documentos/DGSA/plan de la patria/Plan de la Patria 2019-2025 GOE-6.446.pdf" type="application/pdf" class="pdf_mini"> -->
-                        <img src="assets/documentos/DGSA/portadas/planpatria.jpg" alt="condor" class="pdf_mini">
+    <section class="d-flex justify-content-center">
+        
+        <div class="mt-5 w-85">
+            <!-- Galeria Normal -->
 
-                        <h4 class="card-title">Plan de la Patria 2019-2025</h4>
-                        <a target="_blank" id="lib_dgsa" class="btn btn-outline-primary" href="assets/documentos/DGSA/plan de la patria/Plan de la Patria 2019-2025 GOE-6.446.pdf">Leer</a>
-                    </div>
-                </div>
-                <div class="card bg-light wh-doc mx-2 d-inline-block">
-                    <div class="card-body border-css">
-                        <!-- <embed src="assets/documentos/DGSA/libros/Libros en general/bajo-las-alas-del-condor.pdf" type="application/pdf" class="pdf_mini"> -->
-                        <img src="assets/documentos/DGSA/portadas/bajolasalasdelcondor.jpg" alt="condor" class="pdf_mini">
-                        <h4 class="card-title">Bajo las Alas del Cóndor</h4>
-                        <a target="_blank" id="lib_dgsa" class="btn btn-outline-primary" href="assets/documentos/DGSA/libros/Libros en general/bajo-las-alas-del-condor.pdf">Leer</a>
-                    </div>
-                </div>
-                <div class="card bg-light wh-doc mx-2 d-inline-block">
-                    <div class="card-body border-css">
-                        <!-- <embed src="assets/documentos/DGSA/libros/libros del esequibo/Nuestro-Esequibo.pdf" type="application/pdf" class="pdf_mini"> -->
-                        <img src="assets/documentos/DGSA/portadas/nuestroesequibo.jpg" alt="condor" class="pdf_mini">
+            <div class="mb-5">           
+                <div class="row d-flex justify-content-center" id="galeria_documentos">
 
-                        <h4 class="card-title">Nuestro Esequibo</h4>
-                        <a target="_blank" id="lib_dgsa" class="btn btn-outline-primary" href="assets/documentos/DGSA/libros/libros del esequibo/Nuestro-Esequibo.pdf">Leer</a>
-                    </div>
-                </div>
-                <div class="card bg-light wh-doc mx-2 d-inline-block">
-                    <div class="card-body border-css">
-                        <!-- <embed src="assets/documentos/DGSA/libros/libros del esequibo/La_Verdad_del_Esequibo.pdf" type="application/pdf" class="pdf_mini"> -->
-                        <img src="assets/documentos/DGSA/portadas/laverdaddelesequibo.jpg" alt="condor" class="pdf_mini">
-
-                        <h4 class="card-title">La verdad del Ezequibo</h4>
-                        <a target="_blank" id="lib_dgsa" class="btn btn-outline-primary" href="assets/documentos/DGSA/libros/libros del esequibo/La_Verdad_del_Esequibo.pdf">Leer</a>
-                    </div>
-                </div>
-                <!-- ************************************************** -->
-                <div class="card bg-light wh-doc mx-2 d-inline-block">
-                    <div class="card-body border-css">
-                        <!-- <embed src="assets/documentos/DGSA/libros/Libros en General/abril-sin-censura.pdf" type="application/pdf" class="pdf_mini"> -->
-                        <img src="assets/documentos/DGSA/portadas/abrilsincensura.jpg" alt="condor" class="pdf_mini">
-
-                        <h4 class="card-title">Abril Sin Censura</h4>
-                        <a target="_blank" id="lib_dgsa" class="btn btn-outline-primary" href="assets/documentos/DGSA/libros/Libros en General/abril-sin-censura.pdf">Leer</a>
-                    </div>
-                </div>
-                <div class="card bg-light wh-doc mx-2 d-inline-block">
-                    <div class="card-body border-css">
-                        <!-- <embed src="assets/documentos/DGSA/libros/Libros en General/ali_primera_padre_cantor_del_pueblo.pdf" type="application/pdf" class="pdf_mini"> -->
-                        <img src="assets/documentos/DGSA/portadas/aliprimera.jpg" alt="condor" class="pdf_mini">
-
-                        <h4 class="card-title">Ali Primera</h4>
-                        <a target="_blank" id="lib_dgsa" class="btn btn-outline-primary" href="assets/documentos/DGSA/libros/Libros en General/ali_primera_padre_cantor_del_pueblo.pdf">Leer</a>
-                    </div>
-                </div>
-                <div class="card bg-light wh-doc mx-2 d-inline-block">
-                    <div class="card-body border-css">
-                        <!-- <embed src="assets/documentos/DGSA/libros/Libros en General/bolivar_p_antiimperialismo.pdf" type="application/pdf" class="pdf_mini"> -->
-                        <img src="assets/documentos/DGSA/portadas/pensamientoprecursor.jpg" alt="condor" class="pdf_mini">
-
-                        <h4 class="card-title">Pensamiento Precursor</h4>
-                        <a target="_blank" id="lib_dgsa" class="btn btn-outline-primary" href="assets/documentos/DGSA/libros/Libros en General/bolivar_p_antiimperialismo.pdf">Leer</a>
-                    </div>
-                </div>
-                <div class="card bg-light wh-doc mx-2 d-inline-block">
-                    <div class="card-body border-css">
-                        <!-- <embed src="assets/documentos/DGSA/libros/Libros en General/carta_de_jamaica.pdf" type="application/pdf" class="pdf_mini"> -->
-                        <img src="assets/documentos/DGSA/portadas/cartadejamaica.jpg" alt="condor" class="pdf_mini">
-
-                        <h4 class="card-title">Carta de Jamaica</h4>
-                        <a target="_blank" id="lib_dgsa" class="btn btn-outline-primary" href="assets/documentos/DGSA/libros/Libros en General/carta_de_jamaica.pdf">Leer</a>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    </main>
 </body>
-    <?php
+<?php
+        include("php/index_foot.php");
         include("php/subir_flecha.php");
+        include("php/web_dinamica.php");
+
     ?>
 
 <!-- JS en Bootstrap -->
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/bottom.js"></script>
+<script src="js/galeria_dgsa.js"></script>
+
+
 </html>

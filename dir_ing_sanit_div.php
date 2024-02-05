@@ -42,7 +42,7 @@
     </div>
     
         <!-- **************************************************************** -->
-    <div class="accordion mb-5" id="accordionAbout">
+    <div class="accordion" id="accordionAbout">
         <!-- Barra de navegación -->
         <div class="d-flex justify-content-center bg-barra py-4">
 
@@ -199,8 +199,11 @@
 </body>
 
 <footer>
-    <?php 
-       
+<?php
+        include("php/index_foot.php");
+        include("php/subir_flecha.php");
+        include("php/web_dinamica.php");
+
     ?>
 </footer>
 </html>

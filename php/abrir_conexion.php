@@ -28,6 +28,11 @@
     $tabla_db14 = "e1_galerias";
     $tabla_db15 = "e2_galerias_tipos";
     $tabla_db16 = "e3_galerias_grupos";
+    $tabla_db17 = "e4_boletines";
+    $tabla_db18 = "e5_instrumentos_legales";
+    $tabla_db19 = "e6_tipos_instrumentos";
+    $tabla_db20 = "e7_grupos_instrumentos";
+    // $tabla_db16 = "e3_galerias_grupos";
 
 
     $tabla_evento = "aa_eventos_sesion";

@@ -16,11 +16,11 @@ echo
 
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="assets/banner/DGSA/BANNER 1.jpg" alt="DGSA" class="d-block w-100 width-carousel ">
+                <img src="assets/banner/DGSA/BANNER 2.jpg" alt="DGSA" class="d-block w-100 width-carousel ">
             </div>
 
             <div class="carousel-item">
-                <img src="assets/banner/DGSA/BANNER 2.jpg" alt="DGSA" class="d-block w-100 width-carousel ">
+                <img src="assets/banner/DGSA/BANER OFICIAL2.jpg" alt="DGSA" class="d-block w-100 width-carousel ">
             </div>
 
             <div class="carousel-item">
@@ -47,7 +47,7 @@ echo
 <!-- MODAL PARA MOSTRAR SOLUCITUD EXITOSA-->
     <div class="modal fade" id="ImgVidGalery" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true" data-bs-backdrop="static">
-        <div class="modal-dialog modal-md modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5>Información:</h5>

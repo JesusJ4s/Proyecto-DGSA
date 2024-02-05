@@ -43,7 +43,7 @@
                     <!-- Si desea <span class="text-danger">rechazar</span> agregue la razón. -->
                 </p>
                 <label>Coloque una nota si lo desea sobre la correspondencia:</label>
-                <textarea class="w-100 descripcion"id="descripcion" name="descripcion" ></textarea>
+                <textarea class="w-100 descripcion"id="descripcion" name="descripcion" maxlength="200"></textarea>
                 <input type="hidden" id="cosasJS">
 
             </div>
@@ -190,6 +190,7 @@
     <script src="../js/correspondencia.js"></script>
     <!-- // USADO PARA EL TEXTAREA -->
     <script src="../js/editar_mostrar_datos.js"></script>
+    <script src="../js/descripcionDosc.js"></script>
     <?php
     include('../php/javascript_Footer.php');
     ?>

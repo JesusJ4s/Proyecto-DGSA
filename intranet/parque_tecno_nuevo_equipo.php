@@ -749,6 +749,7 @@ Login_ING_Admin();
     <script type="text/javascript" src="../js/departamento_select.js"></script>
 
     <script src="../js/editar_mostrar_datos.js"></script>
+    <script src="../js/descripcionDosc.js"></script>
 
 </body>
 <?php

@@ -93,5 +93,10 @@
     <script src="js/bottom.js"></script>
 </body>
 <a href="#inicio-pag"><img src="assets/icon/botones/bottom.png" id="bottomArriba"> </a>
+<?php
+        include("php/index_foot.php");
+        include("php/subir_flecha.php");
+        include("php/web_dinamica.php");
 
+    ?>
 </html>

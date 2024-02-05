@@ -41,24 +41,9 @@
             Dirección Ingeneria Sanitaria
         </p>
     </div>
-    
-        <!-- **************************************************************** -->
-        <!-- Barra de navegación -->
-        <!-- <nav class="ms-4 me-4">
-            <div class="container-fluid p-3 my-4  bg-azul-claro-cromatico5 box-shadow-nav text-center rounded">
-                
-        <ul class="list-group list-group-horizontal">
-            <a class="list-group-item list-group-item-action bg-azul-claro-cromatico5" href="#DIS_Res_Hist">Reseña Histórica</a>
-            <a class="list-group-item list-group-item-action bg-azul-claro-cromatico5" href="#DIS_Mis_Vis">Misión y Visión</a>
-            <a class="list-group-item list-group-item-action bg-azul-claro-cromatico5" href="#DIS_Estructura">Estructura organizativa</a>
-            <a class="list-group-item list-group-item-action bg-azul-claro-cromatico5" href="#DIS_Funciones">Funciones</a>
-            <a class="list-group-item  bg-azul-claro-cromatico5" href='dir_ing_sanit.php'><img src='assets/icon/inicio2.png' id='PaginaPrin' class='w-50x50'></a>
-        </ul>
-            </div>
-        </nav> -->
        
 
-    <div class="accordion mb-5" id="accordionAbout">
+    <div class="accordion " id="accordionAbout">
 
         <div class="d-flex justify-content-center bg-barra py-4">
 
@@ -192,5 +177,11 @@
 </body>
 
 <footer>
+<?php
+        include("php/index_foot.php");
+        include("php/subir_flecha.php");
+        include("php/web_dinamica.php");
+
+    ?>
 </footer> 
 </html>

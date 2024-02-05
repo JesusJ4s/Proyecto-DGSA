@@ -9,8 +9,8 @@ const expresiones = {
     tituloArchivo: /^[a-zA-ZÀ-ý0-9\s_,-.;]{0,100}$/,
 }
 const cosos = {
-    tituloNuevoGrupo: false,
-    tituloArchivo: false,
+    tituloNuevoGrupo: true,
+    tituloArchivo: true,
 }
 const validarFormulario = (e) => {
     switch(e.target.name) {
@@ -126,7 +126,7 @@ function nuevoArchivo(){
                 if(nroERROR==500){
                     $('#InfoGeneral').modal('show');
     
-                    $('#InfoGeneral .modal-body').html('Solo se permiten los formatos gif, mp4, jpeg, png y webp.');
+                    $('#InfoGeneral .modal-body').html('Solo se permiten los formatos mp4, jpeg, png y webp.');
                 }
     
                 if(nroERROR==501){

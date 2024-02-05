@@ -43,7 +43,7 @@
     <!-- Barra de navegación -->
     <?php
         include("php/index_nav.php");
-        dir_ing_sanit_nav();       
+        dir_ing_sanit_nav2();       
     ?>
     
     <hr>
@@ -67,10 +67,20 @@
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/bottom.js"></script>
 <script src="js/galeria_dis.js"></script>
+<script>
+        $(document).ready(function(){
+            boletinesDIS();
+        })
+      </script>
 
 </body>
 
 <footer>
+<?php
+        include("php/index_foot.php");
+        include("php/subir_flecha.php");
+        include("php/web_dinamica.php");
 
+    ?>
 </footer>
 </html>

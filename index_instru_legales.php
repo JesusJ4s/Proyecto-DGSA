@@ -132,7 +132,7 @@
             <div class="text-center">
                 <div class="card bg-light wh-doc mx-2 d-inline-block">
                     <div class="card-body border-css">
-                        <embed src="assets/documentos/DGSA/leyes/Constitucion.pdf" type="application/pdf" class="pdf_mini">
+                        <embed src="assets/documentos/DGSA/leyes/Constitucion.pdf#toolbar=0" type="application/pdf" class="pdf_mini">
                         <h4 class="card-title">Constitución</h4>
                         <a target="_blank" id="lib_dgsa" class="btn btn-outline-primary" href="assets/documentos/DGSA/leyes/Constitucion.pdf">Leer</a>
                     </div>
@@ -145,8 +145,11 @@
 </body>
 
 <?php
-    include("php/subir_flecha.php");
-?>
+        include("php/index_foot.php");
+        include("php/subir_flecha.php");
+        include("php/web_dinamica.php");
+
+    ?>
     <script src="js/bootstrap.bundle.js"></script>
     <script src="js/bottom.js"></script>
 </html>

@@ -53,58 +53,13 @@
 
                 <div id="carousel-info" class="carousel slide mt-3" data-bs-ride="carousel">
 
-          <!-- Contenedor de las imágenes en carrousel -->
-            <h2 class="display-5">Boletín</h2>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="assets/gallery/DSR/proteccion.png" alt="protección" class="d-block width-carousel-info">
-                    <p class="display-6">
-                    Proctección Radiológica
-                    </p>
-                    <p class="sangria text-justify">
-                        Laprotección radiológica es el conjunto de medidas establecidas por los organismos competentes para la utilización segura de las radiaciones ionizantes y garantizar la protección de los indivi­duos, de sus descendientes, de la población en su conjunto, así como del medio ambiente, frente a los posibles riesgos que se deriven de la exposición a las radiaciones ionizantes.     
-                        <br>                 
-                        <a target="_blank" href="en_const.html" class="leer-mas">Leer más...</a>
-                    </p>
-                </div>
+                <h2 class="display-5">Boletín</h2>
+                    <div class="carousel-inner" id="boletines_principales">
 
-                <div class="carousel-item">
-                    <img src="assets/gallery/DSR/ionizante.png" alt="dosimetria radiologica" class="d-block width-carousel-info">
-                    <p class="display-6">
-                        Radiación Ionizante
-                    </p>
-                    <p class="sangria text-justify">
-                        La radiación ionizante es un tipo de energía liberada por los átomos en forma de ondas electromagnéticas (rayos gamma o rayos X) o partículas (partículas alfa y beta o neutrones). La desintegración espontánea de los átomos se denomina radiactividad, y la energía excedente emitida es una forma de radiación ionizante. Los elementos inestables que se desintegran y emiten radiación ionizante se denominan radionúclidos.  
-                    <br>
-                    <a target="_blank" href="en_const.html" class="leer-mas text-center">Leer más...</a>                
-                    </p>
-                </div>
+                    <!-- BOLETINES DINAMICOS -->
 
-                <div class="carousel-item">
-                    <img src="assets/gallery/DSR/dosimetria.jpg" alt="Malaria" class="d-block width-carousel-info">
-                    <p class="display-6">
-                        Dosimetria
-                    </p>
-                    <p class="sangria text-justify">   
-                        Es la técnica que se emplea para medir la exposición a la radiación ionizante. Se encarga de medir la absorción que realizan los tejidos corporales de esta radiación.                       
-                    <br>
-                    <a target="_blank" href="en_const.html" class="leer-mas text-center">Leer más...</a>
-                    </p>
-                </div>
-                
-                <div class="carousel-item">
-                    <img src="assets/gallery/DSR/radiacion.png" alt="radiación gamma" class="d-block width-carousel-info">
-                    <p class="display-6">
-                        Radiacion Ambiental
-                    </p>
-                    <p class="sangria text-justify">
-                        Es la radiactividad natural, es decir, la presencia de varios elementos radiactivos que se encuentran en el aire, en los suelos, en las plantas o en el agua. Representa el 60% de la radiactividad a la que estamos expuestos normalmente.  
-                    <br>                
-                    <a target="_blank" href="en_const.html" class="leer-mas text-center">Leer más...</a>
-                    </p>
-                </div>
-            
-            </div>
+
+                    </div>
 
       <!-- Botones para cambiar imágenes (altura normal) -->
           <button class="carousel-control-prev" data-bs-target="#carousel-info" data-bs-slide="prev">
@@ -121,37 +76,30 @@
       <!-- ****************************************************************************************** -->
         <!-- Extras -->
         <aside class="col-3 mb-3">
-            <div class="bg-azul-claro-cromatico2 mt-3 border-radius-15">
-                <p class="text-white fs-5 p-1 ps-3">Equipos de Radiologia</p>
-            </div>
-            <div class="text-center">
-                <a target="_blank" href="en_const.html" class="">
-                    <img src="assets/gallery/DSR/equipo.jpg" alt="rayos x " class="w-50">
-                </a>
-            </div>
-            <div class="bg-azul-claro-cromatico2 mt-3 border-radius-15">
-                <p class="text-white fs-5 p-1 ps-3">Mamografia</p>
-            </div>
-            <div class="text-center">
-                <a target="_blank" href="en_const.html" class="">
-                    <img src="assets/gallery/DSR/mamografia.png" alt="Reservorios" class="w-50">
-                </a>
-            </div>
-            <div class="bg-azul-claro-cromatico2 mt-3 border-radius-15">
-                <p class="text-white fs-5 p-1 ps-3">Radiacion gamma ambiental</p>
-            </div>
-            <div class="text-center">
-                <a target="_blank" href="en_const.html" class="">
-                    <img src="assets/gallery/DSR/radiacion.png" alt="Fauna Nociva" class="w-50">
-                </a>
-            </div>
-            <!-- <div class="text-center mt-4">
-                <form action="">
-                    <input id="Buscar" class="btn btn-outline-primary " type="text" placeholder="Buscar..." required>
-                    <br>
-                    <input class="btn bg-azul-claro-cromatico5 mt-2" type="submit" placeholder="Buscar">
-                </form>
-            </div> -->
+            <?php
+
+            include("php/abrir_conexion.php");
+            $Boletines = mysqli_query($conexion, "SELECT * FROM $tabla_db17 WHERE id_boletin_direccion = 3 AND boletin_visible = 1 ORDER BY fecha_actualizacion_bol LIMIT 10");
+            while ($consulta = mysqli_fetch_array($Boletines)) {
+                // Imprimir el contenido de cada registro
+                $boletinesBD = '
+
+                <div class="bg-azul-claro-cromatico2 mt-5 border-radius-15 text-center barra_Aside">
+                    <p class="text-white fs-5 p-1 ps-3">'.$consulta['titulo_boletin'].'</p>
+                </div>
+                <div class="text-center">
+                        <img src="'.$consulta['img1_boletin'].'" alt="" class="informacion_Aside w-50 border-radius-15">
+                        <p class="mb-0">'.$consulta['fecha_creacion_bol'].'</p>
+                </div>
+                <div class="text-center">
+                    <input type="hidden" id="consulta" name="consulta" value="'.$consulta['id_boletin'].'">
+                    <button type="button" class="btn btn-outline-secondary" onclick="verBoletinDSR(this);">Leer</button>
+                </div>
+                    
+                ';
+                echo $boletinesBD;
+            }
+            ?>
         </aside>
 
     
@@ -162,12 +110,20 @@
 </body>
 
 <footer id="dk-footer" class="dk-footer">
-<?php
-    include("php/index_foot.php");
-    include("php/subir_flecha.php");
 
-?>
-</footer>
+
     <script src="js/bootstrap.bundle.js"></script>
     <script src="js/bottom.js"></script>
+    <script>
+        $(document).ready(function(){
+            boletinesDSR();
+        })
+      </script>
+    <?php
+        include("php/index_foot.php");
+        include("php/subir_flecha.php");
+        include("php/web_dinamica.php");
+
+    ?>
+      </footer>
 </html>
