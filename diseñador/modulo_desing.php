@@ -1,7 +1,7 @@
 <!-- TODA LA INFORMACIÓN SE SOLICITA DESDE LA PAGINA DE INICIAR SESION EN LA INTRANET, SE SOLICITA, LLEGA Y SE VERIFICA EN LA BASE DE DATOS -->
 <?php
 include("../php/verificacion_login.php");
-LoginSimple();
+Login_Dise_Admin();
 include("../php/date_time.php");
 
 ?>

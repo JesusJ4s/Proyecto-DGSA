@@ -230,7 +230,7 @@ if ($identificador == "verBoletin") {
                 <hr class="my-5">
     
                 <div class="text-justify">
-                    <div class="textbox2" contenteditable="false" id="" name="">'.$consulta['text1_boletin'].'</div> 
+                    <textarea class="textarea2" id="cordidescrip" name="cordidescrip" readonly>'.$consulta['text1_boletin'].'</textarea> 
                 </div>
     
                 <hr class="my-5">
@@ -246,7 +246,7 @@ if ($identificador == "verBoletin") {
             if ($consulta['text2_boletin']!= "") {
                 $datos .= '
                     <div class="text-justify">
-                        <div class="textbox2" contenteditable="false" id="" name="">'.$consulta['text2_boletin'].'</div> 
+                        <textarea class="textarea2" id="cordidescrip" name="cordidescrip" readonly>'.$consulta['text2_boletin'].'</textarea> 
                     </div>
                     <hr class="my-5">
                 
@@ -269,7 +269,7 @@ if ($identificador == "verBoletin") {
             if ($consulta['text3_boletin']!="") {
                 $datos .= '
                     <div class="text-justify">
-                        <div class="textbox2" contenteditable="false" id="" name="">'.$consulta['text3_boletin'].'</div> 
+                        <textarea class="textarea2" id="cordidescrip" name="cordidescrip" readonly>'.$consulta['text3_boletin'].'</textarea> 
                     </div>
     
                 ';

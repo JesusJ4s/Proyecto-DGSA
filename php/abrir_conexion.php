@@ -32,6 +32,8 @@
     $tabla_db18 = "e5_instrumentos_legales";
     $tabla_db19 = "e6_tipos_instrumentos";
     $tabla_db20 = "e7_grupos_instrumentos";
+
+    $tabla_db21 = "f1_coordinaciones_web";
     // $tabla_db16 = "e3_galerias_grupos";
 
 

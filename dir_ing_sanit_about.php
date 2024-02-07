@@ -103,7 +103,7 @@
                 <div class="row accordion-body"  aria-expanded="true">
                     <h2 id="" class=" text-start mb-5"><u>Estructura Organizativa</u></h2>
                     <div class="text-center">
-                        <img src="assets\documentos\DIS\organigrama/Modelos Organigramas Gestion Riesgos Sanitarios.jpg" class="w-75 border-radius-15 box-shadow">
+                        <img src="assets\informacion\DIS informa\organigrama/Modelos Organigramas Gestion Riesgos Sanitarios.jpg" class="w-75 border-radius-15 box-shadow">
                     </div>
 
                     <p class=" py-3 text-justify sangria">

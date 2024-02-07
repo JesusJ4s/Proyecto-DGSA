@@ -118,6 +118,7 @@ ob_start();
         include("php/index_foot.php");
         include("php/subir_flecha.php");
         include("php/web_dinamica.php");
+        $_SESSION['informacionEntera'] = "";
 
     ?>
 </footer>

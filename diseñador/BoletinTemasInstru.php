@@ -1,8 +1,7 @@
 <?php
 // USAR EN TODAS LAS PAGINAS PARA INICIAR SESION
 include("../php/verificacion_login.php");
-LoginSimple();
-
+Login_Dise_Admin();
 ?>
 <script src="../js/reenvio.js"></script>
 
@@ -813,11 +812,6 @@ LoginSimple();
 
     <!-- JS en Bootstrap -->
     <script src="../js/bootstrap.bundle.min.js"></script>
-    <!-- <script src="js/grupos_select.js"></script> -->
-    
-    <!-- <script src="js/imgVidmodificacion.js"></script> -->
-    <!-- <script src="js/consultasImgVid.js"></script> -->
-    <!-- <script src="js/nueva_img_vid.js"></script> -->
 
     <!-- DOCUMENTOS -->
     <script src="js/nuevoGrupoTipo.js"></script>

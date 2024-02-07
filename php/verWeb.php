@@ -32,7 +32,7 @@ if (preg_match($patron_numero,$idMostrar) && $idMostrar != 0) {
                 </div>
                 <div class="mb-5">
                     <div class="text-center" id="imV" name="imV">
-                        <img src="'.$consulta['nombre_archivo'].'" alt="" class="img-fluid box-shadow border-radius-15 w-auto">
+                        <img src="'.$consulta['nombre_archivo'].'" alt="" class="w-50 box-shadow border-radius-15">
                     </div>
                 </div>
                 <div class="" id="grupo__tituloR">

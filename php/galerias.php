@@ -16,7 +16,7 @@ if ($identificador == "fotos_dgsa") {
         if ($id_galeria_grupo != $grupo_actual) {
             $grupo_actual = $id_galeria_grupo;
             echo "<h1 id='".$consulta["id_galeria_grupo"]."'>".$consulta["nombre_grupo_galeria"]."</h1>";
-        }
+        } 
         // Imprimir el contenido de cada registro
         echo '
             <div class="card p-0 col-3 m-3 sombraCard">

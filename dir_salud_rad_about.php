@@ -112,7 +112,7 @@
                 <div class="accordion-body"  aria-expanded="true">                
                     <h2 id="" class="bold text-center mb-5"><u>Estructura Organizativa</u></h2>
                     <div class="text-center">
-                        <img src="assets/documentos/DSR/organigrama/Diagrama Salud Radiologica.jpg" class="w-75 border-radius-15 box-shadow">
+                        <img src="assets/informacion/DSR informa/organigrama/Diagrama Salud Radiologica.jpg" class="w-75 border-radius-15 box-shadow">
                     </div>
                 </div>
             </div>

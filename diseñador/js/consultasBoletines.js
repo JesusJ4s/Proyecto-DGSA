@@ -51,7 +51,7 @@ function consultaBoletines() {
                 },
             })
             .on('draw.dt', function () {
-                ActoSeguido();
+                ActualizarTabla();
             });
             // Change the background of the last cell in each row based on the value
             $('#bodyBol tr').each(function () {
@@ -69,7 +69,7 @@ function consultaBoletines() {
     });
 
 }
-function ActoSeguido(){
+function ActualizarTabla(){
     $('#bodyBol tr').each(function () {
         var est = $(this).find('td:last').text();
         if (est == "Activo") {

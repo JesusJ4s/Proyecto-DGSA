@@ -83,7 +83,7 @@
                         </p>
                     </div>
                     <div class="col-8 text-center">
-                        <img src="assets/documentos/DGSA/organigrama/Estructura organizativa DGSA.png" alt="DGSA Organigrama" class="w-100 border-radius-15 box-shadow">
+                        <img src="assets/informacion/DGSA informa/organigrama/Estructura organizativa DGSA.png" alt="DGSA Organigrama" class="w-100 border-radius-15 box-shadow">
                     </div>
                 </div>
             </div>

@@ -87,8 +87,30 @@ function dir_epid_amb_nav(){
             <b>Coordinaciones</b>
             </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" target="" href="dir_epid_amb_div.php">Divisiones</a></li>
+                    ';
+                    include("php/abrir_conexion.php");
+
+                    $coordinaciones = mysqli_query($conexion, "SELECT * FROM f1_coordinaciones_web WHERE id_coord_direccion = 5 AND id_coord_visible = 1  ORDER BY fecha_actualizacion_coord");
+                    // $tipo_actual = ""; // Variable para almacenar el tipo actual
+
+                    while ($consulta = mysqli_fetch_array($coordinaciones)) {
+                    echo '
+
+                    <li>
+                        <input type="hidden" value="'.$consulta['id_coord_direccion'].'" id="direcInput" name="direcInput">
+
+                        <input type="hidden" value="'.$consulta['id_coordinacion_web'].'" id="coordiWeb" name="coordiWeb">
+
+                        <button type="button" class="dropdown-item"onclick="coordinacionButton(this);">'.$consulta['titulo_text1'].'</button>
+                    </li>
+                        
+                    ';
+
+                    }
+
+                echo '
                 </ul>
+
             <button class="fs-6  btn bg-info dropdown-toggle px-4" data-bs-toggle="dropdown">
             <img src="assets/icon/botones/aprobar.png" class="iconos_nav">
             <b>Instrumentos Legales</b>
@@ -221,7 +243,28 @@ function dir_epid_amb_nav2(){
             <b>Coordinaciones</b>
             </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" target="" href="dir_epid_amb_div.php">Divisiones</a></li>
+                    ';
+                    include("php/abrir_conexion.php");
+
+                    $coordinaciones = mysqli_query($conexion, "SELECT * FROM f1_coordinaciones_web WHERE id_coord_direccion = 5 AND id_coord_visible = 1  ORDER BY fecha_actualizacion_coord");
+                    // $tipo_actual = ""; // Variable para almacenar el tipo actual
+
+                    while ($consulta = mysqli_fetch_array($coordinaciones)) {
+                    echo '
+
+                    <li>
+                        <input type="hidden" value="'.$consulta['id_coord_direccion'].'" id="direcInput" name="direcInput">
+
+                        <input type="hidden" value="'.$consulta['id_coordinacion_web'].'" id="coordiWeb" name="coordiWeb">
+
+                        <button type="button" class="dropdown-item"onclick="coordinacionButton(this);">'.$consulta['titulo_text1'].'</button>
+                    </li>
+                        
+                    ';
+
+                    }
+
+                echo '
                 </ul>
             <button class="fs-6  btn bg-info dropdown-toggle px-4" data-bs-toggle="dropdown">
             <img src="assets/icon/botones/aprobar.png" class="iconos_nav">
@@ -352,8 +395,29 @@ function dir_cont_vec_nav(){
         <img src="assets/icon/botones/division.png" class="iconos_nav">
         <b>Coordinaciones</b>
         </button>
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" target="" href="dir_cont_vec_div.php">Divisiones</a></li>
+            <ul class="dropdown-menu">
+                ';
+                include("php/abrir_conexion.php");
+
+                $coordinaciones = mysqli_query($conexion, "SELECT * FROM f1_coordinaciones_web WHERE id_coord_direccion = 4 AND id_coord_visible = 1  ORDER BY fecha_actualizacion_coord");
+                // $tipo_actual = ""; // Variable para almacenar el tipo actual
+
+                while ($consulta = mysqli_fetch_array($coordinaciones)) {
+                echo '
+
+                <li>
+                    <input type="hidden" value="'.$consulta['id_coord_direccion'].'" id="direcInput" name="direcInput">
+
+                    <input type="hidden" value="'.$consulta['id_coordinacion_web'].'" id="coordiWeb" name="coordiWeb">
+
+                    <button type="button" class="dropdown-item"onclick="coordinacionButton(this);">'.$consulta['titulo_text1'].'</button>
+                </li>
+                    
+                ';
+
+                }
+
+            echo '
         </ul>
 
         <button class="btn fs-6 bg-info dropdown-toggle px-4" data-bs-toggle="dropdown">
@@ -486,7 +550,28 @@ function dir_cont_vec_nav2(){
         <b>Coordinaciones</b>
         </button>
         <ul class="dropdown-menu">
-            <li><a class="dropdown-item" target="" href="dir_cont_vec_div.php">Divisiones</a></li>
+            ';
+            include("php/abrir_conexion.php");
+
+            $coordinaciones = mysqli_query($conexion, "SELECT * FROM f1_coordinaciones_web WHERE id_coord_direccion = 4 AND id_coord_visible = 1  ORDER BY fecha_actualizacion_coord");
+            // $tipo_actual = ""; // Variable para almacenar el tipo actual
+
+            while ($consulta = mysqli_fetch_array($coordinaciones)) {
+            echo '
+
+            <li>
+                <input type="hidden" value="'.$consulta['id_coord_direccion'].'" id="direcInput" name="direcInput">
+
+                <input type="hidden" value="'.$consulta['id_coordinacion_web'].'" id="coordiWeb" name="coordiWeb">
+
+                <button type="button" class="dropdown-item"onclick="coordinacionButton(this);">'.$consulta['titulo_text1'].'</button>
+            </li>
+                
+            ';
+
+            }
+
+        echo '
         </ul>
 
         <button class="btn fs-6 bg-info dropdown-toggle px-4" data-bs-toggle="dropdown">
@@ -624,7 +709,28 @@ function dir_ing_sanit_nav(){
             <b>Coordinaciones</b>
             </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" target="" href="dir_ing_sanit_div.php">Divisiones</a></li>
+                    ';
+                    include("php/abrir_conexion.php");
+        
+                    $coordinaciones = mysqli_query($conexion, "SELECT * FROM f1_coordinaciones_web WHERE id_coord_direccion = 2 AND id_coord_visible = 1  ORDER BY fecha_actualizacion_coord");
+                    // $tipo_actual = ""; // Variable para almacenar el tipo actual
+        
+                    while ($consulta = mysqli_fetch_array($coordinaciones)) {
+                    echo '
+        
+                    <li>
+                        <input type="hidden" value="'.$consulta['id_coord_direccion'].'" id="direcInput" name="direcInput">
+        
+                        <input type="hidden" value="'.$consulta['id_coordinacion_web'].'" id="coordiWeb" name="coordiWeb">
+        
+                        <button type="button" class="dropdown-item"onclick="coordinacionButton(this);">'.$consulta['titulo_text1'].'</button>
+                    </li>
+                        
+                    ';
+        
+                    }
+        
+                echo '
                 </ul>
 
             <button class="btn  bg-info dropdown-toggle px-4" data-bs-toggle="dropdown">
@@ -762,7 +868,28 @@ function dir_ing_sanit_nav2(){
             <b>Coordinaciones</b>
             </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" target="" href="dir_ing_sanit_div.php">Divisiones</a></li>
+                ';
+                include("php/abrir_conexion.php");
+    
+                $coordinaciones = mysqli_query($conexion, "SELECT * FROM f1_coordinaciones_web WHERE id_coord_direccion = 2 AND id_coord_visible = 1  ORDER BY fecha_actualizacion_coord");
+                // $tipo_actual = ""; // Variable para almacenar el tipo actual
+    
+                while ($consulta = mysqli_fetch_array($coordinaciones)) {
+                echo '
+    
+                <li>
+                    <input type="hidden" value="'.$consulta['id_coord_direccion'].'" id="direcInput" name="direcInput">
+    
+                    <input type="hidden" value="'.$consulta['id_coordinacion_web'].'" id="coordiWeb" name="coordiWeb">
+    
+                    <button type="button" class="dropdown-item"onclick="coordinacionButton(this);">'.$consulta['titulo_text1'].'</button>
+                </li>
+                    
+                ';
+    
+                }
+    
+            echo '
                 </ul>
 
             <button class="btn  bg-info dropdown-toggle px-4" data-bs-toggle="dropdown">
@@ -896,7 +1023,28 @@ function dir_salud_radi_nav(){
             <b>Coordinaciones</b>
             </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" target="" href="dir_salud_rad_div.php">Divisiones</a></li>
+                    ';
+                        include("php/abrir_conexion.php");
+            
+                        $coordinaciones = mysqli_query($conexion, "SELECT * FROM f1_coordinaciones_web WHERE id_coord_direccion = 3 AND id_coord_visible = 1  ORDER BY fecha_actualizacion_coord");
+                        // $tipo_actual = ""; // Variable para almacenar el tipo actual
+            
+                        while ($consulta = mysqli_fetch_array($coordinaciones)) {
+                        echo '
+            
+                        <li>
+                            <input type="hidden" value="'.$consulta['id_coord_direccion'].'" id="direcInput" name="direcInput">
+            
+                            <input type="hidden" value="'.$consulta['id_coordinacion_web'].'" id="coordiWeb" name="coordiWeb">
+            
+                            <button type="button" class="dropdown-item"onclick="coordinacionButton(this);">'.$consulta['titulo_text1'].'</button>
+                        </li>
+                            
+                        ';
+            
+                        }
+            
+                    echo '
                 </ul>
 
             <button class="fs-6 btn bg-info  dropdown-toggle px-4" data-bs-toggle="dropdown">
@@ -1029,7 +1177,28 @@ function dir_salud_radi_nav2(){
             <b>Coordinaciones</b>
             </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" target="" href="dir_salud_rad_div.php">Divisiones</a></li>
+                    ';
+                        include("php/abrir_conexion.php");
+            
+                        $coordinaciones = mysqli_query($conexion, "SELECT * FROM f1_coordinaciones_web WHERE id_coord_direccion = 3 AND id_coord_visible = 1  ORDER BY fecha_actualizacion_coord");
+                        // $tipo_actual = ""; // Variable para almacenar el tipo actual
+            
+                        while ($consulta = mysqli_fetch_array($coordinaciones)) {
+                        echo '
+            
+                        <li>
+                            <input type="hidden" value="'.$consulta['id_coord_direccion'].'" id="direcInput" name="direcInput">
+            
+                            <input type="hidden" value="'.$consulta['id_coordinacion_web'].'" id="coordiWeb" name="coordiWeb">
+            
+                            <button type="button" class="dropdown-item"onclick="coordinacionButton(this);">'.$consulta['titulo_text1'].'</button>
+                        </li>
+                            
+                        ';
+            
+                        }
+            
+                    echo '
                 </ul>
 
             <button class="fs-6 btn bg-info  dropdown-toggle px-4" data-bs-toggle="dropdown">

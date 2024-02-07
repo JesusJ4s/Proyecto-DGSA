@@ -95,7 +95,7 @@
                 <div class="row accordion-body text-center"  aria-expanded="true">
                     <h2 id="DEA_Organigrama" class="bold text-start mb-4"><u>Organigrama</u></h2>
                     <div class="col-12">
-                        <img src="assets/documentos/DEA/organigrama/DEA_organigrama.jpg" alt="Estructura Organizativa" class="w-65 box-shadow border-radius-15">
+                        <img src="assets/informacion/DEA informa/organigrama/DEA_organigrama.jpg" alt="Estructura Organizativa" class="w-65 box-shadow border-radius-15">
                         <p class="text-justify sangria mt-5">
                             
                         </p>

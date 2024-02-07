@@ -79,7 +79,7 @@
             </div> -->
             <h2 id="DGSA_Servicios" class="bold text-center mb-4 mt-3"><u>Mapa</u></h2>
             <div class="text-center my-4">
-                <img src="assets/documentos/DGSA/mapa/Mapa2.jpg" alt="DGSA-MAPA-2" class="w-50 border-radius-15">
+                <img src="assets/informacion/DGSA informa/mapa/Mapa2.jpg" alt="DGSA-MAPA-2" class="w-50 border-radius-15">
             </div>
             <div class="text-center my-4">
                 <a target="_blank" class="text-white enlaces_limpios2 btn btn-primary" href="https://www.google.com/maps/place/Direcci%C3%B3n+General+de+Salud+Ambiental/@10.2702093,-67.5821607,951m/data=!3m1!1e3!4m6!3m5!1s0x8e803b48b9649d07:0x972a3fd31a2d4b22!8m2!3d10.2699631!4d-67.5818731!16s%2Fg%2F11b70f6f34!5m1!1e4">Encuentranos en Google Maps: Dirección General de Salud Ambiental</a>

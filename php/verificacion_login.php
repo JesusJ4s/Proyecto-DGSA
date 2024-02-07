@@ -52,5 +52,12 @@ function Login_ING_Admin()
         header('location: ../intranet/index_intranet.php');
     }
 }
-
-?>
+// PERMITE LA ENTRADA DE ADMINISTRADORES Y DISEÑADORES SOLAMENTE
+function Login_Dise_Admin()
+{
+    if ($_SESSION['nivel_usuario'] == 1) {
+    }else if ($_SESSION['nivel_usuario'] == 4 && $_SESSION['id_departamento'] == 81) {
+    }else {
+        header('location: ../intranet/index_intranet.php');
+    }
+}
