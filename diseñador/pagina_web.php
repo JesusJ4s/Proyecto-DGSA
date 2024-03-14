@@ -127,7 +127,7 @@ Login_Dise_Admin();
                                 </textarea>
                             </div>
                             <div class="col-9 mb-2">
-                                    <label>Imagen, Video o Documento (Elija una si desea cambiar el archivo actual)
+                                    <label>Imagen, Video o Documento (Elija una si desea cambiar el archivo actual). El archivo no puede ser mayor de 40mb
                                         <input class="form-control" type="file" id="archivo_actualizar"  name="archivo_actualizar" accept=".png,.jpg,.jpeg,.webp,.mp4,.pdf">
                                     </label>
 
@@ -257,7 +257,7 @@ Login_Dise_Admin();
                             <!-- GRUPO SELECCIONAR IMAGEN -->
                             <div class="m-0 py-3 row">
                                 <div class="col-2">
-                                    <p class="my-auto d-inline bold col-2">Seleccione la imagen, video o documento</p>
+                                    <p class="my-auto d-inline bold col-2">Seleccione la imagen, video o documento. El archivo no puede ser mayor de 40mb</p>
                                     <button type="button" class="boton_toast d-inline "><img src="../assets/intranet/pregunta.png" class="img_toast" data-toast="#toast1"></button>
                                     <!-- TOAST -->
                                     <div class="toast position-absolute bg-secondary" role="alert" aria-live="assertive"
@@ -269,12 +269,12 @@ Login_Dise_Admin();
                                             <button type="button" class="btn-close" data-bs-dismiss="toast"aria-label="Close"></button>
                                         </div>
                                         <div class="toast-body text-white">
-                                            Busque dentro de su equipo, la imagen, video o documento que utilizará. Solo se acepta formato: <i>png, jpg, jpeg, webp, gif, mp4 y pdf</i>
+                                            Busque dentro de su equipo, la imagen, video o documento que utilizará. Solo se acepta formato: <i>png, jpg, jpeg, webp, gif, mp4 y pdf</i>. El archivo no puede ser mayor de 40mb
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-9">
-                                    <label>Imagen, Video o Documento
+                                    <label>Imagen, Video o Documento. El archivo no puede ser mayor de 40mb
                                         <input class="form-control" type="file" id="archivo_subir"  name="archivo_subir" accept=".png,.jpg,.jpeg,.webp,.mp4,.pdf">
                                     </label>
 

@@ -65,7 +65,7 @@ const expresiones = {
     disco_duro_serial: /^[a-zA-Z0-9_-]{4,20}$/, //Letras
 
     mouse_datos: /^[a-zA-Z0-9_-]{4,20}$/, //Letras
-    mouse_marca: /^[a-zA-Z_-]{4,20}$/, //Letras
+    mouse_marca: /^[a-zA-Z_-]{2,20}$/, //Letras
 
     monitor_datos: /^[a-zA-Z0-9_-]{4,20}$/, //Letras
     monitor_marca: /^[a-zA-Z0-9_-]{2,20}$/, //Letras

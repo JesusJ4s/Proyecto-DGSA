@@ -157,6 +157,7 @@ function estadisticaUsando() {
                                         $.confirm({
                                             title: 'Usuarios del sistema',
                                             content: modalContent,
+                                            columnClass: 'col-6',
                                             buttons: {
                                                 confirm: {
                                                     text: 'Listo',

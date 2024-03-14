@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-02-2024 a las 15:50:04
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Tiempo de generación: 07-02-2024 a las 14:45:41
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,36 +33,36 @@ CREATE TABLE `a1_usuarios` (
   `id_usuario` int(11) NOT NULL,
   `ActivoInactivo` int(11) NOT NULL,
   `nombre` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `apellido` varchar(100) NOT NULL,
-  `nacionalidad` varchar(45) NOT NULL,
-  `cedula` varchar(45) NOT NULL,
-  `nombre_usuario` varchar(100) NOT NULL,
-  `telefono` varchar(45) DEFAULT NULL,
-  `telefono_secundario` varchar(45) DEFAULT NULL,
-  `email` varchar(45) DEFAULT NULL,
+  `apellido` varchar(100) COLLATE utf8_bin NOT NULL,
+  `nacionalidad` varchar(45) COLLATE utf8_bin NOT NULL,
+  `cedula` varchar(45) COLLATE utf8_bin NOT NULL,
+  `nombre_usuario` varchar(100) COLLATE utf8_bin NOT NULL,
+  `telefono` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `telefono_secundario` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `email` varchar(45) COLLATE utf8_bin DEFAULT NULL,
   `usuario_departamento_id` int(11) DEFAULT NULL,
   `usuario_division_id` int(11) NOT NULL,
   `usuario_direccion_id` int(11) NOT NULL,
   `usuario_rol_id` int(11) NOT NULL,
-  `contraseña` varchar(256) NOT NULL,
+  `contraseña` varchar(256) COLLATE utf8_bin NOT NULL,
   `id_pregunta1` int(11) DEFAULT NULL,
-  `respuesta1` varchar(255) NOT NULL,
+  `respuesta1` varchar(255) COLLATE utf8_bin NOT NULL,
   `id_pregunta2` int(11) DEFAULT NULL,
-  `respuesta2` varchar(255) NOT NULL,
+  `respuesta2` varchar(255) COLLATE utf8_bin NOT NULL,
   `id_pregunta3` int(11) DEFAULT NULL,
-  `respuesta3` varchar(255) NOT NULL,
-  `pin_seguridad` varchar(6) NOT NULL,
+  `respuesta3` varchar(255) COLLATE utf8_bin NOT NULL,
+  `pin_seguridad` varchar(6) COLLATE utf8_bin NOT NULL,
   `sesion` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Volcado de datos para la tabla `a1_usuarios`
 --
-
 INSERT INTO `a1_usuarios` (`id_usuario`, `ActivoInactivo`, `nombre`, `apellido`, `nacionalidad`, `cedula`, `nombre_usuario`, `telefono`, `telefono_secundario`, `email`, `usuario_departamento_id`, `usuario_division_id`, `usuario_direccion_id`, `usuario_rol_id`, `contraseña`, `id_pregunta1`, `respuesta1`, `id_pregunta2`, `respuesta2`, `id_pregunta3`, `respuesta3`, `pin_seguridad`, `sesion`) VALUES
 (1, 1, 'Jesus', 'Castillo', 'V', '27146430', 'JADMIN', '04124457287', '', 'jesusgole33@gmail.com', 21, 11, 1, 1, '$2y$10$jkvQDzVE6PtE5KKiN4grK.Xz0jcjVToL4rcIWr9vn4/iJ.jfrYWeu', 1, '$2y$10$Zax6B9m4xXs25wVsc.Mspuc4AZYJw/YMYY/.sb2eNHZSo5OcLvVre', 2, '$2y$10$BTvbxbG7JUQCW2g4RaInG.p.04B9BkO8GoUIK0eU/cvYX1XVBX3xm', 3, '$2y$10$KLaTvst4fA3FWr9lYpfcNe0KJgKx7bh7UqEx6rf/IiYnyEl2/8A3q', '0303', 0),
 (2, 1, 'kisbel', 'caldera ', 'V', '12572203', 'DGSA42', '04262320553', '', 'kisbel31@gmail.com', 81, 1, 1, 4, '$2y$10$6Ko3c5tUrRlmlAuec7JyNesqU4mo.frA4BvD.hvFOJWvhvql4/RLC', 5, '$2y$10$MNhg9LiK/fpepyug3619OuhBbnHWo5Cl7jb9CZnbBceBZzrwz3SX2', 1, '$2y$10$eSiF2HybLn0TBTT124DoyuV8sTt7A8FoGzKQgKk9me8wAI4ItpnVy', 9, '$2y$10$CuAamb5zVlawajY7XupXweu7.xnGteennTBHdnIAA87Mq./dZST7G', '0477', 0),
 (3, 1, 'Dennis', 'Quiñones', 'V', '9699637', 'VALEDIEG', '0414-4598112', '', 'dennthibi@gmail.com', 21, 11, 1, 1, '$2y$10$HTqNcYADBVi4RKVi44dfbO5o24ZFCOaFuSipgKAFe46aK0YwOsHca', 1, '$2y$10$q2z1D60newzaU0yJrvcSqORQPD9wjASml2NJagBXKAI85NQPl6/fm', 3, '$2y$10$9nDBnondwYQZH.paVKazduSvwbRv78KufCetDg6DhDl5OslKCAG0G', 4, '$2y$10$AxHvyMd14CAFAUHQwCPhxe80C5gLwAvADkzDOA9XDd4mITgYljrGG', '1302', 0);
+
 
 -- --------------------------------------------------------
 
@@ -72,7 +72,7 @@ INSERT INTO `a1_usuarios` (`id_usuario`, `ActivoInactivo`, `nombre`, `apellido`,
 
 CREATE TABLE `a2_rol` (
   `id_rol` int(11) NOT NULL,
-  `nombre_rol` varchar(100) NOT NULL
+  `nombre_rol` varchar(100) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -94,7 +94,7 @@ INSERT INTO `a2_rol` (`id_rol`, `nombre_rol`) VALUES
 
 CREATE TABLE `a3_preguntas` (
   `id_pregunta` int(11) NOT NULL,
-  `pregunta` varchar(45) NOT NULL
+  `pregunta` varchar(45) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -120,7 +120,7 @@ INSERT INTO `a3_preguntas` (`id_pregunta`, `pregunta`) VALUES
 
 CREATE TABLE `a4_estado` (
   `id_estado` int(11) NOT NULL,
-  `nombre_status` varchar(45) NOT NULL
+  `nombre_status` varchar(45) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -129,7 +129,8 @@ CREATE TABLE `a4_estado` (
 
 INSERT INTO `a4_estado` (`id_estado`, `nombre_status`) VALUES
 (1, 'Activo'),
-(2, 'Inactivo');
+(2, 'Inactivo'),
+(3, 'Eliminado');
 
 -- --------------------------------------------------------
 
@@ -139,7 +140,7 @@ INSERT INTO `a4_estado` (`id_estado`, `nombre_status`) VALUES
 
 CREATE TABLE `b1_direcciones` (
   `id_direcciones` int(11) NOT NULL,
-  `nombre_dire` varchar(255) NOT NULL
+  `nombre_dire` varchar(255) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -162,7 +163,7 @@ INSERT INTO `b1_direcciones` (`id_direcciones`, `nombre_dire`) VALUES
 
 CREATE TABLE `b2_divisiones` (
   `id_divisiones` int(11) NOT NULL,
-  `nombre_div` varchar(100) NOT NULL,
+  `nombre_div` varchar(100) COLLATE utf8_bin NOT NULL,
   `division_direccion_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -211,7 +212,7 @@ INSERT INTO `b2_divisiones` (`id_divisiones`, `nombre_div`, `division_direccion_
 
 CREATE TABLE `b3_departamentos` (
   `id_departamento` int(11) NOT NULL,
-  `nombre_dpto` varchar(255) NOT NULL,
+  `nombre_dpto` varchar(255) COLLATE utf8_bin NOT NULL,
   `departamento_division_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -293,50 +294,50 @@ CREATE TABLE `c1_inventario_equipo` (
   `dpto_inv_id` int(11) NOT NULL,
   `division_inv_id` int(11) NOT NULL,
   `direccion_inv_id` int(11) NOT NULL,
-  `responsable` varchar(45) NOT NULL,
-  `supervisor_dpto` varchar(100) NOT NULL,
-  `nombre_equipo` varchar(45) NOT NULL,
-  `BN_equipo` varchar(45) DEFAULT NULL,
-  `serial_equipo` varchar(45) DEFAULT NULL,
-  `tipo_de_equipo` varchar(45) NOT NULL,
-  `cpu_modelo` varchar(45) NOT NULL,
-  `cpu_velocidad` varchar(45) NOT NULL,
-  `mac` varchar(45) NOT NULL,
-  `ip` varchar(45) DEFAULT NULL,
-  `disco_duro_cap` varchar(45) NOT NULL,
-  `disco_duro_marca` varchar(45) NOT NULL,
-  `disco_duro_serial` varchar(45) NOT NULL,
-  `ram` varchar(45) NOT NULL,
-  `ram_velocidad` varchar(45) NOT NULL,
-  `windows_ver` varchar(45) NOT NULL,
-  `conect_red` varchar(45) NOT NULL,
-  `tipo_conexion` varchar(45) NOT NULL,
-  `internet` varchar(45) NOT NULL,
-  `mouse` varchar(45) DEFAULT NULL,
-  `BN_serial_mouse` varchar(45) DEFAULT NULL,
-  `mouse_marca` varchar(45) NOT NULL,
-  `mouse_conexion` varchar(45) NOT NULL,
-  `monitor` varchar(45) DEFAULT NULL,
-  `monitor_marca` varchar(100) NOT NULL,
-  `monitor_conexion` varchar(45) NOT NULL,
-  `BN_serial_monitor` varchar(45) DEFAULT NULL,
-  `regulador` varchar(45) DEFAULT NULL,
-  `regulador_marca` varchar(45) NOT NULL,
-  `BN_serial_regulador` varchar(45) DEFAULT NULL,
-  `teclado` varchar(45) DEFAULT NULL,
-  `teclado_marca` varchar(45) NOT NULL,
-  `teclado_conexion` varchar(45) NOT NULL,
-  `BN_serial_teclado` varchar(45) DEFAULT NULL,
-  `escaner` varchar(45) DEFAULT NULL,
-  `escaner_marca` varchar(100) NOT NULL,
-  `escaner_modelo` varchar(45) NOT NULL,
-  `escaner_conexion` varchar(45) NOT NULL,
-  `escaner_operativo` varchar(25) NOT NULL,
-  `toner_tinta` varchar(25) NOT NULL,
-  `conectada_red` varchar(25) NOT NULL,
-  `BN_serial_escaner` varchar(45) DEFAULT NULL,
-  `comentario` varchar(255) DEFAULT NULL,
-  `notas_edicion` longtext DEFAULT NULL
+  `responsable` varchar(45) COLLATE utf8_bin NOT NULL,
+  `supervisor_dpto` varchar(100) COLLATE utf8_bin NOT NULL,
+  `nombre_equipo` varchar(45) COLLATE utf8_bin NOT NULL,
+  `BN_equipo` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `serial_equipo` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `tipo_de_equipo` varchar(45) COLLATE utf8_bin NOT NULL,
+  `cpu_modelo` varchar(45) COLLATE utf8_bin NOT NULL,
+  `cpu_velocidad` varchar(45) COLLATE utf8_bin NOT NULL,
+  `mac` varchar(45) COLLATE utf8_bin NOT NULL,
+  `ip` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `disco_duro_cap` varchar(45) COLLATE utf8_bin NOT NULL,
+  `disco_duro_marca` varchar(45) COLLATE utf8_bin NOT NULL,
+  `disco_duro_serial` varchar(45) COLLATE utf8_bin NOT NULL,
+  `ram` varchar(45) COLLATE utf8_bin NOT NULL,
+  `ram_velocidad` varchar(45) COLLATE utf8_bin NOT NULL,
+  `windows_ver` varchar(45) COLLATE utf8_bin NOT NULL,
+  `conect_red` varchar(45) COLLATE utf8_bin NOT NULL,
+  `tipo_conexion` varchar(45) COLLATE utf8_bin NOT NULL,
+  `internet` varchar(45) COLLATE utf8_bin NOT NULL,
+  `mouse` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `BN_serial_mouse` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `mouse_marca` varchar(45) COLLATE utf8_bin NOT NULL,
+  `mouse_conexion` varchar(45) COLLATE utf8_bin NOT NULL,
+  `monitor` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `monitor_marca` varchar(100) COLLATE utf8_bin NOT NULL,
+  `monitor_conexion` varchar(45) COLLATE utf8_bin NOT NULL,
+  `BN_serial_monitor` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `regulador` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `regulador_marca` varchar(45) COLLATE utf8_bin NOT NULL,
+  `BN_serial_regulador` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `teclado` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `teclado_marca` varchar(45) COLLATE utf8_bin NOT NULL,
+  `teclado_conexion` varchar(45) COLLATE utf8_bin NOT NULL,
+  `BN_serial_teclado` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `escaner` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `escaner_marca` varchar(100) COLLATE utf8_bin NOT NULL,
+  `escaner_modelo` varchar(45) COLLATE utf8_bin NOT NULL,
+  `escaner_conexion` varchar(45) COLLATE utf8_bin NOT NULL,
+  `escaner_operativo` varchar(25) COLLATE utf8_bin NOT NULL,
+  `toner_tinta` varchar(25) COLLATE utf8_bin NOT NULL,
+  `conectada_red` varchar(25) COLLATE utf8_bin NOT NULL,
+  `BN_serial_escaner` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `comentario` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `notas_edicion` longtext COLLATE utf8_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
@@ -347,7 +348,7 @@ CREATE TABLE `c1_inventario_equipo` (
 
 CREATE TABLE `c3_1_estado_soporte` (
   `id_estado_sop` int(11) NOT NULL,
-  `nombre_estado` varchar(45) NOT NULL
+  `nombre_estado` varchar(45) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -370,18 +371,18 @@ INSERT INTO `c3_1_estado_soporte` (`id_estado_sop`, `nombre_estado`) VALUES
 
 CREATE TABLE `c3_solicitudes_soportes` (
   `id_soporte` int(11) NOT NULL,
-  `uso_equipo` varchar(45) NOT NULL,
+  `uso_equipo` varchar(45) COLLATE utf8_bin NOT NULL,
   `id_equipo_soporte` int(11) NOT NULL,
-  `nomb_equipo_soporte` varchar(100) NOT NULL,
-  `nivel_soporte` varchar(45) NOT NULL,
-  `soporte_descripcion` varchar(255) NOT NULL,
+  `nomb_equipo_soporte` varchar(100) COLLATE utf8_bin NOT NULL,
+  `nivel_soporte` varchar(45) COLLATE utf8_bin NOT NULL,
+  `soporte_descripcion` varchar(255) COLLATE utf8_bin NOT NULL,
   `fecha_soporte_solicitud` datetime NOT NULL,
   `estado` int(11) NOT NULL,
   `fecha_soporte_aceptacion` datetime NOT NULL,
   `tecnico_soporte_id` int(11) DEFAULT NULL,
   `fecha_soporte_final` datetime NOT NULL,
-  `comentario` varchar(255) NOT NULL,
-  `historial_soporte` text DEFAULT NULL
+  `comentario` text COLLATE utf8_bin NOT NULL,
+  `historial_soporte` text COLLATE utf8_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
@@ -392,9 +393,9 @@ CREATE TABLE `c3_solicitudes_soportes` (
 
 CREATE TABLE `c4_base_conocimiento` (
   `id_conocimiento` int(11) NOT NULL,
-  `tipo_conocimiento` varchar(45) NOT NULL,
-  `descripcion_caso` varchar(45) NOT NULL,
-  `posible_solucion` varchar(255) NOT NULL
+  `tipo_conocimiento` varchar(45) COLLATE utf8_bin NOT NULL,
+  `descripcion_caso` varchar(45) COLLATE utf8_bin NOT NULL,
+  `posible_solucion` varchar(255) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
@@ -405,11 +406,11 @@ CREATE TABLE `c4_base_conocimiento` (
 
 CREATE TABLE `d1_correspondencia` (
   `id_nro_admision` int(11) NOT NULL,
-  `nro_oficio` varchar(45) NOT NULL,
+  `nro_oficio` varchar(45) COLLATE utf8_bin NOT NULL,
   `fecha_sal_empresa` date NOT NULL,
   `procedencia` int(11) NOT NULL,
-  `rif_corresp_emp` varchar(15) NOT NULL,
-  `asunto` varchar(255) NOT NULL,
+  `rif_corresp_emp` varchar(15) COLLATE utf8_bin NOT NULL,
+  `asunto` varchar(255) COLLATE utf8_bin NOT NULL,
   `fecha_llegada` datetime NOT NULL,
   `oficina_destino` int(11) NOT NULL,
   `coordi_destino` int(11) NOT NULL
@@ -423,10 +424,10 @@ CREATE TABLE `d1_correspondencia` (
 
 CREATE TABLE `d2_empresas_corresp` (
   `id_empresas` int(11) NOT NULL,
-  `identificador_rif` varchar(5) NOT NULL,
-  `rif` varchar(45) NOT NULL,
-  `nombre_empresa` varchar(45) NOT NULL,
-  `dedicacion` varchar(255) NOT NULL
+  `identificador_rif` varchar(5) COLLATE utf8_bin NOT NULL,
+  `rif` varchar(45) COLLATE utf8_bin NOT NULL,
+  `nombre_empresa` varchar(45) COLLATE utf8_bin NOT NULL,
+  `dedicacion` varchar(255) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
@@ -442,12 +443,12 @@ CREATE TABLE `d3_notificaciones_div` (
   `id_corres_divi` int(11) NOT NULL,
   `id_corres_dire` int(11) NOT NULL,
   `Jefe_Corres` int(11) NOT NULL,
-  `Jefe_Ced_Corres` varchar(45) NOT NULL,
+  `Jefe_Ced_Corres` varchar(45) COLLATE utf8_bin NOT NULL,
   `fecha_llegada_corresp` datetime NOT NULL,
   `fecha_confirmacion_corres` datetime DEFAULT NULL,
-  `descripcion_corresp` varchar(255) NOT NULL,
+  `descripcion_corresp` varchar(255) COLLATE utf8_bin NOT NULL,
   `estatus_Corres` int(1) NOT NULL,
-  `nota_final_corresp` varchar(255) NOT NULL
+  `nota_final_corresp` varchar(255) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
@@ -458,7 +459,7 @@ CREATE TABLE `d3_notificaciones_div` (
 
 CREATE TABLE `d4_notificaciones_estatus` (
   `id_estatus_notifi` int(11) NOT NULL,
-  `nombre_estatus_notifi` varchar(15) NOT NULL
+  `nombre_estatus_notifi` varchar(15) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -479,14 +480,23 @@ INSERT INTO `d4_notificaciones_estatus` (`id_estatus_notifi`, `nombre_estatus_no
 
 CREATE TABLE `e1_galerias` (
   `id_galeria` int(11) NOT NULL,
-  `titulo_archivo` varchar(100) DEFAULT NULL,
+  `titulo_archivo` varchar(150) COLLATE utf8_bin DEFAULT NULL,
   `descripcion_archivo` text CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
-  `nombre_archivo` varchar(255) NOT NULL,
+  `nombre_archivo` varchar(255) COLLATE utf8_bin NOT NULL,
   `id_galeria_direccion` int(11) NOT NULL,
   `id_galeria_tipo` int(11) NOT NULL,
   `id_galeria_grupo` int(11) NOT NULL,
-  `visible` int(11) NOT NULL
+  `tipo_archivo` varchar(50) COLLATE utf8_bin NOT NULL,
+  `visible` int(11) NOT NULL,
+  `fecha_creacion` date DEFAULT NULL,
+  `fecha_actualizacion` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `e1_galerias`
+--
+
+
 
 -- --------------------------------------------------------
 
@@ -496,16 +506,18 @@ CREATE TABLE `e1_galerias` (
 
 CREATE TABLE `e2_galerias_tipos` (
   `id_tipo` int(11) NOT NULL,
-  `nombre_tipo` varchar(100) NOT NULL
+  `nombre_tipo` varchar(100) COLLATE utf8_bin NOT NULL,
+  `actualizacion_galeria_tipos` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Volcado de datos para la tabla `e2_galerias_tipos`
 --
 
-INSERT INTO `e2_galerias_tipos` (`id_tipo`, `nombre_tipo`) VALUES
-(1, 'Imagen'),
-(2, 'Video');
+INSERT INTO `e2_galerias_tipos` (`id_tipo`, `nombre_tipo`, `actualizacion_galeria_tipos`) VALUES
+(1, 'Imagen', now()),
+(2, 'Video', now()),
+(3, 'Documento', now());
 
 -- --------------------------------------------------------
 
@@ -515,9 +527,124 @@ INSERT INTO `e2_galerias_tipos` (`id_tipo`, `nombre_tipo`) VALUES
 
 CREATE TABLE `e3_galerias_grupos` (
   `id_grupo` int(11) NOT NULL,
-  `nombre_grupo_galeria` varchar(200) NOT NULL,
-  `id_direccion_grupo` int(11) NOT NULL
+  `nombre_grupo_galeria` varchar(200) COLLATE utf8_bin NOT NULL,
+  `id_direccion_grupo` int(11) NOT NULL,
+  `actualizacion_galeria_grupos` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `e4_boletines`
+--
+
+CREATE TABLE `e4_boletines` (
+  `id_boletin` int(11) NOT NULL,
+  `id_usuario_boletin` int(11) NOT NULL,
+  `id_boletin_direccion` int(11) NOT NULL,
+  `titulo_boletin` varchar(150) COLLATE utf8_bin NOT NULL,
+  `img1_boletin` varchar(255) COLLATE utf8_bin NOT NULL,
+  `text1_boletin` mediumtext COLLATE utf8_bin NOT NULL,
+  `img2_boletin` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `text2_boletin` mediumtext COLLATE utf8_bin DEFAULT NULL,
+  `imgvid3_boletin` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `text3_boletin` mediumtext COLLATE utf8_bin DEFAULT NULL,
+  `boletin_visible` int(11) NOT NULL,
+  `fecha_creacion_bol` date NOT NULL,
+  `fecha_actualizacion_bol` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `e4_boletines`
+--
+
+
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `e5_instrumentos_legales`
+--
+
+CREATE TABLE `e5_instrumentos_legales` (
+  `id_instrumento_legal` int(11) NOT NULL,
+  `titulo_instrumento` varchar(100) COLLATE utf8_bin NOT NULL,
+  `nombre_instrumento` varchar(255) COLLATE utf8_bin NOT NULL,
+  `id_instrumento_direccion` int(11) NOT NULL,
+  `id_instrumento_grupo` int(11) NOT NULL,
+  `id_instrumento_tipo` int(11) NOT NULL,
+  `instrumento_visible` int(11) NOT NULL,
+  `fecha_creacion_instrumento` date NOT NULL,
+  `fecha_actualizacion_instrumento` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `e5_instrumentos_legales`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `e6_tipos_instrumentos`
+--
+
+CREATE TABLE `e6_tipos_instrumentos` (
+  `id_tipo_instrumento` int(11) NOT NULL,
+  `nombre_tipo_instrumento` varchar(45) COLLATE utf8_bin NOT NULL,
+  `actualizacion_tipo_instrumento` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `e6_tipos_instrumentos`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `e7_grupos_instrumentos`
+--
+
+CREATE TABLE `e7_grupos_instrumentos` (
+  `id_grup_instrumento` int(11) NOT NULL,
+  `nombre_grup_instrumento` varchar(150) COLLATE utf8_bin NOT NULL,
+  `id_grupo_instr_direc` int(11) NOT NULL,
+  `actualizacion_grupo_instrumento` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `e7_grupos_instrumentos`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `f1_coordinaciones_web`
+--
+
+CREATE TABLE `f1_coordinaciones_web` (
+  `id_coordinacion_web` int(11) NOT NULL,
+  `imagen_coord1` varchar(255) COLLATE utf8_bin NOT NULL,
+  `titulo_text1` varchar(255) COLLATE utf8_bin NOT NULL,
+  `descripcion_text1` mediumtext COLLATE utf8_bin NOT NULL,
+  `imagen_coord2` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `titulo_text2` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `descripcion_text2` mediumtext COLLATE utf8_bin DEFAULT NULL,
+  `imagen_coord3` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `titulo_text3` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `descripcion_text3` mediumtext COLLATE utf8_bin DEFAULT NULL,
+  `titulo_lista1` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `lista1_coord` mediumtext COLLATE utf8_bin DEFAULT NULL,
+  `titulo_lista2` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `lista2_coord` mediumtext COLLATE utf8_bin DEFAULT NULL,
+  `id_coord_direccion` int(11) NOT NULL,
+  `id_coord_usuario` int(11) NOT NULL,
+  `id_coord_visible` int(11) NOT NULL,
+  `fecha_creacion_coord` date NOT NULL,
+  `fecha_actualizacion_coord` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
 
 -- --------------------------------------------------------
 
@@ -529,15 +656,14 @@ CREATE TABLE `z1_historial_camb_sis` (
   `id_historial_cambios` int(11) NOT NULL,
   `id_usuario_cambio` int(11) NOT NULL,
   `id_accion_cambio` int(11) NOT NULL,
-  `entidad_cambio` varchar(100) NOT NULL,
+  `entidad_cambio` varchar(100) COLLATE utf8_bin NOT NULL,
   `fecha_usuario_cambio` datetime DEFAULT NULL,
-  `descripcion_cambio` text NOT NULL
+  `descripcion_cambio` text COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Volcado de datos para la tabla `z1_historial_camb_sis`
 --
-
 INSERT INTO `z1_historial_camb_sis` (`id_historial_cambios`, `id_usuario_cambio`, `id_accion_cambio`, `entidad_cambio`, `fecha_usuario_cambio`, `descripcion_cambio`) VALUES
 (1, 1, 1, '27146430', '2024-01-24 11:59:26', 'Nuevo Usuario registrandose en el Sistema, nombre del empleado: Jesus Castillo, cédula V-27146430. Dicho empleado se ha registrado como trabajador en: Coordinación de Informática'),
 (2, 1, 1, '27146430', '2024-01-24 11:59:59', 'El usuario Jesus Castillo, finalizó el registro las preguntas de seguridad.'),
@@ -570,7 +696,7 @@ INSERT INTO `z1_historial_camb_sis` (`id_historial_cambios`, `id_usuario_cambio`
 
 CREATE TABLE `z2_historial_acciones` (
   `id_accHis` int(11) NOT NULL,
-  `nombre_accion` varchar(45) NOT NULL
+  `nombre_accion` varchar(45) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -598,7 +724,20 @@ INSERT INTO `z2_historial_acciones` (`id_accHis`, `nombre_accion`) VALUES
 (18, 'Registro de Nuevo Grupo Galería'),
 (19, 'Registro de Imagen'),
 (20, 'Registro de Video'),
-(21, 'Modificacion Imagen-Video');
+(21, 'Registro de Documento'),
+(22, 'Modificacion Imagen-Video-Documento'),
+(23, 'Eliminacion Imagen-Video-Documento'),
+(24, 'Nuevo Boletin'),
+(25, 'Modificacion Boletin'),
+(26, 'Eliminacion Boletin'),
+(27, 'Registro Grupo Instrumento Legal'),
+(28, 'Registro Tipo de Instrumento Legal'),
+(29, 'Registro Instrumento Legal'),
+(30, 'Edición de Instrumento Legal'),
+(31, 'Eliminacion de Instrumento Legal'),
+(32, 'Registro Pagina Coordinacion'),
+(33, 'Edicion Pagina Coordinacion'),
+(34, 'Eliminacion Pagina Coordinacion');
 
 --
 -- Índices para tablas volcadas
@@ -744,6 +883,47 @@ ALTER TABLE `e3_galerias_grupos`
   ADD KEY `id_direccion_grupo` (`id_direccion_grupo`);
 
 --
+-- Indices de la tabla `e4_boletines`
+--
+ALTER TABLE `e4_boletines`
+  ADD PRIMARY KEY (`id_boletin`),
+  ADD KEY `id_usuario_boletin_fk` (`id_usuario_boletin`),
+  ADD KEY `id_boletin_visible_fk` (`boletin_visible`),
+  ADD KEY `id_boletin_direccion_fk` (`id_boletin_direccion`);
+
+--
+-- Indices de la tabla `e5_instrumentos_legales`
+--
+ALTER TABLE `e5_instrumentos_legales`
+  ADD PRIMARY KEY (`id_instrumento_legal`),
+  ADD KEY `id_instrumento_dir_fk` (`id_instrumento_direccion`),
+  ADD KEY `id_instrumento_grupo_fk` (`id_instrumento_grupo`),
+  ADD KEY `id_instrumento_tipo_fk` (`id_instrumento_tipo`),
+  ADD KEY `id_instrumento_visible_fk` (`instrumento_visible`);
+
+--
+-- Indices de la tabla `e6_tipos_instrumentos`
+--
+ALTER TABLE `e6_tipos_instrumentos`
+  ADD PRIMARY KEY (`id_tipo_instrumento`);
+
+--
+-- Indices de la tabla `e7_grupos_instrumentos`
+--
+ALTER TABLE `e7_grupos_instrumentos`
+  ADD PRIMARY KEY (`id_grup_instrumento`),
+  ADD KEY `id_grup_instr_dire_fk` (`id_grupo_instr_direc`);
+
+--
+-- Indices de la tabla `f1_coordinaciones_web`
+--
+ALTER TABLE `f1_coordinaciones_web`
+  ADD PRIMARY KEY (`id_coordinacion_web`),
+  ADD KEY `id_coord_direccion_fk` (`id_coord_direccion`),
+  ADD KEY `id_coord_usuario_fk` (`id_coord_usuario`),
+  ADD KEY `id_coord_visible` (`id_coord_visible`);
+
+--
 -- Indices de la tabla `z1_historial_camb_sis`
 --
 ALTER TABLE `z1_historial_camb_sis`
@@ -783,7 +963,7 @@ ALTER TABLE `a3_preguntas`
 -- AUTO_INCREMENT de la tabla `a4_estado`
 --
 ALTER TABLE `a4_estado`
-  MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `b1_direcciones`
@@ -861,7 +1041,7 @@ ALTER TABLE `e1_galerias`
 -- AUTO_INCREMENT de la tabla `e2_galerias_tipos`
 --
 ALTER TABLE `e2_galerias_tipos`
-  MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `e3_galerias_grupos`
@@ -870,16 +1050,46 @@ ALTER TABLE `e3_galerias_grupos`
   MODIFY `id_grupo` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `e4_boletines`
+--
+ALTER TABLE `e4_boletines`
+  MODIFY `id_boletin` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `e5_instrumentos_legales`
+--
+ALTER TABLE `e5_instrumentos_legales`
+  MODIFY `id_instrumento_legal` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `e6_tipos_instrumentos`
+--
+ALTER TABLE `e6_tipos_instrumentos`
+  MODIFY `id_tipo_instrumento` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `e7_grupos_instrumentos`
+--
+ALTER TABLE `e7_grupos_instrumentos`
+  MODIFY `id_grup_instrumento` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `f1_coordinaciones_web`
+--
+ALTER TABLE `f1_coordinaciones_web`
+  MODIFY `id_coordinacion_web` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `z1_historial_camb_sis`
 --
 ALTER TABLE `z1_historial_camb_sis`
-  MODIFY `id_historial_cambios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_historial_cambios` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `z2_historial_acciones`
 --
 ALTER TABLE `z2_historial_acciones`
-  MODIFY `id_accHis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_accHis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- Restricciones para tablas volcadas
@@ -960,6 +1170,37 @@ ALTER TABLE `e1_galerias`
 --
 ALTER TABLE `e3_galerias_grupos`
   ADD CONSTRAINT `id_direccion_grupo` FOREIGN KEY (`id_direccion_grupo`) REFERENCES `b1_direcciones` (`id_direcciones`);
+
+--
+-- Filtros para la tabla `e4_boletines`
+--
+ALTER TABLE `e4_boletines`
+  ADD CONSTRAINT `id_boletin_direccion_fk` FOREIGN KEY (`id_boletin_direccion`) REFERENCES `b1_direcciones` (`id_direcciones`),
+  ADD CONSTRAINT `id_boletin_visible_fk` FOREIGN KEY (`boletin_visible`) REFERENCES `a4_estado` (`id_estado`),
+  ADD CONSTRAINT `id_usuario_boletin_fk` FOREIGN KEY (`id_usuario_boletin`) REFERENCES `a1_usuarios` (`id_usuario`);
+
+--
+-- Filtros para la tabla `e5_instrumentos_legales`
+--
+ALTER TABLE `e5_instrumentos_legales`
+  ADD CONSTRAINT `id_instrumento_dir_fk` FOREIGN KEY (`id_instrumento_direccion`) REFERENCES `b1_direcciones` (`id_direcciones`),
+  ADD CONSTRAINT `id_instrumento_grupo_fk` FOREIGN KEY (`id_instrumento_grupo`) REFERENCES `e7_grupos_instrumentos` (`id_grup_instrumento`),
+  ADD CONSTRAINT `id_instrumento_tipo_fk` FOREIGN KEY (`id_instrumento_tipo`) REFERENCES `e6_tipos_instrumentos` (`id_tipo_instrumento`),
+  ADD CONSTRAINT `id_instrumento_visible_fk` FOREIGN KEY (`instrumento_visible`) REFERENCES `a4_estado` (`id_estado`);
+
+--
+-- Filtros para la tabla `e7_grupos_instrumentos`
+--
+ALTER TABLE `e7_grupos_instrumentos`
+  ADD CONSTRAINT `id_grup_instr_dire_fk` FOREIGN KEY (`id_grupo_instr_direc`) REFERENCES `b1_direcciones` (`id_direcciones`);
+
+--
+-- Filtros para la tabla `f1_coordinaciones_web`
+--
+ALTER TABLE `f1_coordinaciones_web`
+  ADD CONSTRAINT `id_coord_direccion_fk` FOREIGN KEY (`id_coord_direccion`) REFERENCES `b1_direcciones` (`id_direcciones`),
+  ADD CONSTRAINT `id_coord_usuario_fk` FOREIGN KEY (`id_coord_usuario`) REFERENCES `a1_usuarios` (`id_usuario`),
+  ADD CONSTRAINT `id_coord_visible` FOREIGN KEY (`id_coord_visible`) REFERENCES `a4_estado` (`id_estado`);
 
 --
 -- Filtros para la tabla `z1_historial_camb_sis`

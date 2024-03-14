@@ -249,7 +249,7 @@
             <?php
 
                 include("php/abrir_conexion.php");
-                $Boletines = mysqli_query($conexion, "SELECT * FROM $tabla_db17 WHERE id_boletin_direccion = 1 AND boletin_visible = 1 ORDER BY fecha_actualizacion_bol LIMIT 3");
+                $Boletines = mysqli_query($conexion, "SELECT * FROM $tabla_db17 WHERE id_boletin_direccion = 1 AND boletin_visible = 1 ORDER BY RAND() LIMIT 6");
                 while ($consulta = mysqli_fetch_array($Boletines)) {
                     // Imprimir el contenido de cada registro
                     $boletinesBD = '

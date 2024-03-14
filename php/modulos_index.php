@@ -20,7 +20,7 @@ function Modulos_Navegacion()
                 <!-- SOPORTE TÉCNICO -->
                 <div class="border mx-3 altura-app mb-5 box-shadow-plano">
                     <div class="text-center">
-                        <img src="../assets/intranet/soporte/Soporte_Tecnico3.jpg" class="w-100 mt-2 mb-2">
+                        <img src="../assets/intranet/soporte/Soporte_Tecnico3_JEFE.jpg" class="w-100 mt-2 mb-2">
                     </div>
                     <div class=" text-center py-3 px-3">
                         <h2>Centro de Soporte</h2>

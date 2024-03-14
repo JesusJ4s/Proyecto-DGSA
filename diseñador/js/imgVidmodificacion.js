@@ -70,7 +70,7 @@ function ModificarArchivo(){
                 if(nroERROR==501){
                     $('#InfoGeneral').modal('show');
     
-                    $('#InfoGeneral .modal-body').html('El archivo al que intenta acceder no fue encontrado.');
+                    $('#InfoGeneral .modal-body').html('El archivo al que intenta acceder no fue encontrado o ya se encuentra eliminado del sistema.');
                 }
     
                 if(nroERROR==503){

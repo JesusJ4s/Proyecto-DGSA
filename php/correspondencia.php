@@ -388,10 +388,10 @@ if ($correspondencia == "registroCorres") {
                     $rifExiste++;
                 }
                 if ($rifExiste <> 0) {
+
                     // REGISTRANDO CORRESPONDENCIA
                     $registrar_correspo = "INSERT INTO $tabla_db10 (id_nro_admision, nro_oficio, fecha_sal_empresa, procedencia, rif_corresp_emp, asunto, fecha_llegada, oficina_destino, coordi_destino) values (NULL,'$nroOficio', '$fecha_salida', '$procedencia', '$rif_empresa', '$asunto', now(),'$direccion_select', '$division_select')";
                     $conexion->query($registrar_correspo);
-    
                     // REGISTRANDO NOTIFICACIÓN PARA EL JEFE DE DIVISIÓN **************************************
                     // CONSULTAS A LA BASE DE DATOS
                     $buscarRegistro = "SELECT * FROM $tabla_db10 WHERE rif_corresp_emp = '$rif_empresa' AND nro_oficio = '$nroOficio' AND coordi_destino = '$division_select'";
@@ -405,43 +405,47 @@ if ($correspondencia == "registroCorres") {
                     while ($consulta = mysqli_fetch_array($resultados)) {
                         $idJefe = $consulta['id_usuario'];
                         $cedulaJefe = $consulta['cedula'];
+                        $encontrado++;
                     }
                     // FECHA LIMITE
                     $fecha_actual = date('Y-m-d h:i:s');
-    
-                    $registrarNotificacion = "INSERT INTO $tabla_db12 (id_notificacion, id_corresp, id_empresa_corresp, id_corres_divi, id_corres_dire, Jefe_Corres, Jefe_Ced_Corres, fecha_llegada_corresp, descripcion_corresp, estatus_Corres) values (NULL,'$nroAdm', '$procedencia','$division_select', '$direccion_select', '$idJefe', '$cedulaJefe', now(), '$asunto', '1')";
-                    $conexion->query($registrarNotificacion);
-                    // ********************************************************
-    
-                    // AUDITORIA *****************************************************************
-                    $buscarID = mysqli_query($conexion, "SELECT * FROM $tabla_db10 WHERE rif_corresp_emp = '$rif_empresa' AND nro_oficio = '$nroOficio'");
-                    while ($consulta = mysqli_fetch_array($buscarID)) {
-                        $nroEmprBD = $consulta['procedencia'];
-                    }
-                    $buscarID2 = mysqli_query($conexion, "SELECT * FROM $tabla_db11 WHERE id_empresas = '$nroEmprBD'");
-                    while ($consulta = mysqli_fetch_array($buscarID2)) {
-    
-                        $nameEmprBD = $consulta['nombre_empresa'];
-                        $rifEmprBD = $consulta['identificador_rif'] . "-" . $consulta['rif'];
-                    }
-    
-                    $valorID = $_SESSION['id_usr'];
-                    $nombreAd = $_SESSION['nombre'];
 
-                    $descripcion_Cambio = "Se registra una nueva correspondencia, nro de oficio: " . $nroOficio . ", bajo el nombre de la empresa: " . $nameEmprBD . ", cuyo rif es: " . $rifEmprBD . ". Usuario encargado del registro: " . $nombreAd;
-                    $valorCedula = $_SESSION['cedula_var_global'];
-    
-                    $accionHecha = "13";
-                    $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionHecha', '$valorCedula', now(), '$descripcion_Cambio')";
-                    mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
-    
-                    // FINAL AUDITORIA ************************************************************
-    
-    
-                    echo "<h5>Se registró la información de la correspondencia de manera exitosa.</h5>";
-    
-                    include("cerrar_conexion.php");
-    
+                    if ($encontrado >= 1) {
+                        $registrarNotificacion = "INSERT INTO $tabla_db12 (id_notificacion, id_corresp, id_empresa_corresp, id_corres_divi, id_corres_dire, Jefe_Corres, Jefe_Ced_Corres, fecha_llegada_corresp, descripcion_corresp, estatus_Corres) values (NULL,'$nroAdm', '$procedencia','$division_select', '$direccion_select', '$idJefe', '$cedulaJefe', now(), '$asunto', '1')";
+                        $conexion->query($registrarNotificacion);
+       
+                        // AUDITORIA *****************************************************************
+                        $buscarID = mysqli_query($conexion, "SELECT * FROM $tabla_db10 WHERE rif_corresp_emp = '$rif_empresa' AND nro_oficio = '$nroOficio'");
+                        while ($consulta = mysqli_fetch_array($buscarID)) {
+                            $nroEmprBD = $consulta['procedencia'];
+                        }
+                        $buscarID2 = mysqli_query($conexion, "SELECT * FROM $tabla_db11 WHERE id_empresas = '$nroEmprBD'");
+                        while ($consulta = mysqli_fetch_array($buscarID2)) {
+        
+                            $nameEmprBD = $consulta['nombre_empresa'];
+                            $rifEmprBD = $consulta['identificador_rif'] . "-" . $consulta['rif'];
+                        }
+        
+                        $valorID = $_SESSION['id_usr'];
+                        $nombreAd = $_SESSION['nombre'];
+
+                        $descripcion_Cambio = "Se registra una nueva correspondencia, nro de oficio: " . $nroOficio . ", bajo el nombre de la empresa: " . $nameEmprBD . ", cuyo rif es: " . $rifEmprBD . ". Usuario encargado del registro: " . $nombreAd;
+                        $valorCedula = $_SESSION['cedula_var_global'];
+        
+                        $accionHecha = "13";
+                        $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionHecha', '$valorCedula', now(), '$descripcion_Cambio')";
+                        mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
+        
+                        // FINAL AUDITORIA ************************************************************
+        
+        
+                        echo "<h5>Se registró la información de la correspondencia de manera exitosa.</h5>";
+        
+                        include("cerrar_conexion.php");
+                    } else{
+                        http_response_code(503);
+                        include("cerrar_conexion.php");
+                    }                  
                 } else {
                     http_response_code(502);
                     include("cerrar_conexion.php");

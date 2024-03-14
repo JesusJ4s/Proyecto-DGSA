@@ -73,6 +73,7 @@ function nuevoBoletin(){
                 $('#InfoGeneral').modal('show');
                 $('#InfoGeneral .modal-body').html(mensaje);
                 formulario_boletines.reset();
+                consultaBoletines();
                 // consultaImagenes();
             },
             error: function(jqXHR)

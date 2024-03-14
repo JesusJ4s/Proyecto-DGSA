@@ -188,250 +188,262 @@ if ($identificador == "ModificImgVid") {
         $id_galeria_tipo = $_POST['nombre_tipo'];
     }
 
-    // VERIFICAR SI HIZO CAMBIO DE IMAGEN-VIDEO-DOCUMENTO
-    $imagen = $_FILES["archivo_actualizar"]["name"];
+    include ('../../php/abrir_conexion.php');
 
-    $nombre_archivoViejo = $_POST['nombre_ImagenV'];
+    //VERIFICAR SI LA IMAGEN-VIDEO EXISTE EN EL SISTEMA
+    $verificar = mysqli_query($conexion, "SELECT * FROM $tabla_db14 WHERE id_galeria = '$idenImgVid'");
+    while ($consulta = mysqli_fetch_array($verificar)) {
+        $activo = $consulta['visible'];
+    }
 
-    if (isset($imagen) && $imagen != "") {
-        if (preg_match($soloNum,$id_galeria_tipo) &&preg_match($soloNum,$direccion_archivo) ) {
+    if ($activo!=3) {
+        // VERIFICAR SI HIZO CAMBIO DE IMAGEN-VIDEO-DOCUMENTO
+        $imagen = $_FILES["archivo_actualizar"]["name"];
 
-            $tipo = $_FILES["archivo_actualizar"]["type"];
-            $temp = $_FILES["archivo_actualizar"]["tmp_name"];
-    
-            $direccionImagenesDGSA = "../../assets/gallery/DGSA/2024/".$id_galeria_tipo."/".$id_galeria_grupo."/";
-            $direccionImagenesDIS = "../../assets/gallery/DIS/2024/".$id_galeria_tipo."/".$id_galeria_grupo."/";
-            $direccionImagenesDSR = "../../assets/gallery/DSR/2024/".$id_galeria_tipo."/".$id_galeria_grupo."/";
-            $direccionImagenesDCVRFN = "../../assets/gallery/DCVRFN/2024/".$id_galeria_tipo."/".$id_galeria_grupo."/";
-            $direccionImagenesDEA = "../../assets/gallery/DEA/2024/".$id_galeria_tipo."/".$id_galeria_grupo."/";
+        $nombre_archivoViejo = $_POST['nombre_ImagenV'];
+
+        if (isset($imagen) && $imagen != "") {
+            if (preg_match($soloNum,$id_galeria_tipo) &&preg_match($soloNum,$direccion_archivo) ) {
+
+                $tipo = $_FILES["archivo_actualizar"]["type"];
+                $temp = $_FILES["archivo_actualizar"]["tmp_name"];
         
-            $DIRidentify = "";
-        
-            if ($direccion_archivo == 1) {
-                $direccionImagenes = $direccionImagenesDGSA;
-                $DIRidentify = "Dir. General";
-        
-            }
-            if ($direccion_archivo == 2) {
-                $direccionImagenes = $direccionImagenesDIS;
-                $DIRidentify = "Dir. Ing. Sanitaria";
-        
-            }
-            if ($direccion_archivo == 3) {
-                $direccionImagenes = $direccionImagenesDSR;
-                $DIRidentify = "Dir. Salud Radiologica";
-        
-            }
-            if ($direccion_archivo == 4) {
-                $direccionImagenes = $direccionImagenesDCVRFN;
-                $DIRidentify = "Dir. Control de Vectores";
-        
-            }
-            if ($direccion_archivo == 5) {
-                $direccionImagenes = $direccionImagenesDEA;
-                $DIRidentify = "Dir. Epidemiología Ambiental";
-        
-            }
-            function generarNumeroAleatorio() {
-                $numeroAleatorio = rand(10000000000, 99999999999);
-                return $numeroAleatorio;
-            }
+                $direccionImagenesDGSA = "../../assets/gallery/DGSA/2024/".$id_galeria_tipo."/".$id_galeria_grupo."/";
+                $direccionImagenesDIS = "../../assets/gallery/DIS/2024/".$id_galeria_tipo."/".$id_galeria_grupo."/";
+                $direccionImagenesDSR = "../../assets/gallery/DSR/2024/".$id_galeria_tipo."/".$id_galeria_grupo."/";
+                $direccionImagenesDCVRFN = "../../assets/gallery/DCVRFN/2024/".$id_galeria_tipo."/".$id_galeria_grupo."/";
+                $direccionImagenesDEA = "../../assets/gallery/DEA/2024/".$id_galeria_tipo."/".$id_galeria_grupo."/";
             
-            $nombre_archivo = $direccionImagenes. generarNumeroAleatorio()."-".$imagen;
-
-            // CAMBIANDO IMAGEN - DOCUMENTO - VIDEO
-            if (!((strpos($tipo, "mp4") || strpos($tipo, "jpg") || strpos($tipo, "jpeg") ||strpos($tipo, "png") ||strpos($tipo, "webp")||strpos($tipo, "pdf")))) {
-                http_response_code(506);
-            }else {
-                $archivoABorrar = $nombre_archivoViejo;
+                $DIRidentify = "";
+            
+                if ($direccion_archivo == 1) {
+                    $direccionImagenes = $direccionImagenesDGSA;
+                    $DIRidentify = "Dir. General";
+            
+                }
+                if ($direccion_archivo == 2) {
+                    $direccionImagenes = $direccionImagenesDIS;
+                    $DIRidentify = "Dir. Ing. Sanitaria";
+            
+                }
+                if ($direccion_archivo == 3) {
+                    $direccionImagenes = $direccionImagenesDSR;
+                    $DIRidentify = "Dir. Salud Radiologica";
+            
+                }
+                if ($direccion_archivo == 4) {
+                    $direccionImagenes = $direccionImagenesDCVRFN;
+                    $DIRidentify = "Dir. Control de Vectores";
+            
+                }
+                if ($direccion_archivo == 5) {
+                    $direccionImagenes = $direccionImagenesDEA;
+                    $DIRidentify = "Dir. Epidemiología Ambiental";
+            
+                }
+                function generarNumeroAleatorio() {
+                    $numeroAleatorio = rand(10000000000, 99999999999);
+                    return $numeroAleatorio;
+                }
                 
-                $carpeta = $direccionImagenes;
-                if (file_exists($archivoABorrar)) {
-                    if (unlink($archivoABorrar)) {
-                        if (!file_exists($carpeta)) {
-                            mkdir($carpeta, 0700, true);
-                            move_uploaded_file($temp,$nombre_archivo);
-                            $nombre_archivoViejo = $nombre_archivo;  
+                $nombre_archivo = $direccionImagenes. generarNumeroAleatorio()."-".$imagen;
+
+                // CAMBIANDO IMAGEN - DOCUMENTO - VIDEO
+                if (!((strpos($tipo, "mp4") || strpos($tipo, "jpg") || strpos($tipo, "jpeg") ||strpos($tipo, "png") ||strpos($tipo, "webp")||strpos($tipo, "pdf")))) {
+                    http_response_code(506);
+                }else {
+                    $archivoABorrar = $nombre_archivoViejo;
+                    
+                    $carpeta = $direccionImagenes;
+                    if (file_exists($archivoABorrar)) {
+                        if (unlink($archivoABorrar)) {
+                            if (!file_exists($carpeta)) {
+                                mkdir($carpeta, 0700, true);
+                                move_uploaded_file($temp,$nombre_archivo);
+                                $nombre_archivoViejo = $nombre_archivo;  
+                            }
+                        }
+                    }else {
+                        if (!file_exists($carpeta))
+                        mkdir($carpeta, 0700, true);
+                        move_uploaded_file($temp,$nombre_archivo);
+                        $nombre_archivoViejo = $nombre_archivo;
+                    } 
+                }
+            }
+        }
+        // **************************************************
+        $existe_Galeria = 0;
+
+        // Si es 3 se elimina
+        if ($visible!=3) {
+            if (preg_match($soloNum,$id_galeria_grupo) && preg_match($archivoTitulo,$titulo_archivo) && preg_match($soloNum,$visible) && preg_match($descripcionM,$descripcion_archivo) && preg_match($soloNum,$idenImgVid) &&
+                
+            preg_match($soloNum,$id_galeria_tipo) && preg_match($soloNum,$direccion_archivo)) {
+                include ('../../php/abrir_conexion.php');
+
+                //VERIFICAR SI LA IMAGEN-VIDEO EXISTE EN EL SISTEMA
+                $verificar = mysqli_query($conexion, "SELECT * FROM $tabla_db14 WHERE id_galeria = '$idenImgVid'");
+                while ($consulta = mysqli_fetch_array($verificar)) {
+                    $existe_Galeria++;
+                }
+                if ($existe_Galeria <> 0) {
+                    // AUDITORIA ***********************************************************************
+                    $valorID = $_SESSION['id_usr'];
+                    $columnas = array(
+                        'titulo_archivo' => 'Titulo del Archivo',
+                        'descripcion_archivo' => 'Descripcion',
+                        'nombre_archivo' => 'Ubicación del Archivo',
+                        'id_galeria_direccion' => 'Dirección de Línea',
+                        'id_galeria_tipo' => 'Tipo de Archivo',
+                        'id_galeria_grupo' => 'Grupo del archivo',
+                        'visible' => 'Visibilidad',
+                    );
+                    // BUSCAR DATOS BD
+                    $BUSCAR = mysqli_query($conexion, "SELECT * FROM $tabla_db14 WHERE id_galeria = '$idenImgVid'");
+                    $datos_antiguos = mysqli_fetch_assoc($BUSCAR);
+                    $cambios = array();
+                    $huboCambios = false; // Variable para verificar si se realizaron cambios
+
+                        // Consultar grupo del archivo
+                    $grupoTabla = array();
+                    $query = "SELECT * FROM $tabla_db16";
+                    $resultado = mysqli_query($conexion, $query);
+                    if ($resultado->num_rows > 0) {
+                        while ($fila = $resultado->fetch_assoc()) {
+                            $grupoTabla[$fila['id_grupo']] = $fila['nombre_grupo_galeria'];
                         }
                     }
-                }else {
-                    if (!file_exists($carpeta))
-                    mkdir($carpeta, 0700, true);
-                    move_uploaded_file($temp,$nombre_archivo);
-                    $nombre_archivoViejo = $nombre_archivo;
-                } 
+
+                        // Consultar ACTIVO INACTIVO
+                    $ActivoInactivo = array();
+                    $query = "SELECT * FROM $tabla_db2_2";
+                    $resultado = mysqli_query($conexion, $query);
+                    if ($resultado->num_rows > 0) {
+                        while ($fila = $resultado->fetch_assoc()) {
+                            $ActivoInactivo[$fila['id_estado']] = $fila['nombre_status'];
+                        }
+                    }
+                    $tipoTabla = array();
+                    $query = "SELECT * FROM $tabla_db15";
+                    $resultado = mysqli_query($conexion, $query);
+                    if ($resultado->num_rows > 0) {
+                        while ($fila = $resultado->fetch_assoc()) {
+                            $grupoTabla[$fila['id_tipo']] = $fila['nombre_tipo'];
+                        }
+                    }
+                    $direccion = array();
+                    $query = "SELECT * FROM $tabla_db5";
+                    $resultado = mysqli_query($conexion, $query);
+                    if ($resultado->num_rows > 0) {
+                        while ($fila = $resultado->fetch_assoc()) {
+                            $ActivoInactivo[$fila['id_direcciones']] = $fila['nombre_dire'];
+                        }
+                    }
+                    foreach ($columnas as $columna => $nombre) {
+                        switch ($columna) {
+                            case 'id_galeria_grupo':
+                                $valor_antiguo = isset($grupoTabla[$datos_antiguos[$columna]]) ? $grupoTabla[$datos_antiguos[$columna]] : "";
+                                $valor_nuevo = isset($grupoTabla[$$columna]) ? $grupoTabla[$$columna] : "";
+                                break;
+                            case 'visible':
+                                $valor_antiguo = isset($tipoTabla[$datos_antiguos[$columna]]) ? $tipoTabla[$datos_antiguos[$columna]] : "";
+                                $valor_nuevo = isset($tipoTabla[$$columna]) ? $tipoTabla[$$columna] : "";
+                                break;        
+                            case 'id_galeria_tipo':
+                                $valor_antiguo = isset($ActivoInactivo[$datos_antiguos[$columna]]) ? $ActivoInactivo[$datos_antiguos[$columna]] : "";
+                                $valor_nuevo = isset($ActivoInactivo[$$columna]) ? $ActivoInactivo[$$columna] : "";
+                                break;        
+                            case 'id_galeria_direccion':
+                                $valor_antiguo = isset($direccion[$datos_antiguos[$columna]]) ? $direccion[$datos_antiguos[$columna]] : "";
+                                $valor_nuevo = isset($direccion[$$columna]) ? $direccion[$$columna] : "";
+                                break;        
+                            default:
+                                $valor_antiguo = isset($datos_antiguos[$columna]) ? $datos_antiguos[$columna] : "";
+                                $valor_nuevo = isset($$columna) ? $$columna : "";
+                                break;
+                        }
+                        if ($valor_antiguo != $valor_nuevo) {
+                            array_push($cambios, "$nombre cambió de: " . $valor_antiguo . " a: " . $valor_nuevo . ".");
+                        }
+                    }
+                    if (!empty($cambios)) {
+                        $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en los datos de una imagen/video de la galería, cambios realizados: " . (count($cambios) > 0 ? implode(" ", $cambios) . " Cambios realizados." : "Sin cambios realizados.");
+                        $accionHecha = "22";
+                        $entidadModificada = "Identificador de la Imagen, Video o Documento: ".$idenImgVid;
+                        $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionHecha', '$entidadModificada', now(), '$descripcion_Cambio')";
+                        mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
+                    }
+
+                    // FIN DE LA AUDITORIA *************************************************************
+
+                    
+                    // MODIFICAR DATOS
+                    $ModifiImgVid = "UPDATE $tabla_db14 SET titulo_archivo='$titulo_archivo', descripcion_archivo='$descripcion_archivo', id_galeria_grupo='$id_galeria_grupo', visible='$visible', id_galeria_direccion='$direccion_archivo', id_galeria_tipo='$id_galeria_tipo', nombre_archivo='$nombre_archivoViejo' WHERE id_galeria='$idenImgVid'";
+                    mysqli_query($conexion, $ModifiImgVid);
+
+                    echo "<h6>Actualización de información del archivo realizado exitosamente.</h6>";
+                    include ('../../php/cerrar_conexion.php');
+
+                }else{
+                    http_response_code(501);
+                    include('../../php/cerrar_conexion.php'); 
+                }
             }
-        }
-    }
-    // **************************************************
-    $existe_Galeria = 0;
-
-    // Si es 3 se elimina
-    if ($visible!=3) {
-        if (preg_match($soloNum,$id_galeria_grupo) && preg_match($archivoTitulo,$titulo_archivo) && preg_match($soloNum,$visible) && preg_match($descripcionM,$descripcion_archivo) && preg_match($soloNum,$idenImgVid) &&
-            
-        preg_match($soloNum,$id_galeria_tipo) && preg_match($soloNum,$direccion_archivo)) {
-            include ('../../php/abrir_conexion.php');
-
-            //VERIFICAR SI LA IMAGEN-VIDEO EXISTE EN EL SISTEMA
-            $verificar = mysqli_query($conexion, "SELECT * FROM $tabla_db14 WHERE id_galeria = '$idenImgVid'");
-            while ($consulta = mysqli_fetch_array($verificar)) {
-                $existe_Galeria++;
+            else{
+                http_response_code(500);
+                include('../../php/cerrar_conexion.php');  
             }
-            if ($existe_Galeria <> 0) {
-                // AUDITORIA ***********************************************************************
-                $valorID = $_SESSION['id_usr'];
-                $columnas = array(
-                    'titulo_archivo' => 'Titulo del Archivo',
-                    'descripcion_archivo' => 'Descripcion',
-                    'nombre_archivo' => 'Ubicación del Archivo',
-                    'id_galeria_direccion' => 'Dirección de Línea',
-                    'id_galeria_tipo' => 'Tipo de Archivo',
-                    'id_galeria_grupo' => 'Grupo del archivo',
-                    'visible' => 'Visibilidad',
-                );
-                // BUSCAR DATOS BD
-                $BUSCAR = mysqli_query($conexion, "SELECT * FROM $tabla_db14 WHERE id_galeria = '$idenImgVid'");
-                $datos_antiguos = mysqli_fetch_assoc($BUSCAR);
-                $cambios = array();
-                $huboCambios = false; // Variable para verificar si se realizaron cambios
-
-                    // Consultar grupo del archivo
-                $grupoTabla = array();
-                $query = "SELECT * FROM $tabla_db16";
-                $resultado = mysqli_query($conexion, $query);
-                if ($resultado->num_rows > 0) {
-                    while ($fila = $resultado->fetch_assoc()) {
-                        $grupoTabla[$fila['id_grupo']] = $fila['nombre_grupo_galeria'];
-                    }
+            // ELIMINANDO LA IMAGEN - VIDEO - DOCUMENTO
+            }else if ($visible==3) {
+                include ('../../php/abrir_conexion.php');
+                //VERIFICAR SI LA IMAGEN-VIDEO EXISTE EN EL SISTEMA
+                $verificar = mysqli_query($conexion, "SELECT * FROM $tabla_db14 WHERE id_galeria = '$idenImgVid'");
+                while ($consulta = mysqli_fetch_array($verificar)) {
+                    $NoExiste = $consulta['visible'];
+                    $existe_Galeria++;
                 }
 
-                    // Consultar ACTIVO INACTIVO
-                $ActivoInactivo = array();
-                $query = "SELECT * FROM $tabla_db2_2";
-                $resultado = mysqli_query($conexion, $query);
-                if ($resultado->num_rows > 0) {
-                    while ($fila = $resultado->fetch_assoc()) {
-                        $ActivoInactivo[$fila['id_estado']] = $fila['nombre_status'];
+                if ($existe_Galeria<>0 && $NoExiste != 3) {
+                    // CAMBIANDO IMAGEN - DOCUMENTO VIDEO
+                    $archivoABorrar = $nombre_archivoViejo;
+                    
+                    $carpeta = $direccionImagenes;
+                    if (file_exists($archivoABorrar)) {
+                        unlink($archivoABorrar);                    
                     }
-                }
-                $tipoTabla = array();
-                $query = "SELECT * FROM $tabla_db15";
-                $resultado = mysqli_query($conexion, $query);
-                if ($resultado->num_rows > 0) {
-                    while ($fila = $resultado->fetch_assoc()) {
-                        $grupoTabla[$fila['id_tipo']] = $fila['nombre_tipo'];
-                    }
-                }
-                $direccion = array();
-                $query = "SELECT * FROM $tabla_db5";
-                $resultado = mysqli_query($conexion, $query);
-                if ($resultado->num_rows > 0) {
-                    while ($fila = $resultado->fetch_assoc()) {
-                        $ActivoInactivo[$fila['id_direcciones']] = $fila['nombre_dire'];
-                    }
-                }
-                foreach ($columnas as $columna => $nombre) {
-                    switch ($columna) {
-                        case 'id_galeria_grupo':
-                            $valor_antiguo = isset($grupoTabla[$datos_antiguos[$columna]]) ? $grupoTabla[$datos_antiguos[$columna]] : "";
-                            $valor_nuevo = isset($grupoTabla[$$columna]) ? $grupoTabla[$$columna] : "";
-                            break;
-                        case 'visible':
-                            $valor_antiguo = isset($tipoTabla[$datos_antiguos[$columna]]) ? $tipoTabla[$datos_antiguos[$columna]] : "";
-                            $valor_nuevo = isset($tipoTabla[$$columna]) ? $tipoTabla[$$columna] : "";
-                            break;        
-                        case 'id_galeria_tipo':
-                            $valor_antiguo = isset($ActivoInactivo[$datos_antiguos[$columna]]) ? $ActivoInactivo[$datos_antiguos[$columna]] : "";
-                            $valor_nuevo = isset($ActivoInactivo[$$columna]) ? $ActivoInactivo[$$columna] : "";
-                            break;        
-                        case 'id_galeria_direccion':
-                            $valor_antiguo = isset($direccion[$datos_antiguos[$columna]]) ? $direccion[$datos_antiguos[$columna]] : "";
-                            $valor_nuevo = isset($direccion[$$columna]) ? $direccion[$$columna] : "";
-                            break;        
-                        default:
-                            $valor_antiguo = isset($datos_antiguos[$columna]) ? $datos_antiguos[$columna] : "";
-                            $valor_nuevo = isset($$columna) ? $$columna : "";
-                            break;
-                    }
-                    if ($valor_antiguo != $valor_nuevo) {
-                        array_push($cambios, "$nombre cambió de: " . $valor_antiguo . " a: " . $valor_nuevo . ".");
-                    }
-                }
-                if (!empty($cambios)) {
-                    $descripcion_Cambio = "El usuario: " . $_SESSION['nombre'] . " realizó cambios en los datos de una imagen/video de la galería, cambios realizados: " . (count($cambios) > 0 ? implode(" ", $cambios) . " Cambios realizados." : "Sin cambios realizados.");
-                    $accionHecha = "22";
-                    $entidadModificada = "Identificador de la Imagen, Video o Documento: ".$idenImgVid;
-                    $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionHecha', '$entidadModificada', now(), '$descripcion_Cambio')";
+                    // MODIFICAR DATOS
+                    $ModifiImgVid = "UPDATE $tabla_db14 SET  descripcion_archivo='',  visible='$visible', id_galeria_direccion='6' WHERE id_galeria='$idenImgVid'";
+                    mysqli_query($conexion, $ModifiImgVid);
+
+                    echo "<h6>Eliminación del archivo, realizado exitosamente.</h6>";
+
+                    // AUDITORIA *****************************************************************
+                    $valorID = $_SESSION['id_usr'];
+                    $nombreUsr= $_SESSION['nombre'];
+                    $accionHecha = "23";
+                    
+                    $entidad = "Eliminación de Archivo (imagen, video o documento) en la ".$DIRidentify.".";
+                    $descripcion_Cambio = "Eliminación de Archivo (imagen, video o documento) en la Página Web de la ".$DIRidentify.", previa ubicacion del archivo: ".$nombre_archivoViejo."; realizado por: " . $nombreUsr;
+
+                    
+                    $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionHecha', '$entidad', now(), '$descripcion_Cambio')";
                     mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
+
+                    // FINAL AUDITORIA ************************************************************
+                    include ('../../php/cerrar_conexion.php');
+                }else {
+                    http_response_code(503);
+                    include ('../../php/cerrar_conexion.php');
                 }
-
-                // FIN DE LA AUDITORIA *************************************************************
-
-                
-                // MODIFICAR DATOS
-                $ModifiImgVid = "UPDATE $tabla_db14 SET titulo_archivo='$titulo_archivo', descripcion_archivo='$descripcion_archivo', id_galeria_grupo='$id_galeria_grupo', visible='$visible', id_galeria_direccion='$direccion_archivo', id_galeria_tipo='$id_galeria_tipo', nombre_archivo='$nombre_archivoViejo' WHERE id_galeria='$idenImgVid'";
-                mysqli_query($conexion, $ModifiImgVid);
-
-                echo "<h6>Actualización de información del archivo realizado exitosamente.</h6>";
-                include ('../../php/cerrar_conexion.php');
-
-            }else{
-                http_response_code(501);
-                include('../../php/cerrar_conexion.php'); 
-            }
-        }
-        else{
-            http_response_code(500);
-            include('../../php/cerrar_conexion.php');  
-        }
-        // ELIMINANDO LA IMAGEN - VIDEO - DOCUMENTO
-    }else if ($visible==3) {
-        include ('../../php/abrir_conexion.php');
-
-            //VERIFICAR SI LA IMAGEN-VIDEO EXISTE EN EL SISTEMA
-            $verificar = mysqli_query($conexion, "SELECT * FROM $tabla_db14 WHERE id_galeria = '$idenImgVid'");
-            while ($consulta = mysqli_fetch_array($verificar)) {
-                $NoExiste = $consulta['visible'];
-                $existe_Galeria++;
-            }
-
-            if ($existe_Galeria<>0 && $NoExiste != 3) {
-                // CAMBIANDO IMAGEN - DOCUMENTO VIDEO
-                $archivoABorrar = $nombre_archivoViejo;
-                
-                $carpeta = $direccionImagenes;
-                if (file_exists($archivoABorrar)) {
-                    unlink($archivoABorrar);                    
-                }
-                // MODIFICAR DATOS
-                $ModifiImgVid = "UPDATE $tabla_db14 SET  descripcion_archivo='',  visible='$visible', id_galeria_direccion='6' WHERE id_galeria='$idenImgVid'";
-                mysqli_query($conexion, $ModifiImgVid);
-
-                echo "<h6>Eliminación del archivo, realizado exitosamente.</h6>";
-
-                // AUDITORIA *****************************************************************
-                $valorID = $_SESSION['id_usr'];
-                $nombreUsr= $_SESSION['nombre'];
-                $accionHecha = "23";
-                
-                $entidad = "Eliminación de Archivo (imagen, video o documento) en la ".$DIRidentify.".";
-                $descripcion_Cambio = "Eliminación de Archivo (imagen, video o documento) en la Página Web de la ".$DIRidentify.", previa ubicacion del archivo: ".$nombre_archivoViejo."; realizado por: " . $nombreUsr;
-
-                
-                $SQL_DATOS_CAMBIOS = "INSERT INTO $tabla_db100 (id_historial_cambios, id_usuario_cambio, id_accion_cambio, entidad_cambio, fecha_usuario_cambio, descripcion_cambio) values (NULL, '$valorID', '$accionHecha', '$entidad', now(), '$descripcion_Cambio')";
-                mysqli_query($conexion, $SQL_DATOS_CAMBIOS);
-
-                // FINAL AUDITORIA ************************************************************
-                include ('../../php/cerrar_conexion.php');
+            
             }else {
                 http_response_code(503);
-                include ('../../php/cerrar_conexion.php');
-            }
-        
-    }else {
-        http_response_code(503);
+            } 
+    }else if ($activo==3) {
+        http_response_code(501);
     } 
+    
     
         
 }
@@ -448,12 +460,11 @@ if ($identificador== "nuevoBoletin") {
     
     $direccion_boletin = $_POST["direccion_boletin"];
 
-
-    $direccionImagenesDGSA = "../../assets/gallery/DGSA/Boletin/".$tituloBoletin."/";
-    $direccionImagenesDIS = "../../assets/gallery/DIS/Boletin/".$tituloBoletin."/";
-    $direccionImagenesDSR = "../../assets/gallery/DSR/Boletin/".$tituloBoletin."/";
-    $direccionImagenesDCVRFN = "../../assets/gallery/DCVRFN/Boletin/".$tituloBoletin."/";
-    $direccionImagenesDEA = "../../assets/gallery/DEA/Boletin/".$tituloBoletin."/";
+    $direccionImagenesDGSA = "../../assets/gallery/DGSA/Boletin/".$tituloBoletin.$direccion_boletin."/";
+    $direccionImagenesDIS = "../../assets/gallery/DIS/Boletin/".$tituloBoletin.$direccion_boletin."/";
+    $direccionImagenesDSR = "../../assets/gallery/DSR/Boletin/".$tituloBoletin.$direccion_boletin."/";
+    $direccionImagenesDCVRFN = "../../assets/gallery/DCVRFN/Boletin/".$tituloBoletin.$direccion_boletin."/";
+    $direccionImagenesDEA = "../../assets/gallery/DEA/Boletin/".$tituloBoletin.$direccion_boletin."/";
 
     $DIRidentify = "";
 
@@ -486,16 +497,16 @@ if ($identificador== "nuevoBoletin") {
         return $numeroAleatorio;
     }
     
-    $nombre_imagen1 = $direccionImagenes. generarNumeroAleatorio()."-".$img1_subir;
+    $nombre_imagen1 = $direccionImagenes.generarNumeroAleatorio()."-".$img1_subir;
     if($img2_subir == "" || $img2_subir == null){
         $nombre_imagen2 = "";
     }else {
-        $nombre_imagen2 = $direccionImagenes. generarNumeroAleatorio()."-".$img2_subir;
+        $nombre_imagen2 = $direccionImagenes.generarNumeroAleatorio()."-".$img2_subir;
     }
     if($img3_subir == "" || $img3_subir == null){
         $nombre_imagen3 = "";
     }else {
-        $nombre_imagen3 = $direccionImagenes. generarNumeroAleatorio()."-".$img3_subir;
+        $nombre_imagen3 = $direccionImagenes.generarNumeroAleatorio()."-".$img3_subir;
     }
 
 

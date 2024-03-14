@@ -48,7 +48,11 @@ function registroCorrespondencia(){
                 formCorrespondencia.reset();
                 $('#RegistroCorres').modal('show');
                 $('#RegistroCorresC').html('Error al ingresar los datos.<br>Error: Al no ser empleado de correspondencia no puede realizar ésta acción.');
-             }     
+             }  
+             if (nroERROR==503) {
+                $('#RegistroCorres').modal('show');
+                $('#RegistroCorresC').html('Error al ingresar los datos.<br>Error: No hay Jefe de División asignado a la división seleccionada, por favor notifique.');
+             }   
         }
     });
 }

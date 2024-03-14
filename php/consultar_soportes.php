@@ -23,6 +23,8 @@ $patron_nombre = '/^[a-zA-Z0-9]{1,16}$/';
 $findme = "*";
 $patron_numero = '/^[0-9]{1,11}$/';
 $soloLetras = '/^[a-zA-ZÀ-ý,\.\s]{20,255}$/';
+$soloLetrasNumbers = '/^[a-zA-ZÀ-ý0-9,\.\s\_-]{20,255}$/';
+
 
 // CONSULTAR SOPORTES Y MOSTRAR TABLA (SOLO EN ESPERA -- INTERACTIVA)
 if ($comprobacion == "tab_esp_inter") {
@@ -1090,7 +1092,7 @@ if ($comprobacion == "espera_componentes") {
     }
     if ($encargado == $ingeniero_encargado) {
         if ($contador == 1) {
-            if (preg_match($soloLetras, $descripcion) && preg_match($patron_numero, $id_soporte) && preg_match($patron_nombre, $nombre_equipo)) {
+            if (preg_match($soloLetrasNumbers, $descripcion) && preg_match($patron_numero, $id_soporte) && preg_match($patron_nombre, $nombre_equipo)) {
                 $SQL_verify = "SELECT * FROM $tabla_db8 WHERE nomb_equipo_soporte = '$nombre_equipo'";
                 $resultados = mysqli_query($conexion, $SQL_verify);
                 while ($consulta = mysqli_fetch_array($resultados)) {

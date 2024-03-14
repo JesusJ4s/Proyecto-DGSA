@@ -372,7 +372,7 @@ Login_Dise_Admin();
                                         <!-- IMAGENES -->
                                         <div class="m-0 py-3 row">
                                             <div class="col-2">
-                                                <p class="my-auto d-inline bold col-2">Seleccione una imagen (opcional)</p>
+                                                <p class="my-auto d-inline bold col-2">Seleccione una imagen o video (opcional). El archivo no puede ser mayor de 40mb</p>
                                                 <button type="button" class="boton_toast d-inline "><img src="../assets/intranet/pregunta.png" class="img_toast" data-toast="#imagen3"></button>
                                                 <!-- TOAST -->
                                                 <div class="toast position-absolute bg-secondary" role="alert" aria-live="assertive"
@@ -384,12 +384,12 @@ Login_Dise_Admin();
                                                         <button type="button" class="btn-close" data-bs-dismiss="toast"aria-label="Close"></button>
                                                     </div>
                                                     <div class="toast-body text-white">
-                                                        Busque dentro de su equipo, la imagen o video que utilizará. Solo se acepta formato: <i>png, jpg, jpeg, webp, mp4</i>
+                                                        Busque dentro de su equipo, la imagen o video que utilizará. Solo se acepta formato: <i>png, jpg, jpeg, webp, mp4. El archivo no puede ser mayor de 40mb</i>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-9">
-                                                <label>Imagen o Video
+                                                <label>Imagen o Video. El archivo no puede ser mayor de 40mb
                                                     <input class="form-control" type="file" id="imagen_coord3"  name="imagen_coord3" accept=".png,.jpg,.jpeg,.webp,.mp4">
                                                 </label>
 

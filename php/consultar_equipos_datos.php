@@ -20,7 +20,7 @@ if ($consulta==1) {
 
     }
     if($existe_name<>0){
-        $mensaje="El nombre de usuario existe";
+        $mensaje="El nombre de equipo ya existe";
         echo $mensaje;
     }
     include("cerrar_conexion.php");

@@ -36,7 +36,7 @@ if ($identificador == "boletinesPrinDEA") {
         </div>    
     ';
 
-    $Boletines = mysqli_query($conexion, "SELECT * FROM $tabla_db17 WHERE id_boletin_direccion = 5 AND boletin_visible = 1 ORDER BY fecha_actualizacion_bol ASC LIMIT 4");
+    $Boletines = mysqli_query($conexion, "SELECT * FROM $tabla_db17 WHERE id_boletin_direccion = 5 AND boletin_visible = 1 ORDER BY fecha_actualizacion_bol DESC LIMIT 4");
     while ($consulta = mysqli_fetch_array($Boletines)) {
         // Imprimir el contenido de cada registro
         echo '
@@ -74,7 +74,7 @@ if ($identificador == "boletinesPrinDCV") {
         </div>    
     ';
 
-    $Boletines = mysqli_query($conexion, "SELECT * FROM $tabla_db17 WHERE id_boletin_direccion = 4 AND boletin_visible = 1 ORDER BY fecha_actualizacion_bol ASC LIMIT 4");
+    $Boletines = mysqli_query($conexion, "SELECT * FROM $tabla_db17 WHERE id_boletin_direccion = 4 AND boletin_visible = 1 ORDER BY fecha_actualizacion_bol DESC LIMIT 4");
     while ($consulta = mysqli_fetch_array($Boletines)) {
         // Imprimir el contenido de cada registro
         echo '
@@ -112,7 +112,7 @@ if ($identificador == "boletinesPrinDIS") {
         </div>    
     ';
 
-    $Boletines = mysqli_query($conexion, "SELECT * FROM $tabla_db17 WHERE id_boletin_direccion = 2 AND boletin_visible = 1 ORDER BY fecha_actualizacion_bol ASC LIMIT 4");
+    $Boletines = mysqli_query($conexion, "SELECT * FROM $tabla_db17 WHERE id_boletin_direccion = 2 AND boletin_visible = 1 ORDER BY fecha_actualizacion_bol DESC LIMIT 4");
     while ($consulta = mysqli_fetch_array($Boletines)) {
         // Imprimir el contenido de cada registro
         echo '
@@ -150,7 +150,7 @@ if ($identificador == "boletinesPrinDSR") {
         </div>    
     ';
 
-    $Boletines = mysqli_query($conexion, "SELECT * FROM $tabla_db17 WHERE id_boletin_direccion = 3 AND boletin_visible = 1 ORDER BY fecha_actualizacion_bol ASC LIMIT 4");
+    $Boletines = mysqli_query($conexion, "SELECT * FROM $tabla_db17 WHERE id_boletin_direccion = 3 AND boletin_visible = 1 ORDER BY fecha_actualizacion_bol DESC LIMIT 4");
     while ($consulta = mysqli_fetch_array($Boletines)) {
         // Imprimir el contenido de cada registro
         echo '
@@ -188,7 +188,7 @@ if ($identificador == "boletinesPrinDGSA") {
         </div>    
     ';
 
-    $Boletines = mysqli_query($conexion, "SELECT * FROM $tabla_db17 WHERE id_boletin_direccion = 1 AND boletin_visible = 1 ORDER BY fecha_actualizacion_bol ASC LIMIT 4");
+    $Boletines = mysqli_query($conexion, "SELECT * FROM $tabla_db17 WHERE id_boletin_direccion = 1 AND boletin_visible = 1 ORDER BY fecha_actualizacion_bol DESC LIMIT 4");
     while ($consulta = mysqli_fetch_array($Boletines)) {
         // Imprimir el contenido de cada registro
         echo '
