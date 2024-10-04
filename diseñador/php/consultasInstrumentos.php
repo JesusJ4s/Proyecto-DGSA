@@ -129,7 +129,7 @@ if ($comprobador=="ModificacionInstru") {
         $verificar = mysqli_query($conexion, "SELECT * FROM $tabla_db18 WHERE id_instrumento_legal = '$id_instrumentoModifi'");
         while ($consulta = mysqli_fetch_array($verificar)) {
             $activo = $consulta['instrumento_visible'];
-            $ubi_instrumento = $consulta['nombre_instrumento'];
+            $ubi_instrumento = "../../".$consulta['nombre_instrumento'];
 
             $inexiste_Instrumento++;
         }

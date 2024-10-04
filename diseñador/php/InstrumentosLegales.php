@@ -81,13 +81,13 @@ if ($identificador == "NuevoInstrumentoLegal") {
 
     $gruposInstrumentos_select = $_POST["gruposInstrumentos_select"];
 
-    $direccionImagenesDIS = "../../assets/documents/DIS/2024/Instrumentos/".$TipoDocSelect."/".$gruposInstrumentos_select."/";
+    $direccionImagenesDIS = "assets/documents/DIS/2024/Instrumentos/".$TipoDocSelect."/".$gruposInstrumentos_select."/";
 
-    $direccionImagenesDSR = "../../assets/documents/DSR/2024/Instrumentos/".$TipoDocSelect."/".$gruposInstrumentos_select."/";
+    $direccionImagenesDSR = "assets/documents/DSR/2024/Instrumentos/".$TipoDocSelect."/".$gruposInstrumentos_select."/";
 
-    $direccionImagenesDCV = "../../assets/documents/DCV/2024/Instrumentos/".$TipoDocSelect."/".$gruposInstrumentos_select."/";
+    $direccionImagenesDCV = "assets/documents/DCV/2024/Instrumentos/".$TipoDocSelect."/".$gruposInstrumentos_select."/";
 
-    $direccionImagenesDEA = "../../assets/documents/DEA/2024/Instrumentos/".$TipoDocSelect."/".$gruposInstrumentos_select."/";
+    $direccionImagenesDEA = "assets/documents/DEA/2024/Instrumentos/".$TipoDocSelect."/".$gruposInstrumentos_select."/";
 
     $DIRidentify = "";
 
@@ -111,7 +111,7 @@ if ($identificador == "NuevoInstrumentoLegal") {
         $DIRidentify = "Dir. Epidemiología Ambiental";
     }
     function generarNumeroAleatorio() {
-        $numeroAleatorio = rand(10000000000, 99999999999);
+        $numeroAleatorio = rand(1, 999);
         return $numeroAleatorio;
     }
     $nombre_InstrLeg = $direccionImagenes. generarNumeroAleatorio()."-".$Documento;
@@ -153,12 +153,12 @@ if ($identificador == "NuevoInstrumentoLegal") {
                     // FINAL AUDITORIA ************************************************************
                     if ($resultado) {
                         # Se guardará dependiendo del directorio, en una carpeta llamada respaldos
-                        $carpeta = $direccionImagenes;
+                        $carpeta = "../../".$direccionImagenes;
                         if (!file_exists($carpeta)) {
                             mkdir($carpeta, 0700, true);
                         }
 
-                        move_uploaded_file($temp,$nombre_InstrLeg);
+                        move_uploaded_file($temp,"../../".$nombre_InstrLeg);
                         echo "Se subió de manera adecuada el archivo, y se guardó dentro del sistema";
                         include('../../php/cerrar_conexion.php');
 

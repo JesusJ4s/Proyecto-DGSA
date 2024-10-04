@@ -127,9 +127,9 @@ if ($comprobador=="Modificacion") {
         $verificar = mysqli_query($conexion, "SELECT * FROM $tabla_db17 WHERE id_boletin = '$id_boletin'");
         while ($consulta = mysqli_fetch_array($verificar)) {
             $activo = $consulta['boletin_visible'];
-            $ubiImagen1 = $consulta['img1_boletin'];
-            $ubiImagen2 = $consulta['img2_boletin'];
-            $ubiImagen3 = $consulta['imgvid3_boletin'];
+            $ubiImagen1 = "../../".$consulta['img1_boletin'];
+            $ubiImagen2 = "../../".$consulta['img2_boletin'];
+            $ubiImagen3 = "../../".$consulta['imgvid3_boletin'];
             $existe_Boletin++;
         }
         if ($existe_Boletin <> 0 && $activo != 3) {

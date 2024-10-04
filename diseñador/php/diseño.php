@@ -51,11 +51,11 @@ if ($identificador== "nuevaImgVid") {
     $tipo_archivo = $_POST["tipo_archivo"];
     $grupos_select = $_POST["grupos_select"];
 
-    $direccionImagenesDGSA = "../../assets/gallery/DGSA/2024/".$tipo_archivo."/".$grupos_select."/";
-    $direccionImagenesDIS = "../../assets/gallery/DIS/2024/".$tipo_archivo."/".$grupos_select."/";
-    $direccionImagenesDSR = "../../assets/gallery/DSR/2024/".$tipo_archivo."/".$grupos_select."/";
-    $direccionImagenesDCVRFN = "../../assets/gallery/DCVRFN/2024/".$tipo_archivo."/".$grupos_select."/";
-    $direccionImagenesDEA = "../../assets/gallery/DEA/2024/".$tipo_archivo."/".$grupos_select."/";
+    $direccionImagenesDGSA = "assets/gallery/DGSA/2024/".$tipo_archivo."/".$grupos_select."/";
+    $direccionImagenesDIS = "assets/gallery/DIS/2024/".$tipo_archivo."/".$grupos_select."/";
+    $direccionImagenesDSR = "assets/gallery/DSR/2024/".$tipo_archivo."/".$grupos_select."/";
+    $direccionImagenesDCVRFN = "assets/gallery/DCVRFN/2024/".$tipo_archivo."/".$grupos_select."/";
+    $direccionImagenesDEA = "assets/gallery/DEA/2024/".$tipo_archivo."/".$grupos_select."/";
 
     $DIRidentify = "";
 
@@ -85,7 +85,7 @@ if ($identificador== "nuevaImgVid") {
 
     }
     function generarNumeroAleatorio() {
-        $numeroAleatorio = rand(10000000000, 99999999999);
+        $numeroAleatorio = rand(1, 999);
         return $numeroAleatorio;
     }
     
@@ -132,12 +132,12 @@ if ($identificador== "nuevaImgVid") {
                     // FINAL AUDITORIA ************************************************************
                     if ($resultado) {
                         # Se guardará dependiendo del directorio, en una carpeta llamada respaldos
-                        $carpeta = $direccionImagenes;
+                        $carpeta = "../../".$direccionImagenes;
                         if (!file_exists($carpeta)) {
                             mkdir($carpeta, 0700, true);
                         }
 
-                        move_uploaded_file($temp,$nombre_imagen);
+                        move_uploaded_file($temp,"../../".$nombre_imagen);
                         echo "Se subió de manera adecuada el archivo, y se guardó dentro del sistema";
                         include('../../php/cerrar_conexion.php');
 
@@ -200,7 +200,7 @@ if ($identificador == "ModificImgVid") {
         // VERIFICAR SI HIZO CAMBIO DE IMAGEN-VIDEO-DOCUMENTO
         $imagen = $_FILES["archivo_actualizar"]["name"];
 
-        $nombre_archivoViejo = $_POST['nombre_ImagenV'];
+        $nombre_archivoViejo = "../../".$_POST['nombre_ImagenV'];
 
         if (isset($imagen) && $imagen != "") {
             if (preg_match($soloNum,$id_galeria_tipo) &&preg_match($soloNum,$direccion_archivo) ) {
@@ -208,11 +208,11 @@ if ($identificador == "ModificImgVid") {
                 $tipo = $_FILES["archivo_actualizar"]["type"];
                 $temp = $_FILES["archivo_actualizar"]["tmp_name"];
         
-                $direccionImagenesDGSA = "../../assets/gallery/DGSA/2024/".$id_galeria_tipo."/".$id_galeria_grupo."/";
-                $direccionImagenesDIS = "../../assets/gallery/DIS/2024/".$id_galeria_tipo."/".$id_galeria_grupo."/";
-                $direccionImagenesDSR = "../../assets/gallery/DSR/2024/".$id_galeria_tipo."/".$id_galeria_grupo."/";
-                $direccionImagenesDCVRFN = "../../assets/gallery/DCVRFN/2024/".$id_galeria_tipo."/".$id_galeria_grupo."/";
-                $direccionImagenesDEA = "../../assets/gallery/DEA/2024/".$id_galeria_tipo."/".$id_galeria_grupo."/";
+                $direccionImagenesDGSA = "assets/gallery/DGSA/2024/".$id_galeria_tipo."/".$id_galeria_grupo."/";
+                $direccionImagenesDIS = "assets/gallery/DIS/2024/".$id_galeria_tipo."/".$id_galeria_grupo."/";
+                $direccionImagenesDSR = "assets/gallery/DSR/2024/".$id_galeria_tipo."/".$id_galeria_grupo."/";
+                $direccionImagenesDCVRFN = "assets/gallery/DCVRFN/2024/".$id_galeria_tipo."/".$id_galeria_grupo."/";
+                $direccionImagenesDEA = "assets/gallery/DEA/2024/".$id_galeria_tipo."/".$id_galeria_grupo."/";
             
                 $DIRidentify = "";
             
@@ -242,7 +242,7 @@ if ($identificador == "ModificImgVid") {
             
                 }
                 function generarNumeroAleatorio() {
-                    $numeroAleatorio = rand(10000000000, 99999999999);
+                    $numeroAleatorio = rand(1, 999);
                     return $numeroAleatorio;
                 }
                 
@@ -254,19 +254,19 @@ if ($identificador == "ModificImgVid") {
                 }else {
                     $archivoABorrar = $nombre_archivoViejo;
                     
-                    $carpeta = $direccionImagenes;
+                    $carpeta = "../../".$direccionImagenes;
                     if (file_exists($archivoABorrar)) {
                         if (unlink($archivoABorrar)) {
                             if (!file_exists($carpeta)) {
                                 mkdir($carpeta, 0700, true);
-                                move_uploaded_file($temp,$nombre_archivo);
+                                move_uploaded_file($temp,"../../".$nombre_archivo);
                                 $nombre_archivoViejo = $nombre_archivo;  
                             }
                         }
                     }else {
                         if (!file_exists($carpeta))
                         mkdir($carpeta, 0700, true);
-                        move_uploaded_file($temp,$nombre_archivo);
+                        move_uploaded_file($temp,"../../".$nombre_archivo);
                         $nombre_archivoViejo = $nombre_archivo;
                     } 
                 }
@@ -460,11 +460,11 @@ if ($identificador== "nuevoBoletin") {
     
     $direccion_boletin = $_POST["direccion_boletin"];
 
-    $direccionImagenesDGSA = "../../assets/gallery/DGSA/Boletin/".$tituloBoletin.$direccion_boletin."/";
-    $direccionImagenesDIS = "../../assets/gallery/DIS/Boletin/".$tituloBoletin.$direccion_boletin."/";
-    $direccionImagenesDSR = "../../assets/gallery/DSR/Boletin/".$tituloBoletin.$direccion_boletin."/";
-    $direccionImagenesDCVRFN = "../../assets/gallery/DCVRFN/Boletin/".$tituloBoletin.$direccion_boletin."/";
-    $direccionImagenesDEA = "../../assets/gallery/DEA/Boletin/".$tituloBoletin.$direccion_boletin."/";
+    $direccionImagenesDGSA = "assets/gallery/DGSA/Boletin/".$tituloBoletin."/";
+    $direccionImagenesDIS = "assets/gallery/DIS/Boletin/".$tituloBoletin."/";
+    $direccionImagenesDSR = "assets/gallery/DSR/Boletin/".$tituloBoletin."/";
+    $direccionImagenesDCVRFN = "assets/gallery/DCVRFN/Boletin/".$tituloBoletin."/";
+    $direccionImagenesDEA = "assets/gallery/DEA/Boletin/".$tituloBoletin."/";
 
     $DIRidentify = "";
 
@@ -493,7 +493,7 @@ if ($identificador== "nuevoBoletin") {
         $DIRidentify = "Dir. Epidemiología Ambiental";
     }
     function generarNumeroAleatorio() {
-        $numeroAleatorio = rand(10000000000, 99999999999);
+        $numeroAleatorio = rand(1, 999);
         return $numeroAleatorio;
     }
     
@@ -572,14 +572,14 @@ if ($identificador== "nuevoBoletin") {
             // FINAL AUDITORIA ************************************************************
             if ($resultado) {
                 # Se guardará dependiendo del directorio, en una carpeta llamada respaldos
-                $carpeta = $direccionImagenes;
+                $carpeta = "../../".$direccionImagenes;
                 if (!file_exists($carpeta)) {
                     mkdir($carpeta, 0700, true);
                 }
 
-                move_uploaded_file($temp1,$nombre_imagen1);
-                move_uploaded_file($temp2,$nombre_imagen2);
-                move_uploaded_file($temp3,$nombre_imagen3);
+                move_uploaded_file($temp1,"../../".$nombre_imagen1);
+                move_uploaded_file($temp2,"../../".$nombre_imagen2);
+                move_uploaded_file($temp3,"../../".$nombre_imagen3);
                 echo "Se subió de manera adecuada el archivo, y se guardó dentro del sistema: ".$DIRidentify.", con el título de: ".$tituloBoletin;
                 include('../../php/cerrar_conexion.php');
 

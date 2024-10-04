@@ -127,9 +127,9 @@ if ($comprobador=="Modificacion") {
         $verificar = mysqli_query($conexion, "SELECT * FROM $tabla_db21 WHERE id_coordinacion_web = '$identificador'");
         while ($consulta = mysqli_fetch_array($verificar)) {
             $activo = $consulta['visible_anterior'];
-            $ubiImagen1 = $consulta['imagen_coord1'];
-            $ubiImagen2 = $consulta['imagen_coord2'];
-            $ubiImagen3 = $consulta['imagen_coord3'];
+            $ubiImagen1 = "../../".$consulta['imagen_coord1'];
+            $ubiImagen2 = "../../".$consulta['imagen_coord2'];
+            $ubiImagen3 = "../../".$consulta['imagen_coord3'];
             $existeCoordi++;
         }
         if ($existeCoordi <> 0 && $activo != 3) {
@@ -222,55 +222,5 @@ if ($comprobador=="Modificacion") {
     }
 }
 
-// if ($comprobador=="coordiEntera") {
-//     $identificadorCoord = $_POST['id'];
-//     $contador = 0;
-
-//     if (preg_match($soloNum,$identificadorCoord)) {
-
-//         include ('../../php/abrir_conexion.php');
-//         $SQL_Modificacion = "SELECT * FROM $tabla_db21 WHERE id_coordinacion_web = '$identificadorCoord'";
-//         $resultados = mysqli_query($conexion, $SQL_Modificacion);
-//         while ($consulta = mysqli_fetch_array($resultados)) {
-//             $contador++;
-//         }
-
-//         if ($contador<>0) {
-//             $SQL_Modificacion = "SELECT * FROM $tabla_db21 bl 
-//         INNER JOIN $tabla_db1 us ON bl.id_coord_usuario=us.id_usuario
-//         INNER JOIN $tabla_db5 dr ON bl.id_coord_direccion=dr.id_direcciones
-//         INNER JOIN $tabla_db2_2 es ON bl.id_coord_visible=es.id_estado WHERE id_coordinacion_web = '$identificadorCoord'";
-//         $resultados = mysqli_query($conexion, $SQL_Modificacion);
-//         while ($consulta = mysqli_fetch_array($resultados)) {
-//             $valores['Vcoord_direccion'] = $consulta['nombre_dire'];
-//             $valores['Vtitulo_txt1'] = $consulta['titulo_txt1'];
-//             $valores['descripcion_txt1PART2'] = $consulta['descripcion_txt1'];
-
-//             $valores['Vtitulo_txt2'] = $consulta['titulo_txt2'];
-//             $valores['descripcion_txt2PART2'] = $consulta['descripcion_txt2'];
-
-//             $valores['Vtitulo_txt3'] = $consulta['titulo_txt3'];
-//             $valores['descripcion_txt3PART2'] = $consulta['descripcion_txt3'];
-
-//             $valores['Vtitulo_lista1'] = $consulta['titulo_lista1'];
-//             $valores['Vtitulo_lista2'] = $consulta['titulo_lista2'];
-
-//             $valores['Lista1_coordPART2'] = $consulta['Lista1_coord'];
-//             $valores['Lista2_coordPART2'] = $consulta['Lista2_coord'];
-//             $contador++;
-//         }
-//         // Convirtiendo el array en algo leíble por JS
-//         $valores = json_encode($valores);
-//         echo $valores;
-//         include ('../../php/cerrar_conexion.php');
-//         }else {
-//             http_response_code(500);
-//         }
-
-        
-//     }else {
-//         http_response_code(500);
-//     }
-// }
 
 

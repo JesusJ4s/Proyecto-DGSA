@@ -670,23 +670,11 @@ INSERT INTO `z1_historial_camb_sis` (`id_historial_cambios`, `id_usuario_cambio`
 (3, 1, 3, '27146430', '2024-01-24 12:00:55', 'Ingreso del Usuario: Jesus Castillo.'),
 (4, 2, 1, '12572203', '2024-01-24 12:06:59', 'Nuevo Usuario registrandose en el Sistema, nombre del empleado: kisbel caldera , cédula V-12572203. Dicho empleado se ha registrado como trabajador en: Despacho Dirección'),
 (5, 1, 2, '12572203', '2024-01-24 12:08:41', 'El usuario: Jesus Castillo realizó cambios en los datos del empleado: kisbel caldera , cambios realizados: Departamento cambió de: Despacho Dirección a: Diseño y Publicidad. Rol del Usuario cambió de: Sin Acceso a: Secretario. Cambios realizados.'),
-(6, 2, 1, '12572203', '2024-01-24 12:08:47', 'El usuario kisbel caldera , finalizó el registro las preguntas de seguridad.'),
-(7, 2, 3, '12572203', '2024-01-24 12:09:02', 'Ingreso del Usuario: kisbel caldera .'),
-(8, 1, 4, '27146430', '2024-01-24 12:10:27', 'Salida del sistema del Usuario: Jesus Castillo.'),
-(9, 2, 4, '12572203', '2024-01-24 12:14:20', 'Salida automática del sistema, del Usuario: .'),
-(11, 1, 3, '27146430', '2024-01-30 10:10:53', 'Ingreso del Usuario: Jesus Castillo.'),
-(12, 1, 4, '27146430', '2024-01-30 10:11:50', 'Salida del sistema del Usuario: Jesus Castillo.'),
-(13, 1, 3, '27146430', '2024-01-30 10:35:06', 'Ingreso del Usuario: Jesus Castillo.'),
-(14, 1, 4, '27146430', '2024-01-30 10:36:15', 'Salida del sistema del Usuario: Jesus Castillo.'),
-(15, 2, 3, '12572203', '2024-01-30 10:37:41', 'Ingreso del Usuario: kisbel caldera .'),
-(16, 2, 4, '12572203', '2024-01-30 10:49:13', 'Salida del sistema del Usuario: kisbel caldera .'),
-(17, 1, 3, '27146430', '2024-01-30 11:04:05', 'Ingreso del Usuario: Jesus Castillo.'),
-(18, 1, 4, '27146430', '2024-01-30 11:12:50', 'Salida del sistema del Usuario: Jesus Castillo.'),
-(19, 3, 1, '9699637', '2024-01-30 11:29:22', 'Nuevo Usuario registrandose en el Sistema, nombre del empleado: Dennis Quiñones, cédula V-9699637. Dicho empleado se ha registrado como trabajador en: Coordinación de Informática'),
-(20, 3, 1, '9699637', '2024-01-30 11:30:31', 'El usuario Dennis Quiñones, finalizó el registro las preguntas de seguridad.'),
-(21, 1, 3, '27146430', '2024-01-30 11:30:42', 'Ingreso del Usuario: Jesus Castillo.'),
-(22, 1, 2, '9699637', '2024-01-30 11:30:57', 'El usuario: Jesus Castillo realizó cambios en los datos del empleado: Dennis Quiñones, cambios realizados: Rol del Usuario cambió de: Sin Acceso a: Administrador. Cambios realizados.'),
-(23, 1, 4, '27146430', '2024-01-30 11:31:06', 'Salida del sistema del Usuario: Jesus Castillo.');
+(6, 3, 1, '9699637', '2024-01-30 11:29:22', 'Nuevo Usuario registrandose en el Sistema, nombre del empleado: Dennis Quiñones, cédula V-9699637. Dicho empleado se ha registrado como trabajador en: Coordinación de Informática'),
+(7, 3, 1, '9699637', '2024-01-30 11:30:31', 'El usuario Dennis Quiñones, finalizó el registro las preguntas de seguridad.'),
+(8, 1, 3, '27146430', '2024-01-30 11:30:42', 'Ingreso del Usuario: Jesus Castillo.'),
+(9, 1, 2, '9699637', '2024-01-30 11:30:57', 'El usuario: Jesus Castillo realizó cambios en los datos del empleado: Dennis Quiñones, cambios realizados: Rol del Usuario cambió de: Sin Acceso a: Administrador. Cambios realizados.'),
+(10, 1, 4, '27146430', '2024-01-30 11:31:06', 'Salida del sistema del Usuario: Jesus Castillo.');
 
 -- --------------------------------------------------------
 
@@ -969,7 +957,7 @@ ALTER TABLE `a4_estado`
 -- AUTO_INCREMENT de la tabla `b1_direcciones`
 --
 ALTER TABLE `b1_direcciones`
-  MODIFY `id_direcciones` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_direcciones` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `b2_divisiones`
@@ -1083,7 +1071,7 @@ ALTER TABLE `f1_coordinaciones_web`
 -- AUTO_INCREMENT de la tabla `z1_historial_camb_sis`
 --
 ALTER TABLE `z1_historial_camb_sis`
-  MODIFY `id_historial_cambios` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_historial_cambios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `z2_historial_acciones`

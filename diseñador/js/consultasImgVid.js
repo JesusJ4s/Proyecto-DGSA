@@ -137,6 +137,7 @@ function ModfImg(){
                     "ide": ide,
                     "consultarImgVid": "SubirImagen"
                 };
+                console.log(valores)
                 $.ajax({
                     data: parametros,
                     url: './php/consultasImgVid.php',

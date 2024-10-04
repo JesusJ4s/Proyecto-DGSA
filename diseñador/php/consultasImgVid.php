@@ -133,7 +133,7 @@ if ($comprobador == "SubirImagen") {
     $resultados = mysqli_query($conexion, "SELECT * FROM $tabla_db14 WHERE id_galeria = '$identificadorImagen_Video'");
     while ($consulta = mysqli_fetch_array($resultados)) {
         $tipo = $consulta['id_galeria_tipo'];
-        $nameArchivo = $consulta['nombre_archivo'];
+        $nameArchivo = "../".$consulta['nombre_archivo'];
         $tituloArchivo = $consulta['titulo_archivo'];
     }
     // ES IMAGEN

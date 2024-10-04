@@ -43,10 +43,10 @@ if ($identificador== "nuevaCoord") {
     $imagen_coord2 = $_FILES["imagen_coord2"]["name"];
     $imagen_coord3 = $_FILES["imagen_coord3"]["name"];
     
-    $direccionImagenesDIS = "../../assets/gallery/DIS/coordinacion/".$titulo_txt1."/";
-    $direccionImagenesDSR = "../../assets/gallery/DSR/coordinacion/".$titulo_txt1."/";
-    $direccionImagenesDCVRFN = "../../assets/gallery/DCVRFN/coordinacion/".$titulo_txt1."/";
-    $direccionImagenesDEA = "../../assets/gallery/DEA/coordinacion/".$titulo_txt1."/";
+    $direccionImagenesDIS = "assets/gallery/DIS/coordinacion/".$titulo_txt1."/";
+    $direccionImagenesDSR = "assets/gallery/DSR/coordinacion/".$titulo_txt1."/";
+    $direccionImagenesDCVRFN = "assets/gallery/DCVRFN/coordinacion/".$titulo_txt1."/";
+    $direccionImagenesDEA = "assets/gallery/DEA/coordinacion/".$titulo_txt1."/";
 
     $DIRidentify = "";
 
@@ -70,7 +70,7 @@ if ($identificador== "nuevaCoord") {
         $DIRidentify = "Dir. Epidemiología Ambiental";
     }
     function generarNumeroAleatorio() {
-        $numeroAleatorio = rand(10000000000, 99999999999);
+        $numeroAleatorio = rand(1, 999);
         return $numeroAleatorio;
     }
     
@@ -149,14 +149,14 @@ if ($identificador== "nuevaCoord") {
             // FINAL AUDITORIA ************************************************************
             if ($resultado) {
                 # Se guardará dependiendo del directorio, en una carpeta llamada respaldos
-                $carpeta = $direccionImagenes;
+                $carpeta = "../../".$direccionImagenes;
                 if (!file_exists($carpeta)) {
                     mkdir($carpeta, 0700, true);
                 }
 
-                move_uploaded_file($temp1,$nombre_imagen1);
-                move_uploaded_file($temp2,$nombre_imagen2);
-                move_uploaded_file($temp3,$nombre_imagen3);
+                move_uploaded_file($temp1,"../../".$nombre_imagen1);
+                move_uploaded_file($temp2,"../../".$nombre_imagen2);
+                move_uploaded_file($temp3,"../../".$nombre_imagen3);
                 echo "Se subió de manera adecuada el archivo, y se guardó dentro del sistema: ".$DIRidentify.", con el título de: ".$titulo_txt1;
                 include('../../php/cerrar_conexion.php');
 
