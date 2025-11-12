@@ -59,9 +59,7 @@ CREATE TABLE `a1_usuarios` (
 -- Volcado de datos para la tabla `a1_usuarios`
 --
 INSERT INTO `a1_usuarios` (`id_usuario`, `ActivoInactivo`, `nombre`, `apellido`, `nacionalidad`, `cedula`, `nombre_usuario`, `telefono`, `telefono_secundario`, `email`, `usuario_departamento_id`, `usuario_division_id`, `usuario_direccion_id`, `usuario_rol_id`, `contraseña`, `id_pregunta1`, `respuesta1`, `id_pregunta2`, `respuesta2`, `id_pregunta3`, `respuesta3`, `pin_seguridad`, `sesion`) VALUES
-(1, 1, 'Jesus', 'Castillo', 'V', '27146430', 'JADMIN', '04124457287', '', 'jesusgole33@gmail.com', 21, 11, 1, 1, '$2y$10$jkvQDzVE6PtE5KKiN4grK.Xz0jcjVToL4rcIWr9vn4/iJ.jfrYWeu', 1, '$2y$10$Zax6B9m4xXs25wVsc.Mspuc4AZYJw/YMYY/.sb2eNHZSo5OcLvVre', 2, '$2y$10$BTvbxbG7JUQCW2g4RaInG.p.04B9BkO8GoUIK0eU/cvYX1XVBX3xm', 3, '$2y$10$KLaTvst4fA3FWr9lYpfcNe0KJgKx7bh7UqEx6rf/IiYnyEl2/8A3q', '0303', 0),
-(2, 1, 'kisbel', 'caldera ', 'V', '12572203', 'DGSA42', '04262320553', '', 'kisbel31@gmail.com', 81, 1, 1, 4, '$2y$10$6Ko3c5tUrRlmlAuec7JyNesqU4mo.frA4BvD.hvFOJWvhvql4/RLC', 5, '$2y$10$MNhg9LiK/fpepyug3619OuhBbnHWo5Cl7jb9CZnbBceBZzrwz3SX2', 1, '$2y$10$eSiF2HybLn0TBTT124DoyuV8sTt7A8FoGzKQgKk9me8wAI4ItpnVy', 9, '$2y$10$CuAamb5zVlawajY7XupXweu7.xnGteennTBHdnIAA87Mq./dZST7G', '0477', 0),
-(3, 1, 'Dennis', 'Quiñones', 'V', '9699637', 'VALEDIEG', '0414-4598112', '', 'dennthibi@gmail.com', 21, 11, 1, 1, '$2y$10$HTqNcYADBVi4RKVi44dfbO5o24ZFCOaFuSipgKAFe46aK0YwOsHca', 1, '$2y$10$q2z1D60newzaU0yJrvcSqORQPD9wjASml2NJagBXKAI85NQPl6/fm', 3, '$2y$10$9nDBnondwYQZH.paVKazduSvwbRv78KufCetDg6DhDl5OslKCAG0G', 4, '$2y$10$AxHvyMd14CAFAUHQwCPhxe80C5gLwAvADkzDOA9XDd4mITgYljrGG', '1302', 0);
+(1, 1, 'Jesus', 'Castillo', 'V', '27146430', 'JADMIN', '04124457287', '', 'jesusgole33@gmail.com', 21, 11, 1, 1, '$2y$10$jkvQDzVE6PtE5KKiN4grK.Xz0jcjVToL4rcIWr9vn4/iJ.jfrYWeu', 1, '$2y$10$Zax6B9m4xXs25wVsc.Mspuc4AZYJw/YMYY/.sb2eNHZSo5OcLvVre', 2, '$2y$10$BTvbxbG7JUQCW2g4RaInG.p.04B9BkO8GoUIK0eU/cvYX1XVBX3xm', 3, '$2y$10$KLaTvst4fA3FWr9lYpfcNe0KJgKx7bh7UqEx6rf/IiYnyEl2/8A3q', '0303', 0);
 
 
 -- --------------------------------------------------------
@@ -933,7 +931,7 @@ ALTER TABLE `z2_historial_acciones`
 -- AUTO_INCREMENT de la tabla `a1_usuarios`
 --
 ALTER TABLE `a1_usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `a2_rol`
