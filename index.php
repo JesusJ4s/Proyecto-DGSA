@@ -56,7 +56,7 @@
             <!-- **************************************** -->
             <!-- Carrusel -->
             <div class="container-lg mb-2 p-0" id="carrousel-info-index">
-                <h1>Historia</h1>
+                <h1>HistoriaA</h1>
 
                 <div id="carousel-info" class="carousel slide mt-3" data-bs-ride="carousel">
 
